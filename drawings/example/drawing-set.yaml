@@ -1,0 +1,87 @@
+# A worked `technical_drawings_for_agents build` set: two drawings, one declaration, no remembered
+# build order. This is the set the repo's own tests build and `--check`, so it is
+# also the gate that keeps the driver honest (the real project sets live in
+# their own project repositories, which CI here cannot see).
+#
+# Run it:
+#   technical_drawings_for_agents build drawings/example/drawing-set.yaml
+#   technical_drawings_for_agents build drawings/example/drawing-set.yaml --check    # writes nothing
+#   technical_drawings_for_agents build drawings/example/drawing-set.yaml --dry-run  # explains
+#
+# `.technical_drawings_for_agents/` (the build cache) must be gitignored before the first build.
+version: 1
+
+set:
+  id: EXAMPLE-DRAWINGS
+  description: the two worked example drawings, built in dependency order
+  root: .
+
+inputs:
+  section-inputs: {path: simple-section/inputs.yaml}
+  pid-data: {path: synthetic-pid/SYN-PSK-PID-001.pid.yaml}
+
+nodes:
+  # A project generator is a subprocess, never an in-process `runpy`: a script
+  # that calls sys.exit() raises SystemExit, which would kill the driver.
+  # Its outputs are DECLARED — the driver never globs out/ to find out what
+  # happened. A zero exit with a declared output missing is a failure, which is
+  # precisely what would have caught the sheet generator that sat dead for a week.
+  section:
+    run: script
+    description: the concrete-lined channel typical section (EXA-CIV-SEC-001)
+    inputs:
+      - "@section-inputs"
+      - simple-section/meta.yaml
+    outputs:
+      - simple-section/out/EXA-CIV-SEC-001.svg
+      - simple-section/out/EXA-CIV-SEC-001.dxf
+    args:
+      path: simple-section/source.py
+
+  # A toolkit verb runs in-process, by calling its module function directly.
+  pid:
+    run: verb:pid
+    description: the synthetic ISA-5.1 P&ID (SYN-PSK-PID-001)
+    inputs:
+      - "@pid-data"
+      - synthetic-pid/meta.yaml
+    outputs:
+      - synthetic-pid/out/SYN-PSK-PID-001.svg
+    args:
+      data: synthetic-pid/SYN-PSK-PID-001.pid.yaml
+      out: synthetic-pid/out
+
+  # A check node has no artifact, so it is never "current": it runs whenever it is
+  # selected and nothing is cached about its verdict. `needs:` orders it after the
+  # generator without pretending it consumes a file.
+  validate-section:
+    run: verb:validate
+    description: title block, scale bar, status watermark and meta on the section
+    needs: [section]
+    inputs:
+      - simple-section/out/EXA-CIV-SEC-001.svg
+    args:
+      target: simple-section
+
+targets:
+  section-sheet: [section]
+  drawings: [section, pid]
+
+# Marking a sheet `review: pdf` is how the Engineering-Drawings-as-Code pipeline
+# contract's rule 6 ("always finish by producing a PDF") is enforced: every marked
+# target must produce its declared .pdf or the build fails naming the target, and
+# `--check` verifies each marked target's PDF is present and current. Sheet-ness is
+# declared, never inferred — an intermediate, a GeoJSON or a staged layer owes
+# nothing. This set deliberately leaves the PDF step out: `technical_drawings_for_agents plot` is the
+# only supported PDF path (P4) and it needs a renderer backend on PATH, which a
+# worked example must not require. A real project's sheet node looks like:
+#
+#   sheet:
+#     run: command
+#     review: pdf
+#     inputs:  [drawings/basin-site/out/STA-SITE-GA-001.svg]
+#     outputs: [drawings/basin-site/out/pdf/STA-SITE-GA-001.pdf]
+#     args:
+#       argv: [technical_drawings_for_agents, plot, out/STA-SITE-GA-001.svg, --out, out/pdf]
+#       cwd: drawings/basin-site
+#       tool: technical_drawings_for_agents

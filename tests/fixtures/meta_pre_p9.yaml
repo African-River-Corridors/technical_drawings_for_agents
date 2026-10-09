@@ -1,0 +1,15 @@
+# Drawing metadata — the stable record for this sheet.
+# The 'number' is the permanent ID; never reuse it for a different drawing.
+number: EXA-CIV-SEC-001
+title: Concrete-Lined Drainage Channel — Typical Section
+discipline: Civil
+project: drawings-kit example
+revision: A
+scale: "1:50"
+units: m
+date: 2026-07-15
+# Lifecycle: DRAFT -> CONCEPT -> ISSUED. ISSUED only after engineer sign-off.
+status: CONCEPT
+tool: technical_drawings_for_agents
+# HARD GATE: for_construction may only be true once status == ISSUED.
+for_construction: false

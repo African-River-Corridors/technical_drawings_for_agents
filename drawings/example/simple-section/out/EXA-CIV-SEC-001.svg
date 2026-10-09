@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" width="920" height="580" preserveAspectRatio="xMidYMid meet" style="background:#1a1a2e; border-radius:6px;"><rect width="920" height="580" fill="#1a1a2e"/><defs>
+<pattern id="hatch-concrete" patternUnits="userSpaceOnUse" width="57.4" height="57.4">
+<rect width="57.4" height="57.4" fill="rgba(154,160,180,0.10)"/>
+<path d="M 0 57.4 L 57.4 0 M 0 0 L 57.4 57.4" stroke="#9aa0b4" stroke-width="0.7" opacity="0.85"/>
+</pattern>
+</defs>
+<rect x="24.0" y="24.0" width="872.0" height="532.0" fill="none" stroke="#888888" stroke-width="0.7"/>
+<polygon points="166.6,273.1 357.9,426.2 562.1,426.2 753.4,273.1 727.9,273.1 536.6,400.7 383.4,400.7 192.1,273.1" fill="url(#hatch-concrete)" stroke="#d9e2ec" stroke-width="1.2"/>
+<line x1="192.1" y1="273.1" x2="383.4" y2="400.7" stroke="#d9e2ec" stroke-width="1.8"/>
+<line x1="383.4" y1="400.7" x2="536.6" y2="400.7" stroke="#d9e2ec" stroke-width="1.8"/>
+<line x1="536.6" y1="400.7" x2="727.9" y2="273.1" stroke="#d9e2ec" stroke-width="1.8"/>
+<line x1="153.8" y1="305.0" x2="766.2" y2="305.0" stroke="#4488ff" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="680.1" cy="305.0" r="3.0" fill="#4488ff" stroke="#4488ff" stroke-width="0"/>
+<line x1="680.1" y1="305.0" x2="779.0" y2="305.0" stroke="#4488ff" stroke-width="0.7"/>
+<line x1="779.0" y1="305.0" x2="798.1" y2="285.9" stroke="#4488ff" stroke-width="0.7"/>
+<text x="793.1" y="281.9" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">Design WL (nominal)</text>
+<text x="793.1" y="293.9" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">freeboard 0.25 m</text>
+<line x1="460.0" y1="464.5" x2="460.0" y2="222.1" stroke="#ff66cc" stroke-width="0.8" stroke-dasharray="10,4,2,4"/>
+<line x1="383.4" y1="400.7" x2="383.4" y2="445.7" stroke="#888888" stroke-width="0.5"/>
+<line x1="536.6" y1="400.7" x2="536.6" y2="445.7" stroke="#888888" stroke-width="0.5"/>
+<line x1="383.4" y1="442.7" x2="536.6" y2="442.7" stroke="#888888" stroke-width="0.7"/>
+<polygon points="383.4,442.7 388.4,440.2 388.4,445.2" fill="#888888"/>
+<polygon points="536.6,442.7 531.6,440.2 531.6,445.2" fill="#888888"/>
+<text x="460.0" y="438.7" font-size="10" fill="#bbbbbb" text-anchor="middle" font-family="monospace">BED 1.2 m</text>
+<line x1="753.4" y1="400.7" x2="786.4" y2="400.7" stroke="#888888" stroke-width="0.5"/>
+<line x1="753.4" y1="273.1" x2="786.4" y2="273.1" stroke="#888888" stroke-width="0.5"/>
+<line x1="783.4" y1="400.7" x2="783.4" y2="273.1" stroke="#888888" stroke-width="0.7"/>
+<polygon points="783.4,400.7 780.9,395.7 785.9,395.7" fill="#888888"/>
+<polygon points="783.4,273.1 780.9,278.1 785.9,278.1" fill="#888888"/>
+<text x="795.4" y="339.9" font-size="10" fill="#bbbbbb" text-anchor="middle" font-family="monospace" transform="rotate(-90,795.4,339.9)">DEPTH 1 m</text>
+<circle cx="370.7" cy="413.4" r="3.0" fill="#888888" stroke="#888888" stroke-width="0"/>
+<line x1="370.7" y1="413.4" x2="141.0" y2="451.7" stroke="#888888" stroke-width="0.7"/>
+<line x1="141.0" y1="451.7" x2="121.9" y2="451.7" stroke="#888888" stroke-width="0.7"/>
+<text x="116.9" y="447.7" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">Concrete lining</text>
+<text x="116.9" y="459.7" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">0.2 m (nom.)</text>
+<circle cx="287.8" cy="336.9" r="3.0" fill="#888888" stroke="#888888" stroke-width="0"/>
+<line x1="287.8" y1="336.9" x2="141.0" y2="336.9" stroke="#888888" stroke-width="0.7"/>
+<line x1="141.0" y1="336.9" x2="121.9" y2="336.9" stroke="#888888" stroke-width="0.7"/>
+<text x="116.9" y="332.9" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">1.5H:1V</text>
+<g class="scale-bar">
+<rect x="141.0" y="470.9" width="31.9" height="8.0" fill="rgba(217,226,236,0.18)" stroke="#888888" stroke-width="0.7"/>
+<rect x="172.9" y="470.9" width="31.9" height="8.0" fill="rgba(26,26,46,0.20)" stroke="#888888" stroke-width="0.7"/>
+<rect x="204.8" y="470.9" width="31.9" height="8.0" fill="rgba(217,226,236,0.18)" stroke="#888888" stroke-width="0.7"/>
+<rect x="236.7" y="470.9" width="31.9" height="8.0" fill="rgba(26,26,46,0.20)" stroke="#888888" stroke-width="0.7"/>
+<line x1="141.0" y1="478.9" x2="268.6" y2="478.9" stroke="#888888" stroke-width="0.7"/>
+<line x1="141.0" y1="478.9" x2="141.0" y2="483.9" stroke="#888888" stroke-width="0.7"/>
+<text x="141.0" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0</text>
+<line x1="172.9" y1="478.9" x2="172.9" y2="483.9" stroke="#888888" stroke-width="0.7"/>
+<text x="172.9" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0.25</text>
+<line x1="204.8" y1="478.9" x2="204.8" y2="483.9" stroke="#888888" stroke-width="0.7"/>
+<text x="204.8" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0.5</text>
+<line x1="236.7" y1="478.9" x2="236.7" y2="483.9" stroke="#888888" stroke-width="0.7"/>
+<text x="236.7" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0.75</text>
+<line x1="268.6" y1="478.9" x2="268.6" y2="483.9" stroke="#888888" stroke-width="0.7"/>
+<text x="268.6" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">1 m</text>
+<text x="204.8" y="465.9" font-size="10" fill="#bbbbbb" text-anchor="middle" font-family="monospace">Scale (concept)</text>
+</g>
+<g class="status-watermark" opacity="0.14" pointer-events="none"><text x="460.0" y="290.0" font-size="30.9" fill="#ff4444" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-weight="bold" transform="rotate(-32.2,460.0,290.0)">CONCEPT — NOT FOR CONSTRUCTION</text></g>
+<g class="title-block">
+<rect x="616.0" y="430.0" width="280.0" height="126.0" fill="#1a1a2e" stroke="#888888" stroke-width="0.7"/>
+<line x1="694.0" y1="430.0" x2="694.0" y2="556.0" stroke="#888888" stroke-width="0.7"/>
+<text x="622.0" y="442.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">PROJECT</text>
+<text x="700.0" y="442.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">drawings-kit example</text>
+<line x1="616.0" y1="448.0" x2="896.0" y2="448.0" stroke="#888888" stroke-width="0.7"/>
+<text x="622.0" y="460.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">TITLE</text>
+<text x="700.0" y="459.0" font-size="9" fill="#d9e2ec" text-anchor="start" font-family="monospace">Concrete-Lined Drainage Channel —</text>
+<text x="700.0" y="470.0" font-size="9" fill="#d9e2ec" text-anchor="start" font-family="monospace">Typical Section</text>
+<line x1="616.0" y1="484.0" x2="896.0" y2="484.0" stroke="#888888" stroke-width="0.7"/>
+<text x="622.0" y="496.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">DRAWING NO.</text>
+<text x="700.0" y="496.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">EXA-CIV-SEC-001_RevA</text>
+<line x1="616.0" y1="502.0" x2="896.0" y2="502.0" stroke="#888888" stroke-width="0.7"/>
+<text x="622.0" y="514.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">SCALE</text>
+<text x="700.0" y="514.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">1:50</text>
+<line x1="616.0" y1="520.0" x2="896.0" y2="520.0" stroke="#888888" stroke-width="0.7"/>
+<text x="622.0" y="532.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">DATE</text>
+<text x="700.0" y="532.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">2026-07-15</text>
+<line x1="616.0" y1="538.0" x2="896.0" y2="538.0" stroke="#888888" stroke-width="0.7"/>
+<text x="622.0" y="550.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">REV.</text>
+<text x="700.0" y="550.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">A</text>
+</g></svg>

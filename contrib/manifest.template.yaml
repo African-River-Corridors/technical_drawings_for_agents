@@ -1,0 +1,58 @@
+# manifest.yaml — copy this into your incoming/<your-name>/ directory and fill it in.
+#
+# This is the part we most need. Code without it costs a round-trip of questions before
+# anyone can judge what to do with it. Best filled in by an agent reading the code.
+#
+# Delete the comments if you like. Leave a field blank rather than guessing — "unknown" is
+# a useful answer and a wrong one is not.
+
+contributor: # your name
+date: # ISO 8601, e.g. 2026-08-25
+
+# One paragraph, plain language: what does this code do, and what did you write it FOR?
+# The job it was built to solve matters more than how it works.
+summary: |
+
+# What each thing in code/ is. One row per script or module.
+code:
+  - path: # e.g. code/site_layout.py
+    does: # one line
+    run: # the command that runs it, if there is one
+    state: # working | half-finished | abandoned-but-worth-reading
+
+# What each example in drawings/ is, and which script made or consumes it.
+drawings:
+  - path:
+    is: # e.g. "site GA, 1:500, A1" — sheet, scale, paper if it is a sheet
+    from: # which code/ entry produced or reads it
+    real_or_synthetic: # real project geometry | synthetic/sanitised
+
+# What it needs to run. Be specific about versions where you know them; name GUI steps too —
+# a manual step is fine, an undeclared one is what breaks a pipeline later.
+depends_on:
+  python: # e.g. 3.11
+  packages: # e.g. [ezdxf 1.3, shapely]
+  external_tools: # e.g. [QGIS 3.34, ODA File Converter, AutoCAD]
+  manual_steps: # anything a human has to do by hand for this to work
+
+# Coordinates. Name the CRS (e.g. UTM 30N / EPSG:32630), or say there is none.
+# If the geometry is in a local or arbitrary frame, that is important and easy to forget.
+crs: # e.g. EPSG:32630, or "local grid, origin arbitrary", or "none — schematic"
+
+# Where the real data lives. Paths, not copies — do not move the source of truth.
+data_sources:
+  - # e.g. "shared drive: Project/GIS/site.qgz"
+
+# Ownership and sensitivity, so we know what we may do with it.
+provenance:
+  who_wrote_it: # you, an agent, a colleague, a vendor, adapted from something public
+  based_on: # any drawing, dataset, template or repo it derives from
+  sensitivity: # internal | confidential | restricted
+  third_party: # does any of it belong to client, vendor, a consultant? name them
+
+# The honest bit. What is broken, hard-coded, or only works on your machine.
+# Nobody is marking this. A known limit costs an hour; an unknown one costs a day.
+known_limits: |
+
+# What you would like from us.
+want: # review | make it part of the toolkit | just store it | take it over

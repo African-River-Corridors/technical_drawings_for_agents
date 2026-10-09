@@ -1,0 +1,14 @@
+# Design-basis parameters the generator reads (all metres).
+#
+# PROVENANCE NOTE (standard, non-negotiable): these are NOMINAL, ILLUSTRATIVE
+# concept values chosen only to demonstrate the toolkit. They are NOT surveyed
+# or engineered dimensions. Any value that must come from a survey or supplier
+# drawing is a drawing-verification item — never invent one. That is why this
+# sheet carries the CONCEPT — NOT FOR CONSTRUCTION watermark.
+
+channel:
+  bed_width_m: 1.20        # nominal invert width
+  depth_m: 1.00            # nominal channel depth (invert to top of lining)
+  side_slope_h_to_v: 1.5   # horizontal:vertical batter (1.5H:1V)
+  lining_thickness_m: 0.20 # nominal concrete lining thickness
+  freeboard_m: 0.25        # nominal freeboard above design water level

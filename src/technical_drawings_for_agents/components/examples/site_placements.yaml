@@ -1,0 +1,17 @@
+# GENERATED placements register — do NOT hand-edit.
+# Derived from: example_export.geojson
+# CRS: EPSG:32630. origin_utm = footprint centroid; rotation_deg = long-axis
+# bearing from east, normalised to [0, 180). size_m = [long, short] as placed.
+# ids: 2 of 2 placements carry a durable id.
+# Regenerate with: technical_drawings_for_agents layout <layout.yaml> --from-geojson <export.geojson>
+instances:
+- type: packaged-unit
+  origin_utm: [36.144, 44.596]
+  rotation_deg: 40.0
+  size_m: [6.0, 4.0]
+  tag: EX-B
+- type: packaged-unit
+  origin_utm: [40.0, 40.0]
+  rotation_deg: 40.0
+  size_m: [6.0, 4.0]
+  tag: EX-A

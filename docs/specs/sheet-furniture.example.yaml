@@ -1,0 +1,103 @@
+# =============================================================================
+# Sheet furniture — a neutral EXAMPLE settings file
+#
+# The objects that sit BESIDE the title block on the sheet's bottom strip, plus the
+# right-hand notes column. Consumed by `technical_drawings_for_agents.sheetfurniture.load_settings`.
+#
+# These are per-house furniture, not toolkit constants: your own sheet standard is
+# your own settings file, not another module. Copy this file and change the numbers.
+#
+# This example pairs with the EXAMPLE_A3 title block (200 mm wide, at x -200..0).
+# The two strip tables sit to its left, so the whole strip is 380 mm and fits an
+# A3 landscape frame (400 mm at 10 mm margins).
+#
+# COORDINATES:
+#   x_mm  LEFT from the frame's RIGHT edge  (so <= 0)
+#   y_mm  UP from the frame's BOTTOM edge   (so >= 0)
+# The module converts to device space once; a template measured from the
+# bottom-right corner can be copied in without arithmetic.
+# =============================================================================
+id: EXAMPLE_SHEET_FURNITURE
+# Cell padding for strip tables. Tighter than the title block's 1.5 mm, so the
+# 16 mm DATE column holds a 10-character ISO date.
+pad_mm: 0.5
+
+bottom_strip:
+  total_width_mm: 380.0
+tables:
+  references:
+    x_from_mm: -380.0
+    x_to_mm: -290.0
+    heading: REFERENCES
+    row_height_mm: 4.0
+    max_rows: 2
+    columns:
+    - role: gutter
+      x_mm: -380.0
+      w_mm: 4.0
+    - field: ref_drawing_no
+      label: DRAWING No.
+      x_mm: -376.0
+      w_mm: 30.0
+    - field: ref_rev
+      label: REV
+      x_mm: -346.0
+      w_mm: 8.0
+    - field: ref_title
+      label: TITLE
+      x_mm: -338.0
+      w_mm: 48.0
+  revisions:
+    x_from_mm: -290.0
+    x_to_mm: -200.0
+    heading: REVISIONS
+    row_height_mm: 4.0
+    max_rows: 2
+    columns:
+    - field: rev
+      label: REV
+      x_mm: -290.0
+      w_mm: 8.0
+    - field: by
+      label: BY
+      x_mm: -282.0
+      w_mm: 8.0
+    - field: date
+      label: DATE
+      x_mm: -274.0
+      w_mm: 16.0
+    - field: description
+      label: DESCRIPTION
+      x_mm: -258.0
+      w_mm: 34.0
+    - field: chk
+      label: CHK
+      x_mm: -224.0
+      w_mm: 8.0
+    - field: app
+      label: APP
+      x_mm: -216.0
+      w_mm: 8.0
+    - role: gutter
+      x_mm: -208.0
+      w_mm: 8.0
+notes_column:
+  x_from_mm: -60.0
+  x_to_mm: 0.0
+  divider_y_mm: 60.0
+  entries:
+  - field: document_status
+    label: null
+    y_mm: 45.0
+    text_mm: 2.8
+    example: FOR REVIEW
+  - field: coordinate_system
+    label: COORDINATE SYSTEM
+    y_mm: 56.0
+    text_mm: 2.8
+    example: UTM Zone 30N — WGS 84
+  - field: contour_interval
+    label: CONTOUR INTERVALS
+    y_mm: 68.0
+    text_mm: 2.8
+    example: 'Topography: 0.5 m & 1 m'

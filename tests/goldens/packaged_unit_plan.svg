@@ -1,0 +1,6 @@
+<polygon points="126.7,473.3 646.7,473.3 646.7,126.7 126.7,126.7" fill="none" stroke="#111111" stroke-width="1.5"/>
+<polygon points="170.0,430.0 603.3,430.0 603.3,170.0 170.0,170.0" fill="none" stroke="#111111" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="386.7" y1="430.0" x2="386.7" y2="170.0" stroke="#111111" stroke-width="1.5" stroke-dasharray="5,4"/>
+<circle cx="603.3" cy="300.0" r="6.9" fill="#111111" stroke="#111111" stroke-width="1.5"/>
+<text x="386.7" y="278.3" font-size="12" fill="#111111" text-anchor="middle" font-family="monospace">PACKAGED UNIT</text>
+<text x="187.3" y="443.0" font-size="12" fill="#111111" text-anchor="middle" font-family="monospace">RAFT</text>

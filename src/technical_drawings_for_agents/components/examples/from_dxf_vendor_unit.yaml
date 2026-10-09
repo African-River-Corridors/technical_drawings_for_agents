@@ -1,0 +1,49 @@
+# Minimal pattern for a supplier-DXF-backed component view. Put the referenced
+# DXF next to this spec, or adapt `file` to a project-relative supplier drawing.
+component:
+  id: EXAMPLE-FROM-DXF-UNIT
+  name: Example from-DXF vendor unit
+  units: m
+views:
+  plan:
+    features:
+      - role: vendor-geometry
+        layer: EQUIP
+        source_status: sourced
+        from_dxf:
+          file: vendor_fixture.dxf
+          region: [0, 0, 4000, 3000]
+          units: mm
+          origin: [1000, 500]
+          include: [line, lwpolyline, arc, circle]
+          layers: [VENDOR]
+          min_length_m: 0.15
+          arc_segments: 24
+          cleanup:
+            - drop: diagonal
+              angle_tol_deg: 3
+            - drop: shorter_than
+              length_m: 0.05
+            - drop: outside
+              footprint_m: [6.0, 4.0]
+              margin_m: 0.1
+            - drop: layers
+              layers: [DIMS, CALLOUTS]
+            - drop: region
+              region_local_m: [2.4, -0.4, 3.0, 0.4]
+              margin_m: 0.0
+            - reclassify:
+                match:
+                  kind: circle
+                  dxf_layer: VENDOR
+                  r_min_m: 0.09
+                  r_max_m: 0.11
+                set:
+                  role: manhole
+                  layer: ACCESS
+                  source_status: verify
+      - role: label
+        layer: TEXT
+        source_status: verify
+        text: SUPPLIER PACKAGE
+        at: [0.0, -0.35]
