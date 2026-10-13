@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" preserveAspectRatio="xMidYMid meet" style="background:#1a1a2e; border-radius:6px;"><rect width="600" height="400" fill="#1a1a2e"/><rect x="24.0" y="24.0" width="552.0" height="352.0" fill="none" stroke="#888888" stroke-width="0.7"/>
+<g class="status-watermark" opacity="0.14" pointer-events="none"><text x="300.0" y="200.0" font-size="21.3" fill="#ff4444" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-weight="bold" transform="rotate(-33.7,300.0,200.0)">CONCEPT — NOT FOR CONSTRUCTION</text></g>
+<g class="title-block">
+<rect x="296.0" y="250.0" width="280.0" height="126.0" fill="#1a1a2e" stroke="#888888" stroke-width="0.7"/>
+<line x1="374.0" y1="250.0" x2="374.0" y2="376.0" stroke="#888888" stroke-width="0.7"/>
+<text x="302.0" y="262.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">PROJECT</text>
+<text x="380.0" y="262.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace"></text>
+<line x1="296.0" y1="268.0" x2="576.0" y2="268.0" stroke="#888888" stroke-width="0.7"/>
+<text x="302.0" y="280.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">TITLE</text>
+<text x="380.0" y="279.0" font-size="9" fill="#d9e2ec" text-anchor="start" font-family="monospace">T</text>
+<line x1="296.0" y1="304.0" x2="576.0" y2="304.0" stroke="#888888" stroke-width="0.7"/>
+<text x="302.0" y="316.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">DRAWING NO.</text>
+<text x="380.0" y="316.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace"></text>
+<line x1="296.0" y1="322.0" x2="576.0" y2="322.0" stroke="#888888" stroke-width="0.7"/>
+<text x="302.0" y="334.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">SCALE</text>
+<text x="380.0" y="334.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace"></text>
+<line x1="296.0" y1="340.0" x2="576.0" y2="340.0" stroke="#888888" stroke-width="0.7"/>
+<text x="302.0" y="352.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">DATE</text>
+<text x="380.0" y="352.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace"></text>
+<line x1="296.0" y1="358.0" x2="576.0" y2="358.0" stroke="#888888" stroke-width="0.7"/>
+<text x="302.0" y="370.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">REV.</text>
+<text x="380.0" y="370.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace"></text>
+</g></svg>

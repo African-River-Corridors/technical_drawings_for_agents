@@ -1,0 +1,5 @@
+baseline:
+  - check: overprint
+    message: "text 'SYN-PSK-PID-001' overlaps text 'A \u00b7 2026-07-16' by 5.5 x 6.2 px"
+    reason: "isosheet.titleblock writes values with no truncation, unlike svg.svg_title_block; the ISO title block is P9's scope"
+    issue: "#61"

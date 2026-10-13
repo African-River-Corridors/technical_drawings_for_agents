@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<g class="title-block" font-family="Helvetica, Arial, sans-serif">
+<rect x="900" y="800" width="500" height="96" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="900" y1="828" x2="1400" y2="828" stroke="black" stroke-width="0.6"/>
+<line x1="900" y1="858" x2="1400" y2="858" stroke="black" stroke-width="0.6"/>
+<line x1="1110" y1="800" x2="1110" y2="828" stroke="black" stroke-width="0.6"/>
+<line x1="1250" y1="800" x2="1250" y2="828" stroke="black" stroke-width="0.6"/>
+<line x1="1200" y1="858" x2="1200" y2="896" stroke="black" stroke-width="0.6"/>
+<line x1="1270" y1="858" x2="1270" y2="896" stroke="black" stroke-width="0.6"/>
+<text x="906" y="811" font-size="7" text-anchor="start" fill="#555555">RESPONSIBLE DEPT.</text>
+<text x="1116" y="811" font-size="7" text-anchor="start" fill="#555555">TECHNICAL REFERENCE</text>
+<text x="1256" y="811" font-size="7" text-anchor="start" fill="#555555">CREATED / APPR.</text>
+<text x="906" y="824" font-size="10" text-anchor="start" fill="#000000">ARC</text>
+<text x="1116" y="824" font-size="10" text-anchor="start" fill="#000000">DEMO Water</text>
+<text x="1256" y="824" font-size="8" text-anchor="start" fill="#000000">AI-assisted / (Eng. —)</text>
+<text x="906" y="841" font-size="7" text-anchor="start" fill="#555555">DOCUMENT TYPE</text>
+<text x="1116" y="841" font-size="7" text-anchor="start" fill="#555555">DOCUMENT STATUS</text>
+<text x="906" y="854" font-size="10" text-anchor="start" fill="#000000" font-weight="bold">BFD</text>
+<text x="1116" y="854" font-size="10" text-anchor="start" fill="#b00000" font-weight="bold">DRAFT</text>
+<text x="906" y="871" font-size="7" text-anchor="start" fill="#555555">TITLE / LEGAL OWNER</text>
+<text x="1206" y="871" font-size="7" text-anchor="start" fill="#555555">DOC. No.</text>
+<text x="1276" y="871" font-size="7" text-anchor="start" fill="#555555">REV / DATE</text>
+<text x="906" y="888" font-size="10" text-anchor="start" fill="#000000" font-weight="bold">Test BFD</text>
+<text x="1206" y="888" font-size="9" text-anchor="start" fill="#000000" font-weight="bold">TST-BFD-001</text>
+<text x="1276" y="888" font-size="8" text-anchor="start" fill="#000000">A · 2026-07-15</text>
+</g>
+</svg>

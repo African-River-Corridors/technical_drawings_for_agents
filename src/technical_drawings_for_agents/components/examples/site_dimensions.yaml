@@ -1,0 +1,89 @@
+# Worked example — what to dimension on a site GA. NEVER how much it measures.
+#
+#   technical_drawings_for_agents dimensions site_dimensions.yaml --check-only
+#   technical_drawings_for_agents dimensions site_dimensions.yaml --emit svg --out out/dims.svg \
+#       --setting-out out/setting-out.csv
+#
+# There is no field in this schema that supplies a displayed number. A dimension
+# names FEATURES; the value is computed from the same placed geometry the sheet
+# draws, with the same distance function the layout's clear-spacing check uses. So
+# moving a footprint in the editor and rebuilding changes every dimension, the
+# setting-out table and every route length together, with no edit to this file.
+dimension_set:
+  id: EXAMPLE-SITE-DIMS
+  layout: site_layout.yaml
+  # effective = measure the POST-SNAP poses, i.e. the ones the sheet draws.
+  # 'as-placed' exists only to mirror `layout --no-snap` for review, and is stamped
+  # into every output when used. Measuring pre-snap while drawing post-snap is the
+  # class of bug this whole feature exists to kill, so it is not expressible.
+  snap: effective
+
+defaults:
+  decimals: 3          # the register is itself 3 dp; 4 is the cap, and 5 would be a lie
+  units_suffix: " m"
+  # 2 mm, derived: the register rounds each origin to 3 dp per axis, so a
+  # two-placement gap inherits ~1.4 mm of rounding. Tighter and a conforming layout
+  # fails on rounding alone — and a check that cries wolf gets switched off.
+  expect_tol_m: 0.002
+  on_zero: error
+
+datums:
+  # The ONLY place a literal coordinate may enter, and a datum with no source is
+  # rejected at load. `git diff` on this block is therefore a review of survey inputs.
+  - name: SP1
+    point: [30.0, 30.0]
+    z: 12.500
+    source: "Example survey control schedule, rev A (worked-example placeholder)"
+    status: sourced
+
+routes:
+  # No auto-routing, ever: a router invents geometry no source states, and its
+  # length would be a fabricated quantity feeding a bill of quantities.
+  - name: R-SUPPLY
+    kind: pipe
+    points: [{datum: SP1}, {placement: EX-A}, {placement: EX-B}]
+    attributes: {dn: 150, service: raw water}
+
+dimensions:
+  - id: DIM-001
+    kind: clearance
+    from: {placement: EX-A}
+    to: {placement: EX-B}
+    label: CLEAR
+    # Checked, never printed. If the computed gap misses this, the sheet still shows
+    # the COMPUTED value and the build fails — so "the drawing says 2.0 m because it
+    # is supposed to say 2.0 m" is not expressible.
+    expect_m: 2.0
+    expect_source: "site_layout.yaml groups[packaged-unit pair].snap.clear_m"
+  - id: DIM-002
+    kind: centres
+    from: {placement: EX-A}
+    to: {placement: EX-B}
+    label: CRS
+  - id: DIM-010
+    kind: envelope
+    of: {type: packaged-unit}
+    # Reads the bearing from the register, so the dimension follows the layout when
+    # it is re-snapped. A typed `bearing:<deg>` would duplicate that fact and warns.
+    axis: principal-cross
+  - id: DIM-020
+    kind: offset
+    from: {datum: SP1}
+    to: {placement: EX-A}
+    axis: easting
+  - id: DIM-030
+    kind: chainage
+    route: R-SUPPLY
+
+setting_out:
+  include: [placements, datums]
+  of: {all: true}
+  # `z:` is MANDATORY and has no default, because every possible default either
+  # invents a level or silently omits one. Here the datum carries a real level.
+  z: {source: datum, datum: SP1}
+  vertical_datum: "Example site datum (m)"
+  note: >-
+    Levels are the SP1 formation level, not a per-item survey. Per-placement levels
+    are an open survey item.
+  order: id
+  decimals: 3

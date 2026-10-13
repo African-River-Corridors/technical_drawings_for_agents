@@ -1,0 +1,28 @@
+# Drawing metadata — the stable record for this sheet.
+# The 'number' is the permanent ID; never reuse it for a different drawing.
+number: SYN-PSK-PID-001
+title: Synthetic Pump Skids & Transmission Spine — P&ID
+discipline: Process
+project: drawings-kit example
+revision: A
+scale: NTS
+units: m
+date: 2026-07-16
+# Lifecycle: DRAFT -> CONCEPT -> ISSUED. ISSUED only after engineer sign-off.
+status: CONCEPT
+tool: technical_drawings_for_agents
+# HARD GATE: for_construction may only be true once status == ISSUED.
+for_construction: false
+# Revision register (P9 / #61): the drawing's actual history, oldest first.
+# `revision:` above must equal the last entry's `rev`. `app:` is the responsible
+# engineer's signature and is NEVER written by any tool — it stays empty until a
+# named human types it here.
+revision_scheme: alpha
+numbering: shape-only
+revisions:
+  - rev: A
+    date: 2026-07-16
+    description: First issue — synthetic P&ID demonstrator (illustrative)
+    by: AB
+    chk:
+    app:

@@ -1,0 +1,15 @@
+# Release-guard allowlist. Every entry needs a reason. Keep this list short.
+#   <path-glob>  <check>  # reason          check: term:<12-hex> | term | coord | path | *
+#   synthetic-box  <xmin> <ymin> <xmax> <ymax>  # reason
+
+synthetic-box  500000 100000 501000 101000  # the synthetic example-site frame used by tests and README
+
+# The pre-release toolkit name survives only as deprecated, still-read legacy spellings
+# (geo schema id and data-* attribute prefix). Remove with the deprecation.
+README.md                                         term:6a93f7a8baa0  # "Deprecated names" table
+src/technical_drawings_for_agents/backdrop.py     term:6a93f7a8baa0  # legacy geo schema id constant
+src/technical_drawings_for_agents/mapplot.py      term:6a93f7a8baa0  # docstring for the legacy schema id
+src/technical_drawings_for_agents/sheet.py        term:6a93f7a8baa0  # legacy data-* attribute prefix
+src/technical_drawings_for_agents/validate.py     term:6a93f7a8baa0  # comment on the legacy attribute
+tests/test_legacy_names.py                        term:6a93f7a8baa0  # tests that legacy spellings still load
+tests/test_sheet.py                               term:6a93f7a8baa0  # tests that legacy spellings still validate

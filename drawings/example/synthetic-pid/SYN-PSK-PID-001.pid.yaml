@@ -1,0 +1,102 @@
+# =============================================================================
+# Worked SYNTHETIC P&ID — technical_drawings_for_agents `pid` demonstrator.
+#
+# THIS IS MADE-UP DATA, NOT A REAL PROJECT. Tags, sizes and layout are
+# illustrative only (see NOTE 1). It shows a typical *shape* of a real sheet
+# (duty/standby pump skids + a transmission spine to a water treatment plant)
+# so an agent can author a real sheet against this schema.
+#
+# Positional layout: every symbol carries its own `at: [x, y]` on the inner
+# canvas (y increases DOWNWARD, SVG convention). Lines connect PORTS by name
+# (`<id>.<port>`); routing is orthogonal, with optional explicit `waypoints`.
+# Cloning to another site = editing this data (coords/tags), never the code.
+#
+# Tags follow IEC `=system +location -component`. In production they must match
+# the project's shared register (parts-db/<project>.tags.yaml); this tool only DRAWS
+# the tags the data declares — it never invents one.
+# =============================================================================
+
+meta:
+  number: SYN-PSK-PID-001
+  title: Synthetic Pump Skids & Transmission Spine
+  subtitle: ISA-5.1 P&ID — worked example (synthetic data)
+  doctype: P&ID (ISA-5.1)
+  status: CONCEPT — NOT FOR CONSTRUCTION   # shown in the title block
+  watermark: CONCEPT                        # diagonal status watermark key
+  rev: A
+  date: 2026-07-16
+  client: Example Client
+  programme: Water Supply (SYNTHETIC)
+
+sheet: [1600, 1000]      # outer ISO sheet (px)
+canvas: [1010, 560]      # inner drawing extent (drawing units)
+
+# ------------------------------------------------------------------ equipment
+equipment:
+  - {id: T-01,  type: tank,  tag: "=SYN +BT -T01",  at: [110, 340], w: 64, h: 170, caption: Break tank}
+
+  # Dosing package — a skid boundary with a dosing pump inside.
+  - {id: DS-01, type: dosing_skid, tag: "=SYN +DOS -PKG", at: [235, 150], w: 150, h: 86, label: DOSING SKID}
+  - {id: DP-01, type: pump, tag: "=SYN +DOS -P01", at: [235, 160], scale: 0.8}
+
+  # Train A (duty): suction gate -> pump -> check -> discharge gate.
+  - {id: VG-01A, type: valve, tag: "=SYN +S1 -VG01A", at: [300, 250], kind: gate}
+  - {id: P-01A,  type: pump,  tag: "=SYN +S1 -P01A",  at: [400, 250], caption: Duty}
+  - {id: VC-01A, type: valve, tag: "=SYN +S1 -VC01A", at: [500, 250], kind: check}
+  - {id: VG-02A, type: valve, tag: "=SYN +S1 -VG02A", at: [590, 250], kind: gate}
+
+  # Train B (standby): identical string.
+  - {id: VG-01B, type: valve, tag: "=SYN +S2 -VG01B", at: [300, 430], kind: gate}
+  - {id: P-01B,  type: pump,  tag: "=SYN +S2 -P01B",  at: [400, 430], caption: Standby}
+  - {id: VC-01B, type: valve, tag: "=SYN +S2 -VC01B", at: [500, 430], kind: check}
+  - {id: VG-02B, type: valve, tag: "=SYN +S2 -VG02B", at: [590, 430], kind: gate}
+
+  # Transmission spine: flow-control globe valve -> battery limit.
+  - {id: FCV-01, type: valve, tag: "=SYN +TX -FCV01", at: [780, 340], kind: globe, actuator: diaphragm}
+  - {id: BL-01,  type: tie_in, tag: "=SYN +TX -BL01", at: [910, 340], label: PLANT}
+
+# ---------------------------------------------------------------- instruments
+instruments:
+  - {id: LT-01,  type: instrument, tag: LT-101,  mount: field, at: [110, 150]}
+  - {id: PT-01,  type: instrument, tag: PT-101,  mount: field, at: [590, 150]}
+  - {id: FIC-01, type: instrument, tag: FIC-101, mount: dcs,   at: [780, 150]}
+
+# ---------------------------------------------------------------------- lines
+lines:
+  # Suction header (tank -> the two pump trains).
+  - {id: L-S-A, type: process, from: T-01.e, to: VG-01A.w, waypoints: [[230, 340], [230, 250]]}
+  - {id: L-S-B, type: process, from: T-01.e, to: VG-01B.w, waypoints: [[230, 340], [230, 430]]}
+
+  # Train A string.
+  - {id: L-A1, type: process, from: VG-01A.e, to: P-01A.suction}
+  - {id: L-A2, type: process, from: P-01A.discharge, to: VC-01A.w}
+  - {id: L-A3, type: process, from: VC-01A.e, to: VG-02A.w}
+  # Train B string.
+  - {id: L-B1, type: process, from: VG-01B.e, to: P-01B.suction}
+  - {id: L-B2, type: process, from: P-01B.discharge, to: VC-01B.w}
+  - {id: L-B3, type: process, from: VC-01B.e, to: VG-02B.w}
+
+  # Discharge header collecting both trains into the spine, then to battery limit.
+  - {id: L-D-A, type: process, from: VG-02A.e, to: FCV-01.w, waypoints: [[700, 250], [700, 340]]}
+  - {id: L-D-B, type: process, from: VG-02B.e, to: FCV-01.w, waypoints: [[700, 430], [700, 340]]}
+  - {id: L-SPINE, type: process, from: FCV-01.e, to: BL-01.conn, label: DN250}
+
+  # Chemical dosing into the suction side of train A.
+  - {id: L-DOSE, type: process, from: DP-01.s, to: VG-01A.n, label: Dosing}
+
+  # Instrument signals.
+  - {id: L-LT, type: signal, from: LT-01.s, to: T-01.n}          # level tap
+  - {id: L-PT, type: signal, from: PT-01.s, to: VG-02A.n}        # pressure tap on header
+  - {id: L-FE, type: electric, from: FIC-01.w, to: PT-01.n}      # transmitter -> controller
+  - {id: L-FC, type: pneumatic, from: FIC-01.s, to: FCV-01.n}    # controller -> valve actuator
+
+# --------------------------------------------------------------------- loops
+loops:
+  - {id: FIC-101, tag: FIC-101, members: [PT-01, FIC-01, FCV-01], description: Flow control loop on transmission spine}
+
+# --------------------------------------------------------------------- notes
+notes:
+  - SYNTHETIC EXAMPLE — illustrative data only; NOT real tags, sizes or configuration.
+  - Tags shown are IEC =system +location -component; production tags come from the shared register (parts-db/PROJECT.tags.yaml), not from this drawing.
+  - Concept only. Line sizes/instrument ranges are placeholders pending the process datasheet.
+  - Layout is positional (data-driven); cloning to another site is a data edit.

@@ -1,0 +1,51 @@
+component:
+  id: EXAMPLE-PACKAGED-UNIT
+  name: Example packaged unit
+  units: m
+views:
+  plan:
+    features:
+      - role: raft
+        layer: FDN
+        source_status: sourced
+        hatch: concrete
+        shape:
+          rect: {size: [6.0, 4.0], center: [0.0, 0.0]}
+      - role: equipment
+        layer: EQUIPMENT
+        source_status: verify
+        shape:
+          rect: {size: [5.0, 3.0], center: [0.0, 0.0]}
+      - role: zone-divider
+        layer: ZONE
+        source_status: verify
+        shape:
+          line: [[0.0, -1.5], [0.0, 1.5]]
+      - role: nozzle
+        layer: NOZZLE
+        tag: N1
+        source_status: sourced
+        shape:
+          point: [2.5, 0.0]
+      - role: label
+        layer: TEXT
+        source_status: verified
+        text: PACKAGED UNIT
+        at: [0.0, 0.25]
+      - role: label
+        layer: TEXT
+        source_status: verified
+        text: RAFT
+        at: [-2.3, -1.65]
+  section:
+    features:
+      - role: outline
+        layer: EQUIPMENT
+        source_status: sourced
+        shape:
+          rect: {size: [5.0, 2.4], center: [0.0, 1.2]}
+      - role: water-level
+        layer: WATER
+        source_status: verify
+        shape:
+          line: [[-2.5, 1.5], [2.5, 1.5]]

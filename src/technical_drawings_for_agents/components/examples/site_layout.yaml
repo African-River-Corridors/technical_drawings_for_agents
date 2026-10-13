@@ -1,0 +1,55 @@
+# Worked example — a site layout config.
+#
+# The pattern: a human drags real-metre footprints around in a GIS editor over an
+# orthophoto; the editable layer is exported to GeoJSON; `technical_drawings_for_agents layout
+# --from-geojson` derives each footprint's centroid + long-axis bearing into the
+# generated placements register; the register is what git tracks and what the
+# drawings / 3D / BOQ all read. The GeoPackage is an editor, never the truth.
+#
+#   technical_drawings_for_agents layout site_layout.yaml \
+#       --from-geojson export.geojson --emit geojson --out out/layout.geojson
+#
+# Checks fail the command (exit 1) unless declared `severity: warn`, so a layout
+# that breaks a stated spacing rule cannot quietly reach a drawing.
+layout:
+  id: EXAMPLE-SITE
+  crs: EPSG:32630          # a projected CRS in metres — the axis order is E, N
+
+components:
+  root: .                  # resolved relative to THIS file
+  types:
+    # One placement type -> the specs stamped at that pose, in draw order.
+    # A placement type with no entry here is an error, never a silent skip.
+    packaged-unit: [packaged_unit.yaml]
+
+editor:
+  type_field: type         # GIS attribute naming the placement type
+  tag_field: tag           # GIS attribute carrying the equipment tag
+  parked:
+    # Named zones holding not-yet-placed palette items, excluded by declared
+    # intent rather than by a magic coordinate test buried in a script.
+    - name: palette row
+      bbox: [0, 900, 200, 1100]
+
+placements: site_placements.yaml   # generated register (or an inline instance list)
+
+groups:
+  # Meet the spec by construction rather than correcting the editor by hand: the
+  # human puts the pair roughly in place, the rule sets their common bearing and
+  # exact pitch on every build, about the group's own centroid.
+  - name: packaged-unit pair
+    within: packaged-unit
+    snap:
+      bearing: mean          # circular mean of the members' as-placed bearings
+      pitch: spec            # centre-to-centre = short edge + clear_m
+      clear_m: 2.0
+      order: north-to-south
+
+checks:
+  - {check: parallel, within: packaged-unit, tol_deg: 1.0}
+  # A footprint dragged by hand never lands on an exact spec dimension, so a
+  # clear-spacing rule wants a placement tolerance: min_m is the spec, tol_m is
+  # how much short of it a CONCEPT-stage layout may sit before it's a finding.
+  - {check: clear-spacing, within: packaged-unit, min_m: 2.0, tol_m: 0.05}
+  - {check: no-overlap}
+  - {check: within-envelope, bbox: [0, 0, 100, 100], severity: warn}

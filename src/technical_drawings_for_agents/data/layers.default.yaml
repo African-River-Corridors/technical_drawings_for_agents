@@ -1,0 +1,121 @@
+# Default drawing layer table (P7). Paper millimetres throughout.
+#
+# TODO(open question): "ACI colours for the new layers" in P7 section 8 are
+# common AutoCAD-convention proposals, not a settled house standard.
+# TODO(open question): "Lineweights" in P7 section 8 are proposed 0.13 / 0.18 /
+# 0.25 / 0.35 / 0.50 mm values, pending office/consultant confirmation.
+# TODO(open question): "Dash lengths" in P7 section 8 are proposed 3-2 hidden
+# and 12-2-1-2 centreline paper-mm patterns, pending office standard.
+layer_table:
+  version: 1
+  default_lineweight_mm: 0.25
+  undeclared: error
+  background: light
+
+linetypes:
+  - name: SK_HIDDEN
+    pattern_mm: [3.0, -2.0]
+    description: "Hidden detail — 3 mm dash, 2 mm gap on paper"
+  - name: SK_CENTRE
+    pattern_mm: [12.0, -2.0, 1.0, -2.0]
+    description: "Centreline — long/short chain"
+  - name: SK_PHANTOM
+    pattern_mm: [12.0, -2.0, 1.0, -2.0, 1.0, -2.0]
+    description: "Phantom / future work — long/short/short chain"
+
+layers:
+  - name: OUTLINE
+    aci: 7
+    lineweight_mm: 0.35
+    linetype: CONTINUOUS
+    description: "Primary section / plan outline"
+  - name: OBJECT
+    aci: 8
+    lineweight_mm: 0.25
+    linetype: CONTINUOUS
+    description: "Secondary object lines"
+  - name: DIMENSIONS
+    aci: 3
+    lineweight_mm: 0.18
+    linetype: CONTINUOUS
+    description: "Dimensions, extension and witness lines"
+  - name: CENTRE
+    aci: 6
+    lineweight_mm: 0.13
+    linetype: SK_CENTRE
+    description: "Centrelines, axes of symmetry"
+  - name: HATCH
+    aci: 9
+    lineweight_mm: 0.13
+    linetype: CONTINUOUS
+    description: "Hatch and fill line work"
+  - name: TEXT
+    aci: 7
+    lineweight_mm: 0.18
+    linetype: CONTINUOUS
+    description: "Annotation text and labels"
+  - name: TITLEBLOCK
+    aci: 7
+    lineweight_mm: 0.25
+    linetype: CONTINUOUS
+    description: "Sheet border, title block, revision table"
+  - name: WATERMARK
+    aci: 1
+    lineweight_mm: 0.50
+    linetype: CONTINUOUS
+    description: "Status watermark (DRAFT / CONCEPT / ISSUED)"
+  - name: FDN
+    aci: 3
+    lineweight_mm: 0.35
+    linetype: CONTINUOUS
+    description: "Foundations, slabs, plinths"
+  - name: EQUIP
+    aci: 5
+    lineweight_mm: 0.35
+    linetype: CONTINUOUS
+    description: "Mechanical equipment outlines"
+  - name: NOZZLE
+    aci: 4
+    lineweight_mm: 0.25
+    linetype: CONTINUOUS
+    description: "Nozzles and connection points"
+  - name: PIPE
+    aci: 4
+    lineweight_mm: 0.50
+    linetype: CONTINUOUS
+    description: "Process pipework"
+  - name: ELEC
+    aci: 6
+    lineweight_mm: 0.25
+    linetype: CONTINUOUS
+    description: "Electrical equipment and cable routes"
+  - name: WATER
+    aci: 4
+    lineweight_mm: 0.25
+    linetype: CONTINUOUS
+    description: "Water bodies, ponds, channels"
+  - name: ZONE
+    aci: 9
+    lineweight_mm: 0.18
+    linetype: SK_HIDDEN
+    description: "Keep-clear / access zone (non-physical)"
+  - name: ACCESS
+    aci: 9
+    lineweight_mm: 0.18
+    linetype: SK_HIDDEN
+    description: "Access routes and hardstanding edges"
+  - name: GRID
+    aci: 8
+    lineweight_mm: 0.13
+    linetype: SK_CENTRE
+    description: "Setting-out grid"
+  - name: ANNO
+    aci: 7
+    lineweight_mm: 0.18
+    linetype: CONTINUOUS
+    description: "Leaders, tags, callouts (non-text annotation)"
+  - name: HIDDEN
+    aci: 8
+    lineweight_mm: 0.25
+    linetype: SK_HIDDEN
+    description: "Work hidden in this view"

@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "technical_drawings_for_agents"
+version = "0.1.0"
+description = "Engineering drawings as code for AI agents: dimensioned SVG/DXF/PDF sheets with hatching, scale bars and title blocks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "African River Corridors Limited" }]
+keywords = ["ai-agents", "engineering", "drawings", "svg", "dxf", "cad", "as-code"]
+dependencies = [
+    # >=1.4: technical_drawings_for_agents.plot needs addons.drawing.svg.SVGBackend, layout.Page and
+    # the recorder, all verified at 1.4.4. Claiming 1.1 without testing it would be
+    # inventing a capability; plot.py asserts the floor at use time and the legacy
+    # render path keeps working on older ezdxf because it imports none of them.
+    "ezdxf>=1.4",
+    "PyYAML>=6.0",
+    # STAYS: the legacy render path (frozen for backward compatibility) uses the
+    # matplotlib backend. The plot path does not.
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+cad3d = ["build123d>=0.5"]
+# DWG ingest extras: PDF cropping in the ingest pipeline. (ODA File Converter
+# and LibreOffice are external binaries, installed separately — not pip deps.)
+ingest = ["PyMuPDF>=1.23", "numpy>=1.24"]
+# Plot path. The SVG->PDF converter itself is the external binary rsvg-convert
+# (macOS: brew install librsvg; Debian/Ubuntu: apt-get install librsvg2-bin) —
+# declared here in a comment for the same reason ODA/LibreOffice are: it is not a
+# pip package. pypdf is the pure-Python (BSD) multi-page PDF merge; without it the
+# bundler falls back to poppler's pdfunite.
+plot = ["pypdf>=4.0"]
+# Alternative SVG->PDF converter, pip-installable but needing system libcairo.
+plot-cairo = ["cairosvg>=2.7"]
+# --ink-check only: rasterise the produced PDF (needs poppler's pdftoppm) and
+# count non-white pixels.
+verify = ["Pillow>=10.0", "numpy>=1.24"]
+dev = ["pytest>=7.0", "ruff>=0.5", "pypdf>=4.0", "Pillow>=10.0"]
+
+[project.urls]
+Homepage = "https://github.com/African-River-Corridors/technical_drawings_for_agents"
+Issues = "https://github.com/African-River-Corridors/technical_drawings_for_agents/issues"
+
+[project.scripts]
+technical_drawings_for_agents = "technical_drawings_for_agents.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/technical_drawings_for_agents"]
+
+[tool.ruff]
+line-length = 100
