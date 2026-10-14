@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 8 are complete in this draft. Clause 11 is partly written. Clauses 9, 10 and 12 to 18 are headings only. Each heading
+**0.4** Clauses 1 to 9 and 18 are complete in this draft. Clauses 10 and 11 are partly written. Clauses 12 to 17 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -292,12 +292,14 @@ A viewport has these members. The schema is final for names.
 
 | Member | Meaning |
 |---|---|
-| `frame_mm` | Left x, top y, width and height of the frame on paper, in millimetres. |
-| `window_m` | The model window: xmin, ymin, xmax, ymax, in metres. |
+| `id` | A name for the viewport. It is unique in the document (clause 9.8). |
+| `frame` | The frame on paper: `x_mm`, `y_mm` (the top-left corner), `width_mm`, `height_mm`. |
+| `window` | The model window: `xmin_m`, `ymin_m`, `xmax_m`, `ymax_m`. |
 | `scale` | A preferred ratio, or `fit` (clause 7.3 and 7.5). |
 | `rotation_deg` | How far the model turns on the paper, in degrees (clause 7.4). Default 0. |
 | `scale_bar` | An optional scale bar (clause 7.9). |
 | `north` | An optional north arrow (clause 7.10). |
+| `entities` | The entities of the viewport (clause 9). The list may be empty. |
 
 **7.2 Placement.**
 
@@ -732,11 +734,13 @@ same document. Error `8.6.3`.
 
 **8.7 What an entity gets.** For an entity on a declared layer, in this order:
 
-1. The role is the role of the entity if it has one, else the role of its layer.
-2. The line type is the line type of the entity if it has one, else the line type of its layer.
+1. The role is the role of the entity if it has one, else the default of its entity type (clause
+   9.7), else the role of its layer.
+2. The line type is the line type of the entity if it has one, else the default of its entity type
+   (clause 9.7), else the line type of its layer.
 3. The width is the width of the role in the line group of the sheet (clause 8.2), snapped if it is
    not from the table (clause 8.3.2).
-4. A text entity has no line width. A hatch entity is described in clause 10.
+4. A text entity has no line width. A hatch entity follows clause 10.4.
 
 **8.7.1** Worked numbers. On an A3 sheet (group 0.35), a line on `OUTLINE` has width 0.35 and line
 type `continuous`. A line on `HIDDEN` has width 0.18 and line type `dashed`, so its dash is 2.16 mm
@@ -746,11 +750,72 @@ and 1.4 on A0.
 
 ## 9 Geometry
 
-Written in the schema and conformance tickets (#9, #10 and later).
+This clause defines the entities of the core schema: line, polyline, arc, circle, centre line, and
+text (clause 11). Hatches are in clause 10. Dimensions, leaders and symbols are written later.
+
+**9.1 Entities.** Each viewport holds a list `entities`. Every entity is an object with a member
+`type`. The types in this draft are `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch` and
+`text`. Any other type is error `9.1`.
+
+**9.1.1 Common members.** Every entity has `type` and `layer`. The layer name MUST be declared
+(clause 8.5.1). An entity MAY have `id` (clause 9.8). Every entity except `text` MAY have `role` and
+`line_type` (clause 8.5.6).
+
+**9.2 Points.** A point is a list of two numbers: x then y. A point in model space is in metres. The
+member name ends in `_m`.
+
+**9.3 Line.** A `line` has `from_m` and `to_m`, two points. The two points MUST differ. Error `9.3`.
+
+**9.4 Polyline.** A `polyline` has `points_m`, a list of two or more points, and `closed`, true or
+false. The default is false. A closed polyline joins its last point to its first.
+
+**9.4.1** Two points that follow each other MUST differ. Error `9.4.1`. For a closed polyline, the
+last point MUST also differ from the first.
+
+**9.5 Arc.** An `arc` has `centre_m`, `radius_m`, `start_deg` and `end_deg`. The radius is more than
+zero. The arc runs counter-clockwise (clause 5.3), in model space, from the start angle to the end
+angle. Its sweep is `(end_deg - start_deg) mod 360`, in the range 0 up to, but not including, 360.
+
+**9.5.1** A sweep of exactly 0 is error `9.5.1`. A full circle is a `circle`.
+
+**9.5.2** Worked numbers. Start 0 and end 90: sweep 90. Start 270 and end 90: sweep 180, through
+angle 0. Start 90 and end 0: sweep 270. Start 45 and end 405: sweep 0, which is error 9.5.1.
+
+**9.6 Circle.** A `circle` has `centre_m` and `radius_m`. The radius is more than zero.
+
+**9.7 Centre line.** A `centre_line` has `from_m` and `to_m`, like a line (clause 9.3). Its default
+role is `thin` and its default line type is `chain`. The entity MAY name another role or line type.
+The layer is still declared (clause 8.5.1), and is usually `CENTRE`. In the normalised content
+(clause 16) a centre line is a `line`.
+*Basis: house choice H-30. A centre line is a line with a conventional style. The layer says what it
+belongs to. The type says how it looks.*
+
+**9.8 Identifiers.** An `id` is 1 to 64 characters: a letter, then letters, digits, `_`, `-` or `.`.
+Two entities, or an entity and a viewport, MUST NOT share an `id` in one document. Error `9.8`.
+
+**9.9 Order.** The order of entities in the list has no effect on the normalised content.
+*Basis: house choice H-31. Clause 16 sorts the entities.*
 
 ## 10 Hatches
 
-Written in a later ticket.
+This clause is **partly written**. The pattern drawings are written in a later ticket.
+
+**10.1 The hatch entity.** A `hatch` has `boundary_m`, a list of three or more points, and a
+`pattern`. It MAY have `holes_m`, a list of lists of three or more points, and `angle_deg`
+(default 0, a model angle). The boundary is closed: the last point joins the first.
+
+**10.2 Patterns.** The pattern is one of: `solid`, `lines`, `concrete`, `rockfill`, `soil`, `water`.
+Any other pattern is error `10.2`. The drawings of the patterns (their paper spacing and marks) are
+defined in a later ticket. Until then the normalised content holds the boundary, the pattern name
+and the angle, and not the marks.
+*Basis: house choice H-32. The names are the materials the first examples need.*
+
+**10.3 Validity.** A boundary and every hole MUST have a non-zero area, MUST NOT cross itself, and
+MUST NOT repeat a point that follows another. Each hole MUST lie inside the boundary, and holes MUST
+NOT overlap. Error `10.3`.
+
+**10.4 Lines of a hatch.** The lines of a hatch are continuous. Their width is the width of the role
+of the entity, or of its layer (clause 8.7). A hatch entity has no `line_type`.
 
 ## 11 Lettering and font
 
@@ -828,4 +893,35 @@ Written in ticket #10.
 
 ## 18 Versions and the schema
 
-Written in ticket #9.
+**18.1 Version.** The standard has a version of the form `MAJOR.MINOR`. A drawing document names the
+version it follows in `standard_version`. A missing or wrongly formed value is error `18.1`.
+This draft is version `1.0`.
+
+**18.2 Reading rule.** A reader of version `A.B` MUST accept a document of version `A.C` when `C` is
+not more than `B`. It MUST reject a document with another major number, or a larger minor number,
+with error `18.2`. A change of the minor number only adds members or values. A change of the major
+number may change meaning.
+
+**18.3 The schema.** The JSON Schema of this version is the file
+`docs/standard/schema/drawing-document-1.0.schema.json`. It follows JSON Schema draft 2020-12. The
+standard and the schema have the same version. A change to one without the other is a defect.
+
+**18.4 What the schema checks.** The schema checks the structure of a document: the members, their
+types, their units (by name), the allowed values, and the unknown keys (clause 4.3).
+
+**18.5 What the schema cannot check.** A reader MUST also check these rules, and report them with
+the clause number: 4.4 (repeated keys); 6.1 to 6.6 (sheet and drawing space); 7.2 to 7.10 (viewports,
+fit, furniture); 8.2.2, 8.3.2, 8.5.1, 8.5.3 to 8.5.5 and 8.6.3 (line group, widths, layers); 9.3 to
+9.5 and 9.8 (geometry and identifiers); 10.3 (hatch validity); 18.2 (version reading).
+
+**18.6 Annotation.** Each place in the schema that gives a rule has an `x-clause` annotation. It
+names the clause of this standard that the place enforces. A reader that reports a schema error
+SHOULD report the instance path, the rule that failed, and the `x-clause` value.
+*Basis: house choice H-33. A user who reads a schema error can find the rule in plain words.*
+
+**18.7 Members of this draft.** The schema of this draft defines `standard_version`, `sheet`,
+`layers` and `viewports`, and `$schema`. The other root members of clause 4.2 are added with their
+clauses. Until then, a document that holds one of them has an unknown key (clause 4.3).
+
+**18.8 Numbers.** The schema states the unit of a number by the member name (clause 4.5). The schema
+does not state precision. A reader rounds as clause 5 says.

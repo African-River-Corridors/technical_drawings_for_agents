@@ -66,3 +66,7 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-27 | Upright lettering only | One style keeps the width table to one table | 11.1 |
 | H-28 | Text rotation is a paper angle. The viewport rotation does not turn text | A rotated map keeps its labels readable | 11.3.2 |
 | H-29 | Until the width table exists, text containment is tested at the anchor point only | The text box needs the width table, and the width table needs the font | 11.5 |
+| H-30 | A centre line is a line with default role thin and line type chain | The layer says what it belongs to. The type says how it looks | 9.7 |
+| H-31 | Entity order has no effect on the normalised content | Clause 16 sorts the entities | 9.9 |
+| H-32 | The hatch pattern names solid, lines, concrete, rockfill, soil, water | The materials the first examples need | 10.2 |
+| H-33 | Each schema rule carries an `x-clause` annotation | A user who reads a schema error can find the rule in plain words | 18.6 |
