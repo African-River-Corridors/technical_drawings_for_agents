@@ -1,0 +1,90 @@
+{
+  "result": "ok",
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 100,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 390,
+        "height_mm": 277
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          165,
+          188.5
+        ],
+        [
+          265,
+          188.5
+        ],
+        [
+          265,
+          168.5
+        ],
+        [
+          165,
+          168.5
+        ]
+      ],
+      "holes_mm": [
+        [
+          [
+            185,
+            183.5
+          ],
+          [
+            195,
+            183.5
+          ],
+          [
+            195,
+            173.5
+          ],
+          [
+            185,
+            173.5
+          ]
+        ]
+      ],
+      "pattern": "concrete",
+      "angle_deg": 30,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          165,
+          158.5
+        ],
+        [
+          265,
+          158.5
+        ],
+        [
+          265,
+          138.5
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "water",
+      "angle_deg": 0,
+      "width_mm": 0.18,
+      "id": "water"
+    }
+  ],
+  "origin_prefixes": [
+    "viewport.main"
+  ]
+}

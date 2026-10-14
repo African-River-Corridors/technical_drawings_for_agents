@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 9 and 18 are complete in this draft. Clauses 10 and 11 are partly written. Clauses 12 to 17 are headings only. Each heading
+**0.4** Clauses 1 to 9, 16, 17 and 18 are complete in this draft. Clauses 10 and 11 are partly written. Clauses 12 to 15 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -399,9 +399,17 @@ scale of the viewport in every later rule and every output.
 **7.7 Entities stay in the frame.**
 
 **7.7.1** After the map of clause 7.4, every point of every entity of a
-viewport MUST lie inside the frame (clause 5.7). The bounding box of a text entity is given by
-clause 11. Error `7.7.1`.
+viewport MUST lie inside the frame (clause 5.7). Error `7.7.1`.
 *Basis: house choice H-13. A stray point is a loud error. It is never clipped without a word.*
+
+**7.7.2** The test uses these points, after the map and before rounding:
+
+- a `line`, `centre_line` or `polyline`: its points;
+- a `circle`: the four extreme points, centre plus and minus the paper radius on each axis;
+- an `arc`: its two end points, and each of the paper angles 0, 90, 180 and 270 degrees at which the
+  arc has a point, as the extreme point at that angle;
+- a `hatch`: the points of its boundary;
+- a `text`: its anchor point only (clause 11.5).
 
 **7.8 Scale and the sheet.** The viewport scale is the only scale a rule refers to. The title block
 scale field is derived from the viewport scales (clause 14). It is never typed.
@@ -885,7 +893,232 @@ Written in a later ticket.
 
 ## 16 Normalised content
 
-Written in ticket #10.
+**16.1 What it is.** The **normalised content** of a drawing document is a JSON object. It holds the
+sheet, the viewports as resolved, and a sorted list of **entities** in paper millimetres. It is what
+a conforming implementation produces from a document (clause 2.2). It is the thing that two
+implementations compare. SVG, PDF and DXF are all made from it (clause 15).
+
+**16.1.1** A document that has an error (clause 4.6) has no normalised content. Its result is the
+list of errors.
+
+**16.2 Members.** The normalised content has these members:
+
+| Member | Content |
+|---|---|
+| `standard_version` | The version string of the document. |
+| `sheet` | `size`, `orientation`, `line_group` (the group name, always present), `width_mm`, `height_mm` of the trimmed sheet, and `drawing_space` with `x_mm`, `y_mm`, `width_mm`, `height_mm`. |
+| `viewports` | One object for each viewport, sorted by `id` (compared byte by byte). Each has `id`, `scale` (the resolved denominator, a whole number) and `frame` (`x_mm`, `y_mm`, `width_mm`, `height_mm`). |
+| `entities` | The sorted list of entities (clause 16.8). |
+
+**16.3 Entities: common members.** Every entity has `type`, `origin` and `layer`. It has `id` only if
+the document gave one. The types are `line`, `polyline`, `arc`, `circle`, `hatch` and `text`.
+`origin` says where the entity came from (clause 16.5).
+
+**16.4 Entities: members by type.** All lengths are paper millimetres, rounded to 3 places. All
+angles are degrees on the paper, rounded to 3 places, counter-clockwise as seen on the sheet, and in
+the range 0 up to, but not including, 360. A rounded 360 is written 0. A point is a list `[x, y]`.
+
+| Type | Members besides the common ones |
+|---|---|
+| `line` | `from_mm`, `to_mm`, `line_type`, `width_mm` |
+| `polyline` | `points_mm`, `closed` (true or false), `line_type`, `width_mm` |
+| `arc` | `centre_mm`, `radius_mm`, `start_deg`, `sweep_deg`, `line_type`, `width_mm`. The arc runs counter-clockwise on the paper from `start_deg` through `sweep_deg`. |
+| `circle` | `centre_mm`, `radius_mm`, `line_type`, `width_mm` |
+| `hatch` | `boundary_mm`, `holes_mm` (always present, a list that may be empty), `pattern`, `angle_deg`, `width_mm` |
+| `text` | `anchor_mm`, `text`, `height_mm`, `rotation_deg`, `align_h`, `align_v` |
+
+A `text` has no `line_type` and no `width_mm`. A `hatch` has no `line_type`. The width is the final
+width of clause 8.7, in paper millimetres. The line type is an identifier of clause 8.4.
+
+**16.5 Origins.** The `origin` of an entity is one of:
+
+- `sheet.border`, `sheet.centring_mark`, `sheet.zone_mark`, `sheet.zone_label`;
+- `viewport.<id>`, for an entity written in the viewport `<id>`;
+- `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport.
+
+**16.6 How each source becomes entities.** Rounding (clause 5.5) is applied at the end, to each
+number that is written. Nothing is rounded before.
+
+**16.6.1 Sheet furniture.** All sheet furniture is on the layer `TITLEBLOCK`. That layer is declared
+without the document declaring it. A document MAY also declare it. Let `W` and `H` be the width and
+height of the trimmed sheet (clause 6.2), `L, T, R, B` the left, top, right and bottom insets (clause
+6.3), and `g` the line group of the sheet (clause 8.2). All lines are `continuous`.
+
+1. **Border.** One `polyline`, origin `sheet.border`, closed. The points are `(L, T)`, `(W-R, T)`,
+   `(W-R, H-B)` and `(L, H-B)`, in that order. The width is the extra thick width of `g`.
+2. **Centring marks.** Four `line` entities, origin `sheet.centring_mark`, width 0.5. They run from
+   the trimmed edge inwards:
+   `(W/2, 0)` to `(W/2, T+5)`; `(W/2, H)` to `(W/2, H-B-5)`; `(0, H/2)` to `(L+5, H/2)`;
+   `(W, H/2)` to `(W-R-5, H/2)`.
+3. **Zones.** Let `nh` be the number of zones along the horizontal sides and `nv` the number along
+   the vertical sides (clause 6.5: in landscape `nh` is the long-side count, in portrait it is the
+   short-side count). Let `zw = (W-L-R) / nh` and `zh = (H-T-B) / nv`.
+4. **Zone marks.** `line` entities, origin `sheet.zone_mark`, width 0.35. For `k` from 1 to `nh - 1`,
+   with `x = L + k * zw`: from `(x, 0)` to `(x, T)`, and from `(x, H)` to `(x, H-B)`. For `j` from 1
+   to `nv - 1`, with `y = T + j * zh`: from `(0, y)` to `(L, y)`, and from `(W, y)` to `(W-R, y)`.
+5. **Zone labels.** `text` entities, origin `sheet.zone_label`, height 3.5, rotation 0, `align_h`
+   `centre`, `align_v` `middle`. For `k` from 1 to `nh`, the text is the number `k`, at
+   `(L + (k - 0.5) * zw, T / 2)` and at `(L + (k - 0.5) * zw, H - B / 2)`. For `j` from 1 to `nv`,
+   the text is the `j`-th letter of `ABCDEFGHJKLMNPQR`, at `(L / 2, T + (j - 0.5) * zh)` and at
+   `(W - R / 2, T + (j - 0.5) * zh)`.
+
+*Basis: house choice H-34. The standard of clause 6 gives the values. This clause fixes the exact
+entities, so that two implementations write the same ones. The ends of each side need no zone mark,
+because the border is there.*
+
+**16.6.2 Viewport entities.** Each entity of a viewport is mapped with clause 7.4 (let `k` be the
+paper millimetres per metre and `rotation` the viewport rotation). Its origin is `viewport.<id>`.
+The layer is the layer of the entity. The role, line type and width follow clause 8.7.
+
+- `line` and `centre_line` become a `line`, with the two points mapped. `from_mm` is the mapped
+  `from_m`.
+- `polyline` becomes a `polyline` with every point mapped, and the same `closed`.
+- `circle`: the centre is mapped. `radius_mm` is `radius_m * k`.
+- `arc`: the centre is mapped. `radius_mm` is `radius_m * k`. `start_deg` is
+  `(start_deg + rotation) mod 360`. `sweep_deg` is the sweep of clause 9.5.
+- `hatch`: the boundary and each hole are mapped. `angle_deg` is `(angle_deg + rotation) mod 360`.
+  The width is the width of the role (clause 10.4).
+- `text`: the anchor is mapped. The height, the rotation (a paper angle, clause 11.3.2) and the
+  alignments are copied. The rotation is taken modulo 360.
+
+**16.6.3 Scale bar.** For a viewport with a scale bar (clause 7.9), let the frame be `x, y, w, h`,
+the bar length `Lm` metres, the divisions `n`, `total = Lm * k`, `seg = total / n`, `x0 = x + 6`,
+`y0 = y + h - 18` and `yb = y0 + 3`. The origin is `viewport.<id>.scale_bar`. The layer is
+`TITLEBLOCK`. Every line is `continuous` and has the thin width of `g`. The entities are:
+
+1. One closed `polyline`: `(x0, y0)`, `(x0+total, y0)`, `(x0+total, yb)`, `(x0, yb)`.
+2. For `i` from 1 to `n - 1`: a `line` from `(x0+i*seg, y0)` to `(x0+i*seg, yb)`.
+3. For each even `i` from 0 to `n - 1`: a `hatch`, pattern `solid`, angle 0, no holes, with the
+   boundary `(x0+i*seg, y0)`, `(x0+(i+1)*seg, y0)`, `(x0+(i+1)*seg, yb)`, `(x0+i*seg, yb)`. The
+   width is the thin width of `g`.
+4. For `i` from 0 to `n`: a tick `line` from `(x0+i*seg, yb)` to `(x0+i*seg, yb+1.5)`.
+5. For `i` from 0 to `n`: a `text`, the label of clause 7.9.7, at `(x0+i*seg, yb+5)`, height 2.5,
+   rotation 0, `centre`, `baseline`.
+6. One `text`, `1:N`, at `(x0+total/2, yb+9)`, height 2.5, rotation 0, `centre`, `baseline`.
+
+*Basis: house choice H-35. The lines of the bar are thin so that they match the thin lines of the
+drawing.*
+
+**16.6.4 North arrow.** For a viewport with a north arrow (clause 7.10), let `c = (x+19, y+19)` and
+`phi = paper_deg` (not rounded). **Turning** a point `(px, py)` about `c` by `phi` means:
+`dx = px - cx`, `dy = py - cy`, then `(cx + dx*cos(phi) - dy*sin(phi), cy + dx*sin(phi) + dy*cos(phi))`.
+This turns clockwise on the sheet. Clause 5.6.1 applies to the sine and cosine. The origin is
+`viewport.<id>.north_arrow`. The layer is `TITLEBLOCK`. The entities are:
+
+1. A `hatch`, pattern `solid`, angle 0, no holes, with the boundary `(cx, cy-9)`,
+   `(cx-4.14, cy+5.76)`, `(cx, cy+0.9)`, `(cx+4.14, cy+5.76)`, each turned. The width is the thin
+   width of `g`.
+2. A `line` from `(cx, cy+0.9)` to `(cx, cy+9)`, both turned, `continuous`, thin width of `g`.
+3. A `text` with the label, at `(cx, cy-11.5)` turned, height 3.5, rotation 0, `centre`,
+   `baseline`. The text itself is not turned.
+
+*Basis: house choice H-35.*
+
+**16.7 Rounding.** A number is written after rounding to the places of clause 5.4. A length or angle
+that rounds to a negative zero is written 0 (clause 5.5, step 5).
+
+**16.8 Order.** The list `entities` is sorted by this key. Compare the parts in order. The first
+part that differs decides.
+
+1. `origin`, `type`, `layer`: strings, compared byte by byte on their UTF-8 form. A string that is
+   the start of a longer one comes first.
+2. `id`: a string, compared the same way. A missing `id` counts as the empty string.
+3. `line_type`: a string, as above. A missing one counts as the empty string.
+4. `width_mm`: a number. A missing one counts as 0.
+5. The **geometry list** of the type, compared number by number, then by length (a shorter list that
+   is the start of a longer one comes first):
+   - `line`: `from_mm` x, y, then `to_mm` x, y.
+   - `polyline`: every point's x, y in order, then 0 if open or 1 if closed.
+   - `arc`: centre x, y, `radius_mm`, `start_deg`, `sweep_deg`.
+   - `circle`: centre x, y, `radius_mm`.
+   - `hatch`: every boundary point's x, y; then the number of holes; then every hole point's x, y
+     in order; then `angle_deg`.
+   - `text`: anchor x, y, `height_mm`, `rotation_deg`.
+6. A final string: for a `text` the `text`; for a `hatch` the `pattern`; else the empty string.
+   Then `align_h`, then `align_v` (empty for other types).
+
+Entities that are equal in every part stay, as many as there are.
+*Basis: house choice H-36. The key is a total order that needs no locale and no string form of a
+number.*
+
+**16.9 Numbers in files.** The members are JSON. Two files are equal when their parsed values are
+equal. The spelling of a number is not compared. A whole number MAY be written with or without a
+decimal point.
+
+## 17 Conformance
+
+**17.1 What the suite is.** The **conformance suite** is the directory `docs/standard/conformance/`.
+It holds cases. A case is data. It needs no program in any language. An implementation proves that it
+follows this standard by passing every case.
+
+**17.2 Layout.**
+
+| Path | Content |
+|---|---|
+| `suite.json` | The list of all cases: `id`, `kind`, `file` or `dir`, the clauses the case tests, and a one-line description. |
+| `documents/<id>/input.json` | A drawing document. |
+| `documents/<id>/expected.json` | The expected result (clause 17.4). |
+| `units/<id>.json` | A list of unit checks (clause 17.5). |
+| `result.schema.json` | The JSON Schema of a result and of an expected file. |
+
+**17.3 The runner contract.** A **runner** is a program of the implementation. It is given the path
+of one drawing document. It writes one result, as JSON, to its standard output. It MUST NOT read
+anything except that file, `docs/standard/schema/drawing-document-1.0.schema.json`, and
+`docs/standard/data/line-styles.json`. It MUST NOT use the network or the clock. It MUST give the same
+result each time.
+
+- If the document has no errors, the result is
+  `{"result": "ok", "normalised": <the normalised content of clause 16>}`.
+- If it has errors, the result is `{"result": "error", "errors": [{"clause": "<clause number>"}, ...]}`.
+  The list has one entry for each different clause number, sorted by clause number as text. For a
+  schema error, the clause number is the `x-clause` value of the rule that failed (clause 18.6).
+
+**17.4 The expected file.** An expected file is a JSON object.
+
+- `result`: `ok` or `error`.
+- For `error`: `errors`, a list of `{"clause": ...}`. The result of the runner MUST have the same set.
+- For `ok`: any of the members `sheet`, `viewports` and `entities`, as in clause 16.2. The result
+  MUST hold each member that the expected file has, with an equal value.
+- For `ok`: an optional `origin_prefixes`, a list of strings. When it is present, the runner result
+  is first reduced: only the entities whose `origin` starts with one of the strings are kept, in
+  their order. The reduced list is compared with `entities`.
+- Members that the expected file does not have are not compared.
+
+**17.5 Unit checks.** A unit file is a JSON object with `function` (a name below) and `checks`, a
+list of `{"id", "clause", "input", "expected"}`. A runner of unit checks reads the file, applies the
+function to each `input`, and the result MUST equal `expected`. A result that is an error is written
+`{"error": "<clause number>"}`.
+
+| Function | Input members | Result |
+|---|---|---|
+| `round_half_even` | `value`, `places` | a number (clause 5.5) |
+| `snap_width` | `width_mm` | a number, or an error `8.3.2` (clause 8.3.2) |
+| `drawing_space` | `size`, `orientation` | `x_mm`, `y_mm`, `width_mm`, `height_mm` (clause 6.3) |
+| `map_point` | `frame`, `window`, `scale`, `rotation_deg`, `point_m` | `[x_mm, y_mm]`, rounded (clause 7.4) |
+| `window_fits` | `frame`, `window`, `scale`, `rotation_deg` | true or false (clause 7.5) |
+| `fit_scale` | `frame`, `window`, `rotation_deg` | a denominator, or `null` if none fits (clause 7.5.2) |
+| `bar_length` | `frame_width_mm`, `scale` | metres, or an error `7.9.4` (clause 7.9.4) |
+| `bar_labels` | `length_m`, `divisions`, `unit` | a list of strings (clause 7.9.7) |
+| `north_deg` | `rotation_deg`, `model_bearing_deg` | a number (clause 7.10.2) |
+| `line_pattern` | `line_type`, `width_mm` | a list of numbers (clause 8.4.1) |
+| `arc_sweep` | `start_deg`, `end_deg` | a number, or an error `9.5.1` (clause 9.5) |
+
+`frame`, `window` and the other objects have the members of the drawing document (clause 7.1).
+
+**17.6 Rules for writing cases.**
+
+1. The expected value of a case is written by hand, or worked out by one method and then checked by
+   hand against another. It is **never** copied from the output of an implementation. If an
+   implementation disagrees with a case, the case is checked first. A case changes only with a
+   written reason.
+2. An error case breaks exactly one rule.
+3. A case avoids a value that lies within 1e-7 of a rounding tie, unless the value is exact in
+   64-bit binary and the case is there to test the tie (clause 5.6).
+4. A case holds no private data. Its numbers are made up.
+5. Every clause that gives worked numbers has a case that uses them.
+
+**17.7 Passing.** An implementation passes when it passes every case of `suite.json`. The suite
+version is the version of the standard.
 
 ## 17 Conformance
 

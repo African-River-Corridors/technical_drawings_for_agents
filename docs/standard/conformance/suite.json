@@ -1,0 +1,779 @@
+{
+  "standard_version": "1.0",
+  "note": "The cases of the Drawing Format Standard conformance suite. See clause 17.",
+  "cases": [
+    {
+      "id": "ent-line",
+      "kind": "document",
+      "dir": "documents/ent-line",
+      "clauses": [
+        "7.4",
+        "8.7",
+        "9.3",
+        "16.6.2",
+        "16.8"
+      ],
+      "description": "Lines: model to paper, widths from layer roles, role and line type override, a duplicate kept, unsorted input."
+    },
+    {
+      "id": "ent-polyline",
+      "kind": "document",
+      "dir": "documents/ent-polyline",
+      "clauses": [
+        "9.4",
+        "16.6.2"
+      ],
+      "description": "A closed and an open polyline."
+    },
+    {
+      "id": "ent-arc",
+      "kind": "document",
+      "dir": "documents/ent-arc",
+      "clauses": [
+        "9.5",
+        "16.6.2"
+      ],
+      "description": "Arcs with sweeps 90, 180 and 270 (worked numbers of clause 9.5.2)."
+    },
+    {
+      "id": "ent-circle",
+      "kind": "document",
+      "dir": "documents/ent-circle",
+      "clauses": [
+        "9.6",
+        "16.6.2"
+      ],
+      "description": "Circles: the radius is scaled, the line type comes from the layer."
+    },
+    {
+      "id": "ent-centre-line",
+      "kind": "document",
+      "dir": "documents/ent-centre-line",
+      "clauses": [
+        "9.7",
+        "16.6.2"
+      ],
+      "description": "A centre line is a line: default thin and chain, and an override."
+    },
+    {
+      "id": "ent-hatch",
+      "kind": "document",
+      "dir": "documents/ent-hatch",
+      "clauses": [
+        "10",
+        "16.6.2"
+      ],
+      "description": "Hatches: boundary, a hole, pattern name and angle, no marks."
+    },
+    {
+      "id": "ent-text",
+      "kind": "document",
+      "dir": "documents/ent-text",
+      "clauses": [
+        "11.3",
+        "16.6.2"
+      ],
+      "description": "Text: height, alignment and paper rotation are copied; the anchor is mapped."
+    },
+    {
+      "id": "ent-rotated-90",
+      "kind": "document",
+      "dir": "documents/ent-rotated-90",
+      "clauses": [
+        "7.4",
+        "7.4.4",
+        "16.6.2"
+      ],
+      "description": "Rotation 90: points turn, arc start and hatch angle add 90, text rotation is unchanged."
+    },
+    {
+      "id": "ent-rotated-40-25",
+      "kind": "document",
+      "dir": "documents/ent-rotated-40-25",
+      "clauses": [
+        "7.4",
+        "16.6.2"
+      ],
+      "description": "Rotation 40.25: values that are not exact in binary, away from rounding ties."
+    },
+    {
+      "id": "ent-a0-widths",
+      "kind": "document",
+      "dir": "documents/ent-a0-widths",
+      "clauses": [
+        "8.2",
+        "8.7.1"
+      ],
+      "description": "Line group 0.7 on A0: OUTLINE 0.7, HIDDEN 0.35 dashed, PIPE 1.4."
+    },
+    {
+      "id": "ent-a3-widths",
+      "kind": "document",
+      "dir": "documents/ent-a3-widths",
+      "clauses": [
+        "8.2",
+        "8.7.1"
+      ],
+      "description": "Line group 0.35 on A3: OUTLINE 0.35, HIDDEN 0.18 dashed, PIPE 0.7 (clause 8.7.1)."
+    },
+    {
+      "id": "ent-custom-layer",
+      "kind": "document",
+      "dir": "documents/ent-custom-layer",
+      "clauses": [
+        "8.5.4",
+        "8.7"
+      ],
+      "description": "A custom layer gives its role and line type."
+    },
+    {
+      "id": "sheet-a0-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a0-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A0 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a1-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a1-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A1 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a2-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a2-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A2 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a3-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a3-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A3 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a3-portrait",
+      "kind": "document",
+      "dir": "documents/sheet-a3-portrait",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A3 portrait: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a4-landscape",
+      "kind": "document",
+      "dir": "documents/sheet-a4-landscape",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A4 landscape: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "sheet-a4-portrait",
+      "kind": "document",
+      "dir": "documents/sheet-a4-portrait",
+      "clauses": [
+        "6.1",
+        "6.3",
+        "6.4",
+        "6.5",
+        "8.2",
+        "16.6.1"
+      ],
+      "description": "A4 portrait: border, centring marks, zone marks and labels, line group."
+    },
+    {
+      "id": "fit-200x100",
+      "kind": "document",
+      "dir": "documents/fit-200x100",
+      "clauses": [
+        "7.5.2",
+        "7.5.3"
+      ],
+      "description": "Declared fit: 200 x 100 m picks 1:1000."
+    },
+    {
+      "id": "fit-rotated-100x300",
+      "kind": "document",
+      "dir": "documents/fit-rotated-100x300",
+      "clauses": [
+        "7.5.2",
+        "7.5.3"
+      ],
+      "description": "Declared fit with rotation 90: 1:1000."
+    },
+    {
+      "id": "fit-exact",
+      "kind": "document",
+      "dir": "documents/fit-exact",
+      "clauses": [
+        "7.5",
+        "5.7"
+      ],
+      "description": "A window that fills the frame exactly fits."
+    },
+    {
+      "id": "err-window-too-big",
+      "kind": "document",
+      "dir": "documents/err-window-too-big",
+      "clauses": [
+        "7.5.1",
+        "7.5.3"
+      ],
+      "description": "200 x 100 m at 1:500 needs 400 x 200 mm: error."
+    },
+    {
+      "id": "bar-derived-1-100",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-100",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:100 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-200",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-200",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:200 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-500",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-500",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:500 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-1000",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-1000",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:1000 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-derived-1-2000",
+      "kind": "document",
+      "dir": "documents/bar-derived-1-2000",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.9"
+      ],
+      "description": "Derived scale bar at 1:2000 in a 390 mm frame (clause 7.9.9)."
+    },
+    {
+      "id": "bar-one-division",
+      "kind": "document",
+      "dir": "documents/bar-one-division",
+      "clauses": [
+        "7.9",
+        "16.6.3"
+      ],
+      "description": "One division: one solid segment, two ticks."
+    },
+    {
+      "id": "bar-explicit-378",
+      "kind": "document",
+      "dir": "documents/bar-explicit-378",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.3",
+        "7.9.9"
+      ],
+      "description": "378 m at 1:1000 fills the available 378 mm exactly."
+    },
+    {
+      "id": "bar-km",
+      "kind": "document",
+      "dir": "documents/bar-km",
+      "clauses": [
+        "7.9",
+        "16.6.3",
+        "7.9.7",
+        "7.9.9"
+      ],
+      "description": "A 2000 m bar in km with 4 divisions: 0, 0.5, 1, 1.5, 2 km."
+    },
+    {
+      "id": "err-bar-379",
+      "kind": "document",
+      "dir": "documents/err-bar-379",
+      "clauses": [
+        "7.9.3",
+        "7.9.9"
+      ],
+      "description": "379 m at 1:1000 needs 379 mm, only 378 mm is available."
+    },
+    {
+      "id": "err-bar-390",
+      "kind": "document",
+      "dir": "documents/err-bar-390",
+      "clauses": [
+        "7.9.3",
+        "7.9.9"
+      ],
+      "description": "390 m at 1:1000 touches the border: error."
+    },
+    {
+      "id": "north-0-0",
+      "kind": "document",
+      "dir": "documents/north-0-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 0 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-90-0",
+      "kind": "document",
+      "dir": "documents/north-90-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 90 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-90-90",
+      "kind": "document",
+      "dir": "documents/north-90-90",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 90 and bearing 90 (clause 7.10.4)."
+    },
+    {
+      "id": "north-40-25-0",
+      "kind": "document",
+      "dir": "documents/north-40-25-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 40.25 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-0-12-5",
+      "kind": "document",
+      "dir": "documents/north-0-12-5",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation 0 and bearing 12.5 (clause 7.10.4)."
+    },
+    {
+      "id": "north-m10-0",
+      "kind": "document",
+      "dir": "documents/north-m10-0",
+      "clauses": [
+        "7.10",
+        "7.10.4",
+        "16.6.4"
+      ],
+      "description": "North arrow with rotation -10 and bearing 0 (clause 7.10.4)."
+    },
+    {
+      "id": "north-label",
+      "kind": "document",
+      "dir": "documents/north-label",
+      "clauses": [
+        "7.10.5",
+        "16.6.4"
+      ],
+      "description": "A north arrow with another label."
+    },
+    {
+      "id": "bar-and-north",
+      "kind": "document",
+      "dir": "documents/bar-and-north",
+      "clauses": [
+        "7.9",
+        "7.10",
+        "16.6.3",
+        "16.6.4"
+      ],
+      "description": "Both furniture items: the full viewport, with all origins and the order of clause 16.8."
+    },
+    {
+      "id": "two-viewports",
+      "kind": "document",
+      "dir": "documents/two-viewports",
+      "clauses": [
+        "7.2",
+        "7.8",
+        "16.6.2",
+        "16.8"
+      ],
+      "description": "Two viewports side by side at different scales; frames touch and do not overlap."
+    },
+    {
+      "id": "err-frame-outside",
+      "kind": "document",
+      "dir": "documents/err-frame-outside",
+      "clauses": [
+        "7.2.2"
+      ],
+      "description": "The frame reaches 420 mm; the drawing space ends at 410 mm."
+    },
+    {
+      "id": "err-frames-overlap",
+      "kind": "document",
+      "dir": "documents/err-frames-overlap",
+      "clauses": [
+        "7.2.3"
+      ],
+      "description": "Two frames overlap by 20 mm."
+    },
+    {
+      "id": "err-undeclared-layer",
+      "kind": "document",
+      "dir": "documents/err-undeclared-layer",
+      "clauses": [
+        "8.5.1"
+      ],
+      "description": "An entity on a layer that the document does not declare."
+    },
+    {
+      "id": "err-line-group-mismatch",
+      "kind": "document",
+      "dir": "documents/err-line-group-mismatch",
+      "clauses": [
+        "8.2.2"
+      ],
+      "description": "A3 must use line group 0.35."
+    },
+    {
+      "id": "err-arc-zero-sweep",
+      "kind": "document",
+      "dir": "documents/err-arc-zero-sweep",
+      "clauses": [
+        "9.5.1",
+        "9.5.2"
+      ],
+      "description": "Start 45 and end 405 give a sweep of 0."
+    },
+    {
+      "id": "err-entity-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-entity-outside-frame",
+      "clauses": [
+        "7.7.1"
+      ],
+      "description": "A line end that lands 500 mm to the right of the centre, outside the frame."
+    },
+    {
+      "id": "err-duplicate-id",
+      "kind": "document",
+      "dir": "documents/err-duplicate-id",
+      "clauses": [
+        "9.8"
+      ],
+      "description": "Two entities with the same id."
+    },
+    {
+      "id": "err-window-zero-width",
+      "kind": "document",
+      "dir": "documents/err-window-zero-width",
+      "clauses": [
+        "7.6.1"
+      ],
+      "description": "xmax equals xmin."
+    },
+    {
+      "id": "err-frame-too-short-for-bar",
+      "kind": "document",
+      "dir": "documents/err-frame-too-short-for-bar",
+      "clauses": [
+        "7.9.10"
+      ],
+      "description": "A frame 40 mm high is less than the 46 mm that a scale bar needs."
+    },
+    {
+      "id": "err-frame-too-small-for-north",
+      "kind": "document",
+      "dir": "documents/err-frame-too-small-for-north",
+      "clauses": [
+        "7.10.7"
+      ],
+      "description": "A frame 30 mm wide is less than the 38 mm that a north arrow needs."
+    },
+    {
+      "id": "err-line-zero-length",
+      "kind": "document",
+      "dir": "documents/err-line-zero-length",
+      "clauses": [
+        "9.3"
+      ],
+      "description": "A line whose two points are equal."
+    },
+    {
+      "id": "err-polyline-repeated-point",
+      "kind": "document",
+      "dir": "documents/err-polyline-repeated-point",
+      "clauses": [
+        "9.4.1"
+      ],
+      "description": "Two points in a row that are equal."
+    },
+    {
+      "id": "err-hatch-zero-area",
+      "kind": "document",
+      "dir": "documents/err-hatch-zero-area",
+      "clauses": [
+        "10.3"
+      ],
+      "description": "A boundary on one straight line has no area."
+    },
+    {
+      "id": "err-duplicate-layer",
+      "kind": "document",
+      "dir": "documents/err-duplicate-layer",
+      "clauses": [
+        "8.5.5"
+      ],
+      "description": "One layer declared twice."
+    },
+    {
+      "id": "err-standard-layer-redeclared",
+      "kind": "document",
+      "dir": "documents/err-standard-layer-redeclared",
+      "clauses": [
+        "8.5.3"
+      ],
+      "description": "OUTLINE declared with the role thin; the table says thick."
+    },
+    {
+      "id": "err-colour-clash",
+      "kind": "document",
+      "dir": "documents/err-colour-clash",
+      "clauses": [
+        "8.6.3"
+      ],
+      "description": "A custom layer takes the colour number 7 of OUTLINE."
+    },
+    {
+      "id": "err-non-preferred-scale",
+      "kind": "document",
+      "dir": "documents/err-non-preferred-scale",
+      "clauses": [
+        "7.3.2",
+        "18.6"
+      ],
+      "description": "1:1250 is not a preferred ratio (schema error, reported by its x-clause)."
+    },
+    {
+      "id": "err-no-viewports",
+      "kind": "document",
+      "dir": "documents/err-no-viewports",
+      "clauses": [
+        "7.1.1",
+        "18.6"
+      ],
+      "description": "A sheet with no viewport (schema error)."
+    },
+    {
+      "id": "err-version-major",
+      "kind": "document",
+      "dir": "documents/err-version-major",
+      "clauses": [
+        "18.2"
+      ],
+      "description": "Version 2.0 is not readable by a reader of 1.0."
+    },
+    {
+      "id": "err-version-minor",
+      "kind": "document",
+      "dir": "documents/err-version-minor",
+      "clauses": [
+        "18.2"
+      ],
+      "description": "Version 1.1 is newer than 1.0."
+    },
+    {
+      "id": "err-version-not-formed",
+      "kind": "document",
+      "dir": "documents/err-version-not-formed",
+      "clauses": [
+        "18.1",
+        "18.6"
+      ],
+      "description": "The version is not MAJOR.MINOR (schema error)."
+    },
+    {
+      "id": "err-sheet-size",
+      "kind": "document",
+      "dir": "documents/err-sheet-size",
+      "clauses": [
+        "6.1.3",
+        "18.6"
+      ],
+      "description": "A5 is not a supported size (schema error)."
+    },
+    {
+      "id": "unit-round_half_even",
+      "kind": "unit",
+      "file": "units/round_half_even.json",
+      "clauses": [
+        "5.5.1"
+      ],
+      "description": "Unit checks of round_half_even."
+    },
+    {
+      "id": "unit-snap_width",
+      "kind": "unit",
+      "file": "units/snap_width.json",
+      "clauses": [
+        "8.3.3"
+      ],
+      "description": "Unit checks of snap_width."
+    },
+    {
+      "id": "unit-drawing_space",
+      "kind": "unit",
+      "file": "units/drawing_space.json",
+      "clauses": [
+        "6.3.2"
+      ],
+      "description": "Unit checks of drawing_space."
+    },
+    {
+      "id": "unit-map_point",
+      "kind": "unit",
+      "file": "units/map_point.json",
+      "clauses": [
+        "7.4.3"
+      ],
+      "description": "Unit checks of map_point."
+    },
+    {
+      "id": "unit-window_fits",
+      "kind": "unit",
+      "file": "units/window_fits.json",
+      "clauses": [
+        "7.5.3"
+      ],
+      "description": "Unit checks of window_fits."
+    },
+    {
+      "id": "unit-fit_scale",
+      "kind": "unit",
+      "file": "units/fit_scale.json",
+      "clauses": [
+        "7.5.3"
+      ],
+      "description": "Unit checks of fit_scale."
+    },
+    {
+      "id": "unit-bar_length",
+      "kind": "unit",
+      "file": "units/bar_length.json",
+      "clauses": [
+        "7.9.9"
+      ],
+      "description": "Unit checks of bar_length."
+    },
+    {
+      "id": "unit-bar_labels",
+      "kind": "unit",
+      "file": "units/bar_labels.json",
+      "clauses": [
+        "7.9.7"
+      ],
+      "description": "Unit checks of bar_labels."
+    },
+    {
+      "id": "unit-north_deg",
+      "kind": "unit",
+      "file": "units/north_deg.json",
+      "clauses": [
+        "7.10.4"
+      ],
+      "description": "Unit checks of north_deg."
+    },
+    {
+      "id": "unit-line_pattern",
+      "kind": "unit",
+      "file": "units/line_pattern.json",
+      "clauses": [
+        "8.4.4"
+      ],
+      "description": "Unit checks of line_pattern."
+    },
+    {
+      "id": "unit-arc_sweep",
+      "kind": "unit",
+      "file": "units/arc_sweep.json",
+      "clauses": [
+        "9.5.2"
+      ],
+      "description": "Unit checks of arc_sweep."
+    }
+  ]
+}
