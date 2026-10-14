@@ -124,3 +124,4 @@ hand. They do not change the normalised content. The DXF can be read back withou
 | H-44 | A dimension shows its unit through `unit` and `decimals`, with no unit sign. The text is the value rounded half-even to the stated places | The unit is stated in the notes. The rounding rule is the one of clause 5 | 12.1.1 |
 | H-45 | Arrow length 2u, arrow width u/2, gap u/2, extension u, text offset u/2, where u is the hatch unit | The dimension follows the line group, as hatches do | 12.3 |
 | H-46 | In a chain, the printed numbers of the parts must add to the printed overall | A reader adds the printed numbers. The numbers must agree | 12.8 |
+| H-47 | In a symbol, lengths have no unit ending. `units` names the unit: `paper_mm` (constant size on the paper) or `model_m` (real size) | Equipment is a real size. A valve or a pump on a diagram is a sign | 13.2.1 |

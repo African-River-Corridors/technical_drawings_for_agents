@@ -38,7 +38,7 @@ def build(path):
     doc = json.loads(path.read_text(encoding="utf-8"))
     result = run_file(path)
     assert result["result"] == "ok"
-    text, warnings = dxf_from_document(doc, result["normalised"])
+    text, warnings = dxf_from_document(doc, result["normalised"], path.parent)
     return doc, result["normalised"], text, warnings
 
 

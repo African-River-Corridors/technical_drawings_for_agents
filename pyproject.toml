@@ -56,6 +56,7 @@ packages = ["src/technical_drawings_for_agents"]
 # The data files of the Drawing Format Standard, so that an installed wheel finds them (dfs/resources.py).
 [tool.hatch.build.targets.wheel.force-include]
 "docs/standard/schema/drawing-document-1.0.schema.json" = "technical_drawings_for_agents/dfs/data/schema/drawing-document-1.0.schema.json"
+"docs/standard/schema/symbol-library-1.0.schema.json" = "technical_drawings_for_agents/dfs/data/schema/symbol-library-1.0.schema.json"
 "docs/standard/data" = "technical_drawings_for_agents/dfs/data/data"
 "docs/standard/conformance" = "technical_drawings_for_agents/dfs/data/conformance"
 

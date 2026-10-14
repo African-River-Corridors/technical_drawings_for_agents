@@ -83,7 +83,7 @@ def test_the_valid_examples_cover_every_sheet_size_and_every_entity_type():
     sizes = {d["sheet"]["size"] for d in documents}
     assert sizes == {"A0", "A1", "A2", "A3", "A4"}
     types = {e["type"] for d in documents for v in d["viewports"] for e in v["entities"]}
-    assert types == {"line", "polyline", "arc", "circle", "centre_line", "hatch", "text", "dimension", "leader"}
+    assert types == {"line", "polyline", "arc", "circle", "centre_line", "hatch", "text", "dimension", "leader", "symbol"}
     assert any(len(d["viewports"]) == 2 for d in documents)
     assert any("aci" in layer for d in documents for layer in d["layers"])
 
@@ -161,7 +161,7 @@ def test_layer_names_roles_and_line_types_equal_the_line_style_data():
 
 def test_every_number_member_names_its_unit_clause_4_5():
     suffixes = ("_m", "_mm", "_deg")
-    allowed_bare = {"divisions", "aci", "decimals"}  # counts and CAD colour numbers have no unit
+    allowed_bare = {"divisions", "aci", "decimals", "scale", "radius"}  # counts, colours, ratios; radius inside symbols (13.2.1)
     for node in walk(SCHEMA):
         for name, prop in node.get("properties", {}).items() if isinstance(node.get("properties"), dict) else []:
             if isinstance(prop, dict) and prop.get("type") in ("number", "integer"):

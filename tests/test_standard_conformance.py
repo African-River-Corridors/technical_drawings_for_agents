@@ -45,6 +45,8 @@ SCHEMA_ERROR_CASES = {
     "err-version-not-formed": "18.1",
     "err-sheet-size": "6.1.3",
     "err-text-character": "11.3.3",
+    "err-sym-lib-path-and-symbols": "13.3.1",
+    "err-sym-scale-zero": "13.3.2",
 }
 
 

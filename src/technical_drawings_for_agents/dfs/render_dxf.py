@@ -14,7 +14,7 @@ from contextlib import contextmanager
 import ezdxf
 from ezdxf.enums import TextEntityAlignment as Align
 
-from . import resources, rules
+from . import resources, rules, symbols
 from .numbers import round_half_even
 from .pipeline import FURNITURE_LAYER, declared_layers, entity_style
 
@@ -110,12 +110,13 @@ def window_overlap_warnings(doc) -> list[str]:
     return out
 
 
-def dxf_from_document(document: dict, norm: dict) -> tuple[str, list[str]]:
+def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, list[str]]:
     """Return the DXF text and the warnings."""
     sheet = norm["sheet"]
     height_sheet = sheet["height_mm"]
     _, group = rules.line_group(sheet["size"])
     declared = declared_layers(document)
+    libs, _ = symbols.load_libraries(document, base_dir)
     with _fixed_metadata():
         doc = ezdxf.new("R2018", setup=True)
         doc.header["$INSUNITS"] = 6  # model space is in metres
@@ -141,6 +142,9 @@ def dxf_from_document(document: dict, norm: dict) -> tuple[str, list[str]]:
             for e in vp["entities"]:
                 if e["type"] in ("dimension", "leader"):
                     continue  # their parts are paper-space entities (12.7, 15.4.5)
+                if e["type"] == "symbol":
+                    _symbol_insert(doc, msp, e, vp["id"], n, rotation, declared, group, libs)
+                    continue
                 _model_entity(doc, msp, e, vp["id"], n, rotation, declared, group)
 
         layout = doc.layouts.new(LAYOUT)
@@ -193,6 +197,48 @@ def _model_entity(doc, msp, e, vp_id, n, rotation, declared, group):
         _text(msp, e["text"], e["anchor_m"], height, model_rotation, e.get("align_h", "left"), e.get("align_v", "baseline"), e["layer"], {**tags, "paper_height": e["height_mm"]})
         return
     _xdata(entity, **tags)
+
+
+def block_name(library, symbol, layer, role_override):
+    """15.4.10."""
+    return f"TDFA_{library}_{symbol}@{layer}" + (f"~{role_override}" if role_override else "")
+
+
+def _symbol_insert(doc, msp, e, vp_id, n, rotation, declared, group, libs):
+    """15.4.10: a BLOCK for the symbol on this layer, an INSERT, and the label as a TEXT."""
+    symbol = libs[e["library"]][e["symbol"]]
+    name = block_name(e["library"], e["symbol"], e["layer"], e.get("role"))
+    layer_role, layer_lt, _ = declared[e["layer"]]
+    if name not in doc.blocks:
+        origin = symbol.get("insertion", [0, 0])
+        block = doc.blocks.new(name, base_point=tuple(origin))
+        for part in symbol["geometry"]:
+            role = part.get("role") or e.get("role") or layer_role
+            width = group[role]
+            line_type = part.get("line_type") or layer_lt
+            attribs = _attribs(e["layer"], line_type, width, doc)
+            t = part["type"]
+            if t == "line":
+                block.add_line(tuple(part["from"]), tuple(part["to"]), dxfattribs=attribs)
+            elif t == "polyline":
+                block.add_lwpolyline([tuple(p) for p in part["points"]], close=part.get("closed", False), dxfattribs=attribs)
+            elif t == "circle":
+                block.add_circle(tuple(part["centre"]), part["radius"], dxfattribs=attribs)
+            elif t == "arc":
+                block.add_arc(tuple(part["centre"]), part["radius"], part["start_deg"] % 360.0, part["end_deg"] % 360.0, dxfattribs=attribs)
+            else:
+                _hatch(block, part["boundary"], [], True, {"layer": e["layer"], "lineweight": lineweight(width)}, {"type": "hatch", "pattern": "solid", "angle": 0})
+    placement = symbols.Placement(e, symbol, n)
+    ref = msp.add_blockref(
+        name, tuple(e["position_m"]),
+        dxfattribs={"xscale": placement.factor, "yscale": placement.factor, "zscale": placement.factor, "rotation": placement.rotation, "layer": e["layer"]},
+    )
+    _xdata(ref, vp=vp_id, id=e.get("id"), type="symbol")
+    if "label" in e:
+        slot = symbol["label_slot"]
+        at = placement.model(slot["at"])
+        _text(msp, e["label"], at, slot.get("height_mm", 3.5) * n / 1000, (0.0 - rotation) % 360.0, slot.get("align_h", "centre"), slot.get("align_v", "middle"),
+              e["layer"], {"vp": vp_id, "type": "text", "part": "symbol", "paper_height": slot.get("height_mm", 3.5)})
 
 
 def _paper_entity(doc, layout, e, flip):

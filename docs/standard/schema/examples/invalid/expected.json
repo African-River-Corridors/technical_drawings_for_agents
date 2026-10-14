@@ -155,6 +155,24 @@
     "message_contains": "line_type",
     "clause": "12.6"
   },
+  "library-ref-absolute-path": {
+    "path": "/symbol_libraries/0/path",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "13.3.1"
+  },
+  "library-ref-both": {
+    "path": "/symbol_libraries/0",
+    "keyword": "not",
+    "message_contains": "",
+    "clause": "13.3.1"
+  },
+  "library-ref-no-source": {
+    "path": "/symbol_libraries/0",
+    "keyword": "required",
+    "message_contains": "symbols",
+    "clause": "13.3.1"
+  },
   "lowercase-layer-name": {
     "path": "/viewports/0/entities/0/layer",
     "keyword": "pattern",
@@ -214,6 +232,24 @@
     "keyword": "minimum",
     "message_contains": "",
     "clause": "7.9.5"
+  },
+  "symbol-insert-line-type": {
+    "path": "/viewports/0/entities/0",
+    "keyword": "additionalProperties",
+    "message_contains": "line_type",
+    "clause": "13.3.2"
+  },
+  "symbol-insert-missing-position": {
+    "path": "/viewports/0/entities/0",
+    "keyword": "required",
+    "message_contains": "position_m",
+    "clause": "13.3.2"
+  },
+  "symbol-insert-scale-zero": {
+    "path": "/viewports/0/entities/0/scale",
+    "keyword": "exclusiveMinimum",
+    "message_contains": "",
+    "clause": "13.3.2"
   },
   "text-empty": {
     "path": "/viewports/0/entities/0/text",

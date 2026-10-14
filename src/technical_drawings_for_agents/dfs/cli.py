@@ -52,7 +52,7 @@ def cmd_build(args) -> int:
     norm = result["normalised"]
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    dxf_text, warnings = dxf_from_document(json.loads(path.read_text(encoding="utf-8")), norm)
+    dxf_text, warnings = dxf_from_document(json.loads(path.read_text(encoding="utf-8")), norm, path.resolve().parent)
     for warning in warnings:
         print(f"warning: {warning}", file=sys.stderr)
     written = {

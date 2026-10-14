@@ -163,7 +163,9 @@ def read_normalised(text: str) -> dict:
             entities.append(_paper_entity(r, x, height))
     for r in model:
         x = r.xdata()
-        if "vp" in x:
+        if "vp" in x and r.kind == "INSERT":
+            entities.extend(_expand_insert(r, x, viewports[x["vp"]], recs))
+        elif "vp" in x:
             entities.append(_model_entity(r, x, viewports[x["vp"]]))
     return {
         "sheet": {"width_mm": width, "height_mm": height},
@@ -210,14 +212,17 @@ def _paper_entity(r: Record, x, height):
     return e
 
 
-def _model_entity(r: Record, x, vp):
+def _model_entity(r: Record, x, vp, xf=None, scale=1.0, rot_off=0.0, suffix=""):
+    """A model-space entity as normalised content. ``xf``, ``scale`` and ``rot_off`` are the transform of a
+    block (symbol) insert: block point to model point, block length to model length, block angle to model angle."""
     kind = x["type"]
     n = vp["n"]
     mapper = Mapper(vp["frame"], {"xmin_m": vp["centre"][0], "xmax_m": vp["centre"][0], "ymin_m": vp["centre"][1], "ymax_m": vp["centre"][1]}, n, vp["twist"])
     k = 1000 / n
-    point = lambda px, py: [mm(c) for c in mapper.point((px, py))]  # noqa: E731
+    xf = xf or (lambda px, py: (px, py))
+    point = lambda px, py: [mm(c) for c in mapper.point(xf(px, py))]  # noqa: E731
     layer = r.get(8)
-    origin = f"viewport.{x['vp']}"
+    origin = f"viewport.{x['vp']}{suffix}"
     if kind in ("line", "centre_line"):
         e = _common("line", origin, layer, x)
         e["from_mm"], e["to_mm"] = point(r.f(10), r.f(20)), point(r.f(11), r.f(21))
@@ -230,9 +235,9 @@ def _model_entity(r: Record, x, vp):
         e["line_type"], e["width_mm"] = _style(r)
     elif kind in ("circle", "arc"):
         e = _common(kind, origin, layer, x)
-        e["centre_mm"], e["radius_mm"] = point(r.f(10), r.f(20)), mm(r.f(40) * k)
+        e["centre_mm"], e["radius_mm"] = point(r.f(10), r.f(20)), mm(r.f(40) * scale * k)
         if kind == "arc":
-            e["start_deg"] = angle(r.f(50) + vp["twist"])
+            e["start_deg"] = angle(r.f(50) + rot_off + vp["twist"])
             e["sweep_deg"] = mm((r.f(51) - r.f(50)) % 360.0)
         e["line_type"], e["width_mm"] = _style(r)
     elif kind == "hatch":
@@ -240,16 +245,39 @@ def _model_entity(r: Record, x, vp):
         loops = [[point(px, py) for px, py in loop] for loop in _loops(r)]
         e["boundary_mm"], e["holes_mm"] = loops[0], loops[1:]
         e["pattern"] = x["pattern"]
-        e["angle_deg"] = angle(float(x["angle"]) + vp["twist"])
+        e["angle_deg"] = 0.0 if suffix == ".symbol" else angle(float(x["angle"]) + rot_off + vp["twist"])  # 13.7
         e["width_mm"] = int(r.get(370)) / 100
     else:
-        e = _common("text", origin, layer, x)
+        e = _common("text", origin + (".symbol" if x.get("part") == "symbol" else ""), layer, x)
         px, py = _text_point(r)
         e["anchor_mm"], e["text"] = point(px, py), r.get(1)
         e["height_mm"] = mm(r.f(40) * 1000 / n)
         e["rotation_deg"] = angle(r.f(50, 0.0) + vp["twist"])
         e["align_h"], e["align_v"] = HALIGN[int(r.get(72, 0))], VALIGN[int(r.get(73, 0))]
     return e
+
+
+def _expand_insert(r: Record, x, vp, recs):
+    """The entities of a block insert, as normalised content (clauses 13.4 and 15.4.10)."""
+    name = r.get(2)
+    base = next(b for b in recs if b.kind == "BLOCK" and b.get(2) == name)
+    bx, by = base.f(10, 0.0), base.f(20, 0.0)
+    f = r.f(41, 1.0)
+    rho = r.f(50, 0.0)
+    cos, sin = cos_sin(rho)
+    px, py = r.f(10), r.f(20)
+
+    def xf(qx, qy):
+        dx, dy = (qx - bx) * f, (qy - by) * f
+        return (px + dx * cos - dy * sin, py + dx * sin + dy * cos)
+
+    out = []
+    for e in recs:
+        if e.block == name and e.section == "BLOCKS" and e.kind not in ("BLOCK", "ENDBLK"):
+            ex = e.xdata() or {}
+            ex = {"type": ex.get("type", e.kind.lower().replace("lwpolyline", "polyline")), "vp": x["vp"], **ex}
+            out.append(_model_entity(e, ex, vp, xf=xf, scale=f, rot_off=rho, suffix=".symbol"))
+    return out
 
 
 def style_tables(text: str):
