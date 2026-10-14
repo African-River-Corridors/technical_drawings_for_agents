@@ -128,8 +128,6 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
         styles = {row["name"]: row for row in resources.line_styles()["layers"]}
         layers = dict(declared)
         layers.setdefault(FURNITURE_LAYER, (styles[FURNITURE_LAYER]["role"], styles[FURNITURE_LAYER]["line_type"], styles[FURNITURE_LAYER]["aci"]))
-        if document.get("status"):  # the watermark layer is declared without the document declaring it (14.9)
-            layers.setdefault("WATERMARK", (styles["WATERMARK"]["role"], styles["WATERMARK"]["line_type"], styles["WATERMARK"]["aci"]))
         for name, (role, line_type, aci) in layers.items():
             width = group[role]
             doc.layers.add(name, color=aci, lineweight=lineweight(width), linetype=_ensure_linetype(doc, line_type, width))

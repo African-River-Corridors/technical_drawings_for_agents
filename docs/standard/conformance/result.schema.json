@@ -232,7 +232,7 @@
         },
         "origin": {
           "type": "string",
-          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_watermark)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
         },
         "layer": {
           "type": "string"
@@ -288,7 +288,7 @@
         },
         "origin": {
           "type": "string",
-          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_watermark)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
         },
         "layer": {
           "type": "string"
@@ -344,7 +344,7 @@
         },
         "origin": {
           "type": "string",
-          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_watermark)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
         },
         "layer": {
           "type": "string"
@@ -406,7 +406,7 @@
         },
         "origin": {
           "type": "string",
-          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_watermark)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
         },
         "layer": {
           "type": "string"
@@ -459,7 +459,7 @@
         },
         "origin": {
           "type": "string",
-          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_watermark)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
         },
         "layer": {
           "type": "string"
@@ -533,7 +533,7 @@
         },
         "origin": {
           "type": "string",
-          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_watermark)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
+          "pattern": "^(sheet\\.(border|centring_mark|zone_mark|zone_label|title_block|revision_register|notes|references|status_line)|viewport\\.[A-Za-z][A-Za-z0-9_.-]{0,63})$"
         },
         "layer": {
           "type": "string"

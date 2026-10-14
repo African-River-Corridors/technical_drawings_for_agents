@@ -25,7 +25,6 @@
     {"name": "HATCH", "role": "thin", "line_type": "continuous", "aci": 9, "description": "Hatch and fill line work"},
     {"name": "GRID", "role": "thin", "line_type": "chain", "aci": 194, "description": "Setting-out grid"},
     {"name": "TITLEBLOCK", "role": "thick", "line_type": "continuous", "aci": 54, "description": "Border, title block, revision register and other sheet furniture"},
-    {"name": "WATERMARK", "role": "thick", "line_type": "continuous", "aci": 1, "description": "Status watermark"},
     {"name": "FDN", "role": "thick", "line_type": "continuous", "aci": 34, "description": "Foundations, slabs and plinths"},
     {"name": "EQUIP", "role": "thick", "line_type": "continuous", "aci": 5, "description": "Equipment outlines"},
     {"name": "NOZZLE", "role": "thin", "line_type": "continuous", "aci": 4, "description": "Nozzles and connection points"},

@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-181
+180
   9
 $SURFTAB1
  70
@@ -2257,7 +2257,7 @@ dashed, line width 0.18 mm
   0
 LTYPE
   5
-F7
+F6
 330
 2
 100
@@ -2305,7 +2305,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-11
+10
   0
 LAYER
   5
@@ -2528,30 +2528,6 @@ CONTINUOUS
 LAYER
   5
 94
-330
-1
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-WATERMARK
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-35
-390
-13
-347
-21
-  0
-LAYER
-  5
-95
 330
 1
 100
@@ -3417,7 +3393,7 @@ TDFA
   0
 APPID
   5
-17E
+17D
 330
 3
 100
@@ -3431,7 +3407,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-17F
+17E
 330
 3
 100
@@ -5217,7 +5193,7 @@ _CLOSEDBLANK
   0
 BLOCK_RECORD
   5
-96
+95
 330
 9
 100
@@ -5237,7 +5213,7 @@ TDFA_pid_tank@EQUIP
   0
 BLOCK_RECORD
   5
-9E
+9D
 330
 9
 100
@@ -5257,7 +5233,7 @@ TDFA_pid_pump@EQUIP
   0
 BLOCK_RECORD
   5
-A6
+A5
 330
 9
 100
@@ -5277,7 +5253,7 @@ TDFA_pid_gate_valve@EQUIP
   0
 BLOCK_RECORD
   5
-B1
+B0
 330
 9
 100
@@ -5297,7 +5273,7 @@ TDFA_pid_check_valve@EQUIP
   0
 BLOCK_RECORD
   5
-C8
+C7
 330
 9
 100
@@ -5317,7 +5293,7 @@ TDFA_pid_globe_valve@EQUIP
   0
 BLOCK_RECORD
   5
-D2
+D1
 330
 9
 100
@@ -5337,7 +5313,7 @@ TDFA_pid_tie_in@EQUIP
   0
 BLOCK_RECORD
   5
-D9
+D8
 330
 9
 100
@@ -5357,7 +5333,7 @@ TDFA_pid_instrument@NOZZLE
   0
 BLOCK_RECORD
   5
-FB
+FA
 330
 9
 100
@@ -5367,7 +5343,7 @@ AcDbBlockTableRecord
   2
 *Paper_Space
 340
-FE
+FD
  70
 0
 280
@@ -5639,9 +5615,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-97
-330
 96
+330
+95
 100
 AcDbEntity
   8
@@ -5665,9 +5641,9 @@ TDFA_pid_tank@EQUIP
   0
 LWPOLYLINE
   5
-99
+98
 330
-96
+95
 100
 AcDbEntity
   8
@@ -5701,9 +5677,9 @@ AcDbPolyline
   0
 LINE
   5
-9A
+99
 330
-96
+95
 100
 AcDbEntity
   8
@@ -5729,9 +5705,9 @@ AcDbLine
   0
 ENDBLK
   5
-98
+97
 330
-96
+95
 100
 AcDbEntity
   8
@@ -5741,9 +5717,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-9F
-330
 9E
+330
+9D
 100
 AcDbEntity
   8
@@ -5767,9 +5743,9 @@ TDFA_pid_pump@EQUIP
   0
 CIRCLE
   5
-A1
+A0
 330
-9E
+9D
 100
 AcDbEntity
   8
@@ -5791,9 +5767,9 @@ AcDbCircle
   0
 LWPOLYLINE
   5
-A2
+A1
 330
-9E
+9D
 100
 AcDbEntity
   8
@@ -5823,9 +5799,9 @@ AcDbPolyline
   0
 ENDBLK
   5
-A0
+9F
 330
-9E
+9D
 100
 AcDbEntity
   8
@@ -5835,9 +5811,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-A7
-330
 A6
+330
+A5
 100
 AcDbEntity
   8
@@ -5861,9 +5837,9 @@ TDFA_pid_gate_valve@EQUIP
   0
 LWPOLYLINE
   5
-A9
+A8
 330
-A6
+A5
 100
 AcDbEntity
   8
@@ -5897,9 +5873,9 @@ AcDbPolyline
   0
 LINE
   5
-AA
+A9
 330
-A6
+A5
 100
 AcDbEntity
   8
@@ -5925,9 +5901,9 @@ AcDbLine
   0
 ENDBLK
   5
-A8
+A7
 330
-A6
+A5
 100
 AcDbEntity
   8
@@ -5937,9 +5913,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-B2
-330
 B1
+330
+B0
 100
 AcDbEntity
   8
@@ -5963,9 +5939,9 @@ TDFA_pid_check_valve@EQUIP
   0
 LWPOLYLINE
   5
-B4
+B3
 330
-B1
+B0
 100
 AcDbEntity
   8
@@ -5995,9 +5971,9 @@ AcDbPolyline
   0
 LINE
   5
-B5
+B4
 330
-B1
+B0
 100
 AcDbEntity
   8
@@ -6023,9 +5999,9 @@ AcDbLine
   0
 ENDBLK
   5
-B3
+B2
 330
-B1
+B0
 100
 AcDbEntity
   8
@@ -6035,9 +6011,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-C9
-330
 C8
+330
+C7
 100
 AcDbEntity
   8
@@ -6061,9 +6037,9 @@ TDFA_pid_globe_valve@EQUIP
   0
 LWPOLYLINE
   5
-CB
+CA
 330
-C8
+C7
 100
 AcDbEntity
   8
@@ -6097,9 +6073,9 @@ AcDbPolyline
   0
 CIRCLE
   5
-CC
+CB
 330
-C8
+C7
 100
 AcDbEntity
   8
@@ -6121,9 +6097,9 @@ AcDbCircle
   0
 LINE
   5
-CD
+CC
 330
-C8
+C7
 100
 AcDbEntity
   8
@@ -6149,9 +6125,9 @@ AcDbLine
   0
 ARC
   5
-CE
+CD
 330
-C8
+C7
 100
 AcDbEntity
   8
@@ -6179,9 +6155,9 @@ AcDbArc
   0
 ENDBLK
   5
-CA
+C9
 330
-C8
+C7
 100
 AcDbEntity
   8
@@ -6191,9 +6167,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-D3
-330
 D2
+330
+D1
 100
 AcDbEntity
   8
@@ -6217,9 +6193,9 @@ TDFA_pid_tie_in@EQUIP
   0
 LWPOLYLINE
   5
-D5
+D4
 330
-D2
+D1
 100
 AcDbEntity
   8
@@ -6249,9 +6225,9 @@ AcDbPolyline
   0
 ENDBLK
   5
-D4
+D3
 330
-D2
+D1
 100
 AcDbEntity
   8
@@ -6261,9 +6237,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-DA
-330
 D9
+330
+D8
 100
 AcDbEntity
   8
@@ -6287,9 +6263,9 @@ TDFA_pid_instrument@NOZZLE
   0
 CIRCLE
   5
-DC
+DB
 330
-D9
+D8
 100
 AcDbEntity
   8
@@ -6311,9 +6287,9 @@ AcDbCircle
   0
 LINE
   5
-DD
+DC
 330
-D9
+D8
 100
 AcDbEntity
   8
@@ -6339,9 +6315,9 @@ AcDbLine
   0
 ENDBLK
   5
-DB
+DA
 330
-D9
+D8
 100
 AcDbEntity
   8
@@ -6351,9 +6327,9 @@ AcDbBlockEnd
   0
 BLOCK
   5
-FC
-330
 FB
+330
+FA
 100
 AcDbEntity
   8
@@ -6377,9 +6353,9 @@ AcDbBlockBegin
   0
 ENDBLK
   5
-FD
+FC
 330
-FB
+FA
 100
 AcDbEntity
   8
@@ -6395,7 +6371,7 @@ ENTITIES
   0
 INSERT
   5
-9B
+9A
 330
 17
 100
@@ -6429,7 +6405,7 @@ type=symbol
   0
 TEXT
   5
-9D
+9C
 330
 17
 100
@@ -6475,7 +6451,7 @@ paper_height=2.5
   0
 INSERT
   5
-A3
+A2
 330
 17
 100
@@ -6509,7 +6485,7 @@ type=symbol
   0
 TEXT
   5
-A5
+A4
 330
 17
 100
@@ -6555,7 +6531,7 @@ paper_height=2.5
   0
 INSERT
   5
-AB
+AA
 330
 17
 100
@@ -6589,7 +6565,7 @@ type=symbol
   0
 TEXT
   5
-AD
+AC
 330
 17
 100
@@ -6635,7 +6611,7 @@ paper_height=2.5
   0
 INSERT
   5
-AE
+AD
 330
 17
 100
@@ -6669,7 +6645,7 @@ type=symbol
   0
 TEXT
   5
-B0
+AF
 330
 17
 100
@@ -6715,7 +6691,7 @@ paper_height=2.5
   0
 INSERT
   5
-B6
+B5
 330
 17
 100
@@ -6749,7 +6725,7 @@ type=symbol
   0
 TEXT
   5
-B8
+B7
 330
 17
 100
@@ -6795,7 +6771,7 @@ paper_height=2.5
   0
 INSERT
   5
-B9
+B8
 330
 17
 100
@@ -6829,7 +6805,7 @@ type=symbol
   0
 TEXT
   5
-BB
+BA
 330
 17
 100
@@ -6875,7 +6851,7 @@ paper_height=2.5
   0
 INSERT
   5
-BC
+BB
 330
 17
 100
@@ -6909,7 +6885,7 @@ type=symbol
   0
 TEXT
   5
-BE
+BD
 330
 17
 100
@@ -6955,7 +6931,7 @@ paper_height=2.5
   0
 INSERT
   5
-BF
+BE
 330
 17
 100
@@ -6989,7 +6965,7 @@ type=symbol
   0
 TEXT
   5
-C1
+C0
 330
 17
 100
@@ -7035,7 +7011,7 @@ paper_height=2.5
   0
 INSERT
   5
-C2
+C1
 330
 17
 100
@@ -7069,7 +7045,7 @@ type=symbol
   0
 TEXT
   5
-C4
+C3
 330
 17
 100
@@ -7115,7 +7091,7 @@ paper_height=2.5
   0
 INSERT
   5
-C5
+C4
 330
 17
 100
@@ -7149,7 +7125,7 @@ type=symbol
   0
 TEXT
   5
-C7
+C6
 330
 17
 100
@@ -7195,7 +7171,7 @@ paper_height=2.5
   0
 INSERT
   5
-CF
+CE
 330
 17
 100
@@ -7229,7 +7205,7 @@ type=symbol
   0
 TEXT
   5
-D1
+D0
 330
 17
 100
@@ -7275,7 +7251,7 @@ paper_height=2.5
   0
 INSERT
   5
-D6
+D5
 330
 17
 100
@@ -7309,7 +7285,7 @@ type=symbol
   0
 TEXT
   5
-D8
+D7
 330
 17
 100
@@ -7355,7 +7331,7 @@ paper_height=2.5
   0
 INSERT
   5
-DE
+DD
 330
 17
 100
@@ -7389,7 +7365,7 @@ type=symbol
   0
 TEXT
   5
-E0
+DF
 330
 17
 100
@@ -7433,7 +7409,7 @@ paper_height=2.5
   0
 INSERT
   5
-E1
+E0
 330
 17
 100
@@ -7467,7 +7443,7 @@ type=symbol
   0
 TEXT
   5
-E3
+E2
 330
 17
 100
@@ -7511,7 +7487,7 @@ paper_height=2.5
   0
 INSERT
   5
-E4
+E3
 330
 17
 100
@@ -7545,7 +7521,7 @@ type=symbol
   0
 TEXT
   5
-E6
+E5
 330
 17
 100
@@ -7589,7 +7565,7 @@ paper_height=2.5
   0
 LWPOLYLINE
   5
-E7
+E6
 330
 17
 100
@@ -7633,7 +7609,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-E8
+E7
 330
 17
 100
@@ -7677,7 +7653,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-E9
+E8
 330
 17
 100
@@ -7721,7 +7697,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-EA
+E9
 330
 17
 100
@@ -7757,7 +7733,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-EB
+EA
 330
 17
 100
@@ -7793,7 +7769,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-EC
+EB
 330
 17
 100
@@ -7829,7 +7805,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-ED
+EC
 330
 17
 100
@@ -7865,7 +7841,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-EE
+ED
 330
 17
 100
@@ -7901,7 +7877,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-EF
+EE
 330
 17
 100
@@ -7937,7 +7913,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F0
+EF
 330
 17
 100
@@ -7981,7 +7957,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F1
+F0
 330
 17
 100
@@ -8025,7 +8001,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F2
+F1
 330
 17
 100
@@ -8061,7 +8037,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F3
+F2
 330
 17
 100
@@ -8105,7 +8081,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F4
+F3
 330
 17
 100
@@ -8141,7 +8117,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F5
+F4
 330
 17
 100
@@ -8177,7 +8153,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F6
+F5
 330
 17
 100
@@ -8213,7 +8189,7 @@ type=polyline
   0
 LWPOLYLINE
   5
-F8
+F7
 330
 17
 100
@@ -8249,7 +8225,7 @@ type=polyline
   0
 TEXT
   5
-F9
+F8
 330
 17
 100
@@ -8291,7 +8267,7 @@ paper_height=2.5
   0
 TEXT
   5
-FA
+F9
 330
 17
 100
@@ -8335,9 +8311,9 @@ paper_height=2.5
   0
 VIEWPORT
   5
-FF
+FE
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8439,9 +8415,9 @@ AcDbViewport
   0
 LWPOLYLINE
   5
-100
+FF
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8483,9 +8459,9 @@ type=polyline
   0
 LINE
   5
-101
+100
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8519,9 +8495,9 @@ type=line
   0
 LINE
   5
-102
+101
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8555,9 +8531,9 @@ type=line
   0
 LINE
   5
-103
+102
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8591,9 +8567,9 @@ type=line
   0
 LINE
   5
-104
+103
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8627,9 +8603,9 @@ type=line
   0
 LWPOLYLINE
   5
-105
+104
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8671,9 +8647,9 @@ type=polyline
   0
 TEXT
   5
-106
+105
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8711,9 +8687,9 @@ type=text
   0
 TEXT
   5
-107
+106
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8751,9 +8727,9 @@ type=text
   0
 TEXT
   5
-108
+107
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8791,9 +8767,9 @@ type=text
   0
 TEXT
   5
-109
+108
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8831,9 +8807,9 @@ type=text
   0
 TEXT
   5
-10A
+109
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8871,9 +8847,9 @@ type=text
   0
 TEXT
   5
-10B
+10A
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8911,9 +8887,9 @@ type=text
   0
 LINE
   5
-10C
+10B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8947,9 +8923,9 @@ type=line
   0
 LINE
   5
-10D
+10C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8970,6 +8946,42 @@ AcDbLine
 0.0
  11
 242.0
+ 21
+66.0
+ 31
+0.0
+1001
+TDFA
+1000
+origin=sheet.revision_register
+1000
+type=line
+  0
+LINE
+  5
+10D
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+  6
+CONTINUOUS
+370
+18
+100
+AcDbLine
+ 10
+266.0
+ 20
+76.0
+ 30
+0.0
+ 11
+266.0
  21
 66.0
  31
@@ -8985,7 +8997,7 @@ LINE
   5
 10E
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -8999,13 +9011,13 @@ CONTINUOUS
 100
 AcDbLine
  10
-266.0
+366.0
  20
 76.0
  30
 0.0
  11
-266.0
+366.0
  21
 66.0
  31
@@ -9021,7 +9033,7 @@ LINE
   5
 10F
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9035,13 +9047,13 @@ CONTINUOUS
 100
 AcDbLine
  10
-366.0
+380.0
  20
 76.0
  30
 0.0
  11
-366.0
+380.0
  21
 66.0
  31
@@ -9057,43 +9069,7 @@ LINE
   5
 110
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-  6
-CONTINUOUS
-370
-18
-100
-AcDbLine
- 10
-380.0
- 20
-76.0
- 30
-0.0
- 11
-380.0
- 21
-66.0
- 31
-0.0
-1001
-TDFA
-1000
-origin=sheet.revision_register
-1000
-type=line
-  0
-LINE
-  5
-111
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9127,9 +9103,9 @@ type=line
   0
 LWPOLYLINE
   5
-112
+111
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9171,9 +9147,9 @@ type=polyline
   0
 TEXT
   5
-113
+112
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9211,9 +9187,9 @@ type=text
   0
 TEXT
   5
-114
+113
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9251,9 +9227,9 @@ type=text
   0
 TEXT
   5
-115
+114
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9291,9 +9267,9 @@ type=text
   0
 TEXT
   5
-116
+115
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9331,9 +9307,9 @@ type=text
   0
 TEXT
   5
-117
+116
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9371,9 +9347,9 @@ type=text
   0
 TEXT
   5
-118
+117
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9411,9 +9387,9 @@ type=text
   0
 TEXT
   5
-119
+118
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9451,9 +9427,9 @@ type=text
   0
 TEXT
   5
-11A
+119
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9491,9 +9467,9 @@ type=text
   0
 TEXT
   5
-11B
+11A
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9531,9 +9507,9 @@ type=text
   0
 TEXT
   5
-11C
+11B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9571,55 +9547,49 @@ type=text
   0
 TEXT
   5
-11D
+11C
 330
-FB
+FA
 100
 AcDbEntity
  67
 1
   8
-WATERMARK
+TITLEBLOCK
 100
 AcDbText
  10
-215.0
+342.0
  20
-148.5
+78.0
  30
 0.0
  40
-20.0
+2.5
   1
-CONCEPT - NOT FOR CONSTRUCTION
- 50
-35.385
+CONCEPT – NOT FOR CONSTRUCTION
   7
 TDFA
- 72
-1
  11
-215.0
+342.0
  21
-148.5
+78.0
  31
 0.0
 100
 AcDbText
- 73
-2
 1001
 TDFA
 1000
-origin=sheet.status_watermark
+origin=sheet.status_line
 1000
 type=text
   0
 LINE
   5
-11E
+11D
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9642,6 +9612,42 @@ AcDbLine
 340.0
  21
 46.0
+ 31
+0.0
+1001
+TDFA
+1000
+origin=sheet.title_block
+1000
+type=line
+  0
+LINE
+  5
+11E
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+  6
+CONTINUOUS
+370
+18
+100
+AcDbLine
+ 10
+230.0
+ 20
+34.0
+ 30
+0.0
+ 11
+340.0
+ 21
+34.0
  31
 0.0
 1001
@@ -9655,7 +9661,7 @@ LINE
   5
 11F
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9671,13 +9677,13 @@ AcDbLine
  10
 230.0
  20
-34.0
+22.0
  30
 0.0
  11
 340.0
  21
-34.0
+22.0
  31
 0.0
 1001
@@ -9691,7 +9697,7 @@ LINE
   5
 120
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9705,15 +9711,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-230.0
+266.0
  20
 22.0
  30
 0.0
  11
-340.0
+266.0
  21
-22.0
+10.0
  31
 0.0
 1001
@@ -9727,7 +9733,7 @@ LINE
   5
 121
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9741,13 +9747,13 @@ CONTINUOUS
 100
 AcDbLine
  10
-266.0
+303.0
  20
 22.0
  30
 0.0
  11
-266.0
+303.0
  21
 10.0
  31
@@ -9763,7 +9769,7 @@ LINE
   5
 122
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9777,15 +9783,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-303.0
+340.0
  20
-22.0
+52.0
  30
 0.0
  11
-303.0
+410.0
  21
-10.0
+52.0
  31
 0.0
 1001
@@ -9799,7 +9805,7 @@ LINE
   5
 123
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9815,13 +9821,13 @@ AcDbLine
  10
 340.0
  20
-52.0
+38.0
  30
 0.0
  11
 410.0
  21
-52.0
+38.0
  31
 0.0
 1001
@@ -9835,7 +9841,7 @@ LINE
   5
 124
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9851,13 +9857,13 @@ AcDbLine
  10
 340.0
  20
-38.0
+24.0
  30
 0.0
  11
 410.0
  21
-38.0
+24.0
  31
 0.0
 1001
@@ -9871,43 +9877,7 @@ LINE
   5
 125
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-  6
-CONTINUOUS
-370
-18
-100
-AcDbLine
- 10
-340.0
- 20
-24.0
- 30
-0.0
- 11
-410.0
- 21
-24.0
- 31
-0.0
-1001
-TDFA
-1000
-origin=sheet.title_block
-1000
-type=line
-  0
-LINE
-  5
-126
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9941,9 +9911,9 @@ type=line
   0
 LINE
   5
-127
+126
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -9977,9 +9947,9 @@ type=line
   0
 LINE
   5
-128
+127
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10013,9 +9983,9 @@ type=line
   0
 LINE
   5
-129
+128
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10049,9 +10019,9 @@ type=line
   0
 LINE
   5
-12A
+129
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10072,6 +10042,42 @@ AcDbLine
 0.0
  11
 410.0
+ 21
+66.0
+ 31
+0.0
+1001
+TDFA
+1000
+origin=sheet.title_block
+1000
+type=line
+  0
+LINE
+  5
+12A
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+  6
+CONTINUOUS
+370
+35
+100
+AcDbLine
+ 10
+230.0
+ 20
+10.0
+ 30
+0.0
+ 11
+230.0
  21
 66.0
  31
@@ -10087,7 +10093,7 @@ LINE
   5
 12B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10101,15 +10107,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-230.0
+340.0
  20
-10.0
+66.0
  30
 0.0
  11
-230.0
+340.0
  21
-66.0
+10.0
  31
 0.0
 1001
@@ -10123,7 +10129,7 @@ LINE
   5
 12C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10137,13 +10143,13 @@ CONTINUOUS
 100
 AcDbLine
  10
-340.0
+410.0
  20
 66.0
  30
 0.0
  11
-340.0
+410.0
  21
 10.0
  31
@@ -10159,43 +10165,7 @@ LINE
   5
 12D
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-  6
-CONTINUOUS
-370
-35
-100
-AcDbLine
- 10
-410.0
- 20
-66.0
- 30
-0.0
- 11
-410.0
- 21
-10.0
- 31
-0.0
-1001
-TDFA
-1000
-origin=sheet.title_block
-1000
-type=line
-  0
-LINE
-  5
-12E
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10229,9 +10199,9 @@ type=line
   0
 TEXT
   5
-12F
+12E
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10269,9 +10239,9 @@ type=text
   0
 TEXT
   5
-130
+12F
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10309,9 +10279,9 @@ type=text
   0
 TEXT
   5
-131
+130
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10349,9 +10319,9 @@ type=text
   0
 TEXT
   5
-132
+131
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10389,9 +10359,9 @@ type=text
   0
 TEXT
   5
-133
+132
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10429,9 +10399,9 @@ type=text
   0
 TEXT
   5
-134
+133
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10469,9 +10439,9 @@ type=text
   0
 TEXT
   5
-135
+134
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10509,9 +10479,9 @@ type=text
   0
 TEXT
   5
-136
+135
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10549,9 +10519,9 @@ type=text
   0
 TEXT
   5
-137
+136
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10589,9 +10559,9 @@ type=text
   0
 TEXT
   5
-138
+137
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10629,9 +10599,9 @@ type=text
   0
 TEXT
   5
-139
+138
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10669,9 +10639,9 @@ type=text
   0
 TEXT
   5
-13A
+139
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10709,9 +10679,9 @@ type=text
   0
 TEXT
   5
-13B
+13A
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10749,9 +10719,9 @@ type=text
   0
 TEXT
   5
-13C
+13B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10789,9 +10759,9 @@ type=text
   0
 TEXT
   5
-13D
+13C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10829,9 +10799,9 @@ type=text
   0
 TEXT
   5
-13E
+13D
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10869,9 +10839,9 @@ type=text
   0
 TEXT
   5
-13F
+13E
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10909,9 +10879,9 @@ type=text
   0
 TEXT
   5
-140
+13F
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10949,9 +10919,9 @@ type=text
   0
 TEXT
   5
-141
+140
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -10989,9 +10959,9 @@ type=text
   0
 TEXT
   5
-142
+141
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11029,9 +10999,9 @@ type=text
   0
 TEXT
   5
-143
+142
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11069,9 +11039,9 @@ type=text
   0
 TEXT
   5
-144
+143
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11109,9 +11079,9 @@ type=text
   0
 TEXT
   5
-145
+144
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11149,9 +11119,9 @@ type=text
   0
 TEXT
   5
-146
+145
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11189,9 +11159,9 @@ type=text
   0
 TEXT
   5
-147
+146
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11229,9 +11199,9 @@ type=text
   0
 TEXT
   5
-148
+147
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11269,9 +11239,9 @@ type=text
   0
 TEXT
   5
-149
+148
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11298,6 +11268,50 @@ TDFA
 10.0
  21
 263.91700000000003
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+1001
+TDFA
+1000
+origin=sheet.zone_label
+1000
+type=text
+  0
+TEXT
+  5
+149
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+100
+AcDbText
+ 10
+10.0
+ 20
+217.75
+ 30
+0.0
+ 40
+3.5
+  1
+B
+  7
+TDFA
+ 72
+1
+ 11
+10.0
+ 21
+217.75
  31
 0.0
 100
@@ -11315,51 +11329,7 @@ TEXT
   5
 14A
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-100
-AcDbText
- 10
-10.0
- 20
-217.75
- 30
-0.0
- 40
-3.5
-  1
-B
-  7
-TDFA
- 72
-1
- 11
-10.0
- 21
-217.75
- 31
-0.0
-100
-AcDbText
- 73
-2
-1001
-TDFA
-1000
-origin=sheet.zone_label
-1000
-type=text
-  0
-TEXT
-  5
-14B
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11401,9 +11371,9 @@ type=text
   0
 TEXT
   5
-14C
+14B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11445,9 +11415,9 @@ type=text
   0
 TEXT
   5
-14D
+14C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11489,9 +11459,9 @@ type=text
   0
 TEXT
   5
-14E
+14D
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11533,9 +11503,9 @@ type=text
   0
 TEXT
   5
-14F
+14E
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11562,6 +11532,50 @@ TDFA
 44.375
  21
 292.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+1001
+TDFA
+1000
+origin=sheet.zone_label
+1000
+type=text
+  0
+TEXT
+  5
+14F
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+100
+AcDbText
+ 10
+44.375
+ 20
+5.0
+ 30
+0.0
+ 40
+3.5
+  1
+1
+  7
+TDFA
+ 72
+1
+ 11
+44.375
+ 21
+5.0
  31
 0.0
 100
@@ -11579,7 +11593,7 @@ TEXT
   5
 150
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11589,23 +11603,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-44.375
+93.125
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-1
+2
   7
 TDFA
  72
 1
  11
-44.375
+93.125
  21
-5.0
+292.0
  31
 0.0
 100
@@ -11623,7 +11637,7 @@ TEXT
   5
 151
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11635,7 +11649,7 @@ AcDbText
  10
 93.125
  20
-292.0
+5.0
  30
 0.0
  40
@@ -11649,7 +11663,7 @@ TDFA
  11
 93.125
  21
-292.0
+5.0
  31
 0.0
 100
@@ -11667,7 +11681,7 @@ TEXT
   5
 152
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11677,23 +11691,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-93.125
+141.875
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-2
+3
   7
 TDFA
  72
 1
  11
-93.125
+141.875
  21
-5.0
+292.0
  31
 0.0
 100
@@ -11711,7 +11725,7 @@ TEXT
   5
 153
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11723,7 +11737,7 @@ AcDbText
  10
 141.875
  20
-292.0
+5.0
  30
 0.0
  40
@@ -11737,7 +11751,7 @@ TDFA
  11
 141.875
  21
-292.0
+5.0
  31
 0.0
 100
@@ -11755,7 +11769,7 @@ TEXT
   5
 154
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11765,23 +11779,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-141.875
+190.625
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-3
+4
   7
 TDFA
  72
 1
  11
-141.875
+190.625
  21
-5.0
+292.0
  31
 0.0
 100
@@ -11799,7 +11813,7 @@ TEXT
   5
 155
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11811,7 +11825,7 @@ AcDbText
  10
 190.625
  20
-292.0
+5.0
  30
 0.0
  40
@@ -11825,7 +11839,7 @@ TDFA
  11
 190.625
  21
-292.0
+5.0
  31
 0.0
 100
@@ -11843,7 +11857,7 @@ TEXT
   5
 156
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11853,23 +11867,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-190.625
+239.375
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-4
+5
   7
 TDFA
  72
 1
  11
-190.625
+239.375
  21
-5.0
+292.0
  31
 0.0
 100
@@ -11887,7 +11901,7 @@ TEXT
   5
 157
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11899,7 +11913,7 @@ AcDbText
  10
 239.375
  20
-292.0
+5.0
  30
 0.0
  40
@@ -11913,7 +11927,7 @@ TDFA
  11
 239.375
  21
-292.0
+5.0
  31
 0.0
 100
@@ -11931,7 +11945,7 @@ TEXT
   5
 158
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11941,23 +11955,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-239.375
+288.125
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-5
+6
   7
 TDFA
  72
 1
  11
-239.375
+288.125
  21
-5.0
+292.0
  31
 0.0
 100
@@ -11975,7 +11989,7 @@ TEXT
   5
 159
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -11987,7 +12001,7 @@ AcDbText
  10
 288.125
  20
-292.0
+5.0
  30
 0.0
  40
@@ -12001,7 +12015,7 @@ TDFA
  11
 288.125
  21
-292.0
+5.0
  31
 0.0
 100
@@ -12019,7 +12033,7 @@ TEXT
   5
 15A
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12029,23 +12043,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-288.125
+336.875
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-6
+7
   7
 TDFA
  72
 1
  11
-288.125
+336.875
  21
-5.0
+292.0
  31
 0.0
 100
@@ -12063,7 +12077,7 @@ TEXT
   5
 15B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12075,7 +12089,7 @@ AcDbText
  10
 336.875
  20
-292.0
+5.0
  30
 0.0
  40
@@ -12089,7 +12103,7 @@ TDFA
  11
 336.875
  21
-292.0
+5.0
  31
 0.0
 100
@@ -12107,7 +12121,7 @@ TEXT
   5
 15C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12117,23 +12131,23 @@ TITLEBLOCK
 100
 AcDbText
  10
-336.875
+385.625
  20
-5.0
+292.0
  30
 0.0
  40
 3.5
   1
-7
+8
   7
 TDFA
  72
 1
  11
-336.875
+385.625
  21
-5.0
+292.0
  31
 0.0
 100
@@ -12151,7 +12165,7 @@ TEXT
   5
 15D
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12163,7 +12177,7 @@ AcDbText
  10
 385.625
  20
-292.0
+5.0
  30
 0.0
  40
@@ -12177,7 +12191,7 @@ TDFA
  11
 385.625
  21
-292.0
+5.0
  31
 0.0
 100
@@ -12195,51 +12209,7 @@ TEXT
   5
 15E
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-100
-AcDbText
- 10
-385.625
- 20
-5.0
- 30
-0.0
- 40
-3.5
-  1
-8
-  7
-TDFA
- 72
-1
- 11
-385.625
- 21
-5.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-1001
-TDFA
-1000
-origin=sheet.zone_label
-1000
-type=text
-  0
-TEXT
-  5
-15F
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12281,9 +12251,9 @@ type=text
   0
 TEXT
   5
-160
+15F
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12325,9 +12295,9 @@ type=text
   0
 TEXT
   5
-161
+160
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12369,9 +12339,9 @@ type=text
   0
 TEXT
   5
-162
+161
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12413,9 +12383,9 @@ type=text
   0
 TEXT
   5
-163
+162
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12457,9 +12427,9 @@ type=text
   0
 TEXT
   5
-164
+163
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12501,9 +12471,9 @@ type=text
   0
 LINE
   5
-165
+164
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12526,6 +12496,42 @@ AcDbLine
 20.0
  21
 240.833
+ 31
+0.0
+1001
+TDFA
+1000
+origin=sheet.zone_mark
+1000
+type=line
+  0
+LINE
+  5
+165
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+  6
+CONTINUOUS
+370
+35
+100
+AcDbLine
+ 10
+0.0
+ 20
+194.667
+ 30
+0.0
+ 11
+20.0
+ 21
+194.667
  31
 0.0
 1001
@@ -12539,7 +12545,7 @@ LINE
   5
 166
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12555,13 +12561,13 @@ AcDbLine
  10
 0.0
  20
-194.667
+148.5
  30
 0.0
  11
 20.0
  21
-194.667
+148.5
  31
 0.0
 1001
@@ -12575,7 +12581,7 @@ LINE
   5
 167
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12591,13 +12597,13 @@ AcDbLine
  10
 0.0
  20
-148.5
+102.333
  30
 0.0
  11
 20.0
  21
-148.5
+102.333
  31
 0.0
 1001
@@ -12611,7 +12617,7 @@ LINE
   5
 168
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12627,13 +12633,13 @@ AcDbLine
  10
 0.0
  20
-102.333
+56.167
  30
 0.0
  11
 20.0
  21
-102.333
+56.167
  31
 0.0
 1001
@@ -12647,7 +12653,7 @@ LINE
   5
 169
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12661,15 +12667,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-0.0
+68.75
  20
-56.167
+297.0
  30
 0.0
  11
-20.0
+68.75
  21
-56.167
+287.0
  31
 0.0
 1001
@@ -12683,7 +12689,7 @@ LINE
   5
 16A
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12699,13 +12705,13 @@ AcDbLine
  10
 68.75
  20
-297.0
+0.0
  30
 0.0
  11
 68.75
  21
-287.0
+10.0
  31
 0.0
 1001
@@ -12719,7 +12725,7 @@ LINE
   5
 16B
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12733,15 +12739,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-68.75
+117.5
  20
-0.0
+297.0
  30
 0.0
  11
-68.75
+117.5
  21
-10.0
+287.0
  31
 0.0
 1001
@@ -12755,7 +12761,7 @@ LINE
   5
 16C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12771,13 +12777,13 @@ AcDbLine
  10
 117.5
  20
-297.0
+0.0
  30
 0.0
  11
 117.5
  21
-287.0
+10.0
  31
 0.0
 1001
@@ -12791,7 +12797,7 @@ LINE
   5
 16D
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12805,15 +12811,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-117.5
+166.25
  20
-0.0
+297.0
  30
 0.0
  11
-117.5
+166.25
  21
-10.0
+287.0
  31
 0.0
 1001
@@ -12827,7 +12833,7 @@ LINE
   5
 16E
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12843,13 +12849,13 @@ AcDbLine
  10
 166.25
  20
-297.0
+0.0
  30
 0.0
  11
 166.25
  21
-287.0
+10.0
  31
 0.0
 1001
@@ -12863,7 +12869,7 @@ LINE
   5
 16F
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12877,15 +12883,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-166.25
+215.0
  20
-0.0
+297.0
  30
 0.0
  11
-166.25
+215.0
  21
-10.0
+287.0
  31
 0.0
 1001
@@ -12899,7 +12905,7 @@ LINE
   5
 170
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12915,13 +12921,13 @@ AcDbLine
  10
 215.0
  20
-297.0
+0.0
  30
 0.0
  11
 215.0
  21
-287.0
+10.0
  31
 0.0
 1001
@@ -12935,7 +12941,7 @@ LINE
   5
 171
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12949,15 +12955,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-215.0
+263.75
  20
-0.0
+297.0
  30
 0.0
  11
-215.0
+263.75
  21
-10.0
+287.0
  31
 0.0
 1001
@@ -12971,7 +12977,7 @@ LINE
   5
 172
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -12987,13 +12993,13 @@ AcDbLine
  10
 263.75
  20
-297.0
+0.0
  30
 0.0
  11
 263.75
  21
-287.0
+10.0
  31
 0.0
 1001
@@ -13007,7 +13013,7 @@ LINE
   5
 173
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13021,15 +13027,15 @@ CONTINUOUS
 100
 AcDbLine
  10
-263.75
+312.5
  20
-0.0
+297.0
  30
 0.0
  11
-263.75
+312.5
  21
-10.0
+287.0
  31
 0.0
 1001
@@ -13043,7 +13049,7 @@ LINE
   5
 174
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13059,13 +13065,13 @@ AcDbLine
  10
 312.5
  20
-297.0
+0.0
  30
 0.0
  11
 312.5
  21
-287.0
+10.0
  31
 0.0
 1001
@@ -13079,43 +13085,7 @@ LINE
   5
 175
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-  6
-CONTINUOUS
-370
-35
-100
-AcDbLine
- 10
-312.5
- 20
-0.0
- 30
-0.0
- 11
-312.5
- 21
-10.0
- 31
-0.0
-1001
-TDFA
-1000
-origin=sheet.zone_mark
-1000
-type=line
-  0
-LINE
-  5
-176
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13149,9 +13119,9 @@ type=line
   0
 LINE
   5
-177
+176
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13185,9 +13155,9 @@ type=line
   0
 LINE
   5
-178
+177
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13210,6 +13180,42 @@ AcDbLine
 410.0
  21
 240.833
+ 31
+0.0
+1001
+TDFA
+1000
+origin=sheet.zone_mark
+1000
+type=line
+  0
+LINE
+  5
+178
+330
+FA
+100
+AcDbEntity
+ 67
+1
+  8
+TITLEBLOCK
+  6
+CONTINUOUS
+370
+35
+100
+AcDbLine
+ 10
+420.0
+ 20
+194.667
+ 30
+0.0
+ 11
+410.0
+ 21
+194.667
  31
 0.0
 1001
@@ -13223,7 +13229,7 @@ LINE
   5
 179
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13239,13 +13245,13 @@ AcDbLine
  10
 420.0
  20
-194.667
+148.5
  30
 0.0
  11
 410.0
  21
-194.667
+148.5
  31
 0.0
 1001
@@ -13259,7 +13265,7 @@ LINE
   5
 17A
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13275,13 +13281,13 @@ AcDbLine
  10
 420.0
  20
-148.5
+102.333
  30
 0.0
  11
 410.0
  21
-148.5
+102.333
  31
 0.0
 1001
@@ -13295,43 +13301,7 @@ LINE
   5
 17B
 330
-FB
-100
-AcDbEntity
- 67
-1
-  8
-TITLEBLOCK
-  6
-CONTINUOUS
-370
-35
-100
-AcDbLine
- 10
-420.0
- 20
-102.333
- 30
-0.0
- 11
-410.0
- 21
-102.333
- 31
-0.0
-1001
-TDFA
-1000
-origin=sheet.zone_mark
-1000
-type=line
-  0
-LINE
-  5
-17C
-330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13365,9 +13335,9 @@ type=line
   0
 VIEWPORT
   5
-17D
+17C
 330
-FB
+FA
 100
 AcDbEntity
  67
@@ -13573,7 +13543,7 @@ Model
   3
 SHEET
 350
-FE
+FD
   0
 DICTIONARY
   5
@@ -14439,7 +14409,7 @@ CREATED_BY_EZDXF
   3
 WRITTEN_BY_EZDXF
 350
-180
+17F
   0
 DICTIONARYVAR
   5
@@ -21005,7 +20975,7 @@ strokes_ogs.tif
   0
 LAYOUT
   5
-FE
+FD
 330
 D
 100
@@ -21127,13 +21097,13 @@ SHEET
  76
 1
 330
-FB
+FA
 331
-FF
+FE
   0
 DICTIONARYVAR
   5
-180
+17F
 330
 2D
 100

@@ -370,17 +370,17 @@
     },
     {
       "type": "text",
-      "origin": "sheet.status_watermark",
-      "layer": "WATERMARK",
+      "origin": "sheet.status_line",
+      "layer": "TITLEBLOCK",
       "anchor_mm": [
-        215,
-        148.5
+        22,
+        285
       ],
-      "text": "DRAFT",
-      "height_mm": 20,
-      "rotation_deg": 35.385,
-      "align_h": "centre",
-      "align_v": "middle"
+      "text": "DRAFT – NOT FOR CONSTRUCTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0,
+      "align_h": "left",
+      "align_v": "baseline"
     },
     {
       "type": "line",
@@ -977,6 +977,6 @@
   "origin_prefixes": [
     "sheet.title_block",
     "sheet.revision_register",
-    "sheet.status_watermark"
+    "sheet.status_line"
   ]
 }

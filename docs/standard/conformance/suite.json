@@ -806,7 +806,7 @@
       "clauses": [
         "14.9"
       ],
-      "description": "The DRAFT watermark: height 20, turned along the diagonal."
+      "description": "The DRAFT status line: height 2.5 at the bottom-left of the drawing space, with its reserved region."
     },
     {
       "id": "tb-status-concept",
@@ -815,7 +815,7 @@
       "clauses": [
         "14.9"
       ],
-      "description": "The CONCEPT watermark."
+      "description": "The CONCEPT status line."
     },
     {
       "id": "tb-status-issued",
@@ -825,7 +825,66 @@
         "14.9.1",
         "14.8"
       ],
-      "description": "Issued: the latest entry has an approver and a valid seal."
+      "description": "Issued: the latest entry has an approver and a valid seal; no status line."
+    },
+    {
+      "id": "status-draft-notes-strip",
+      "kind": "document",
+      "dir": "documents/status-draft-notes-strip",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "The DRAFT line stands on the last line of the notes strip; no title block."
+    },
+    {
+      "id": "status-concept-notes-strip-title-block",
+      "kind": "document",
+      "dir": "documents/status-concept-notes-strip-title-block",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "The CONCEPT line stands on the last line of the notes strip, above the title block."
+    },
+    {
+      "id": "status-issued-notes-strip-title-block",
+      "kind": "document",
+      "dir": "documents/status-issued-notes-strip-title-block",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "Issued shows no status line; the strip keeps the whole of its height for the notes."
+    },
+    {
+      "id": "status-concept-title-block",
+      "kind": "document",
+      "dir": "documents/status-concept-title-block",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "The CONCEPT line at the bottom-left; the title block stands at the bottom-right."
+    },
+    {
+      "id": "err-status-notes-strip-no-room",
+      "kind": "document",
+      "dir": "documents/err-status-notes-strip-no-room",
+      "clauses": [
+        "14.9",
+        "14.10.1"
+      ],
+      "description": "A notes strip too low for its heading and the status line."
+    },
+    {
+      "id": "err-status-frame-over-line",
+      "kind": "document",
+      "dir": "documents/err-status-frame-over-line",
+      "clauses": [
+        "14.9",
+        "7.2.4"
+      ],
+      "description": "A frame over the region of the status line."
     },
     {
       "id": "tb-scale-as-shown",

@@ -1,11 +1,10 @@
-"""Title block, revision register, status watermark, notes and references (clause 14)."""
+"""Title block, revision register, status line, notes and references (clause 14)."""
 
 from __future__ import annotations
 
 import datetime
 import hashlib
 import json
-import math
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -16,10 +15,10 @@ from .entities import _line, _polyline, _text
 from .numbers import FIT_TOL_MM
 from .rules import text_width
 
-WATERMARK_LAYER = "WATERMARK"
 FURNITURE_LAYER = "TITLEBLOCK"
-STATUS_TEXT = {"draft": "DRAFT", "concept": "CONCEPT - NOT FOR CONSTRUCTION", "issued": "ISSUED FOR CONSTRUCTION"}
-WATERMARK_HEIGHT = 20
+# 14.9: the status line. `issued` has none.
+STATUS_LINE = {"draft": "DRAFT \u2013 NOT FOR CONSTRUCTION", "concept": "CONCEPT \u2013 NOT FOR CONSTRUCTION"}
+STATUS_HEIGHT, STATUS_PAD, STATUS_REGION_HEIGHT = 2.5, 2.0, 6.5
 STRIP_PAD, STRIP_HEADING, STRIP_ITEM, STRIP_PITCH = 2.0, 3.5, 2.5, 4.5
 GIVEN = ("owner", "title", "supplementary_title", "document_number", "document_type", "language", "department")
 
@@ -206,9 +205,8 @@ def plan(doc, size, ds, group, scales, base_dir) -> Plan:
         latest = entries[-1] if entries else None
         if block is None or latest is None or not latest.get("app", "").strip() or "seal" not in latest or latest["seal"] != seals(entries)[-1]:
             out.errors.add("14.9")
-    if status:
-        angle = math.degrees(math.atan2(ds[3], ds[2]))
-        out.entities.append(_text("sheet.status_watermark", WATERMARK_LAYER, (ds[0] + ds[2] / 2, ds[1] + ds[3] / 2), STATUS_TEXT[status], WATERMARK_HEIGHT, angle, "centre", "middle"))
+    if status in STATUS_LINE:
+        _status_line(doc, status, ds, out)
     regions = out.regions
     for i in range(len(regions)):
         if not _inside(regions[i][1], ds):
@@ -217,6 +215,26 @@ def plan(doc, size, ds, group, scales, base_dir) -> Plan:
             if _overlap(regions[i][1], regions[j][1]):
                 out.errors.add("14.5")
     return out
+
+
+def _status_line(doc, status, ds, out: Plan):
+    """14.9: one line of small text, in the notes strip when there is one, else in a reserved region."""
+    text = STATUS_LINE[status]
+    notes = next((s["id"] for s in doc.get("strips", []) if s["content"] == "notes"), None)
+    rect = next((r for name, r in out.regions if name == notes), None) if notes is not None else None
+    if notes is not None and rect is None:
+        return  # the strip has an error of its own
+    if rect is not None:
+        x, y, w, h = rect
+        anchor = (x + STATUS_PAD, y + h - STATUS_PAD)
+        if not _fits(text, STATUS_HEIGHT, w - 2 * STATUS_PAD):
+            out.errors.add("14.6")
+    else:
+        width = text_width(text, STATUS_HEIGHT)
+        region = (ds[0], ds[1] + ds[3] - STATUS_REGION_HEIGHT, width + 2 * STATUS_PAD, STATUS_REGION_HEIGHT)
+        out.regions.append(("status", region))
+        anchor = (ds[0] + STATUS_PAD, ds[1] + ds[3] - STATUS_PAD)
+    out.entities.append(_text("sheet.status_line", FURNITURE_LAYER, anchor, text, STATUS_HEIGHT, 0, "left", "baseline"))
 
 
 def _derived(doc, entries, size, scales):
@@ -328,12 +346,16 @@ def _strip_entities(doc, strip, rect, group, out: Plan):
     origin, lay = f"sheet.{kind}", FURNITURE_LAYER
     out.entities.append(_polyline(origin, lay, [(x, y), (x + w, y), (x + w, y + h), (x, y + h)], True, "continuous", group["thin"]))
     out.entities.append(_text(origin, lay, (x + STRIP_PAD, y + STRIP_PAD + STRIP_HEADING), kind.upper(), STRIP_HEADING, 0, "left", "baseline"))
+    # 14.10.1: the status line stands on the last line of a notes strip
+    reserve = STRIP_PITCH if kind == "notes" and doc.get("status") in STATUS_LINE else 0.0
+    if reserve and y + STRIP_PAD + STRIP_HEADING > y + h - STRIP_PAD - reserve + FIT_TOL_MM:
+        out.errors.add("14.6")
     if kind == "notes":
         items = [f"{i}. {n}" for i, n in enumerate(doc.get("notes", []), start=1)]
     else:
         items = ["  ".join(p for p in (r["document_number"], r.get("revision", ""), r["title"]) if p) for r in doc.get("references", [])]
     for i, text in enumerate(items, start=1):
         baseline = y + STRIP_PAD + STRIP_HEADING + STRIP_PITCH * i
-        if baseline > y + h - STRIP_PAD + FIT_TOL_MM or not _fits(text, STRIP_ITEM, w - 2 * STRIP_PAD):
+        if baseline > y + h - STRIP_PAD - reserve + FIT_TOL_MM or not _fits(text, STRIP_ITEM, w - 2 * STRIP_PAD):
             out.errors.add("14.6")
         out.entities.append(_text(origin, lay, (x + STRIP_PAD, baseline), text, STRIP_ITEM, 0, "left", "baseline"))

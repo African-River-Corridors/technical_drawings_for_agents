@@ -275,7 +275,7 @@ It has 6 zones down a height of 277 mm. Each zone is 46.1666... mm, which rounds
 
 **6.6 Reserved regions.** A **reserved region** is a rectangle inside the drawing space, with its
 position and size in paper millimetres. The title block, the revision register, and the strips for the
-notes and the references are reserved regions (clause 14.5).
+notes and the references are reserved regions (clause 14.5). So is the region of the status line, when the document has one (clause 14.9).
 
 **6.6.1** The drawing space minus the reserved regions is the space where viewports may sit
 (clause 7.2).
@@ -702,7 +702,6 @@ line type and the colour then come from this table.
 | HATCH | thin | continuous | 9 | Hatch and fill line work |
 | GRID | thin | chain | 194 | Setting-out grid |
 | TITLEBLOCK | thick | continuous | 54 | Border, title block, revision register and other sheet furniture |
-| WATERMARK | thick | continuous | 1 | Status watermark |
 | FDN | thick | continuous | 34 | Foundations, slabs and plinths |
 | EQUIP | thick | continuous | 5 | Equipment outlines |
 | NOZZLE | thin | continuous | 4 | Nozzles and connection points |
@@ -745,7 +744,7 @@ print colour.*
 clause 8.5.2 gives it. In a DXF, an entity takes the colour of its layer. No two standard layers
 have the same number. The number 7 is shown by CAD programs as black or white, whichever is seen
 against the background.
-*Basis: house choice H-26. The numbers are 19 different numbers chosen so that the layers differ in
+*Basis: house choice H-26. The numbers are 18 different numbers chosen so that the layers differ in
 the common CAD palette. The standard makes no other claim about the hue.*
 
 **8.6.3** A custom layer MUST NOT have the same colour number as any other layer declared in the
@@ -1256,7 +1255,7 @@ inside the frame of its viewport (clause 7.7.1).
 
 ## 14 Sheet furniture
 
-This clause defines the title block, the revision register, the status and its watermark, and the notes
+This clause defines the title block, the revision register, the status and its status line, and the notes
 and references strips. The border, the zone marks, the scale bar and the north arrow are in clauses 6.3 to
 6.5, 7.9 and 7.10.
 
@@ -1362,7 +1361,7 @@ on top of the block, with the same width and the same left edge (clause 14.7.3).
 edges of the **strip area** (clause 14.10). The block, the register and the strips are the **reserved
 regions** of clause 6.6. A region MUST lie inside the drawing space, and two regions MUST NOT overlap
 (clause 5.7). (A strip is cut from the strip area, so it never overlaps the block or the register.) Otherwise that is error `14.5`. A frame of a viewport MUST NOT overlap a region
-(clause 7.2.4).
+(clause 7.2.4). The region of the status line (clause 14.9) is a region of this clause.
 
 **14.6 Fit.** The text of a cell, of the register, and of a strip MUST fit. The width of a text is
 that of clause 11.7.1. It fits a cell when its width is not more than the width of the cell less
@@ -1416,11 +1415,28 @@ Its SHA-256 (worked with `shasum -a 256`, not with this tool) is
 `{"app":"EF","by":"AB","chk":"CD","date":"2026-02-10","description":"ADDED SECTION B","index":1,"prior_digest":"sha256:ed44c9a928dd581e3690279a741e60bb1f6e24bebd2cccc91e74350f6b4b08e2","rev":"B"}`.
 Its seal is `sha256:9c7d9dbafc4b64d2a751dd8dbdc019805c4c0bea682349f5d1bb0ff3cb788404`.
 
-**14.9 Status.** The member `status` is `draft`, `concept` or `issued`. A document with a status has a
-**watermark**: a `text` of the height 20 on the layer `WATERMARK` (declared without the document
-declaring it), `centre` and `middle` at the middle of the drawing space, with the paper rotation of the
-diagonal of the drawing space, `atan2(h, w)` in degrees (counter-clockwise, from lower left to upper
-right). The text is `DRAFT`, `CONCEPT - NOT FOR CONSTRUCTION` or `ISSUED FOR CONSTRUCTION`.
+**14.9 Status.** The member `status` is `draft`, `concept` or `issued`. A document with the status `draft` or `concept` has one **status line**: a
+`text` of the height 2.5 (the normal text of clause 11.2), on the layer `TITLEBLOCK`, `left` and
+`baseline`, with no rotation. Its text is `DRAFT – NOT FOR CONSTRUCTION` or
+`CONCEPT – NOT FOR CONSTRUCTION`, with the en dash `–` (U+2013) between two spaces. A document with the
+status `issued` has no status line. There is no mark across the drawing. The status line is the last
+entity of the sheet furniture, and its origin is `sheet.status_line`. Its place is fixed:
+
+- **With a strip for the notes** (clause 14.10): in that strip, at `(x + 2, y + h - 2)`, where `(x, y, w, h)`
+  is the strip. The text MUST fit the width `w - 2 * 2` (clause 14.6), or that is error `14.6`. The last
+  line of the strip is the status line, so the notes stop one pitch short of it (clause 14.10.1).
+- **Otherwise**: just inside the border, above the bottom-left corner of the drawing space `(x, y, w, h)`,
+  at `(x + 2, y + h - 2)`. The status line then has a **reserved region** of its own (clause 6.6),
+  `(x, y + h - 6.5, t + 4, 6.5)`, where `t` is the width of the text (clause 11.7.1). The region follows
+  clauses 14.5 and 7.2.4: it MUST lie inside the drawing space and overlap no other region (error `14.5`),
+  and no frame of a viewport may overlap it (error `7.2.4`). With a title block the status cell of the
+  block still shows the status (clause 14.4.2), and the status line is also drawn.
+
+Because the line lies in a strip or in a reserved region, it never crosses a viewport, the text of a strip,
+the title block or the revision register.
+*Basis: house choice H-53. A mark across the drawing covers notes and dimensions. One small line states
+the status and covers nothing. The size 2.5 mm is the normal text height, and the place is the same in
+every implementation.*
 
 **14.9.1 The gate.** A document with the status `issued` MUST have a `title_block`, and `revisions` with
 at least one entry, and the last entry MUST have a non-empty `app` and a valid `seal`. Otherwise that
@@ -1439,11 +1455,11 @@ or the same `content`, or a `notes` or a `references` member without a strip of 
 left, baseline. Item `i`, counting from 1, has height 2.5 and is at `(x + 2, y + 2 + 3.5 + 4.5 * i)`, left,
 baseline. A note is `i. text`. A reference is the non-empty parts of `document_number`, `revision` and
 `title`, joined by two spaces. Every item MUST fit (clause 14.6, with `2 * 2` in place of `2 * pad_mm`),
-and the last baseline MUST be at most `y + h - 2`. Otherwise that is error `14.6`.
+and the last baseline MUST be at most `y + h - 2`, or at most `y + h - 2 - 4.5` in a notes strip of a document with a status line (clause 14.9), and the heading too in that case. Otherwise that is error `14.6`.
 *Basis: house choice H-52 for these sizes.*
 
 **14.11 Entities.** The parts of the furniture are entities of the normalised content, on the layer
-`TITLEBLOCK` (the watermark on `WATERMARK`):
+`TITLEBLOCK`:
 
 - `sheet.title_block`: a `line` for each line of the template, with the width of its role (clause 8.2),
   `continuous`; for each cell a `text` for its label, at `(x + pad, y + pad + label_height)`, left,
@@ -1454,7 +1470,7 @@ and the last baseline MUST be at most `y + h - 2`. Otherwise that is error `14.6
   `(column x + pad, row bottom - pad)` for each non-empty cell of the header and of the rows.
 - `sheet.notes` and `sheet.references`: a closed `polyline` of the strip (thin) and the texts of clause
   14.10.1.
-- `sheet.status_watermark`: the watermark of clause 14.9.
+- `sheet.status_line`: the status line of clause 14.9.
 
 
 ## 15 Output mapping
@@ -1581,7 +1597,7 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 **16.5 Origins.** The `origin` of an entity is one of:
 
 - `sheet.border`, `sheet.centring_mark`, `sheet.zone_mark`, `sheet.zone_label`;
-- `sheet.title_block`, `sheet.revision_register`, `sheet.notes`, `sheet.references` and `sheet.status_watermark` (clause 14.11);
+- `sheet.title_block`, `sheet.revision_register`, `sheet.notes`, `sheet.references` and `sheet.status_line` (clause 14.11);
 - `viewport.<id>`, for an entity written in the viewport `<id>`;
 - `viewport.<id>.hatch`, for the marks of the hatches of that viewport (clause 10.5.8);
 - `viewport.<id>.dimension` and `viewport.<id>.leader`, for the parts of the dimensions and leaders of that viewport (clause 12.7);

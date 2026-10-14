@@ -14,20 +14,6 @@
   ],
   "entities": [
     {
-      "type": "text",
-      "origin": "sheet.status_watermark",
-      "layer": "WATERMARK",
-      "anchor_mm": [
-        215,
-        148.5
-      ],
-      "text": "ISSUED FOR CONSTRUCTION",
-      "height_mm": 20,
-      "rotation_deg": 35.385,
-      "align_h": "centre",
-      "align_v": "middle"
-    },
-    {
       "type": "line",
       "origin": "sheet.title_block",
       "layer": "TITLEBLOCK",
@@ -620,7 +606,6 @@
     }
   ],
   "origin_prefixes": [
-    "sheet.status_watermark",
     "sheet.title_block"
   ]
 }

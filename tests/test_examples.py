@@ -6,7 +6,6 @@ from __future__ import annotations
 import importlib
 import io
 import json
-import math
 import re
 from pathlib import Path
 
@@ -146,11 +145,12 @@ def test_section_the_title_block_and_register():
     assert "APPROVED BY" in cells and not any(t in cells for t in ("EF", "CD"))  # no approver was written by anyone
 
 
-def test_section_the_watermark_and_the_notes_strip():
+def test_section_the_status_line_and_the_notes_strip():
     n = norm("EXA-CIV-SEC-001")
-    mark = next(e for e in n["entities"] if e["origin"] == "sheet.status_watermark")
-    assert mark["text"] == "CONCEPT - NOT FOR CONSTRUCTION" and mark["anchor_mm"] == [215, 148.5]
-    assert mark["rotation_deg"] == pytest.approx(math.degrees(math.atan2(277, 390)), abs=0.001)
+    assert not any(e["origin"] == "sheet.status_watermark" for e in n["entities"])
+    line = next(e for e in n["entities"] if e["origin"] == "sheet.status_line")
+    # the notes strip is x 340..410, y 10..221: the line is on its last line, below the notes
+    assert line["text"] == "CONCEPT \u2013 NOT FOR CONSTRUCTION" and line["anchor_mm"] == [342, 219] and line["height_mm"] == 2.5
     note = next(e for e in n["entities"] if e["origin"] == "sheet.notes" and e.get("text", "").startswith("1."))
     assert note["anchor_mm"] == [342, 20]
 
