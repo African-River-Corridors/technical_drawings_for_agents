@@ -396,6 +396,7 @@ def test_help_lists_build_and_every_other_verb():
         "component",
         "layout",
         "dimensions",
+        "doc",
         "build",
     }
 
