@@ -24,7 +24,7 @@
         "xmax_m": 10,
         "ymax_m": 10
       },
-      "scale": "fit",
+      "scale": 100,
       "entities": []
     }
   ]

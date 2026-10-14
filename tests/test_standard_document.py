@@ -231,9 +231,18 @@ def test_clause_7_3_1_preferred_ratios():
     assert ", ".join(str(n) for n in expected) in STANDARD
 
 
-@pytest.mark.parametrize("rejected", [25, 250, 1250, 2500, 25000])
-def test_clause_7_3_2_these_ratios_are_not_preferred(rejected):
-    assert rejected not in ISO_PREFERRED_DENOMINATORS
+HOUSE = (25, 250, 1250, 2500)
+ALL_SCALES = tuple(sorted((*ISO_PREFERRED_DENOMINATORS, *HOUSE)))
+
+
+def test_clause_7_3_4_house_ratios():
+    assert ", ".join(str(n) for n in HOUSE) in STANDARD
+    assert not set(HOUSE) & set(ISO_PREFERRED_DENOMINATORS)
+
+
+@pytest.mark.parametrize("rejected", [3, 300, 25000, 25001])
+def test_clause_7_3_2_these_ratios_are_errors(rejected):
+    assert rejected not in ALL_SCALES
 
 
 @pytest.mark.parametrize(
@@ -262,7 +271,7 @@ def test_clause_7_4_4_model_up_goes_left_at_90_degrees():
 
 
 def first_fitting(window, rotation, frame=FRAME):
-    for n in ISO_PREFERRED_DENOMINATORS:
+    for n in ALL_SCALES:
         if viewport((0, 0, *window), n, rotation, frame).fits:
             return n
     return None
@@ -276,6 +285,8 @@ def first_fitting(window, rotation, frame=FRAME):
         ((100, 300), 90, 500, (600, 200), False),
         ((100, 300), 90, 1000, (300, 100), True),
         ((390, 277), 0, 1000, (390, 277), True),
+        ((80, 20), 0, 200, (400, 100), False),
+        ((80, 20), 0, 250, (320, 80), True),
     ],
 )
 def test_clause_7_5_3_fit_table(window, rotation, denominator, needed, fits):
@@ -288,6 +299,7 @@ def test_clause_7_5_3_fit_table(window, rotation, denominator, needed, fits):
 def test_clause_7_5_2_declared_fit_picks_the_largest_preferred_scale():
     assert first_fitting((200, 100), 0) == 1000
     assert first_fitting((100, 300), 90) == 1000
+    assert first_fitting((80, 20), 0) == 250  # the 80 m barge on A3
 
 
 def test_clause_7_5_the_error_names_the_next_scale_that_fits():

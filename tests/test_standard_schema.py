@@ -134,9 +134,12 @@ def test_every_error_of_an_invalid_example_can_be_traced_to_a_clause(name):
 def test_scale_values_equal_the_preferred_ratios_of_clause_7_3_1():
     enum = SCHEMA["$defs"]["viewport"]["properties"]["scale"]["enum"]
     preferred = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000]
-    assert enum == [*preferred, "fit"]
+    house = [25, 250, 1250, 2500]
+    assert enum == [*sorted(preferred + house), "fit"]
     listed = re.search(r"^> (1, 2, 5, .*100000)$", STANDARD, re.MULTILINE).group(1)
     assert [int(x) for x in listed.split(",")] == preferred
+    listed_house = re.search(r"^> (25, 250, 1250, 2500)$", STANDARD, re.MULTILINE).group(1)
+    assert [int(x) for x in listed_house.split(",")] == house
 
 
 def test_text_heights_equal_clause_11_2():

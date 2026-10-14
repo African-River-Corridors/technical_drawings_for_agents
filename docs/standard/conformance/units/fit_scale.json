@@ -42,6 +42,26 @@
       "expected": 1000
     },
     {
+      "id": "barge-80x20",
+      "clause": "7.5.3",
+      "input": {
+        "frame": {
+          "x_mm": 20,
+          "y_mm": 10,
+          "width_mm": 390,
+          "height_mm": 277
+        },
+        "window": {
+          "xmin_m": 0,
+          "ymin_m": 0,
+          "xmax_m": 80,
+          "ymax_m": 20
+        },
+        "rotation_deg": 0
+      },
+      "expected": 250
+    },
+    {
       "id": "small",
       "clause": "7.5.2",
       "input": {

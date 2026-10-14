@@ -255,6 +255,26 @@
       "description": "A window that fills the frame exactly fits."
     },
     {
+      "id": "fit-barge-250",
+      "kind": "document",
+      "dir": "documents/fit-barge-250",
+      "clauses": [
+        "7.3.4",
+        "7.5.2",
+        "7.5.3"
+      ],
+      "description": "An 80 m barge on A3: declared fit picks the house ratio 1:250."
+    },
+    {
+      "id": "scale-house-1250",
+      "kind": "document",
+      "dir": "documents/scale-house-1250",
+      "clauses": [
+        "7.3.4"
+      ],
+      "description": "A house ratio set directly: 400 x 200 m at 1:1250 is 320 x 160 mm."
+    },
+    {
       "id": "err-window-too-big",
       "kind": "document",
       "dir": "documents/err-window-too-big",
@@ -619,14 +639,14 @@
       "description": "A custom layer takes the colour number 7 of OUTLINE."
     },
     {
-      "id": "err-non-preferred-scale",
+      "id": "err-scale-300",
       "kind": "document",
-      "dir": "documents/err-non-preferred-scale",
+      "dir": "documents/err-scale-300",
       "clauses": [
         "7.3.2",
         "18.6"
       ],
-      "description": "1:1250 is not a preferred ratio (schema error, reported by its x-clause)."
+      "description": "1:300 is in neither list of ratios (schema error, reported by its x-clause)."
     },
     {
       "id": "err-no-viewports",

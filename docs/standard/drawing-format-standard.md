@@ -295,7 +295,7 @@ A viewport has these members. The schema is final for names.
 | `id` | A name for the viewport. It is unique in the document (clause 9.8). |
 | `frame` | The frame on paper: `x_mm`, `y_mm` (the top-left corner), `width_mm`, `height_mm`. |
 | `window` | The model window: `xmin_m`, `ymin_m`, `xmax_m`, `ymax_m`. |
-| `scale` | A preferred ratio, or `fit` (clause 7.3 and 7.5). |
+| `scale` | A preferred or house ratio, or `fit` (clause 7.3 and 7.5). |
 | `rotation_deg` | How far the model turns on the paper, in degrees (clause 7.4). Default 0. |
 | `scale_bar` | An optional scale bar (clause 7.9). |
 | `north` | An optional north arrow (clause 7.10). |
@@ -325,14 +325,23 @@ is 1000 / N millimetres on paper. The value 1000 / N is called `mm_per_m`.
 been replaced by a later part. The check must find the part that now holds the list of scales. The
 extension up to 1:100000 follows the rule that the list may be extended by powers of ten.*
 
-**7.3.2** A scale that is neither a preferred ratio nor `fit` is error `7.3.2`. This includes
-1:25, 1:250 and 1:1250. Enlargement ratios such as 2:1 are not part of version 1.0.
-*Basis: house choice H-10. The standard has one list of scales, so every scale on a sheet can be set
-on a scale rule.*
+**7.3.2** A scale that is not in the list of clause 7.3.1, not in the list of clause 7.3.4, and not
+`fit`, is error `7.3.2`. This includes 1:300. Enlargement ratios such as 2:1 are not part of
+version 1.0.
+*Basis: house choice H-10. The standard has two short lists of scales, so every scale on a sheet can
+be set on a scale rule.*
 
 **7.3.3** A viewport has one scale. Both axes use it. A view with exaggerated height is not
 possible in version 1.0.
 *Basis: house choice H-11. A wrong exaggeration is worse than none.*
+
+**7.3.4 House ratios.** The **house ratios** are those where N is one of:
+
+> 25, 250, 1250, 2500
+
+They are allowed in the same way as the preferred ratios, and give no warning.
+*Basis: house choice H-37. A barge of 80 m must fit an A3 sheet at 1:250, and site plans use 1:1250
+and 1:2500. These four ratios are not in the ISO list.*
 
 **7.4 The map from model to paper.** Let the window be `xmin, ymin, xmax, ymax`, the frame be
 `x, y, w, h`, the scale denominator be N and the rotation be theta.
@@ -374,11 +383,11 @@ bounding box has the paper size:
 
 where `w_m` and `h_m` are the window width and height in metres. The window **fits** when both
 numbers are not larger than the frame width and height (clause 5.7). If it does not fit, that is
-error `7.5.1`. The message MUST name the largest preferred scale that does fit, if there is one.
+error `7.5.1`. The message MUST name the largest scale of clauses 7.3.1 and 7.3.4 that does fit, if there is one.
 
-**7.5.2** Declared fit. When `scale` is `fit`, the scale is the first preferred ratio in the list
-of clause 7.3.1, from 1:1 upward, at which the window fits. The first ratio is the largest scale.
-If no preferred ratio fits, that is error `7.5.2`. The resolved ratio, not the word `fit`, is the
+**7.5.2** Declared fit. When `scale` is `fit`, the scale is the first ratio, from 1:1 upward, in the
+lists of clauses 7.3.1 and 7.3.4 taken together, at which the window fits. The first ratio is the
+largest scale. If no ratio fits, that is error `7.5.2`. The resolved ratio, not the word `fit`, is the
 scale of the viewport in every later rule and every output.
 
 **7.5.3** Worked numbers. Frame 390 x 277 mm.
@@ -390,6 +399,8 @@ scale of the viewport in every later rule and every output.
 | 200 x 100 | 0 | fit | | 1:1000 |
 | 100 x 300 | 90 | 1:500 | 600 x 200 mm | error 7.5.1 |
 | 100 x 300 | 90 | fit | 300 x 100 mm at 1:1000 | 1:1000 |
+| 80 x 20 | 0 | 1:200 | 400 x 100 mm | error 7.5.1; the message names 1:250 |
+| 80 x 20 | 0 | fit | 320 x 80 mm at 1:250 | 1:250 |
 | 390 x 277 | 0 | 1:1000 | 390 x 277 mm | fits exactly |
 
 **7.6 Window.**
