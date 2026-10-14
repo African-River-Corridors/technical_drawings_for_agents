@@ -1120,10 +1120,6 @@ function to each `input`, and the result MUST equal `expected`. A result that is
 **17.7 Passing.** An implementation passes when it passes every case of `suite.json`. The suite
 version is the version of the standard.
 
-## 17 Conformance
-
-Written in ticket #10.
-
 ## 18 Versions and the schema
 
 **18.1 Version.** The standard has a version of the form `MAJOR.MINOR`. A drawing document names the
