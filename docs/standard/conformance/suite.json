@@ -127,6 +127,16 @@
       "description": "A custom layer gives its role and line type."
     },
     {
+      "id": "ent-text-right-edge",
+      "kind": "document",
+      "dir": "documents/ent-text-right-edge",
+      "clauses": [
+        "7.7.2",
+        "11.7.2"
+      ],
+      "description": "Right-aligned text whose anchor is 5 mm from the frame edge: the box ends at the anchor and fits."
+    },
+    {
       "id": "sheet-a0-landscape",
       "kind": "document",
       "dir": "documents/sheet-a0-landscape",
@@ -549,6 +559,26 @@
       "description": "A line end that lands 500 mm to the right of the centre, outside the frame."
     },
     {
+      "id": "err-text-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-text-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "11.7.2"
+      ],
+      "description": "Left-aligned text: the anchor is inside the frame, but the box (21.79 mm wide) ends at 426.79 mm, beyond 410 mm."
+    },
+    {
+      "id": "err-text-character",
+      "kind": "document",
+      "dir": "documents/err-text-character",
+      "clauses": [
+        "11.3.3",
+        "18.6"
+      ],
+      "description": "A character outside the set of clause 11.6.2 (schema error)."
+    },
+    {
       "id": "err-duplicate-id",
       "kind": "document",
       "dir": "documents/err-duplicate-id",
@@ -776,6 +806,24 @@
         "7.10.4"
       ],
       "description": "Unit checks of north_deg."
+    },
+    {
+      "id": "unit-text_width",
+      "kind": "unit",
+      "file": "units/text_width.json",
+      "clauses": [
+        "11.7.4"
+      ],
+      "description": "Unit checks of text_width."
+    },
+    {
+      "id": "unit-text_box",
+      "kind": "unit",
+      "file": "units/text_box.json",
+      "clauses": [
+        "11.7.4"
+      ],
+      "description": "Unit checks of text_box."
     },
     {
       "id": "unit-line_pattern",

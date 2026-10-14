@@ -155,6 +155,12 @@
     "message_contains": "",
     "clause": "11.2"
   },
+  "text-outside-character-set": {
+    "path": "/viewports/0/entities/0/text",
+    "keyword": "pattern",
+    "message_contains": "",
+    "clause": "11.3.3"
+  },
   "text-with-line-break": {
     "path": "/viewports/0/entities/0/text",
     "keyword": "pattern",

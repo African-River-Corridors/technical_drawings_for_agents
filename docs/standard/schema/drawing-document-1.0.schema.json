@@ -707,8 +707,9 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 200,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]+$",
-          "x-clause": "11.3.3"
+          "pattern": "^[ -~°±×µ²³·–Ø]+$",
+          "x-clause": "11.3.3",
+          "description": "One line, in the character set of clause 11.6.2."
         },
         "height_mm": {
           "enum": [

@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 9, 16, 17 and 18 are complete in this draft. Clauses 10 and 11 are partly written. Clauses 12 to 15 are headings only. Each heading
+**0.4** Clauses 1 to 9, 11, 16, 17 and 18 are complete in this draft. Clause 10 is partly written. Clauses 12 to 15 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -420,7 +420,7 @@ viewport MUST lie inside the frame (clause 5.7). Error `7.7.1`.
 - an `arc`: its two end points, and each of the paper angles 0, 90, 180 and 270 degrees at which the
   arc has a point, as the extreme point at that angle;
 - a `hatch`: the points of its boundary;
-- a `text`: its anchor point only (clause 11.5).
+- a `text`: the four corners of its text box (clause 11.7.2).
 
 **7.8 Scale and the sheet.** The viewport scale is the only scale a rule refers to. The title block
 scale field is derived from the viewport scales (clause 14). It is never typed.
@@ -838,8 +838,7 @@ of the entity, or of its layer (clause 8.7). A hatch entity has no `line_type`.
 
 ## 11 Lettering and font
 
-This clause is **partly written**. The font, its width table and the text box (clauses 11.6 and
-11.7) wait for the licence check of ticket #8. See clause 11.6.
+This clause defines the text entity, the font, its width table and the text box.
 
 **11.1 Style.** Text is drawn in upright ISO 3098 lettering of type B. In type B the line thickness
 of a letter is one tenth of the letter height. Inclined lettering is not part of version 1.0.
@@ -867,23 +866,62 @@ horizontal. The default is 0. It is rounded as clause 5.4 says. Text with rotati
 right on the sheet, whatever the rotation of the viewport.
 *Basis: house choice H-28. A rotated map keeps its labels readable.*
 
-**11.3.3** The text is one line. It holds no line break. An empty text is error `11.3.3`.
+**11.3.3** The text is one line. It holds no line break. It is not empty. Every character of it is in
+the character set of clause 11.6.2. Any other text is error `11.3.3`.
 
 **11.4 Scale.** The height of text is a paper value. The viewport scale never changes it
 (clause 7.4.1).
 
-**11.5 Containment.** Until clause 11.7 is written, the test of clause 7.7.1 is made on the anchor
-point of a text entity only.
-*Basis: house choice H-29. The text box needs the width table, and the width table needs the
-font.*
+**11.5 Containment.** The test of clause 7.7.1 uses the four corners of the text box (clause 11.7.2).
 
-**11.6 Font.** No font is adopted yet. The candidate was checked and not adopted. The reason is
-recorded on ticket #8 and in the maintainer report. The text of clause 11.6 will name one font,
-its source, its licence and the place where the licence text is kept.
+**11.6 Font.** The standard has one font.
 
-**11.7 Width table and text box.** To be written with clause 11.6. The text box of a text entity
-will be a rectangle. Its height will be the capital height `h`. Its width will be the sum of the
-character widths of the width table, times `h`.
+**11.6.1** The font is **Barlow Semi Condensed Regular**, version 1.408, designed by Jeremy Tribby.
+The file is `src/technical_drawings_for_agents/data/fonts/BarlowSemiCondensed-Regular.ttf`. Its
+SHA-256 is `e8c7242f612b13d026e18a94b63b0fd079e91a3faf009d1b6981dbb5f16d1153`. Its licence is the SIL
+Open Font License 1.1. The licence text is in `OFL.txt` in the same directory. The source and the
+check of the licence text are in `SOURCE.txt` there. The licence allows embedding the font in a PDF
+and shipping it with this tool. The font file permits embedding (its OS/2 `fsType` is 0).
+
+**11.6.2 Character set.** Text may use these characters: U+0020 to U+007E, and `°` (U+00B0), `±`
+(U+00B1), `×` (U+00D7), `µ` (U+00B5), `²` (U+00B2), `³` (U+00B3), `·` (U+00B7), `–` (U+2013) and
+`Ø` (U+00D8). `Ø` is the diameter sign.
+
+**11.6.3** The font is **close to ISO 3098 lettering. It is not certified as ISO 3098 lettering.**
+*Basis: house choice H-38. The font has a uniform stroke of 0.101 of the capital height, where ISO
+3098 type B has 0.1. Its capital widths are the nearest of the open fonts compared. The comparison is
+in the checklist, part C. It uses the type B widths of checklist item P-14, which are pending ISO
+check.*
+
+**11.6.4** The font is embedded in every PDF. It is named in the DXF (clause 15).
+
+**11.7 Width table and text box.**
+
+**11.7.1 Width table.** The width table is `docs/standard/data/font-widths.json`. It gives the
+**advance** of each character of clause 11.6.2, in font units (1000 to the em). The cap height of the
+font is 700 font units. The width of a text of height `h` mm is the sum of the advances of its
+characters, times `h`, divided by 700, rounded as clause 5.4 says. The font is used with no kerning,
+no ligatures and no extra spacing.
+*Basis: house choice H-39. A width that ignores kerning is the same in every implementation.*
+
+**11.7.2 Text box.** The **text box** is a rectangle with the width `W` of clause 11.7.1 and the
+height `h`. The box stands on the baseline: descenders are not part of it. Let the anchor be `(ax,
+ay)` on the paper. Before rotation, the left edge is at `ax` for `left`, at `ax - W/2` for `centre`,
+and at `ax - W` for `right`. The baseline is at `ay` for `baseline`, at `ay + h/2` for `middle`, and at
+`ay + h` for `top`. The corners, in this order, are `(x0, y0)`, `(x0 + W, y0)`, `(x0 + W, y0 - h)` and
+`(x0, y0 - h)`, where `x0` is the left edge and `y0` is the baseline.
+*Basis: house choice H-29. The box is the capital box. It is simple, and it is the same in every
+implementation.*
+
+
+**11.7.3 Rotation.** The corners then turn counter-clockwise on the sheet by the rotation `rho` about
+the anchor: for an offset `(dx, dy)` from the anchor the new offset is
+`(dx cos(rho) + dy sin(rho), -dx sin(rho) + dy cos(rho))`. Clause 5.6.1 applies to sine and cosine.
+
+**11.7.4** Worked numbers. The advances of `A` and `B` are 508 and 538 font units. The text `AB` at
+height 7 mm has the width `(508 + 538) * 7 / 700 = 10.46` mm. At anchor `(100, 50)`, `left`,
+`baseline`, rotation 0, the corners are `(100, 50)`, `(110.46, 50)`, `(110.46, 43)` and `(100, 43)`.
+With `centre` the left edge is at 94.77. With `right` it is at 89.54. With `top` the baseline is at 57.
 
 ## 12 Dimensions and leaders
 
@@ -1074,8 +1112,8 @@ follows this standard by passing every case.
 
 **17.3 The runner contract.** A **runner** is a program of the implementation. It is given the path
 of one drawing document. It writes one result, as JSON, to its standard output. It MUST NOT read
-anything except that file, `docs/standard/schema/drawing-document-1.0.schema.json`, and
-`docs/standard/data/line-styles.json`. It MUST NOT use the network or the clock. It MUST give the same
+anything except that file, `docs/standard/schema/drawing-document-1.0.schema.json`,
+`docs/standard/data/line-styles.json` and `docs/standard/data/font-widths.json`. It MUST NOT use the network or the clock. It MUST give the same
 result each time.
 
 - If the document has no errors, the result is
@@ -1113,6 +1151,8 @@ function to each `input`, and the result MUST equal `expected`. A result that is
 | `north_deg` | `rotation_deg`, `model_bearing_deg` | a number (clause 7.10.2) |
 | `line_pattern` | `line_type`, `width_mm` | a list of numbers (clause 8.4.1) |
 | `arc_sweep` | `start_deg`, `end_deg` | a number, or an error `9.5.1` (clause 9.5) |
+| `text_width` | `text`, `height_mm` | the width in mm, rounded (clause 11.7.1) |
+| `text_box` | `anchor_mm`, `text`, `height_mm`, `rotation_deg`, `align_h`, `align_v` | the four corners, each `[x_mm, y_mm]`, rounded (clauses 11.7.2 and 11.7.3) |
 
 `frame`, `window` and the other objects have the members of the drawing document (clause 7.1).
 

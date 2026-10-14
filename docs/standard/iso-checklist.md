@@ -29,6 +29,7 @@ look first. It is not evidence.
 | P-11 | ISO 128 or ISO 5457 (to be found) | to be confirmed | Line group by sheet size: A4 and A3 group 0.35, A2 and A1 group 0.5, A0 group 0.7. ISO may leave the group free. If it does, this item moves to the house choices | 8.2 | low | open |
 | P-12 | ISO 128 (the part for basic conventions for lines) | to be confirmed | Line types and numbers: continuous 01.1, dashed 02.1, long-dashed dotted ("chain") 04.1, long-dashed double-dotted ("chain double-dashed") 05.1. Pattern in units of line width d: dashed 12 dash, 3 gap; chain 24, 3, 0.5, 3; chain double-dashed 24, 3, 0.5, 3, 0.5, 3 | 8.4 | medium (the type numbers and the 0.5 dot are the least sure) | open |
 | P-13 | ISO 3098 (the part for the alphabet and the clause for type B) | to be confirmed | Type B lettering: line thickness d = h / 10. Upright and inclined (75 degrees) forms exist. The standard uses the upright form | 11.1 | medium | open |
+| P-14 | ISO 3098 (the part for type B lettering) | to be confirmed | Widths of the capital letters and digits of type B, in units of d = h / 10: A 7, B 6, C 6, D 6, E 5, F 5, G 6, H 6, I 1, J 5, K 6, L 5, M 7, N 6, O 6, P 6, Q 6, R 6, S 6, T 5, U 6, V 7, W 9, X 6, Y 7, Z 6, digits 6 (the digit 1: 4). Used only to compare candidate fonts | 11.6.3 | low (recalled, not read) | open |
 
 ## B House choices
 
@@ -74,3 +75,32 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-35 | Scale bar and north arrow entities, with thin lines | The lines match the thin lines of the drawing | 16.6.3, 16.6.4 |
 | H-36 | The sort key of the entity list | A total order that needs no locale and no string form of a number | 16.8 |
 | H-37 | House ratios 1:25, 1:250, 1:1250 and 1:2500, allowed without warning and used by `fit` | A barge of 80 m must fit an A3 sheet at 1:250. Site plans use 1:1250 and 1:2500 | 7.3.4 |
+| H-38 | The font is Barlow Semi Condensed Regular: close to ISO 3098 lettering, not certified | An open-licence (SIL OFL 1.1) font that is nearest to ISO 3098 type B of those compared. osifont, which is drawn for ISO 3098, was not adopted (part C) | 11.6.3 |
+| H-39 | Text width uses the advance widths only: no kerning, no ligatures, no spacing | A width that ignores kerning is the same in every implementation | 11.7.1 |
+
+## C Font decision (ticket #8)
+
+Decision of the maintainer, 2026-10-14: adopt an open-licence sans-serif under the SIL Open Font
+License 1.1 as a house choice, "close to ISO 3098 lettering, not certified".
+
+Candidates, all from the Google Fonts repository (OFL 1.1). Measured with the glyph outlines of the
+font files. The width error is the mean difference, over the capitals and the digits, between the ink
+width of the glyph (as a multiple of 0.1 of the capital height) and the type B widths of item P-14.
+A smaller error is nearer. The stem is the width of a stem as a fraction of the capital height. ISO
+3098 type B has 0.100.
+
+| Font | Stem / capital height | Mean width error |
+|---|---|---|
+| **Barlow Semi Condensed Regular** | **0.101** | **0.48** |
+| Barlow Semi Condensed Light | 0.076 | 0.62 |
+| Barlow Regular | 0.101 | 0.74 |
+| Barlow Light | 0.076 | 0.67 |
+| IBM Plex Sans Condensed Regular, Light | not comparable (serifed `I`) | 0.73, 0.58 |
+| Share Tech Regular | not comparable (serifed `I`) | 0.94 |
+
+Barlow Semi Condensed Regular has the stem of type B and the smallest width error. Its licence text
+was compared with the official text at openfontlicense.org and is the same. The font file allows
+embedding (`fsType` 0). The comparison depends on P-14, which was recalled and not read from ISO 3098.
+
+**osifont** (GPL or LGPL with font exception) is drawn for ISO 3098. It was not adopted because of
+doubt about its licence in an Apache-2.0 tool (see ticket #8). It can be revisited after a legal view.
