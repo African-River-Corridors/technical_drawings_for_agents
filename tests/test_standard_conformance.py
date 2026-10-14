@@ -40,7 +40,7 @@ STYLES = json.loads((STD / "data" / "line-styles.json").read_text(encoding="utf-
 DOC_VALIDATOR = jsonschema.Draft202012Validator(SCHEMA)
 
 SCHEMA_ERROR_CASES = {
-    "err-non-preferred-scale": "7.3.2",
+    "err-scale-300": "7.3.2",
     "err-no-viewports": "7.1.1",
     "err-version-not-formed": "18.1",
     "err-sheet-size": "6.1.3",
@@ -408,7 +408,7 @@ def test_unit_fit_scale_agrees_with_reference(check):
     w, f = i["window"], i["frame"]
     frame = SheetFrame(f["x_mm"], f["y_mm"], f["width_mm"], f["height_mm"])
     got = None
-    for n in ISO_PREFERRED_DENOMINATORS:
+    for n in sorted((*ISO_PREFERRED_DENOMINATORS, 25, 250, 1250, 2500)):
         vp = Viewport((w["xmin_m"], w["ymin_m"], w["xmax_m"], w["ymax_m"]), PlotScale(n), frame, i["rotation_deg"])
         if vp.fits:
             got = n

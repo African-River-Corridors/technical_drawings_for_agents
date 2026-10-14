@@ -16,7 +16,7 @@
   "viewports": [
     {
       "id": "main",
-      "scale": 20,
+      "scale": 100,
       "frame": {
         "x_mm": 20,
         "y_mm": 20,

@@ -46,7 +46,7 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-07 | Fit tolerance 1e-6 mm, on fit tests only | Absorbs binary rounding and nothing more | 5.7 |
 | H-08 | Either orientation for every size | The standard sets no rule that ties a size to one orientation | 6.2 |
 | H-09 | The border line is centred on the border rectangle | The simplest rule. The line is at most 1.4 mm wide | 6.3.3 |
-| H-10 | Only preferred ratios and `fit`. No 1:25, 1:250, 1:1250, and no enlargements | One list of scales, so every scale can be set on a scale rule | 7.3.2 |
+| H-10 | Only the ISO preferred ratios, the four house ratios and `fit`. Any other ratio, and any enlargement, is an error | Two short lists of scales, so every scale can be set on a scale rule | 7.3.2 |
 | H-11 | One scale per viewport, no exaggerated height | A wrong exaggeration is worse than none | 7.3.3 |
 | H-12 | The scale applies to coordinates only, never to widths or text | A scale on the whole drawing would also scale every line width by 1/N | 7.4.1 |
 | H-13 | An entity outside its viewport frame is an error | A stray point is a loud error, never a silent clip | 7.7 |
@@ -73,3 +73,4 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-34 | Exact sheet furniture entities: border, centring marks, zone marks and labels | Two implementations must write the same entities. The values come from clause 6 | 16.6.1 |
 | H-35 | Scale bar and north arrow entities, with thin lines | The lines match the thin lines of the drawing | 16.6.3, 16.6.4 |
 | H-36 | The sort key of the entity list | A total order that needs no locale and no string form of a number | 16.8 |
+| H-37 | House ratios 1:25, 1:250, 1:1250 and 1:2500, allowed without warning and used by `fit` | A barge of 80 m must fit an A3 sheet at 1:250. Site plans use 1:1250 and 1:2500 | 7.3.4 |
