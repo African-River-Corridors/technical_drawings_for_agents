@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from . import dimensions, rules, symbols
+from . import dimensions, furniture, rules, symbols
 from .numbers import mm, round_half_even
 from .pipeline import run_file
 
@@ -101,6 +101,11 @@ def run_unit(function: str, i: dict):
         return rules.text_width(i["text"], i["height_mm"])
     if function == "text_box":
         return rules.rounded_box(i["anchor_mm"], i["text"], i["height_mm"], i["rotation_deg"], i["align_h"], i["align_v"])
+    if function == "revision_seals":
+        return furniture.seals(i["entries"])
+    if function == "register_layout":
+        n, m = i["entries"], i["max_rows"]
+        return {"rows": min(n, m), "omitted": 0 if n <= m else n - (m - 1)}
     if function == "symbol_point":
         sym = {"units": i["units"], "insertion": i["insertion"]}
         pl = symbols.Placement({"position_m": i["position_m"], "rotation_deg": i["rotation_deg"], "scale": i["scale"]}, sym, i["denominator"])

@@ -47,6 +47,9 @@ SCHEMA_ERROR_CASES = {
     "err-text-character": "11.3.3",
     "err-sym-lib-path-and-symbols": "13.3.1",
     "err-sym-scale-zero": "13.3.2",
+    "err-tb-both-sources": "14.2",
+    "err-status-unknown": "14.9",
+    "err-reg-seal-form": "14.7.6",
 }
 
 
