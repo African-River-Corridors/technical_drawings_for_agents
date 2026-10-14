@@ -6,6 +6,7 @@ import math
 from dataclasses import dataclass, field
 from decimal import ROUND_HALF_EVEN, Decimal
 
+from . import symbols
 from .entities import _arc, _hatch, _line, _text
 from .numbers import cos_sin
 from .rules import arc_sweep, text_box
@@ -19,6 +20,8 @@ class Context:
     width: float  # width of the role of the entity (8.7)
     origin: str  # viewport.<id>
     index: dict = field(default_factory=dict)  # entity id -> entity of the viewport
+    libs: dict = field(default_factory=dict)  # symbol libraries (13.1)
+    denominator: int = 1
 
 
 @dataclass
@@ -69,6 +72,13 @@ def model_point(spec, ctx):
     if e is None:
         return None
     at, t = spec["at"], e["type"]
+    if t == "symbol":
+        symbol = ctx.libs.get(e["library"], {}).get(e["symbol"])
+        if symbol is None or not at.startswith("port:"):
+            return None
+        return symbols.port_point(e, symbol, at[5:], ctx.denominator)
+    if at.startswith("port:"):
+        return None
     if t in ("line", "centre_line") and at in ("start", "end"):
         return tuple(e["from_m"] if at == "start" else e["to_m"])
     if t == "polyline" and at.startswith("vertex:"):
@@ -282,6 +292,12 @@ def part_points(entity) -> list[tuple[float, float]]:
         return [tuple(p) for p in entity["boundary_mm"]]
     if t == "text":
         return [tuple(p) for p in text_box(entity["anchor_mm"], entity["text"], entity["height_mm"], entity["rotation_deg"], entity["align_h"], entity["align_v"])]
+    if t == "polyline":
+        return [tuple(p) for p in entity["points_mm"]]
+    if t == "circle":
+        cx, cy = entity["centre_mm"]
+        r = entity["radius_mm"]
+        return [(cx - r, cy), (cx + r, cy), (cx, cy - r), (cx, cy + r)]
     if t == "arc":
         cx, cy = entity["centre_mm"]
         r, start, sweep = entity["radius_mm"], entity["start_deg"], entity["sweep_deg"]

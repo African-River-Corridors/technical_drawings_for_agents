@@ -11,6 +11,7 @@ import jsonschema
 
 from . import resources
 from . import dimensions as dims
+from . import symbols
 from .entities import _hatch, _line, _polyline, _pt, _text
 from .hatch import marks as hatch_marks
 from .hatch import unit_mm
@@ -240,7 +241,7 @@ def _points_for_containment(entity, mapper, rotation, resolved_text_box):
 # the checks
 
 
-def check_document(doc) -> set[str]:
+def check_document(doc, base_dir=None) -> set[str]:
     """All error clauses of a document that passed the schema (4.6)."""
     errors: set[str] = set()
     major, minor = (int(p) for p in doc["standard_version"].split("."))
@@ -254,6 +255,8 @@ def check_document(doc) -> set[str]:
         errors.add("8.2.2")
     _, _, ds = drawing_space(size, orientation)
     declared, _ = _layer_table(doc, errors)
+    libs, lib_errors = symbols.load_libraries(doc, base_dir)
+    errors |= lib_errors
 
     ids: list[str] = []
     frames = []
@@ -291,8 +294,19 @@ def check_document(doc) -> set[str]:
             if "id" in e:
                 ids.append(e["id"])
             _check_entity(e, declared, mapper, rotation, frame, errors)
+            if e["type"] == "symbol":
+                symbol = libs.get(e["library"], {}).get(e["symbol"])
+                if symbol is None:
+                    if not lib_errors:
+                        errors.add("13.3.2")
+                elif mapper is not None and e["layer"] in declared:
+                    sctx = _symbol_context(e, declared, group, mapper, rotation, vp["id"], denominator)
+                    parts_, errs = symbols.parts(e, symbol, sctx)
+                    errors |= errs
+                    if any(not _inside_frame(px, py, frame) for part in parts_ for px, py in dims.part_points(part)):
+                        errors.add("7.7.1")
             if mapper is not None and e["type"] in ("dimension", "leader") and e["layer"] in declared:
-                res = _dimension_result(e, declared, group, mapper, rotation, vp["id"], index)
+                res = _dimension_result(e, declared, group, mapper, rotation, vp["id"], index, libs, denominator)
                 errors |= res.errors
                 if not res.errors:
                     if any(not _inside_frame(px, py, frame) for part in res.entities for px, py in dims.part_points(part)):
@@ -318,9 +332,14 @@ def _inside_frame(px, py, frame) -> bool:
     return x - FIT_TOL_MM <= px <= x + w + FIT_TOL_MM and y - FIT_TOL_MM <= py <= y + h + FIT_TOL_MM
 
 
-def _dimension_result(e, declared, group, mapper, rotation, vid, index):
+def _symbol_context(e, declared, group, mapper, rotation, vid, denominator):
+    role, line_type, _ = declared[e["layer"]]
+    return symbols.SymbolContext(mapper, rotation, denominator, group, role, line_type, f"viewport.{vid}")
+
+
+def _dimension_result(e, declared, group, mapper, rotation, vid, index, libs, denominator):
     role = e.get("role") or declared[e["layer"]][0]
-    ctx = dims.Context(mapper, rotation, unit_mm(group["thin"]), group[role], f"viewport.{vid}", index)
+    ctx = dims.Context(mapper, rotation, unit_mm(group["thin"]), group[role], f"viewport.{vid}", index, libs, denominator)
     return dims.dimension(e, ctx) if e["type"] == "dimension" else dims.leader(e, ctx)
 
 
@@ -471,7 +490,7 @@ def sort_key(e):
     )
 
 
-def normalise_document(doc) -> dict:
+def normalise_document(doc, base_dir=None) -> dict:
     """Normalised content of a document that has no errors (16)."""
     sheet = doc["sheet"]
     size, orientation = sheet["size"], sheet.get("orientation", "landscape")
@@ -479,6 +498,7 @@ def normalise_document(doc) -> dict:
     group_name, group = line_group(size)
     errors: set[str] = set()
     declared, _ = _layer_table(doc, errors)
+    libs, _ = symbols.load_libraries(doc, base_dir)
     entities = _sheet_furniture(size, orientation, group)
     viewports = []
     for vp in doc["viewports"]:
@@ -491,7 +511,10 @@ def normalise_document(doc) -> dict:
         index = {e["id"]: e for e in vp["entities"] if "id" in e}
         for e in vp["entities"]:
             if e["type"] in ("dimension", "leader"):
-                entities += _dimension_result(e, declared, group, mapper, rotation, vp["id"], index).entities
+                entities += _dimension_result(e, declared, group, mapper, rotation, vp["id"], index, libs, denominator).entities
+            elif e["type"] == "symbol":
+                sctx = _symbol_context(e, declared, group, mapper, rotation, vp["id"], denominator)
+                entities += symbols.parts(e, libs[e["library"]][e["symbol"]], sctx)[0]
         if "scale_bar" in vp:
             entities += _scale_bar(vp["id"], frame, denominator, vp["scale_bar"], group["thin"])
         if "north" in vp:
@@ -528,8 +551,8 @@ def _viewport_entities(vp, declared, group, mapper, rotation):
     origin = f"viewport.{vp['id']}"
     for e in vp["entities"]:
         t = e["type"]
-        if t in ("dimension", "leader"):
-            continue  # their parts are made by dimensions.py (12.7)
+        if t in ("dimension", "leader", "symbol"):
+            continue  # their parts are made by dimensions.py and symbols.py (12.7, 13.7)
         line_type, width = entity_style(e, declared, group)
         id_ = e.get("id")
         if t in ("line", "centre_line"):
@@ -559,7 +582,7 @@ def _viewport_entities(vp, declared, group, mapper, rotation):
 # the runner (17.3)
 
 
-def run_document(doc_or_text) -> dict:
+def run_document(doc_or_text, base_dir=None) -> dict:
     """The result of one document: ``{"result": "ok", "normalised": ...}`` or an error list."""
     if isinstance(doc_or_text, str):
         doc, errors = parse_text(doc_or_text)
@@ -569,10 +592,10 @@ def run_document(doc_or_text) -> dict:
         doc = doc_or_text
     errors = schema_errors(doc)
     if not errors:
-        errors = check_document(doc)
+        errors = check_document(doc, base_dir)
     if errors:
         return _error_result(errors)
-    return {"result": "ok", "normalised": normalise_document(doc)}
+    return {"result": "ok", "normalised": normalise_document(doc, base_dir)}
 
 
 def _error_result(errors) -> dict:
@@ -580,7 +603,7 @@ def _error_result(errors) -> dict:
 
 
 def run_file(path) -> dict:
-    return run_document(Path(path).read_text(encoding="utf-8"))
+    return run_document(Path(path).read_text(encoding="utf-8"), Path(path).resolve().parent)
 
 
 __all__ = ["ALL_RATIOS", "check_document", "normalise_document", "parse_text", "run_document", "run_file", "schema_errors", "sort_key"]

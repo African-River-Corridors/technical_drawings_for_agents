@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 12 and 15 to 18 are complete in this draft. Clauses 13 and 14 are headings only. Each heading
+**0.4** Clauses 1 to 13 and 15 to 18 are complete in this draft. Clause 14 is a heading only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -78,7 +78,7 @@ final word on member names. This clause says what each member means.
 | `revisions` | The revision register. | 14 |
 | `status` | The drawing status: draft, concept or issued. | 14 |
 | `layers` | The layers in use. | 8 |
-| `symbol_libraries` | References to symbol libraries. | 13 |
+| `symbol_libraries` | The symbol libraries that the document uses: files, or libraries written in the document. | 13 |
 | `viewports` | One or more viewports, each with its entities. | 7, 9 to 13 |
 | `notes`, `references` | The notes table and the references table. | 14 |
 
@@ -770,16 +770,16 @@ and 1.4 on A0.
 ## 9 Geometry
 
 This clause defines the entities of the core schema: line, polyline, arc, circle, centre line, and
-text (clause 11). Hatches are in clause 10. Dimensions and leaders are in clause 12. Symbols are
-written later.
+text (clause 11). Hatches are in clause 10. Dimensions and leaders are in clause 12. Symbols are in
+clause 13.
 
 **9.1 Entities.** Each viewport holds a list `entities`. Every entity is an object with a member
 `type`. The types are `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch`, `text`,
-`dimension` and `leader`. Any other type is error `9.1`.
+`dimension`, `leader` and `symbol`. Any other type is error `9.1`.
 
 **9.1.1 Common members.** Every entity has `type` and `layer`. The layer name MUST be declared
 (clause 8.5.1). An entity MAY have `id` (clause 9.8). Every entity except `text` MAY have `role`
-(clause 8.5.6). Every entity except `text`, `hatch`, `dimension` and `leader` MAY have `line_type`.
+(clause 8.5.6). Every entity except `text`, `hatch`, `dimension`, `leader` and `symbol` MAY have `line_type`.
 
 **9.2 Points.** A point is a list of two numbers: x then y. A point in model space is in metres. The
 member name ends in `_m`.
@@ -1160,7 +1160,99 @@ model lengths 1.254, 1.254 and 1.254 with `decimals` 2 have texts 1.25, 1.25 and
 
 ## 13 Symbols
 
-Written in a later ticket.
+A **symbol** is a piece of drawing that is made once and placed many times. Symbols are kept in
+**libraries**. A drawing places a symbol with a `symbol` entity, which gives the place, the turn and the
+size. The drawing stays short.
+
+**13.1 Libraries.** A **library** is a set of symbols. It is either a **library file**, or it is written in
+the document. The library file is JSON. Its schema is
+`docs/standard/schema/symbol-library-1.0.schema.json`. A library that does not follow its schema, or
+that breaks a rule of clause 13.2, is error `13.1`. A library file that cannot be read is also error
+`13.1`.
+
+**13.2 The symbol.** A library holds `symbols`, an object. Each member is the **identifier** of a symbol
+(clause 9.8 form), and its value is a symbol with these members:
+
+| Member | Meaning |
+|---|---|
+| `units` | `paper_mm` or `model_m` (clause 13.2.1). |
+| `insertion` | The point `[x, y]` of the symbol that is put at the place of the insert. Default `[0, 0]`. |
+| `geometry` | A list of parts: `line`, `polyline`, `arc`, `circle` and `hatch` (clause 13.2.2). |
+| `ports` | Connection points: a list of `{id, at, direction_deg}` (clause 13.2.3). Optional. |
+| `label_slot` | Where the label goes (clause 13.5). Optional. |
+
+**13.2.1 Units.** In a symbol, every length has the unit that `units` names. Its names carry no unit
+ending. This is the one place where a number does not name its unit (clause 4.5). A symbol with
+`paper_mm` is drawn at the same size on the paper at every scale. A symbol with `model_m` is a real
+size, and is drawn at the scale of the viewport. The axes are those of model space: +x to the right, +y
+up (clause 5.1).
+*Basis: house choice H-47. Equipment is a real size. A valve or a pump on a diagram is a sign.*
+
+**13.2.2 Parts.** A part has the members of the entity of the same name (clause 9), with these names for
+the numbers, and no `layer`, no `id`:
+
+| Part | Members |
+|---|---|
+| `line` | `from`, `to` |
+| `polyline` | `points`, `closed` |
+| `arc` | `centre`, `radius`, `start_deg`, `end_deg` |
+| `circle` | `centre`, `radius` |
+| `hatch` | `boundary`, `pattern`. The pattern MUST be `solid`. No holes. |
+
+A part MAY have `role` and, except for a `hatch`, `line_type`. A part with none takes the role and the
+line type of the layer of the insert (clause 13.3.2). The rules of clauses 9.3 to 9.6 and 10.3 apply to
+the parts. A symbol has at least one part.
+
+**13.2.3 Ports.** A **port** has an `id` (unique in the symbol), a point `at` and a direction
+`direction_deg` (a model angle, counter-clockwise from +x). A port is a place that other entities may
+point at (clause 13.6). Its direction is for tools that connect lines, and does not change the drawing.
+
+**13.3 Using symbols.**
+
+**13.3.1 Libraries in the document.** The member `symbol_libraries` is a list. Each item has an `id`
+and either `path` (the library file, a path that is relative to the folder of the document) or `symbols`
+(a library written in the document). An item with both, or with neither, is error `13.3.1`. Two items
+with the same `id` are error `13.3.1`.
+
+**13.3.2 The insert.** A `symbol` entity has `type`, `layer`, `library` (an `id` of clause 13.3.1),
+`symbol` (an identifier of the library), and `position_m` (a model point). It MAY have `id`,
+`rotation_deg` (a model angle, counter-clockwise, default 0), `scale` (a number more than 0, default
+1), `role` and `label`. An unknown library or symbol is error `13.3.2`. The layer MUST be declared
+(clause 8.5.1). The role of a part with none is the `role` of the entity, if it has one, else the role of
+the layer. The line type of a part with none is the line type of the layer.
+
+**13.4 Place, turn and size.** Let `q` be a point of the symbol, `q0` its insertion point, `P` the
+position, `rho` the rotation, `s` the scale and `N` the denominator of the scale of the viewport. The
+**size factor** is `f = s` for `model_m`, and `f = s * N / 1000` for `paper_mm`. Let `d = (q - q0) * f`.
+The model point is `P + (d.x cos(rho) - d.y sin(rho), d.x sin(rho) + d.y cos(rho))`. It is then mapped
+to the paper by clause 7.4. A radius is multiplied by `f`. The start and the end angle of an arc have
+`rho` added. The paper angle of an arc is as in clause 16.6.2.
+
+**13.4.1** Worked numbers. A `paper_mm` symbol with the circle of radius 2 at `(0, 0)`, inserted at
+`(5, 4)` with scale 1 in a viewport at 1:100, has `f = 100 / 1000 = 0.1` and a model radius of 0.2 m. On
+the paper its radius is `0.2 * 1000 / 100 = 2` mm. The same symbol at 1:200 has the model radius 0.4 m
+and the paper radius 2 mm. A `model_m` circle of radius 2 inserted at the same places has the paper radius
+20 mm at 1:100 and 10 mm at 1:200.
+
+**13.5 Label.** `label_slot` has `at` (a point), `align_h` (default `centre`), `align_v` (default
+`middle`) and `height_mm` (a height of clause 11.2, default 3.5). When the insert has a `label`, the
+label is a `text` entity with that text, the height, the alignments, the rotation 0 on the paper, and the
+anchor at the paper point of `at` (by clause 13.4). The label text follows clause 11.3.3.
+
+**13.5.1** A `label` on a symbol with no `label_slot` is error `13.5.1`.
+
+**13.6 Ports as references.** The place `port:<id>` of a point spec (clause 12.2) is the point of the
+port of the symbol that is placed by the insert with that `id`, by clause 13.4. A symbol insert has only
+this place. An unknown port is error `12.2`.
+
+**13.7 Entities.** The parts of a symbol insert, and its label, are entities of the normalised content:
+`line`, `polyline`, `arc`, `circle`, `hatch` (solid) and `text`. Their layer is the layer of the insert,
+their origin is `viewport.<id>.symbol`, and their widths follow clause 8.7. A `hatch` of a symbol has the
+angle 0. Every one of them MUST lie
+inside the frame of its viewport (clause 7.7.1).
+
+**13.8 DXF.** A symbol is written to the DXF as a block, and an insert as an INSERT (clause 15.4.10).
+
 
 ## 14 Sheet furniture
 
@@ -1233,7 +1325,15 @@ and `angle`. A viewport has `id` and `scale`.
 two viewports overlap, each viewport shows the content of the other in a CAD program. The writer MUST
 report a warning that names clause 15.4.9. The drawing is still written.
 
-**15.4.10 Read back.** The normalised content can be made again from the DXF. A paper-space entity is
+**15.4.10 Symbols.** Each symbol that a document uses, with each layer that it is inserted on, is written
+as a BLOCK named `TDFA_<library>_<symbol>@<layer>`. The block holds the parts, in the units of the symbol,
+on the layer of the insert, with the line type and weight of each part, and has the insertion point as
+its base point. Each insert is an INSERT in model space, with the position, the rotation, and the scale
+`f` (clause 13.4) in both directions. The label is a TEXT entity, as clause 15.4.4 says, with the
+extended data `part=symbol`. A symbol with `paper_mm` has `f = s * N / 1000`, so that it plots at its
+size on the paper.
+
+**15.4.11 Read back.** The normalised content can be made again from the DXF. A paper-space entity is
 read as it is, with the paper point `(x, H - y)`. A model-space entity is mapped with clause 7.4 and
 the view centre, scale and twist of the viewport named by its `vp`. A text height is `height * 1000 / N`.
 The conformance of the DXF output is tested in this way, with a reader that does not use the library
@@ -1260,7 +1360,8 @@ list of errors.
 
 **16.3 Entities: common members.** Every entity has `type`, `origin` and `layer`. It has `id` only if
 the document gave one. The types are `line`, `polyline`, `arc`, `circle`, `hatch` and `text`. A
-`dimension` and a `leader` do not appear: they are written as these types (clause 12.7).
+`dimension`, a `leader` and a `symbol` do not appear: they are written as these types (clauses 12.7
+and 13.7).
 `origin` says where the entity came from (clause 16.5).
 
 **16.4 Entities: members by type.** All lengths are paper millimetres, rounded to 3 places. All
@@ -1285,6 +1386,7 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 - `viewport.<id>`, for an entity written in the viewport `<id>`;
 - `viewport.<id>.hatch`, for the marks of the hatches of that viewport (clause 10.5.8);
 - `viewport.<id>.dimension` and `viewport.<id>.leader`, for the parts of the dimensions and leaders of that viewport (clause 12.7);
+- `viewport.<id>.symbol`, for the parts and labels of the symbols of that viewport (clause 13.7);
 - `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport.
 
 **16.6 How each source becomes entities.** Rounding (clause 5.5) is applied at the end, to each
@@ -1415,7 +1517,8 @@ follows this standard by passing every case.
 **17.3 The runner contract.** A **runner** is a program of the implementation. It is given the path
 of one drawing document. It writes one result, as JSON, to its standard output. It MUST NOT read
 anything except that file, `docs/standard/schema/drawing-document-1.0.schema.json`,
-`docs/standard/data/line-styles.json` and `docs/standard/data/font-widths.json`. It MUST NOT use the network or the clock. It MUST give the same
+`docs/standard/schema/symbol-library-1.0.schema.json`, `docs/standard/data/line-styles.json`,
+`docs/standard/data/font-widths.json`, `docs/standard/data/hatch-patterns.json` and the symbol library files that the document names (clause 13.3.1). It MUST NOT use the network or the clock. It MUST give the same
 result each time.
 
 - If the document has no errors, the result is
@@ -1457,6 +1560,7 @@ function to each `input`, and the result MUST equal `expected`. A result that is
 | `dimension_text` | `value_m`, `unit`, `decimals` | the text of a length dimension (clause 12.1.1) |
 | `reading_rotation` | `theta_deg` | the rotation of dimension text, in 0 up to 360 (clause 12.3.3) |
 | `chain_ok` | `parts`, `overall` (texts) | true or false (clause 12.8) |
+| `symbol_point` | `units`, `insertion`, `position_m`, `rotation_deg`, `scale`, `denominator`, `q` | the model point `[x_m, y_m]`, rounded to 6 places (clause 13.4) |
 | `text_box` | `anchor_mm`, `text`, `height_mm`, `rotation_deg`, `align_h`, `align_v` | the four corners, each `[x_mm, y_mm]`, rounded (clauses 11.7.2 and 11.7.3) |
 
 `frame`, `window` and the other objects have the members of the drawing document (clause 7.1).

@@ -500,6 +500,219 @@
       "description": "The leader and its label are at one point."
     },
     {
+      "id": "sym-paper-valve",
+      "kind": "document",
+      "dir": "documents/sym-paper-valve",
+      "clauses": [
+        "13.2",
+        "13.4",
+        "13.4.1",
+        "13.5"
+      ],
+      "description": "A paper_mm symbol with a label: 0.1 m per mm of symbol at 1:100 (worked in clause 13.4.1)."
+    },
+    {
+      "id": "sym-paper-scale-200",
+      "kind": "document",
+      "dir": "documents/sym-paper-scale-200",
+      "clauses": [
+        "13.4.1"
+      ],
+      "description": "The same symbol at 1:200: the same size on the paper."
+    },
+    {
+      "id": "sym-paper-twice",
+      "kind": "document",
+      "dir": "documents/sym-paper-twice",
+      "clauses": [
+        "13.3.2",
+        "13.4"
+      ],
+      "description": "Insert scale 2 doubles a paper_mm symbol on the paper."
+    },
+    {
+      "id": "sym-model-tank",
+      "kind": "document",
+      "dir": "documents/sym-model-tank",
+      "clauses": [
+        "13.2.1",
+        "13.4",
+        "13.4.1"
+      ],
+      "description": "A model_m symbol is a real size: 2 m wide, 20 mm on the paper at 1:100. Circle, arc, solid hatch and a default label slot."
+    },
+    {
+      "id": "sym-model-tank-200",
+      "kind": "document",
+      "dir": "documents/sym-model-tank-200",
+      "clauses": [
+        "13.4.1"
+      ],
+      "description": "The same model_m symbol at 1:200: half the size on the paper."
+    },
+    {
+      "id": "sym-rotate-90",
+      "kind": "document",
+      "dir": "documents/sym-rotate-90",
+      "clauses": [
+        "13.4"
+      ],
+      "description": "Rotation 90 about the insertion point; the label stays upright on the paper."
+    },
+    {
+      "id": "sym-rotate-30",
+      "kind": "document",
+      "dir": "documents/sym-rotate-30",
+      "clauses": [
+        "13.4"
+      ],
+      "description": "Rotation 30: values that are not exact in binary."
+    },
+    {
+      "id": "sym-rotated-viewport",
+      "kind": "document",
+      "dir": "documents/sym-rotated-viewport",
+      "clauses": [
+        "13.4",
+        "16.6.2"
+      ],
+      "description": "A viewport turned by 90: the symbols turn with the model; arc angles add 90."
+    },
+    {
+      "id": "sym-line-types-and-roles",
+      "kind": "document",
+      "dir": "documents/sym-line-types-and-roles",
+      "clauses": [
+        "13.2.2",
+        "13.3.2",
+        "8.7"
+      ],
+      "description": "A part takes the role and line type of the layer, or the role of the insert, unless it has its own."
+    },
+    {
+      "id": "sym-file-library",
+      "kind": "document",
+      "dir": "documents/sym-file-library",
+      "clauses": [
+        "13.1",
+        "13.3.1"
+      ],
+      "description": "The library is a file next to the document."
+    },
+    {
+      "id": "sym-ports",
+      "kind": "document",
+      "dir": "documents/sym-ports",
+      "clauses": [
+        "13.6",
+        "12.2"
+      ],
+      "description": "Dimensions and leaders point at ports: the gap between two valves is 4.00 - 0.6 m."
+    },
+    {
+      "id": "err-sym-unknown-symbol",
+      "kind": "document",
+      "dir": "documents/err-sym-unknown-symbol",
+      "clauses": [
+        "13.3.2"
+      ],
+      "description": "The library has no symbol of that name."
+    },
+    {
+      "id": "err-sym-unknown-library",
+      "kind": "document",
+      "dir": "documents/err-sym-unknown-library",
+      "clauses": [
+        "13.3.2"
+      ],
+      "description": "The document has no library of that id."
+    },
+    {
+      "id": "err-sym-lib-missing-file",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-missing-file",
+      "clauses": [
+        "13.1"
+      ],
+      "description": "The library file cannot be read."
+    },
+    {
+      "id": "err-sym-lib-invalid-file",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-invalid-file",
+      "clauses": [
+        "13.1"
+      ],
+      "description": "The library file has a member that the schema does not know."
+    },
+    {
+      "id": "err-sym-lib-bad-geometry",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-bad-geometry",
+      "clauses": [
+        "13.1"
+      ],
+      "description": "A line of length 0 in a symbol."
+    },
+    {
+      "id": "err-sym-lib-duplicate-id",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-duplicate-id",
+      "clauses": [
+        "13.3.1"
+      ],
+      "description": "Two libraries with one id."
+    },
+    {
+      "id": "err-sym-lib-path-and-symbols",
+      "kind": "document",
+      "dir": "documents/err-sym-lib-path-and-symbols",
+      "clauses": [
+        "13.3.1",
+        "18.6"
+      ],
+      "description": "A library with both path and symbols (schema error)."
+    },
+    {
+      "id": "err-sym-scale-zero",
+      "kind": "document",
+      "dir": "documents/err-sym-scale-zero",
+      "clauses": [
+        "13.3.2",
+        "18.6"
+      ],
+      "description": "Insert scale 0 (schema error)."
+    },
+    {
+      "id": "err-sym-label-no-slot",
+      "kind": "document",
+      "dir": "documents/err-sym-label-no-slot",
+      "clauses": [
+        "13.5.1"
+      ],
+      "description": "A label on a symbol with no label slot."
+    },
+    {
+      "id": "err-sym-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-sym-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "13.7"
+      ],
+      "description": "The symbol lands beyond the right edge of the frame."
+    },
+    {
+      "id": "err-sym-port-unknown",
+      "kind": "document",
+      "dir": "documents/err-sym-port-unknown",
+      "clauses": [
+        "12.2",
+        "13.6"
+      ],
+      "description": "The symbol has no port of that name."
+    },
+    {
       "id": "sheet-a0-landscape",
       "kind": "document",
       "dir": "documents/sheet-a0-landscape",
@@ -1187,6 +1400,15 @@
         "11.7.4"
       ],
       "description": "Unit checks of text_box."
+    },
+    {
+      "id": "unit-symbol_point",
+      "kind": "unit",
+      "file": "units/symbol_point.json",
+      "clauses": [
+        "13.4"
+      ],
+      "description": "Unit checks of symbol_point."
     },
     {
       "id": "unit-dimension_text",

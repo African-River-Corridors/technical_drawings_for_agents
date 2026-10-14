@@ -31,6 +31,10 @@ All notable changes to this project are recorded here. The format follows
 - Dimensions and leaders (clause 12): linear, aligned, radius, diameter and angle dimensions and leaders,
   computed from the geometry that they point at, with a chain-sum check. Schema, reference pipeline,
   23 conformance cases and unit checks.
+- Symbols (clause 13): a library format (`docs/standard/schema/symbol-library-1.0.schema.json`) with
+  geometry in paper millimetres or model metres, an insertion point, ports and a label slot; placement by
+  reference with position, rotation and scale; ports that dimensions can point at; DXF blocks and inserts.
+  The reference pipeline, 25 conformance cases and unit checks.
 - `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
   drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"
