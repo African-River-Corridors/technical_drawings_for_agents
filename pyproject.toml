@@ -40,7 +40,7 @@ plot-cairo = ["cairosvg>=2.7"]
 # --ink-check only: rasterise the produced PDF (needs poppler's pdftoppm) and
 # count non-white pixels.
 verify = ["Pillow>=10.0", "numpy>=1.24"]
-dev = ["pytest>=7.0", "ruff>=0.5", "pypdf>=4.0", "Pillow>=10.0"]
+dev = ["pytest>=7.0", "ruff>=0.5", "pypdf>=4.0", "Pillow>=10.0", "jsonschema>=4.18"]
 
 [project.urls]
 Homepage = "https://github.com/African-River-Corridors/technical_drawings_for_agents"

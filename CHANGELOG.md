@@ -9,7 +9,10 @@ All notable changes to this project are recorded here. The format follows
 - `docs/standard/drawing-format-standard.md`: the Drawing Format Standard (spec 0001). Clauses 1 to 8
   are written: the drawing document, units and precision, sheets, viewports, scales, the scale bar
   and the north arrow. Clause 8 adds layers, line types, line groups and colour, with the
-  machine-readable table `docs/standard/data/line-styles.json`.
+  machine-readable table `docs/standard/data/line-styles.json`. Clauses 9 (geometry), 10 (hatches,
+  partly), 11 (lettering heights, partly) and 18 (versions and the schema) are added.
+- `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
+  drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"
   here until it is verified. House choices are listed with their reasons.
 
