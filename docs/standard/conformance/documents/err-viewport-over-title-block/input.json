@@ -24,22 +24,16 @@
         "xmax_m": 10,
         "ymax_m": 8
       },
-      "scale": "fit",
-      "entities": [
-        {
-          "type": "line",
-          "layer": "OUTLINE",
-          "from_m": [
-            0,
-            0
-          ],
-          "to_m": [
-            10,
-            0
-          ]
-        }
-      ]
+      "scale": 100,
+      "entities": []
     }
   ],
-  "title_block": {}
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "EXAMPLE OWNER LTD",
+      "title": "SECTION THROUGH EXAMPLE WORK",
+      "document_number": "EXA-CIV-001"
+    }
+  }
 }

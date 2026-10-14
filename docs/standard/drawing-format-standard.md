@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 13 and 15 to 18 are complete in this draft. Clause 14 is a heading only. Each heading
+**0.4** Clauses 1 to 18 are complete in this draft. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -273,9 +273,9 @@ checklist P-08.*
 It has 6 zones down a height of 277 mm. Each zone is 46.1666... mm, which rounds to 46.167 mm (clause
 5.5). The label of the first zone down is `A`. The label of the sixth is `F`.
 
-**6.6 Reserved regions.** A drawing document MAY declare **reserved regions** (clause 14). A reserved
-region is a named rectangle inside the drawing space, with its position and size in paper
-millimetres. The title block, the notes table and the references table are reserved regions.
+**6.6 Reserved regions.** A **reserved region** is a rectangle inside the drawing space, with its
+position and size in paper millimetres. The title block, the revision register, and the strips for the
+notes and the references are reserved regions (clause 14.5).
 
 **6.6.1** The drawing space minus the reserved regions is the space where viewports may sit
 (clause 7.2).
@@ -1256,8 +1256,206 @@ inside the frame of its viewport (clause 7.7.1).
 
 ## 14 Sheet furniture
 
-Written in a later ticket. Clause 7.9 (scale bar) and clause 7.10 (north arrow) are already
-complete.
+This clause defines the title block, the revision register, the status and its watermark, and the notes
+and references strips. The border, the zone marks, the scale bar and the north arrow are in clauses 6.3 to
+6.5, 7.9 and 7.10.
+
+All of this furniture is **opt-in**. A document with no `title_block`, `revisions`, `status`, `strips`,
+`notes` or `references` has none of these parts, and its normalised content is the same as before.
+
+**14.1 Members.** The root members of this clause are:
+
+| Member | Meaning |
+|---|---|
+| `title_block` | `template` (the identifier of a shipped template) or `template_path` (a template file), and `fields`, the given values (clause 14.4). |
+| `revisions` | `scheme` (`alpha` or `numeric`, default `alpha`) and `entries`, oldest first (clause 14.7). |
+| `status` | `draft`, `concept` or `issued` (clause 14.9). |
+| `strips` | The strips for the notes and the references (clause 14.10). |
+| `notes` | A list of notes (one line each). |
+| `references` | A list of `{document_number, revision, title}`. |
+
+**14.2 Title block template.** A **title block template** is a JSON file. Its schema is
+`docs/standard/schema/title-block-template-1.0.schema.json`. It describes one title block, in paper
+millimetres, with its origin at its top-left corner, +x to the right and +y down. It has:
+
+| Member | Meaning |
+|---|---|
+| `id` | The identifier of the template. |
+| `width_mm`, `height_mm` | The size of the block. |
+| `pad_mm` | The space between a cell edge and its text. Default 1. |
+| `lines` | Lines: `from_mm`, `to_mm` and `role` (clause 8.1). |
+| `cells` | Cells of fields (clause 14.2.2). |
+| `register` | The revision register (clause 14.7.1). |
+
+A template that cannot be read, that does not follow its schema, that is named by an unknown identifier,
+or whose `standard_version` has another major number, is error `14.2`.
+
+**14.2.1** A template MUST also follow these rules, or that is error `14.2.1`: every line and every cell
+lies inside the block; no two cells overlap; no two cells have the same `field`; a cell is high enough
+for its label and its value, that is `label_height_mm + text_height_mm + 3 * pad_mm <= height_mm`; the
+label of a cell fits its width (clause 14.6); the widths of the columns of the register add up to
+`width_mm`; the row height of the register is at least `text_height_mm + 2 * pad_mm`.
+
+**14.2.2 Cells.** A cell has `field` (a field of clause 14.4), `label`, `x_mm`, `y_mm`, `width_mm`,
+`height_mm` and `text_height_mm` (a height of clause 11.2). It MAY have `label_height_mm` (default 2.5),
+`align_h` (`left`, `centre` or `right`, default `left`) and `required` (true or false, default false).
+
+**14.2.3** A template is the property of its owner. A template of the owner of a drawing MAY be a private
+file. The standard ships one template (clause 14.3). A private template is passed by `template_path`,
+and never has to be published.
+
+**14.3 The ISO 7200 template.** The shipped template has the identifier `iso7200`. It is the file
+`docs/standard/data/title-block-iso7200.json`. Its block is 180 mm wide and 56 mm high. Its cells are:
+
+| Field | x | y | Width | Height | Text height | Required |
+|---|---|---|---|---|---|---|
+| `title` | 0 | 0 | 110 | 20 | 5 | yes |
+| `supplementary_title` | 0 | 20 | 110 | 12 | 3.5 | no |
+| `owner` | 0 | 32 | 110 | 12 | 3.5 | yes |
+| `created_by` | 0 | 44 | 36 | 12 | 3.5 | no |
+| `checked_by` | 36 | 44 | 37 | 12 | 3.5 | no |
+| `approved_by` | 73 | 44 | 37 | 12 | 3.5 | no |
+| `document_number` | 110 | 0 | 70 | 14 | 5 | yes |
+| `revision` | 110 | 14 | 20 | 14 | 3.5 | no |
+| `date_of_issue` | 130 | 14 | 50 | 14 | 3.5 | no |
+| `status` | 110 | 28 | 35 | 14 | 3.5 | no |
+| `scale` | 145 | 28 | 35 | 14 | 3.5 | no |
+| `sheet` | 110 | 42 | 25 | 14 | 3.5 | no |
+| `sheet_size` | 135 | 42 | 20 | 14 | 3.5 | no |
+| `document_type` | 155 | 42 | 25 | 14 | 3.5 | no |
+
+The lines are the outer rectangle and the line `x = 110` (role `thick`), and the other cell borders (role
+`thin`). The register has 8 rows of 5 mm, text height 2.5, and the columns `rev` 12, `date` 24,
+`description` 100, `by` 14, `chk` 14, `app` 16.
+*Basis: pending ISO check, ISO 7200 (clause to be confirmed), checklist P-17 for the list of fields. House
+choice H-48 for the layout and the sizes: ISO 7200 sets the data and not the layout of a block.*
+
+**14.4 Content.** The content of a cell is one line of text. A field is **given** or **derived**.
+
+**14.4.1 Given fields.** These are given in `title_block.fields`: `owner`, `title`,
+`supplementary_title`, `document_number`, `document_type`, `language`, `department`, `sheet_number` and
+`sheet_count` (whole numbers of 1 or more). A text value follows clause 11.3.3.
+
+**14.4.2 Derived fields.** These are never given. They come from the document:
+
+| Field | Value |
+|---|---|
+| `revision` | The `rev` of the last entry of `revisions`, or empty. |
+| `date_of_issue` | The `date` of that entry. |
+| `created_by` | The `by` of that entry. |
+| `checked_by` | The `chk` of that entry, or empty. |
+| `approved_by` | The `app` of that entry, or empty. It is **never** defaulted, and never taken from another entry or from another field. |
+| `status` | The status in capitals, or empty. |
+| `scale` | `1:N` when all viewports have the scale 1:N, else `AS SHOWN`. |
+| `sheet` | `n/m`, from `sheet_number` and `sheet_count`, when both are given, else empty. |
+| `sheet_size` | The size of the sheet, for example `A3`. |
+
+*Basis: house choice H-49. A value that can be derived is not typed, so it cannot disagree. The
+approver is the signature of a person: it comes only from the latest revision entry.*
+
+**14.4.3** A cell with `required` true and an empty text, and a given field that the template has no
+cell for, are error `14.4.3`. An empty cell draws no text.
+
+**14.5 Placement.** Let `(x, y, w, h)` be the drawing space. The block of width `W` and height `H`
+stands in its bottom-right corner: its top-left corner is `(x + w - W, y + h - H)`. The register stands
+on top of the block, with the same width and the same left edge (clause 14.7.3). The strips are at the
+edges of the **strip area** (clause 14.10). The block, the register and the strips are the **reserved
+regions** of clause 6.6. A region MUST lie inside the drawing space, and two regions MUST NOT overlap
+(clause 5.7). (A strip is cut from the strip area, so it never overlaps the block or the register.) Otherwise that is error `14.5`. A frame of a viewport MUST NOT overlap a region
+(clause 7.2.4).
+
+**14.6 Fit.** The text of a cell, of the register, and of a strip MUST fit. The width of a text is
+that of clause 11.7.1. It fits a cell when its width is not more than the width of the cell less
+`2 * pad_mm` (clause 5.7). A text is **never** cut, shortened or made smaller to fit. Text that does not
+fit is error `14.6`.
+
+**14.7 Revision register.** `revisions.entries` is a list with the oldest entry first. An entry has `rev`,
+`date`, `description` and `by`. It MAY have `chk`, `app` and `seal`. The entry `app` is written by a
+person. No tool supplies it.
+
+**14.7.1 Register layout.** The template `register` has `row_height_mm`, `max_rows`,
+`text_height_mm` and `columns`, a list of `{field, label, width_mm}` with the fields `rev`, `date`,
+`description`, `by`, `chk` and `app`.
+
+**14.7.2 Rows.** Let `n` be the number of entries and `m` the `max_rows`. When `n <= m` the rows are the
+entries, oldest first. When `n > m` there are `m` rows: the first is the **overflow row**, then the newest
+`m - 1` entries. In the overflow row, the `description` cell is `K EARLIER REVISIONS NOT SHOWN`, where `K`
+is `n - (m - 1)`, and the other cells are empty. The register has one header row (the labels) above the
+rows. The rows stand from top to bottom, so the newest entry is next to the title block.
+*Basis: house choice H-50. A register that is cut is visible: nothing is dropped without a note.*
+
+**14.7.3 Geometry.** The register has the width of the block. Its height is `(1 + rows) * row_height_mm`.
+Its bottom edge is the top edge of the block.
+
+**14.7.4** The `rev` of each entry has the form of the scheme (`alpha`: capital letters A to Z, for
+example `A`, `B`, `AA`; `numeric`: whole numbers without a sign). The tokens are unique and rise from
+entry to entry, in the order of the scheme (`A` < `B` < ... < `Z` < `AA`). Otherwise that is error `14.7.4`.
+
+**14.7.5** Each `date` is a date of the form `YYYY-MM-DD` that exists. The dates never go back from one
+entry to the next. Otherwise that is error `14.7.5`.
+
+**14.7.6** An entry with a `seal` that is not the seal of clause 14.8 is error `14.7.6`. A sealed entry
+cannot be changed, moved, deleted or put between others without that error.
+
+**14.8 Seal.** The **seal** of entry `i` (counting from 0) is `sha256:` followed by the 64 lowercase
+hexadecimal digits of the SHA-256 of the **canonical text** of the entry. The canonical text is the
+JSON text, in UTF-8, of an object with the members `app`, `by`, `chk`, `date`, `description`, `index`,
+`prior_digest` and `rev`, in this order (the order of their names), with no spaces, and with the
+characters outside ASCII written as they are. `app` and `chk` are `null` when the entry has none.
+`index` is `i`. `prior_digest` is the seal of entry `i - 1`, and the empty text for `i = 0`. The seal of
+an entry is therefore a function of all the entries before it. A reader works out the seals from the
+entries, and does not read the stored seals to do so.
+
+**14.8.1** Worked numbers. A register of one entry: `rev` `A`, `date` `2026-01-05`, `description`
+`FIRST ISSUE`, `by` `AB`. The canonical text is
+`{"app":null,"by":"AB","chk":null,"date":"2026-01-05","description":"FIRST ISSUE","index":0,"prior_digest":"","rev":"A"}`.
+Its SHA-256 (worked with `shasum -a 256`, not with this tool) is
+`ed44c9a928dd581e3690279a741e60bb1f6e24bebd2cccc91e74350f6b4b08e2`, so the seal of entry 0 is
+`sha256:ed44c9a928dd581e3690279a741e60bb1f6e24bebd2cccc91e74350f6b4b08e2`. A second entry: `rev` `B`,
+`date` `2026-02-10`, `description` `ADDED SECTION B`, `by` `AB`, `chk` `CD`, `app` `EF`. Its canonical text is
+`{"app":"EF","by":"AB","chk":"CD","date":"2026-02-10","description":"ADDED SECTION B","index":1,"prior_digest":"sha256:ed44c9a928dd581e3690279a741e60bb1f6e24bebd2cccc91e74350f6b4b08e2","rev":"B"}`.
+Its seal is `sha256:9c7d9dbafc4b64d2a751dd8dbdc019805c4c0bea682349f5d1bb0ff3cb788404`.
+
+**14.9 Status.** The member `status` is `draft`, `concept` or `issued`. A document with a status has a
+**watermark**: a `text` of the height 20 on the layer `WATERMARK` (declared without the document
+declaring it), `centre` and `middle` at the middle of the drawing space, with the paper rotation of the
+diagonal of the drawing space, `atan2(h, w)` in degrees (counter-clockwise, from lower left to upper
+right). The text is `DRAFT`, `CONCEPT - NOT FOR CONSTRUCTION` or `ISSUED FOR CONSTRUCTION`.
+
+**14.9.1 The gate.** A document with the status `issued` MUST have a `title_block`, and `revisions` with
+at least one entry, and the last entry MUST have a non-empty `app` and a valid `seal`. Otherwise that
+is error `14.9`. The gate only adds a requirement. No tool writes an `app` or a `seal` into a document.
+*Basis: house choice H-51. A drawing is issued by a person who signs. A flag that an agent can set is not
+a signature.*
+
+**14.10 Strips.** `strips` is a list of `{id, edge, size_mm, content}`. `edge` is `left`, `right`, `top`
+or `bottom`. `content` is `notes` or `references`. The **strip area** is the part of the drawing space above the top edge of the register (or of the
+title block, when there is no register). With no title block it is the whole drawing space. Each strip is
+cut off its edge of the free rectangle, in the order of the list, starting from the strip area. A strip that leaves no room, two strips with the same `id`
+or the same `content`, or a `notes` or a `references` member without a strip of that content, is error
+`14.10`.
+
+**14.10.1 Content.** A strip has a heading (`NOTES` or `REFERENCES`, height 3.5) at `(x + 2, y + 2 + 3.5)`,
+left, baseline. Item `i`, counting from 1, has height 2.5 and is at `(x + 2, y + 2 + 3.5 + 4.5 * i)`, left,
+baseline. A note is `i. text`. A reference is the non-empty parts of `document_number`, `revision` and
+`title`, joined by two spaces. Every item MUST fit (clause 14.6, with `2 * 2` in place of `2 * pad_mm`),
+and the last baseline MUST be at most `y + h - 2`. Otherwise that is error `14.6`.
+*Basis: house choice H-52 for these sizes.*
+
+**14.11 Entities.** The parts of the furniture are entities of the normalised content, on the layer
+`TITLEBLOCK` (the watermark on `WATERMARK`):
+
+- `sheet.title_block`: a `line` for each line of the template, with the width of its role (clause 8.2),
+  `continuous`; for each cell a `text` for its label, at `(x + pad, y + pad + label_height)`, left,
+  baseline, and a `text` for its value if it is not empty, at `(x + pad, y + h - pad)` (for `centre`
+  `x + w / 2`, for `right` `x + w - pad`), baseline, with the alignment of the cell.
+- `sheet.revision_register`: a closed `polyline` of its outer edge (thick), a `line` (thin) at each boundary
+  of the rows, a `line` (thin) at each boundary of the columns, and a `text`, left and baseline, at
+  `(column x + pad, row bottom - pad)` for each non-empty cell of the header and of the rows.
+- `sheet.notes` and `sheet.references`: a closed `polyline` of the strip (thin) and the texts of clause
+  14.10.1.
+- `sheet.status_watermark`: the watermark of clause 14.9.
+
 
 ## 15 Output mapping
 
@@ -1383,6 +1581,7 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 **16.5 Origins.** The `origin` of an entity is one of:
 
 - `sheet.border`, `sheet.centring_mark`, `sheet.zone_mark`, `sheet.zone_label`;
+- `sheet.title_block`, `sheet.revision_register`, `sheet.notes`, `sheet.references` and `sheet.status_watermark` (clause 14.11);
 - `viewport.<id>`, for an entity written in the viewport `<id>`;
 - `viewport.<id>.hatch`, for the marks of the hatches of that viewport (clause 10.5.8);
 - `viewport.<id>.dimension` and `viewport.<id>.leader`, for the parts of the dimensions and leaders of that viewport (clause 12.7);
@@ -1561,6 +1760,8 @@ function to each `input`, and the result MUST equal `expected`. A result that is
 | `reading_rotation` | `theta_deg` | the rotation of dimension text, in 0 up to 360 (clause 12.3.3) |
 | `chain_ok` | `parts`, `overall` (texts) | true or false (clause 12.8) |
 | `symbol_point` | `units`, `insertion`, `position_m`, `rotation_deg`, `scale`, `denominator`, `q` | the model point `[x_m, y_m]`, rounded to 6 places (clause 13.4) |
+| `revision_seals` | `entries` | the list of seals of clause 14.8 |
+| `register_layout` | `entries`, `max_rows` | `{rows, omitted}`: the rows shown and the earlier entries not shown (clause 14.7.2) |
 | `text_box` | `anchor_mm`, `text`, `height_mm`, `rotation_deg`, `align_h`, `align_v` | the four corners, each `[x_mm, y_mm]`, rounded (clauses 11.7.2 and 11.7.3) |
 
 `frame`, `window` and the other objects have the members of the drawing document (clause 7.1).
@@ -1609,9 +1810,9 @@ names the clause of this standard that the place enforces. A reader that reports
 SHOULD report the instance path, the rule that failed, and the `x-clause` value.
 *Basis: house choice H-33. A user who reads a schema error can find the rule in plain words.*
 
-**18.7 Members of this draft.** The schema of this draft defines `standard_version`, `sheet`,
-`layers` and `viewports`, and `$schema`. The other root members of clause 4.2 are added with their
-clauses. Until then, a document that holds one of them has an unknown key (clause 4.3).
+**18.7 Members.** The schema defines every root member of clause 4.2, and `$schema`. A document that holds
+any other root member has an unknown key (clause 4.3). The other schema files of this version are
+`symbol-library-1.0.schema.json` (clause 13.1) and `title-block-template-1.0.schema.json` (clause 14.2).
 
 **18.8 Numbers.** The schema states the unit of a number by the member name (clause 4.5). The schema
 does not state precision. A reader rounds as clause 5 says.

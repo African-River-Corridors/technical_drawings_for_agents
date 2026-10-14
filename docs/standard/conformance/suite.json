@@ -713,6 +713,434 @@
       "description": "The symbol has no port of that name."
     },
     {
+      "id": "tb-minimal",
+      "kind": "document",
+      "dir": "documents/tb-minimal",
+      "clauses": [
+        "14.3",
+        "14.4",
+        "14.11"
+      ],
+      "description": "The ISO 7200 template with the three required fields; scale and size are derived."
+    },
+    {
+      "id": "tb-fields-all",
+      "kind": "document",
+      "dir": "documents/tb-fields-all",
+      "clauses": [
+        "14.4.1",
+        "14.4.2"
+      ],
+      "description": "Every given field, and the derived sheet number 2/5."
+    },
+    {
+      "id": "tb-register-two",
+      "kind": "document",
+      "dir": "documents/tb-register-two",
+      "clauses": [
+        "14.7",
+        "14.9",
+        "14.11"
+      ],
+      "description": "Two sealed revisions: the approver, checker and revision come only from the latest entry (clause 14.4.2)."
+    },
+    {
+      "id": "tb-register-full",
+      "kind": "document",
+      "dir": "documents/tb-register-full",
+      "clauses": [
+        "14.7.2",
+        "14.7.3"
+      ],
+      "description": "Eight entries fill the register: no overflow row."
+    },
+    {
+      "id": "tb-register-overflow",
+      "kind": "document",
+      "dir": "documents/tb-register-overflow",
+      "clauses": [
+        "14.7.2"
+      ],
+      "description": "Eleven entries: the overflow row stands first and says 4 EARLIER REVISIONS NOT SHOWN."
+    },
+    {
+      "id": "tb-register-overflow-9",
+      "kind": "document",
+      "dir": "documents/tb-register-overflow-9",
+      "clauses": [
+        "14.7.2"
+      ],
+      "description": "Nine entries: the overflow row says 2 EARLIER REVISIONS NOT SHOWN."
+    },
+    {
+      "id": "tb-register-numeric",
+      "kind": "document",
+      "dir": "documents/tb-register-numeric",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "The numeric scheme: 1, 2, 10 rise. Equal dates are allowed."
+    },
+    {
+      "id": "tb-register-unsealed",
+      "kind": "document",
+      "dir": "documents/tb-register-unsealed",
+      "clauses": [
+        "14.7.6"
+      ],
+      "description": "An entry without a seal is allowed (only a seal that does not match is an error)."
+    },
+    {
+      "id": "tb-register-alpha-aa",
+      "kind": "document",
+      "dir": "documents/tb-register-alpha-aa",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "Alpha tokens rise Z, AA."
+    },
+    {
+      "id": "tb-status-draft",
+      "kind": "document",
+      "dir": "documents/tb-status-draft",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "The DRAFT watermark: height 20, turned along the diagonal."
+    },
+    {
+      "id": "tb-status-concept",
+      "kind": "document",
+      "dir": "documents/tb-status-concept",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "The CONCEPT watermark."
+    },
+    {
+      "id": "tb-status-issued",
+      "kind": "document",
+      "dir": "documents/tb-status-issued",
+      "clauses": [
+        "14.9.1",
+        "14.8"
+      ],
+      "description": "Issued: the latest entry has an approver and a valid seal."
+    },
+    {
+      "id": "tb-scale-as-shown",
+      "kind": "document",
+      "dir": "documents/tb-scale-as-shown",
+      "clauses": [
+        "14.4.2"
+      ],
+      "description": "Two viewports with different scales: the scale cell says AS SHOWN."
+    },
+    {
+      "id": "tb-a4-portrait",
+      "kind": "document",
+      "dir": "documents/tb-a4-portrait",
+      "clauses": [
+        "14.5"
+      ],
+      "description": "On A4 portrait the drawing space is 180 mm wide, the same as the block."
+    },
+    {
+      "id": "tb-a0",
+      "kind": "document",
+      "dir": "documents/tb-a0",
+      "clauses": [
+        "8.2",
+        "14.11"
+      ],
+      "description": "On A0 (line group 0.7) the lines of the block are 0.7 and 0.35 mm wide."
+    },
+    {
+      "id": "tb-private-template",
+      "kind": "document",
+      "dir": "documents/tb-private-template",
+      "clauses": [
+        "14.2",
+        "14.2.3"
+      ],
+      "description": "A template passed by path: 100 x 30 mm, a register of 3 rows (so 5 entries show an overflow row), and right and centre alignment."
+    },
+    {
+      "id": "strips-notes-references",
+      "kind": "document",
+      "dir": "documents/strips-notes-references",
+      "clauses": [
+        "14.10",
+        "14.10.1"
+      ],
+      "description": "A notes strip on the right and a references strip at the bottom of the strip area (above the title block)."
+    },
+    {
+      "id": "strips-no-title-block",
+      "kind": "document",
+      "dir": "documents/strips-no-title-block",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "With no title block the strip area is the whole drawing space."
+    },
+    {
+      "id": "err-tb-unknown-template",
+      "kind": "document",
+      "dir": "documents/err-tb-unknown-template",
+      "clauses": [
+        "14.2"
+      ],
+      "description": "A template id that the standard does not ship."
+    },
+    {
+      "id": "err-tb-template-missing-file",
+      "kind": "document",
+      "dir": "documents/err-tb-template-missing-file",
+      "clauses": [
+        "14.2"
+      ],
+      "description": "The template file cannot be read."
+    },
+    {
+      "id": "err-tb-template-invalid-file",
+      "kind": "document",
+      "dir": "documents/err-tb-template-invalid-file",
+      "clauses": [
+        "14.2"
+      ],
+      "description": "The template file has a member that the schema does not know."
+    },
+    {
+      "id": "err-tb-template-geometry",
+      "kind": "document",
+      "dir": "documents/err-tb-template-geometry",
+      "clauses": [
+        "14.2.1"
+      ],
+      "description": "Two cells overlap."
+    },
+    {
+      "id": "err-tb-missing-required",
+      "kind": "document",
+      "dir": "documents/err-tb-missing-required",
+      "clauses": [
+        "14.4.3"
+      ],
+      "description": "The required field owner is missing."
+    },
+    {
+      "id": "err-tb-field-no-cell",
+      "kind": "document",
+      "dir": "documents/err-tb-field-no-cell",
+      "clauses": [
+        "14.4.3"
+      ],
+      "description": "The private template has no cell for document_type."
+    },
+    {
+      "id": "err-tb-text-too-long",
+      "kind": "document",
+      "dir": "documents/err-tb-text-too-long",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "The title is 5 mm high and does not fit 108 mm: it is an error, never cut."
+    },
+    {
+      "id": "err-reg-text-too-long",
+      "kind": "document",
+      "dir": "documents/err-reg-text-too-long",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "The description is wider than its 98 mm cell."
+    },
+    {
+      "id": "err-reg-token-duplicate",
+      "kind": "document",
+      "dir": "documents/err-reg-token-duplicate",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "Two entries with the rev A."
+    },
+    {
+      "id": "err-reg-token-order",
+      "kind": "document",
+      "dir": "documents/err-reg-token-order",
+      "clauses": [
+        "14.7.4"
+      ],
+      "description": "The tokens A, B, B do not rise."
+    },
+    {
+      "id": "err-reg-date-order",
+      "kind": "document",
+      "dir": "documents/err-reg-date-order",
+      "clauses": [
+        "14.7.5"
+      ],
+      "description": "The second date is before the first."
+    },
+    {
+      "id": "err-reg-date-invalid",
+      "kind": "document",
+      "dir": "documents/err-reg-date-invalid",
+      "clauses": [
+        "14.7.5"
+      ],
+      "description": "30 February does not exist."
+    },
+    {
+      "id": "err-reg-seal-edited",
+      "kind": "document",
+      "dir": "documents/err-reg-seal-edited",
+      "clauses": [
+        "14.7.6"
+      ],
+      "description": "A sealed entry was edited. The edited entry and the one after it no longer match their seals."
+    },
+    {
+      "id": "err-reg-seal-inserted",
+      "kind": "document",
+      "dir": "documents/err-reg-seal-inserted",
+      "clauses": [
+        "14.7.6"
+      ],
+      "description": "An entry inserted between sealed entries: the seal of the one after it fails."
+    },
+    {
+      "id": "err-status-issued-no-approver",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-approver",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but the latest entry has no approver. An approver on an earlier entry does not count."
+    },
+    {
+      "id": "err-status-issued-no-seal",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-seal",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but the latest entry has no seal."
+    },
+    {
+      "id": "err-status-issued-no-register",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-register",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but there is no revision register."
+    },
+    {
+      "id": "err-status-issued-no-title-block",
+      "kind": "document",
+      "dir": "documents/err-status-issued-no-title-block",
+      "clauses": [
+        "14.9"
+      ],
+      "description": "Issued, but there is no title block."
+    },
+    {
+      "id": "err-strip-no-room",
+      "kind": "document",
+      "dir": "documents/err-strip-no-room",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "The strip is wider than the strip area."
+    },
+    {
+      "id": "err-strip-duplicate-content",
+      "kind": "document",
+      "dir": "documents/err-strip-duplicate-content",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "Two strips for the notes."
+    },
+    {
+      "id": "err-notes-without-strip",
+      "kind": "document",
+      "dir": "documents/err-notes-without-strip",
+      "clauses": [
+        "14.10"
+      ],
+      "description": "Notes, and no strip to put them in."
+    },
+    {
+      "id": "err-note-too-long",
+      "kind": "document",
+      "dir": "documents/err-note-too-long",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "A note wider than the strip."
+    },
+    {
+      "id": "err-too-many-notes",
+      "kind": "document",
+      "dir": "documents/err-too-many-notes",
+      "clauses": [
+        "14.6"
+      ],
+      "description": "Sixty notes do not fit the height of the strip."
+    },
+    {
+      "id": "err-region-outside",
+      "kind": "document",
+      "dir": "documents/err-region-outside",
+      "clauses": [
+        "14.5"
+      ],
+      "description": "A block 200 mm wide in a drawing space 180 mm wide."
+    },
+    {
+      "id": "err-viewport-over-title-block",
+      "kind": "document",
+      "dir": "documents/err-viewport-over-title-block",
+      "clauses": [
+        "7.2.4",
+        "14.5"
+      ],
+      "description": "The frame of the viewport covers the corner of the title block."
+    },
+    {
+      "id": "err-tb-both-sources",
+      "kind": "document",
+      "dir": "documents/err-tb-both-sources",
+      "clauses": [
+        "14.2",
+        "18.6"
+      ],
+      "description": "A template and a template path (schema error)."
+    },
+    {
+      "id": "err-status-unknown",
+      "kind": "document",
+      "dir": "documents/err-status-unknown",
+      "clauses": [
+        "14.9",
+        "18.6"
+      ],
+      "description": "The status final does not exist (schema error)."
+    },
+    {
+      "id": "err-reg-seal-form",
+      "kind": "document",
+      "dir": "documents/err-reg-seal-form",
+      "clauses": [
+        "14.7.6",
+        "18.6"
+      ],
+      "description": "A seal that is not sha256:<64 hex> (schema error)."
+    },
+    {
       "id": "sheet-a0-landscape",
       "kind": "document",
       "dir": "documents/sheet-a0-landscape",
@@ -1409,6 +1837,24 @@
         "13.4"
       ],
       "description": "Unit checks of symbol_point."
+    },
+    {
+      "id": "unit-revision_seals",
+      "kind": "unit",
+      "file": "units/revision_seals.json",
+      "clauses": [
+        "14.8.1"
+      ],
+      "description": "Unit checks of revision_seals."
+    },
+    {
+      "id": "unit-register_layout",
+      "kind": "unit",
+      "file": "units/register_layout.json",
+      "clauses": [
+        "14.7.2"
+      ],
+      "description": "Unit checks of register_layout."
     },
     {
       "id": "unit-dimension_text",

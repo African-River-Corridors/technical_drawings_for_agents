@@ -57,3 +57,7 @@ def suite_dir() -> Path:
 
 def hatch_patterns() -> dict:
     return _json("data", "hatch-patterns.json")
+
+
+def title_block_iso7200() -> dict:
+    return _json("data", "title-block-iso7200.json")

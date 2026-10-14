@@ -11,7 +11,7 @@ import jsonschema
 
 from . import resources
 from . import dimensions as dims
-from . import symbols
+from . import furniture, symbols
 from .entities import _hatch, _line, _polyline, _pt, _text
 from .hatch import marks as hatch_marks
 from .hatch import unit_mm
@@ -317,6 +317,12 @@ def check_document(doc, base_dir=None) -> set[str]:
             errors.add("12.8")
     if len(ids) != len(set(ids)):
         errors.add("9.8")
+    scales = [_resolved_scale(vp, ds) for vp in doc["viewports"]]
+    plan = furniture.plan(doc, size, ds, group, scales, base_dir)
+    errors |= plan.errors
+    for frame in frames:
+        if any(furniture._overlap(frame, rect) for _, rect in plan.regions):
+            errors.add("7.2.4")
     for i in range(len(frames)):
         for j in range(i + 1, len(frames)):
             a, b = frames[i], frames[j]
@@ -341,6 +347,16 @@ def _dimension_result(e, declared, group, mapper, rotation, vid, index, libs, de
     role = e.get("role") or declared[e["layer"]][0]
     ctx = dims.Context(mapper, rotation, unit_mm(group["thin"]), group[role], f"viewport.{vid}", index, libs, denominator)
     return dims.dimension(e, ctx) if e["type"] == "dimension" else dims.leader(e, ctx)
+
+
+def _resolved_scale(vp, ds):
+    """The scale of a viewport, or None when it cannot be resolved (the error is reported elsewhere)."""
+    window = vp["window"]
+    if not (window["xmax_m"] > window["xmin_m"] and window["ymax_m"] > window["ymin_m"]):
+        return None
+    if vp["scale"] != "fit":
+        return vp["scale"]
+    return fit_scale(_frame(vp), window, vp.get("rotation_deg", 0.0) % 360.0)
 
 
 def _check_scale_bar(vp, frame, denominator, errors):
@@ -500,6 +516,7 @@ def normalise_document(doc, base_dir=None) -> dict:
     declared, _ = _layer_table(doc, errors)
     libs, _ = symbols.load_libraries(doc, base_dir)
     entities = _sheet_furniture(size, orientation, group)
+    entities += furniture.plan(doc, size, ds, group, [_resolved_scale(vp, ds) for vp in doc["viewports"]], base_dir).entities
     viewports = []
     for vp in doc["viewports"]:
         frame = _frame(vp)

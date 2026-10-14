@@ -6,7 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import resources
+from . import furniture, resources
 from .conformance import run_suite
 from .pipeline import run_file
 from .render_dxf import dxf_from_document
@@ -40,6 +40,15 @@ def cmd_normalise(args) -> int:
 def cmd_run(args) -> int:
     """The runner of clause 17.3: write the result JSON to standard output."""
     print(json.dumps(run_file(args.document), ensure_ascii=False, sort_keys=False))
+    return 0
+
+
+def cmd_seal(args) -> int:
+    """Print the seals that the entries of the register should carry (clause 14.8). Writes nothing."""
+    doc = json.loads(Path(args.document).read_text(encoding="utf-8"))
+    entries = doc.get("revisions", {}).get("entries", [])
+    for entry, seal in zip(entries, furniture.seals(entries)):
+        print(f"{entry['rev']}\t{seal}")
     return 0
 
 
@@ -89,6 +98,9 @@ def add_subcommands(sub) -> None:
         p = commands.add_parser(name, help=help_)
         p.add_argument("document")
         p.set_defaults(func=func)
+    p = commands.add_parser("seal", help="print the seals of the revision register (a person pastes them in; this writes nothing)")
+    p.add_argument("document")
+    p.set_defaults(func=cmd_seal)
     p = commands.add_parser("build", help="write normalised content, SVG, PDF and DXF")
     p.add_argument("document")
     p.add_argument("--out", required=True, help="output directory")
