@@ -17,6 +17,10 @@ All notable changes to this project are recorded here. The format follows
 - The font of the standard: Barlow Semi Condensed Regular (SIL OFL 1.1) with its licence in
   `src/technical_drawings_for_agents/data/fonts/`, the width table `docs/standard/data/font-widths.json`,
   clauses 11.6 and 11.7 (font, width table, text box) and their conformance cases.
+- `technical_drawings_for_agents.dfs`: the reference implementation of the standard. One pipeline:
+  drawing document, checks (with clause numbers), normalised content, SVG and PDF (the font embedded,
+  repeat builds identical). Commands: `technical_drawings_for_agents doc validate|normalise|run|build|conformance`.
+  It passes every conformance case. `jsonschema` is now a runtime dependency.
 - `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
   drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"

@@ -13,6 +13,7 @@ license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "African River Corridors Limited" }]
 keywords = ["ai-agents", "engineering", "drawings", "svg", "dxf", "cad", "as-code"]
 dependencies = [
+    "jsonschema>=4.18",
     # >=1.4: technical_drawings_for_agents.plot needs addons.drawing.svg.SVGBackend, layout.Page and
     # the recorder, all verified at 1.4.4. Claiming 1.1 without testing it would be
     # inventing a capability; plot.py asserts the floor at use time and the legacy
@@ -51,6 +52,12 @@ technical_drawings_for_agents = "technical_drawings_for_agents.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/technical_drawings_for_agents"]
+
+# The data files of the Drawing Format Standard, so that an installed wheel finds them (dfs/resources.py).
+[tool.hatch.build.targets.wheel.force-include]
+"docs/standard/schema/drawing-document-1.0.schema.json" = "technical_drawings_for_agents/dfs/data/schema/drawing-document-1.0.schema.json"
+"docs/standard/data" = "technical_drawings_for_agents/dfs/data/data"
+"docs/standard/conformance" = "technical_drawings_for_agents/dfs/data/conformance"
 
 [tool.ruff]
 line-length = 100
