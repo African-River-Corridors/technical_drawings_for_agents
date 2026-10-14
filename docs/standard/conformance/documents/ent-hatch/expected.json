@@ -55,7 +55,7 @@
           ]
         ]
       ],
-      "pattern": "concrete",
+      "pattern": "solid",
       "angle_deg": 30,
       "width_mm": 0.18
     },
@@ -78,10 +78,190 @@
         ]
       ],
       "holes_mm": [],
-      "pattern": "water",
+      "pattern": "lines",
       "angle_deg": 0,
       "width_mm": 0.18,
-      "id": "water"
+      "id": "lines"
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        165.5,
+        158.4
+      ],
+      "to_mm": [
+        265,
+        158.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        174.5,
+        156.6
+      ],
+      "to_mm": [
+        265,
+        156.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        183.5,
+        154.8
+      ],
+      "to_mm": [
+        265,
+        154.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        192.5,
+        153
+      ],
+      "to_mm": [
+        265,
+        153
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        201.5,
+        151.2
+      ],
+      "to_mm": [
+        265,
+        151.2
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        210.5,
+        149.4
+      ],
+      "to_mm": [
+        265,
+        149.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        219.5,
+        147.6
+      ],
+      "to_mm": [
+        265,
+        147.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        228.5,
+        145.8
+      ],
+      "to_mm": [
+        265,
+        145.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        237.5,
+        144
+      ],
+      "to_mm": [
+        265,
+        144
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        246.5,
+        142.2
+      ],
+      "to_mm": [
+        265,
+        142.2
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        255.5,
+        140.4
+      ],
+      "to_mm": [
+        265,
+        140.4
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "from_mm": [
+        264.5,
+        138.6
+      ],
+      "to_mm": [
+        265,
+        138.6
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
     }
   ],
   "origin_prefixes": [

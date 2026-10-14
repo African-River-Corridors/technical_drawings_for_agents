@@ -21,6 +21,9 @@ All notable changes to this project are recorded here. The format follows
   drawing document, checks (with clause numbers), normalised content, SVG and PDF (the font embedded,
   repeat builds identical). Commands: `technical_drawings_for_agents doc validate|normalise|run|build|conformance`.
   It passes every conformance case. `jsonschema` is now a runtime dependency.
+- Hatch marks (clause 10.5, `docs/standard/data/hatch-patterns.json`): the spacing, angles and shapes of
+  `lines`, `soil`, `water`, `concrete` and `rockfill`, tied to the line group, clipped to the boundary
+  and holes. The marks are entities of the normalised content. Ten new conformance cases.
 - `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
   drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"

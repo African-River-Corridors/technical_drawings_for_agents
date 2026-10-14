@@ -150,7 +150,8 @@ def test_the_svg_is_xml_in_millimetres_with_every_entity():
     root = ET.fromstring(svg)
     assert root.attrib["width"] == "420mm" and root.attrib["viewBox"] == "0 0 420 297"
     drawn = [el for el in root if el.tag.split("}")[1] in ("line", "path", "circle", "text")]
-    assert len(drawn) == len(norm["entities"])
+    not_drawn = [e for e in norm["entities"] if e["type"] == "hatch" and e["pattern"] != "solid"]
+    assert len(drawn) == len(norm["entities"]) - len(not_drawn)  # a marked hatch draws only its marks
     assert "#000" in svg and not re.search(r'(stroke|fill)="#(?!000)[0-9a-fA-F]{3,6}"', svg)
 
 

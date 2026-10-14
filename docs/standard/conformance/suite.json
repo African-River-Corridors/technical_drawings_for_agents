@@ -63,7 +63,108 @@
         "10",
         "16.6.2"
       ],
-      "description": "Hatches: boundary, a hole, pattern name and angle, no marks."
+      "description": "Hatches: a solid hatch with a hole (no marks) and a lines hatch (marks are entities)."
+    },
+    {
+      "id": "hatch-lines-0",
+      "kind": "document",
+      "dir": "documents/hatch-lines-0",
+      "clauses": [
+        "10.5.4",
+        "10.5.9"
+      ],
+      "description": "Pattern lines at angle 0: horizontal lines every 1.8 mm, split by a hole (clause 10.5.9)."
+    },
+    {
+      "id": "hatch-lines-45",
+      "kind": "document",
+      "dir": "documents/hatch-lines-45",
+      "clauses": [
+        "10.5.2",
+        "10.5.4"
+      ],
+      "description": "Pattern lines at angle 45: the frame is turned; line ends are not exact in binary."
+    },
+    {
+      "id": "hatch-soil",
+      "kind": "document",
+      "dir": "documents/hatch-soil",
+      "clauses": [
+        "10.5.4",
+        "10.5.7"
+      ],
+      "description": "Pattern soil: lines of line type dashed."
+    },
+    {
+      "id": "hatch-water",
+      "kind": "document",
+      "dir": "documents/hatch-water",
+      "clauses": [
+        "10.5.4",
+        "10.5.9"
+      ],
+      "description": "Pattern water: lines every 3.6 mm (clause 10.5.9)."
+    },
+    {
+      "id": "hatch-concrete",
+      "kind": "document",
+      "dir": "documents/hatch-concrete",
+      "clauses": [
+        "10.5.5",
+        "10.5.6",
+        "10.5.7"
+      ],
+      "description": "Pattern concrete: dots on even rows, triangles on odd rows, none within the clearance of an edge."
+    },
+    {
+      "id": "hatch-rockfill",
+      "kind": "document",
+      "dir": "documents/hatch-rockfill",
+      "clauses": [
+        "10.5.5",
+        "10.5.6",
+        "10.5.7"
+      ],
+      "description": "Pattern rockfill: pentagons on a staggered lattice."
+    },
+    {
+      "id": "hatch-concrete-30",
+      "kind": "document",
+      "dir": "documents/hatch-concrete-30",
+      "clauses": [
+        "10.5.2",
+        "10.5.5"
+      ],
+      "description": "Pattern concrete at angle 30: marks turn with the frame."
+    },
+    {
+      "id": "hatch-lines-rotated-viewport",
+      "kind": "document",
+      "dir": "documents/hatch-lines-rotated-viewport",
+      "clauses": [
+        "10.5.2",
+        "16.6.2"
+      ],
+      "description": "Pattern lines in a viewport turned by 90: the hatch angle becomes 90, so the lines are vertical."
+    },
+    {
+      "id": "hatch-solid",
+      "kind": "document",
+      "dir": "documents/hatch-solid",
+      "clauses": [
+        "10.5.7",
+        "10.5.8"
+      ],
+      "description": "Pattern solid draws no marks."
+    },
+    {
+      "id": "hatch-a0-unit",
+      "kind": "document",
+      "dir": "documents/hatch-a0-unit",
+      "clauses": [
+        "10.5.1"
+      ],
+      "description": "On A0 the hatch unit is 3.5 mm."
     },
     {
       "id": "ent-text",

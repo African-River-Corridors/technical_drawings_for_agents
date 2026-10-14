@@ -90,8 +90,8 @@ def svg_from_normalised(norm: dict, *, embed_font: bool = True) -> str:
             d = " ".join(_loop(loop) for loop in [e["boundary_mm"], *e["holes_mm"]])
             if e["pattern"] == "solid":
                 parts.append(f'<path {attrs} d="{d}" fill="#000" fill-rule="evenodd" stroke="none"/>')
-            else:  # the marks of the other patterns are not defined yet (ticket 27): draw the outline
-                parts.append(f'<path {attrs} data-pattern="{e["pattern"]}" d="{d}" fill="none" stroke="#000" stroke-width="{_n(e["width_mm"])}"/>')
+            # the other patterns draw only their marks, which are entities of their own (10.5.8)
+
         elif t == "text":
             parts.append(_text(e).replace("<text ", f"<text {attrs} ", 1))
     parts.append("</svg>")
