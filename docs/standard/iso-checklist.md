@@ -30,6 +30,8 @@ look first. It is not evidence.
 | P-12 | ISO 128 (the part for basic conventions for lines) | to be confirmed | Line types and numbers: continuous 01.1, dashed 02.1, long-dashed dotted ("chain") 04.1, long-dashed double-dotted ("chain double-dashed") 05.1. Pattern in units of line width d: dashed 12 dash, 3 gap; chain 24, 3, 0.5, 3; chain double-dashed 24, 3, 0.5, 3, 0.5, 3 | 8.4 | medium (the type numbers and the 0.5 dot are the least sure) | open |
 | P-13 | ISO 3098 (the part for the alphabet and the clause for type B) | to be confirmed | Type B lettering: line thickness d = h / 10. Upright and inclined (75 degrees) forms exist. The standard uses the upright form | 11.1 | medium | open |
 | P-14 | ISO 3098 (the part for type B lettering) | to be confirmed | Widths of the capital letters and digits of type B, in units of d = h / 10: A 7, B 6, C 6, D 6, E 5, F 5, G 6, H 6, I 1, J 5, K 6, L 5, M 7, N 6, O 6, P 6, Q 6, R 6, S 6, T 5, U 6, V 7, W 9, X 6, Y 7, Z 6, digits 6 (the digit 1: 4). Used only to compare candidate fonts | 11.6.3 | low (recalled, not read) | open |
+| P-15 | ISO 129 (the part for general principles, and the part for arrowheads) | to be confirmed | A dimension is a dimension line, extension lines, arrowheads and text. Arrowheads are filled triangles that are about 15 degrees wide. The unit is stated in the notes and not on each dimension. Text is parallel to the dimension line and above it, readable from the bottom or the right | 12.1.1, 12.3 | medium | open |
+| P-16 | ISO 129 (the part for extension lines) | to be confirmed | The extension line starts with a small gap from the object (about 1 mm) and goes a little (about 2 mm) beyond the dimension line | 12.3 | low | open |
 
 ## B House choices
 
@@ -119,3 +121,6 @@ hand. They do not change the normalised content. The DXF can be read back withou
 | D-01 | Whether a CAD program turns the view the way that the twist angle of the viewport is written (clause 15.4.6): the twist is the viewport rotation, positive counter-clockwise. | 15.4.6 |
 | D-02 | Whether `$PSLTSCALE` 1 with patterns in millimetres shows the patterns at paper size in every CAD program. | 15.4.1, 15.4.3 |
 | D-03 | Whether the vertical alignment `middle` of a DXF text is at half the capital height, as clause 11.7.2 says. | 15.4.4 |
+| H-44 | A dimension shows its unit through `unit` and `decimals`, with no unit sign. The text is the value rounded half-even to the stated places | The unit is stated in the notes. The rounding rule is the one of clause 5 | 12.1.1 |
+| H-45 | Arrow length 2u, arrow width u/2, gap u/2, extension u, text offset u/2, where u is the hatch unit | The dimension follows the line group, as hatches do | 12.3 |
+| H-46 | In a chain, the printed numbers of the parts must add to the printed overall | A reader adds the printed numbers. The numbers must agree | 12.8 |

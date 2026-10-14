@@ -194,6 +194,10 @@ def _paper_entity(r: Record, x, height):
     elif kind == "circle":
         e["centre_mm"], e["radius_mm"] = flip(r.f(10), r.f(20)), mm(r.f(40))
         e["line_type"], e["width_mm"] = _style(r)
+    elif kind == "arc":
+        e["centre_mm"], e["radius_mm"] = flip(r.f(10), r.f(20)), mm(r.f(40))
+        e["start_deg"], e["sweep_deg"] = angle(r.f(50)), mm((r.f(51) - r.f(50)) % 360.0)
+        e["line_type"], e["width_mm"] = _style(r)
     elif kind == "hatch":
         loops = [[flip(px, py) for px, py in loop] for loop in _loops(r)]
         e["boundary_mm"], e["holes_mm"] = loops[0], loops[1:]

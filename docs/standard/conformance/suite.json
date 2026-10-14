@@ -238,6 +238,268 @@
       "description": "Right-aligned text whose anchor is 5 mm from the frame edge: the box ends at the anchor and fits."
     },
     {
+      "id": "dim-linear-horizontal",
+      "kind": "document",
+      "dir": "documents/dim-linear-horizontal",
+      "clauses": [
+        "12.4",
+        "12.3"
+      ],
+      "description": "A horizontal linear dimension of an 8 m line, 10 mm below it (worked by hand in the standard)."
+    },
+    {
+      "id": "dim-linear-vertical",
+      "kind": "document",
+      "dir": "documents/dim-linear-vertical",
+      "clauses": [
+        "12.4.2",
+        "12.3.3"
+      ],
+      "description": "A vertical linear dimension: the text turns to read upwards."
+    },
+    {
+      "id": "dim-linear-mm",
+      "kind": "document",
+      "dir": "documents/dim-linear-mm",
+      "clauses": [
+        "12.1.1"
+      ],
+      "description": "The unit mm gives the text 8000 with 0 decimals."
+    },
+    {
+      "id": "dim-linear-decimals-3",
+      "kind": "document",
+      "dir": "documents/dim-linear-decimals-3",
+      "clauses": [
+        "12.1.1",
+        "12.1.2"
+      ],
+      "description": "Three decimals and text height 2.5."
+    },
+    {
+      "id": "dim-linear-points",
+      "kind": "document",
+      "dir": "documents/dim-linear-points",
+      "clauses": [
+        "12.2",
+        "12.4.2"
+      ],
+      "description": "Point specs with literal points; a positive offset puts the line on the left of D."
+    },
+    {
+      "id": "dim-aligned",
+      "kind": "document",
+      "dir": "documents/dim-aligned",
+      "clauses": [
+        "12.4.2"
+      ],
+      "description": "An aligned dimension of the 3-4-5 triangle: value 5.00, direction (0.6, -0.8)."
+    },
+    {
+      "id": "dim-radius",
+      "kind": "document",
+      "dir": "documents/dim-radius",
+      "clauses": [
+        "12.5.2"
+      ],
+      "description": "Radius of a circle in the default direction 45 degrees: R1.50."
+    },
+    {
+      "id": "dim-diameter-90",
+      "kind": "document",
+      "dir": "documents/dim-diameter-90",
+      "clauses": [
+        "12.5.3"
+      ],
+      "description": "Diameter of a circle with the line vertical: the text reads upwards."
+    },
+    {
+      "id": "dim-radius-arc",
+      "kind": "document",
+      "dir": "documents/dim-radius-arc",
+      "clauses": [
+        "12.5.1",
+        "12.5.2"
+      ],
+      "description": "Radius of an arc, with a direction inside the sweep."
+    },
+    {
+      "id": "dim-angle",
+      "kind": "document",
+      "dir": "documents/dim-angle",
+      "clauses": [
+        "12.5.4"
+      ],
+      "description": "A right angle: 90.0 degrees with a dimension arc of 15 mm."
+    },
+    {
+      "id": "dim-angle-refs",
+      "kind": "document",
+      "dir": "documents/dim-angle-refs",
+      "clauses": [
+        "12.5.4",
+        "12.2"
+      ],
+      "description": "An angle between two lines by reference: atan2(4, 2) = 63.43 degrees."
+    },
+    {
+      "id": "dim-leader",
+      "kind": "document",
+      "dir": "documents/dim-leader",
+      "clauses": [
+        "12.6"
+      ],
+      "description": "A leader to the right: the label is left-aligned."
+    },
+    {
+      "id": "dim-leader-left",
+      "kind": "document",
+      "dir": "documents/dim-leader-left",
+      "clauses": [
+        "12.6"
+      ],
+      "description": "A leader to the left: the label is right-aligned."
+    },
+    {
+      "id": "dim-rotated-viewport",
+      "kind": "document",
+      "dir": "documents/dim-rotated-viewport",
+      "clauses": [
+        "12.4.2"
+      ],
+      "description": "A horizontal dimension in a viewport turned by 90 degrees: the model x axis goes up the sheet."
+    },
+    {
+      "id": "dim-chain-ok",
+      "kind": "document",
+      "dir": "documents/dim-chain-ok",
+      "clauses": [
+        "12.8",
+        "12.8.1"
+      ],
+      "description": "A chain: parts 2.50, 2.50, 2.50 and overall 7.50."
+    },
+    {
+      "id": "err-dim-chain-sum",
+      "kind": "document",
+      "dir": "documents/err-dim-chain-sum",
+      "clauses": [
+        "12.8",
+        "12.8.1"
+      ],
+      "description": "Parts print 1.25 three times (3.75) but the overall prints 3.76 (clause 12.8.1)."
+    },
+    {
+      "id": "err-dim-chain-no-overall",
+      "kind": "document",
+      "dir": "documents/err-dim-chain-no-overall",
+      "clauses": [
+        "12.8"
+      ],
+      "description": "A chain with no overall."
+    },
+    {
+      "id": "err-dim-ref-unknown",
+      "kind": "document",
+      "dir": "documents/err-dim-ref-unknown",
+      "clauses": [
+        "12.2"
+      ],
+      "description": "A reference to an id that does not exist."
+    },
+    {
+      "id": "err-dim-ref-place",
+      "kind": "document",
+      "dir": "documents/err-dim-ref-place",
+      "clauses": [
+        "12.2"
+      ],
+      "description": "A line has no centre place."
+    },
+    {
+      "id": "err-dim-radius-of-line",
+      "kind": "document",
+      "dir": "documents/err-dim-radius-of-line",
+      "clauses": [
+        "12.2",
+        "12.5.1"
+      ],
+      "description": "A radius dimension must point at a circle or an arc."
+    },
+    {
+      "id": "err-dim-zero-value",
+      "kind": "document",
+      "dir": "documents/err-dim-zero-value",
+      "clauses": [
+        "12.4.1"
+      ],
+      "description": "Two points with the same x give the horizontal value 0."
+    },
+    {
+      "id": "err-dim-too-short",
+      "kind": "document",
+      "dir": "documents/err-dim-too-short",
+      "clauses": [
+        "12.4.3"
+      ],
+      "description": "3 mm between the arrowheads is less than 2a = 7.2 mm."
+    },
+    {
+      "id": "err-dim-extension-gap",
+      "kind": "document",
+      "dir": "documents/err-dim-extension-gap",
+      "clauses": [
+        "12.4.3"
+      ],
+      "description": "A dimension line 0.5 mm from the point leaves no extension line (gap u/2 = 0.9 mm)."
+    },
+    {
+      "id": "err-dim-outside-frame",
+      "kind": "document",
+      "dir": "documents/err-dim-outside-frame",
+      "clauses": [
+        "7.7.1",
+        "12.7"
+      ],
+      "description": "The dimension line is 120 mm below the points, below the frame."
+    },
+    {
+      "id": "err-dim-arc-direction",
+      "kind": "document",
+      "dir": "documents/err-dim-arc-direction",
+      "clauses": [
+        "12.5.1"
+      ],
+      "description": "The direction 180 is outside the sweep 0 to 90 of the arc."
+    },
+    {
+      "id": "err-dim-radius-small",
+      "kind": "document",
+      "dir": "documents/err-dim-radius-small",
+      "clauses": [
+        "12.4.3"
+      ],
+      "description": "R is 5 mm, less than 2a = 7.2 mm."
+    },
+    {
+      "id": "err-dim-angle-zero-ray",
+      "kind": "document",
+      "dir": "documents/err-dim-angle-zero-ray",
+      "clauses": [
+        "12.5.4"
+      ],
+      "description": "A ray of length 0."
+    },
+    {
+      "id": "err-leader-same-point",
+      "kind": "document",
+      "dir": "documents/err-leader-same-point",
+      "clauses": [
+        "12.6.1"
+      ],
+      "description": "The leader and its label are at one point."
+    },
+    {
       "id": "sheet-a0-landscape",
       "kind": "document",
       "dir": "documents/sheet-a0-landscape",
@@ -925,6 +1187,33 @@
         "11.7.4"
       ],
       "description": "Unit checks of text_box."
+    },
+    {
+      "id": "unit-dimension_text",
+      "kind": "unit",
+      "file": "units/dimension_text.json",
+      "clauses": [
+        "12.1.1"
+      ],
+      "description": "Unit checks of dimension_text."
+    },
+    {
+      "id": "unit-reading_rotation",
+      "kind": "unit",
+      "file": "units/reading_rotation.json",
+      "clauses": [
+        "12.3.3"
+      ],
+      "description": "Unit checks of reading_rotation."
+    },
+    {
+      "id": "unit-chain_ok",
+      "kind": "unit",
+      "file": "units/chain_ok.json",
+      "clauses": [
+        "12.8"
+      ],
+      "description": "Unit checks of chain_ok."
     },
     {
       "id": "unit-line_pattern",

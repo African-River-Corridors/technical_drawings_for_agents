@@ -10,7 +10,10 @@ from typing import Any
 import jsonschema
 
 from . import resources
+from . import dimensions as dims
+from .entities import _hatch, _line, _polyline, _pt, _text
 from .hatch import marks as hatch_marks
+from .hatch import unit_mm
 from .numbers import FIT_TOL_MM, angle, cos_sin, mm
 from .rules import (
     ALL_RATIOS,
@@ -246,7 +249,7 @@ def check_document(doc) -> set[str]:
 
     sheet = doc["sheet"]
     size, orientation = sheet["size"], sheet.get("orientation", "landscape")
-    group_name, _ = line_group(size)
+    group_name, group = line_group(size)
     if "line_group" in sheet and sheet["line_group"] != group_name:
         errors.add("8.2.2")
     _, _, ds = drawing_space(size, orientation)
@@ -282,10 +285,22 @@ def check_document(doc) -> set[str]:
         if "north" in vp and (w < MIN_NORTH_FRAME or h < MIN_NORTH_FRAME):
             errors.add("7.10.7")
         mapper = Mapper(frame, window, denominator, rotation) if denominator else None
+        index = {e["id"]: e for e in vp["entities"] if "id" in e}
+        chains = []
         for e in vp["entities"]:
             if "id" in e:
                 ids.append(e["id"])
             _check_entity(e, declared, mapper, rotation, frame, errors)
+            if mapper is not None and e["type"] in ("dimension", "leader") and e["layer"] in declared:
+                res = _dimension_result(e, declared, group, mapper, rotation, vp["id"], index)
+                errors |= res.errors
+                if not res.errors:
+                    if any(not _inside_frame(px, py, frame) for part in res.entities for px, py in dims.part_points(part)):
+                        errors.add("7.7.1")
+                    if res.chain:
+                        chains.append(res.chain)
+        if not dims.check_chains(chains):
+            errors.add("12.8")
     if len(ids) != len(set(ids)):
         errors.add("9.8")
     for i in range(len(frames)):
@@ -296,6 +311,17 @@ def check_document(doc) -> set[str]:
             if ox > FIT_TOL_MM and oy > FIT_TOL_MM:
                 errors.add("7.2.3")
     return errors
+
+
+def _inside_frame(px, py, frame) -> bool:
+    x, y, w, h = frame
+    return x - FIT_TOL_MM <= px <= x + w + FIT_TOL_MM and y - FIT_TOL_MM <= py <= y + h + FIT_TOL_MM
+
+
+def _dimension_result(e, declared, group, mapper, rotation, vid, index):
+    role = e.get("role") or declared[e["layer"]][0]
+    ctx = dims.Context(mapper, rotation, unit_mm(group["thin"]), group[role], f"viewport.{vid}", index)
+    return dims.dimension(e, ctx) if e["type"] == "dimension" else dims.leader(e, ctx)
 
 
 def _check_scale_bar(vp, frame, denominator, errors):
@@ -344,45 +370,6 @@ def _check_entity(e, declared, mapper, rotation, frame, errors):
 
 # ------------------------------------------------------------------------------------------------
 # normalised content (16)
-
-
-def _pt(p) -> list[float]:
-    return [mm(p[0]), mm(p[1])]
-
-
-def _line(origin, layer, a, b, line_type, width, id_=None):
-    e = {"type": "line", "origin": origin, "layer": layer, "from_mm": _pt(a), "to_mm": _pt(b), "line_type": line_type, "width_mm": width}
-    if id_:
-        e["id"] = id_
-    return e
-
-
-def _polyline(origin, layer, points, closed, line_type, width, id_=None):
-    e = {"type": "polyline", "origin": origin, "layer": layer, "points_mm": [_pt(p) for p in points], "closed": closed, "line_type": line_type, "width_mm": width}
-    if id_:
-        e["id"] = id_
-    return e
-
-
-def _hatch(origin, layer, boundary, holes, pattern, angle_deg, width, id_=None):
-    e = {
-        "type": "hatch", "origin": origin, "layer": layer,
-        "boundary_mm": [_pt(p) for p in boundary], "holes_mm": [[_pt(p) for p in hole] for hole in holes],
-        "pattern": pattern, "angle_deg": angle(angle_deg), "width_mm": width,
-    }
-    if id_:
-        e["id"] = id_
-    return e
-
-
-def _text(origin, layer, anchor, text, height, rotation, align_h, align_v, id_=None):
-    e = {
-        "type": "text", "origin": origin, "layer": layer, "anchor_mm": _pt(anchor), "text": text,
-        "height_mm": height, "rotation_deg": angle(rotation), "align_h": align_h, "align_v": align_v,
-    }
-    if id_:
-        e["id"] = id_
-    return e
 
 
 def _sheet_furniture(size, orientation, group):
@@ -501,6 +488,10 @@ def normalise_document(doc) -> dict:
         mapper = Mapper(frame, vp["window"], denominator, rotation)
         viewports.append({"id": vp["id"], "scale": denominator, "frame": dict(vp["frame"])})
         entities += _viewport_entities(vp, declared, group, mapper, rotation)
+        index = {e["id"]: e for e in vp["entities"] if "id" in e}
+        for e in vp["entities"]:
+            if e["type"] in ("dimension", "leader"):
+                entities += _dimension_result(e, declared, group, mapper, rotation, vp["id"], index).entities
         if "scale_bar" in vp:
             entities += _scale_bar(vp["id"], frame, denominator, vp["scale_bar"], group["thin"])
         if "north" in vp:
@@ -537,6 +528,8 @@ def _viewport_entities(vp, declared, group, mapper, rotation):
     origin = f"viewport.{vp['id']}"
     for e in vp["entities"]:
         t = e["type"]
+        if t in ("dimension", "leader"):
+            continue  # their parts are made by dimensions.py (12.7)
         line_type, width = entity_style(e, declared, group)
         id_ = e.get("id")
         if t in ("line", "centre_line"):
