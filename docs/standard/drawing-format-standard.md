@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 8 are complete in this draft. Clauses 9 to 18 are headings only. Each heading
+**0.4** Clauses 1 to 8 are complete in this draft. Clause 11 is partly written. Clauses 9, 10 and 12 to 18 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -754,7 +754,52 @@ Written in a later ticket.
 
 ## 11 Lettering and font
 
-Written in ticket #8.
+This clause is **partly written**. The font, its width table and the text box (clauses 11.6 and
+11.7) wait for the licence check of ticket #8. See clause 11.6.
+
+**11.1 Style.** Text is drawn in upright ISO 3098 lettering of type B. In type B the line thickness
+of a letter is one tenth of the letter height. Inclined lettering is not part of version 1.0.
+*Basis: pending ISO check, ISO 3098 (clause to be confirmed), checklist P-13. Basis for upright
+only: house choice H-27. One style keeps the text width table to one table.*
+
+**11.2 Heights.** The **height** `h` of text is the height of a capital letter, in paper
+millimetres. It is one of:
+
+> 2.5, 3.5, 5, 7, 10, 14, 20
+
+Any other height is an error `11.2`.
+*Basis: pending ISO check, ISO 3098 (clause to be confirmed), checklist P-08.*
+
+**11.3 The text entity.** A text entity has one line of text, an anchor point in model space, a
+height (clause 11.2), a rotation, a horizontal alignment and a vertical alignment.
+
+**11.3.1 Alignment.** The horizontal alignment is `left`, `centre` or `right`. The default is `left`.
+The vertical alignment is `baseline`, `middle` or `top`. The default is `baseline`. The anchor is the
+point of the text box that the alignment names. `middle` is at half the capital height above the
+baseline. `top` is at the full capital height above the baseline.
+
+**11.3.2 Rotation.** The rotation is in degrees on the paper, counter-clockwise from the paper
+horizontal. The default is 0. It is rounded as clause 5.4 says. Text with rotation 0 reads left to
+right on the sheet, whatever the rotation of the viewport.
+*Basis: house choice H-28. A rotated map keeps its labels readable.*
+
+**11.3.3** The text is one line. It holds no line break. An empty text is error `11.3.3`.
+
+**11.4 Scale.** The height of text is a paper value. The viewport scale never changes it
+(clause 7.4.1).
+
+**11.5 Containment.** Until clause 11.7 is written, the test of clause 7.7.1 is made on the anchor
+point of a text entity only.
+*Basis: house choice H-29. The text box needs the width table, and the width table needs the
+font.*
+
+**11.6 Font.** No font is adopted yet. The candidate was checked and not adopted. The reason is
+recorded on ticket #8 and in the maintainer report. The text of clause 11.6 will name one font,
+its source, its licence and the place where the licence text is kept.
+
+**11.7 Width table and text box.** To be written with clause 11.6. The text box of a text entity
+will be a rectangle. Its height will be the capital height `h`. Its width will be the sum of the
+character widths of the width table, times `h`.
 
 ## 12 Dimensions and leaders
 

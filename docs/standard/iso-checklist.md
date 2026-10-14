@@ -23,11 +23,12 @@ look first. It is not evidence.
 | P-05 | ISO 5457 | to be confirmed | Grid zones (long side x short side): A0 24 x 16, A1 16 x 12, A2 12 x 8, A3 8 x 6, A4 6 x 4. Equal division of the border side | 6.5 | medium (A0 is the least sure) | open |
 | P-06 | ISO 5457 | to be confirmed | Zone numbers along the horizontal sides, zone letters along the vertical sides, letters I and O not used. Zone marks 0.35 mm wide | 6.5.2, 6.5.3 | medium | open |
 | P-07 | ISO 5455 (check whether a later part has replaced it) | to be confirmed | Preferred ratios 1:1, 1:2, 1:5 and their powers of ten (the standard uses 1:1 to 1:100000) | 7.3.1 | high | open |
-| P-08 | ISO 3098 (the clause for the height series) | to be confirmed | Standard letter heights in millimetres include 2.5 and 3.5. The standard uses 2.5 mm for scale bar text and 3.5 mm for zone labels and the north label | 6.5.3, 7.9.1, 7.10.5 | high | open |
+| P-08 | ISO 3098 (the clause for the height series) | to be confirmed | Standard letter heights in millimetres: 2.5, 3.5, 5, 7, 10, 14, 20. The standard also uses 2.5 mm for scale bar text and 3.5 mm for zone labels and the north label | 6.5.3, 7.9.1, 7.10.5, 11.2 | high | open |
 | P-09 | ISO 128 (the part for line widths) | to be confirmed | Width series in mm: 0.13, 0.18, 0.25, 0.35, 0.5, 0.7, 1, 1.4, 2. The standard uses 0.18, 0.25, 0.35, 0.5, 0.7, 1.0 and 1.4 | 8.2 | high | open |
 | P-10 | ISO 128 (the part for line widths) | to be confirmed | Widths of the three roles are in the ratio thin : thick : extra thick = 1 : 2 : 4 | 8.1.1 | high | open |
 | P-11 | ISO 128 or ISO 5457 (to be found) | to be confirmed | Line group by sheet size: A4 and A3 group 0.35, A2 and A1 group 0.5, A0 group 0.7. ISO may leave the group free. If it does, this item moves to the house choices | 8.2 | low | open |
 | P-12 | ISO 128 (the part for basic conventions for lines) | to be confirmed | Line types and numbers: continuous 01.1, dashed 02.1, long-dashed dotted ("chain") 04.1, long-dashed double-dotted ("chain double-dashed") 05.1. Pattern in units of line width d: dashed 12 dash, 3 gap; chain 24, 3, 0.5, 3; chain double-dashed 24, 3, 0.5, 3, 0.5, 3 | 8.4 | medium (the type numbers and the 0.5 dot are the least sure) | open |
+| P-13 | ISO 3098 (the part for the alphabet and the clause for type B) | to be confirmed | Type B lettering: line thickness d = h / 10. Upright and inclined (75 degrees) forms exist. The standard uses the upright form | 11.1 | medium | open |
 
 ## B House choices
 
@@ -62,3 +63,6 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-24 | An entity may override the role or the line type of its layer, never the width | Layers name a role, not a width. A role override keeps that rule | 8.5.6 |
 | H-25 | SVG and PDF print in pure black on white | An ISO drawing is black on white. Layer colour is a CAD aid | 8.6.1 |
 | H-26 | One CAD colour number per standard layer, 19 different numbers, chosen to look different in the common CAD palette | A CAD user can tell layers apart. No claim is made about the hue | 8.6.2 |
+| H-27 | Upright lettering only | One style keeps the width table to one table | 11.1 |
+| H-28 | Text rotation is a paper angle. The viewport rotation does not turn text | A rotated map keeps its labels readable | 11.3.2 |
+| H-29 | Until the width table exists, text containment is tested at the anchor point only | The text box needs the width table, and the width table needs the font | 11.5 |
