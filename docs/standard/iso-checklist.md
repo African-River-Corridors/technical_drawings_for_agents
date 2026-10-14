@@ -24,6 +24,10 @@ look first. It is not evidence.
 | P-06 | ISO 5457 | to be confirmed | Zone numbers along the horizontal sides, zone letters along the vertical sides, letters I and O not used. Zone marks 0.35 mm wide | 6.5.2, 6.5.3 | medium | open |
 | P-07 | ISO 5455 (check whether a later part has replaced it) | to be confirmed | Preferred ratios 1:1, 1:2, 1:5 and their powers of ten (the standard uses 1:1 to 1:100000) | 7.3.1 | high | open |
 | P-08 | ISO 3098 (the clause for the height series) | to be confirmed | Standard letter heights in millimetres include 2.5 and 3.5. The standard uses 2.5 mm for scale bar text and 3.5 mm for zone labels and the north label | 6.5.3, 7.9.1, 7.10.5 | high | open |
+| P-09 | ISO 128 (the part for line widths) | to be confirmed | Width series in mm: 0.13, 0.18, 0.25, 0.35, 0.5, 0.7, 1, 1.4, 2. The standard uses 0.18, 0.25, 0.35, 0.5, 0.7, 1.0 and 1.4 | 8.2 | high | open |
+| P-10 | ISO 128 (the part for line widths) | to be confirmed | Widths of the three roles are in the ratio thin : thick : extra thick = 1 : 2 : 4 | 8.1.1 | high | open |
+| P-11 | ISO 128 or ISO 5457 (to be found) | to be confirmed | Line group by sheet size: A4 and A3 group 0.35, A2 and A1 group 0.5, A0 group 0.7. ISO may leave the group free. If it does, this item moves to the house choices | 8.2 | low | open |
+| P-12 | ISO 128 (the part for basic conventions for lines) | to be confirmed | Line types and numbers: continuous 01.1, dashed 02.1, long-dashed dotted ("chain") 04.1, long-dashed double-dotted ("chain double-dashed") 05.1. Pattern in units of line width d: dashed 12 dash, 3 gap; chain 24, 3, 0.5, 3; chain double-dashed 24, 3, 0.5, 3, 0.5, 3 | 8.4 | medium (the type numbers and the 0.5 dot are the least sure) | open |
 
 ## B House choices
 
@@ -50,3 +54,11 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-16 | Minimum frame sizes: 46 mm high with a scale bar, 38 mm in both directions with a north arrow | The bar and the arrow must fit and must not touch | 7.9.10, 7.10.7 |
 | H-17 | `model_bearing_deg` is the compass bearing of the model +y axis | Matches the tool's tested output. The old README worded it the opposite way | 7.10.1 |
 | H-18 | North arrow: 18 mm tall, inset 10 mm, head and shaft proportions as in 7.10.5 | ISO sets no size for a north arrow | 7.10.5 |
+| H-19 | A `line_group` that differs from the group of the sheet size is an error | One rule gives one set of widths for one size. It keeps drawings on the same size alike | 8.2.2 |
+| H-20 | Widths snap to the set of widths the DXF format can store: nearest, tie to the thinner, compared in whole micrometres | The three outputs must agree on one width. Whole numbers avoid binary tie errors | 8.3.1, 8.3.2 |
+| H-21 | An entity on an undeclared layer is an error | A drawing with a layer that nobody declared hides a mistake | 8.5.1 |
+| H-22 | The 19 standard layers, with their roles and line types | ISO sets no layer names. The names are those of the reference tool | 8.5.2 |
+| H-23 | Custom layer names: A to Z, digits and underscore, up to 31 characters, starting with a letter | Valid in every CAD program, and the same in every case | 8.5.4 |
+| H-24 | An entity may override the role or the line type of its layer, never the width | Layers name a role, not a width. A role override keeps that rule | 8.5.6 |
+| H-25 | SVG and PDF print in pure black on white | An ISO drawing is black on white. Layer colour is a CAD aid | 8.6.1 |
+| H-26 | One CAD colour number per standard layer, 19 different numbers, chosen to look different in the common CAD palette | A CAD user can tell layers apart. No claim is made about the hue | 8.6.2 |

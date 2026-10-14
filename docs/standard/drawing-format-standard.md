@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 7 are complete in this draft. Clauses 8 to 18 are headings only. Each heading
+**0.4** Clauses 1 to 8 are complete in this draft. Clauses 9 to 18 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -545,7 +545,204 @@ overlaps the entities of the viewport. The author places the window so that they
 
 ## 8 Layers, line types, line groups and colour
 
-Written in ticket #7.
+The machine-readable form of this clause is `docs/standard/data/line-styles.json`. The text and the
+file MUST agree. A test checks it.
+
+**8.1 Line roles.** A line has one of three **roles**: `extra_thick`, `thick` or `thin`. A role is a
+relative weight. It is not a width. The sheet turns a role into a width (clause 8.2).
+
+**8.1.1** In one line group, the thick width is twice the thin width, and the extra thick width is
+twice the thick width, each taken to the nearest value of the width series. The widths are given in
+the table in clause 8.2. They are not computed.
+*Basis: pending ISO check, ISO 128 (clause to be confirmed), checklist P-10.*
+
+**8.2 Line groups.** A **line group** is a set of three widths, one for each role. The group is
+named by its thick width. The sheet size sets the group. All widths are paper millimetres.
+
+| Line group | Sheet sizes | Thin | Thick | Extra thick |
+|---|---|---|---|---|
+| 0.35 | A4, A3 | 0.18 | 0.35 | 0.7 |
+| 0.5 | A2, A1 | 0.25 | 0.5 | 1.0 |
+| 0.7 | A0 | 0.35 | 0.7 | 1.4 |
+
+*Basis: the widths are from the ISO 128 series of line widths, pending ISO check (clause to be
+confirmed), checklist P-09. The choice of group by sheet size is pending ISO check (clause to be
+confirmed), checklist P-11.*
+
+**8.2.1** The `sheet` object MAY name the line group in the member `line_group`. The value is the
+group name: `0.35`, `0.5` or `0.7`. If it is missing, the group is the one in the table for the sheet
+size.
+
+**8.2.2** A `line_group` that is not the group of the sheet size is error `8.2.2`.
+*Basis: house choice H-19. One rule gives one set of widths for one size. It keeps drawings on the
+same size alike.*
+
+**8.2.3** Worked numbers. Half of 0.35 is 0.175, which is not in the width series. The thin width
+of the group is therefore the table value 0.18. This is why the table is used and the widths are not
+computed.
+
+**8.3 Line widths.** The width of a line is the width of its role in the line group of the sheet.
+It is in paper millimetres. It is never scaled (clause 7.4.1).
+
+**8.3.1 CAD line widths.** A CAD file can hold only a fixed set of line widths. The set, in
+millimetres, is:
+
+> 0.05, 0.09, 0.13, 0.15, 0.18, 0.20, 0.25, 0.30, 0.35, 0.40, 0.50, 0.53, 0.60, 0.70, 0.80, 0.90,
+> 1.00, 1.06, 1.20, 1.40, 1.58, 2.00, 2.11
+
+Every width in the table of clause 8.2 is in the set.
+*Basis: house choice H-20. This is the set of line widths that the DXF format can store. It is a
+format rule, not an ISO value.*
+
+**8.3.2 Snap.** A width that does not come from the table of clause 8.2 (for example a width in a
+symbol library) is **snapped** to the set of clause 8.3.1 before it enters the normalised content.
+The rule is:
+
+1. Round the width to 3 decimal places (clause 5.5). Write it as a whole number of micrometres.
+2. If the result is 0, or more than 2110, that is error `8.3.2`.
+3. Pick the member of the set that is nearest. Compare whole micrometres.
+4. If two members are equally near, pick the **thinner** one.
+
+*Basis: house choice H-20. The comparison is on whole numbers, so every implementation picks the
+same member. A comparison on binary fractions can pick a different member at a tie.*
+
+**8.3.3** Worked numbers.
+
+| Width, mm | Micrometres | Nearest members | Result, mm | Why |
+|---|---|---|---|---|
+| 0.36 | 360 | 350 (10 away), 400 (40 away) | 0.35 | nearest |
+| 0.12 | 120 | 90 (30 away), 130 (10 away) | 0.13 | nearest |
+| 0.175 | 175 | 150 (25 away), 180 (5 away) | 0.18 | nearest |
+| 0.55 | 550 | 530 (20 away), 600 (50 away) | 0.53 | nearest |
+| 0.165 | 165 | 150 and 180, each 15 away | 0.15 | tie, so the thinner |
+| 0.275 | 275 | 250 and 300, each 25 away | 0.25 | tie, so the thinner |
+| 0.45 | 450 | 400 and 500, each 50 away | 0.40 | tie, so the thinner |
+| 0.7 | 700 | 700 (0 away) | 0.7 | already in the set |
+| 0.02 | 20 | 50 (30 away) | 0.05 | nearest |
+| 2.2 | 2200 | none | error 8.3.2 | more than 2110 |
+
+The width 0.275 mm is a tie that binary arithmetic can get wrong: 0.275 times 100 is
+27.500000000000004 in 64-bit binary, which is nearer to 30 than to 25. Rule step 1 prevents this.
+
+**8.3.4** A width in a CAD file is stored in hundredths of a millimetre. The width 0.35 mm is 35.
+
+**8.4 Line types.** There are four line types. Each has an identifier, an ISO 128 type number, and
+a pattern of dashes and gaps. A pattern is a list of numbers, in units of `d`, the width of the line
+(clause 8.3). A positive number is a dash that is drawn. A negative number is a gap. The pattern
+repeats along the line.
+
+| Identifier | ISO 128 type | Pattern, in units of d |
+|---|---|---|
+| `continuous` | 01.1 | no pattern |
+| `dashed` | 02.1 | 12, -3 |
+| `chain` | 04.1 | 24, -3, 0.5, -3 |
+| `chain_double_dashed` | 05.1 | 24, -3, 0.5, -3, 0.5, -3 |
+
+*Basis: pending ISO check, ISO 128 (clause to be confirmed), checklist P-12.*
+
+**8.4.1** The **length in millimetres** of one element is the number in the table times `d`, rounded
+to 3 decimal places (clause 5.5). The pattern depends on the width of the line, so thin lines have
+shorter dashes than thick lines.
+
+**8.4.2** A pattern starts with a dash at the first point of the line. It does not change when the
+sheet is scaled, because it is in paper millimetres (clause 7.4.1).
+
+**8.4.3** The normalised content (clause 16) holds the identifier of the line type. It does not hold
+the pattern. The pattern is a rule for the output step (clause 15).
+
+**8.4.4** Worked numbers. All lengths are paper millimetres.
+
+| Line type | d = 0.18 | d = 0.35 | d = 0.5 |
+|---|---|---|---|
+| `dashed` | 2.16, -0.54 | 4.2, -1.05 | 6, -1.5 |
+| `chain` | 4.32, -0.54, 0.09, -0.54 | 8.4, -1.05, 0.175, -1.05 | 12, -1.5, 0.25, -1.5 |
+| `chain_double_dashed` | 4.32, -0.54, 0.09, -0.54, 0.09, -0.54 | 8.4, -1.05, 0.175, -1.05, 0.175, -1.05 | 12, -1.5, 0.25, -1.5, 0.25, -1.5 |
+
+**8.5 Layers.** Every entity is on one layer. A layer has a name, a role, a line type, a CAD colour
+number and a use.
+
+**8.5.1 Declaration.** The document lists the layers it uses in the member `layers`. An entity that
+names a layer that is not listed is error `8.5.1`. The standard never creates a layer without a
+declaration.
+*Basis: house choice H-21. A drawing with a layer that nobody declared hides a mistake.*
+
+**8.5.2 Standard layers.** A document declares a standard layer by its name alone. The role, the
+line type and the colour then come from this table.
+
+| Layer | Role | Line type | CAD colour | Use |
+|---|---|---|---|---|
+| OUTLINE | thick | continuous | 7 | Primary section or plan outline |
+| OBJECT | thin | continuous | 8 | Secondary object lines |
+| HIDDEN | thin | dashed | 244 | Edges hidden in this view |
+| CENTRE | thin | chain | 6 | Centre lines and axes of symmetry |
+| DIMENSIONS | thin | continuous | 3 | Dimension, extension and projection lines |
+| ANNO | thin | continuous | 174 | Leaders, tags and callouts (not text) |
+| TEXT | thin | continuous | 30 | Annotation text |
+| HATCH | thin | continuous | 9 | Hatch and fill line work |
+| GRID | thin | chain | 194 | Setting-out grid |
+| TITLEBLOCK | thick | continuous | 54 | Border, title block, revision register and other sheet furniture |
+| WATERMARK | thick | continuous | 1 | Status watermark |
+| FDN | thick | continuous | 34 | Foundations, slabs and plinths |
+| EQUIP | thick | continuous | 5 | Equipment outlines |
+| NOZZLE | thin | continuous | 4 | Nozzles and connection points |
+| PIPE | extra thick | continuous | 150 | Pipework |
+| ELEC | thin | continuous | 214 | Electrical equipment and cable routes |
+| WATER | thin | continuous | 134 | Water bodies, ponds and channels |
+| ZONE | thin | dashed | 70 | Keep-clear and access zones (not physical) |
+| ACCESS | thin | dashed | 94 | Access routes and hardstanding edges |
+
+*Basis: house choice H-22. ISO sets no layer names. The names are those of the reference tool. The
+roles follow clause 8.1. The line types follow clause 8.4.*
+
+**8.5.3 Redeclaration.** A document that repeats a standard layer name and gives a role, a line type
+or a colour that differs from the table is error `8.5.3`.
+
+**8.5.4 Custom layers.** A document MAY declare a layer that is not in the table. It gives the name,
+the role, the line type and the CAD colour number. The name MUST start with a capital letter A to Z
+and MUST hold only capital letters A to Z, digits and the underscore, up to 31 characters in all.
+Any other name is error `8.5.4`.
+*Basis: house choice H-23. The rule keeps names valid in every CAD program, and the same in every
+case.*
+
+**8.5.5 Duplicates.** Two declarations of one layer name in one document are error `8.5.5`, even
+when they are alike.
+
+**8.5.6 Entity overrides.** An entity MAY name a role, or a line type, or both. The name then
+replaces the one of its layer for that entity. This is how the border of the sheet is extra thick on
+a layer whose role is thick. The entity never names a width.
+*Basis: house choice H-24. Layers name a role, not a width. A role override keeps that rule.*
+
+**8.6 Colour.**
+
+**8.6.1 Print colour.** The SVG and the PDF are drawn in black (RGB 0, 0, 0), on the unprinted
+white of the paper. There are no grey or coloured lines, text or fills in them. Fills, where this
+standard asks for a solid fill, are black.
+*Basis: house choice H-25. An ISO drawing is black on white. Layer colour is a CAD aid and not a
+print colour.*
+
+**8.6.2 CAD colour.** Each layer has one CAD colour number, in the range 1 to 255. The table of
+clause 8.5.2 gives it. In a DXF, an entity takes the colour of its layer. No two standard layers
+have the same number. The number 7 is shown by CAD programs as black or white, whichever is seen
+against the background.
+*Basis: house choice H-26. The numbers are 19 different numbers chosen so that the layers differ in
+the common CAD palette. The standard makes no other claim about the hue.*
+
+**8.6.3** A custom layer MUST NOT have the same colour number as any other layer declared in the
+same document. Error `8.6.3`.
+
+**8.7 What an entity gets.** For an entity on a declared layer, in this order:
+
+1. The role is the role of the entity if it has one, else the role of its layer.
+2. The line type is the line type of the entity if it has one, else the line type of its layer.
+3. The width is the width of the role in the line group of the sheet (clause 8.2), snapped if it is
+   not from the table (clause 8.3.2).
+4. A text entity has no line width. A hatch entity is described in clause 10.
+
+**8.7.1** Worked numbers. On an A3 sheet (group 0.35), a line on `OUTLINE` has width 0.35 and line
+type `continuous`. A line on `HIDDEN` has width 0.18 and line type `dashed`, so its dash is 2.16 mm
+and its gap is 0.54 mm. A line on `PIPE` has width 0.7. On an A0 sheet (group 0.7) the same three
+lines have widths 0.7, 0.35 and 1.4. The sheet border (extra thick, clause 6.3.3) has width 0.7 on A3
+and 1.4 on A0.
 
 ## 9 Geometry
 

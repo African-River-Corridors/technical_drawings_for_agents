@@ -6,9 +6,10 @@ All notable changes to this project are recorded here. The format follows
 ## [Unreleased]
 
 ### Added
-- `docs/standard/drawing-format-standard.md`: the Drawing Format Standard (spec 0001). Clauses 1 to 7
+- `docs/standard/drawing-format-standard.md`: the Drawing Format Standard (spec 0001). Clauses 1 to 8
   are written: the drawing document, units and precision, sheets, viewports, scales, the scale bar
-  and the north arrow.
+  and the north arrow. Clause 8 adds layers, line types, line groups and colour, with the
+  machine-readable table `docs/standard/data/line-styles.json`.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"
   here until it is verified. House choices are listed with their reasons.
 
