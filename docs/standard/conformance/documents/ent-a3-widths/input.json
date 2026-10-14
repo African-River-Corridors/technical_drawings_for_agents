@@ -1,5 +1,5 @@
 {
-  "standard_version": "2.0",
+  "standard_version": "1.0",
   "sheet": {
     "size": "A3",
     "orientation": "landscape"
@@ -7,6 +7,12 @@
   "layers": [
     {
       "name": "OUTLINE"
+    },
+    {
+      "name": "HIDDEN"
+    },
+    {
+      "name": "PIPE"
     }
   ],
   "viewports": [
@@ -24,7 +30,7 @@
         "xmax_m": 10,
         "ymax_m": 8
       },
-      "scale": "fit",
+      "scale": 100,
       "entities": [
         {
           "type": "line",
@@ -36,6 +42,30 @@
           "to_m": [
             10,
             0
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "HIDDEN",
+          "from_m": [
+            0,
+            0
+          ],
+          "to_m": [
+            0,
+            8
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "PIPE",
+          "from_m": [
+            0,
+            8
+          ],
+          "to_m": [
+            10,
+            8
           ]
         }
       ]

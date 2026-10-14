@@ -70,3 +70,6 @@ purpose. It needs a reason. It does not need an ISO check.
 | H-31 | Entity order has no effect on the normalised content | Clause 16 sorts the entities | 9.9 |
 | H-32 | The hatch pattern names solid, lines, concrete, rockfill, soil, water | The materials the first examples need | 10.2 |
 | H-33 | Each schema rule carries an `x-clause` annotation | A user who reads a schema error can find the rule in plain words | 18.6 |
+| H-34 | Exact sheet furniture entities: border, centring marks, zone marks and labels | Two implementations must write the same entities. The values come from clause 6 | 16.6.1 |
+| H-35 | Scale bar and north arrow entities, with thin lines | The lines match the thin lines of the drawing | 16.6.3, 16.6.4 |
+| H-36 | The sort key of the entity list | A total order that needs no locale and no string form of a number | 16.8 |

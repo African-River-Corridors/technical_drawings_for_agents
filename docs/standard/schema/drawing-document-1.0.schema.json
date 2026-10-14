@@ -17,8 +17,9 @@
       "type": "string"
     },
     "standard_version": {
-      "description": "The version of the standard that the document follows.",
-      "const": "1.0",
+      "description": "The version of the standard that the document follows, as MAJOR.MINOR. A reader checks that it can read this version (clause 18.2).",
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
       "x-clause": "18.1"
     },
     "sheet": {

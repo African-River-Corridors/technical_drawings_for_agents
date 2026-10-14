@@ -11,6 +11,9 @@ All notable changes to this project are recorded here. The format follows
   and the north arrow. Clause 8 adds layers, line types, line groups and colour, with the
   machine-readable table `docs/standard/data/line-styles.json`. Clauses 9 (geometry), 10 (hatches,
   partly), 11 (lettering heights, partly) and 18 (versions and the schema) are added.
+- Clauses 16 (normalised content) and 17 (conformance), and the first conformance suite in
+  `docs/standard/conformance/`: 75 cases (documents and unit checks) with hand-checked expected
+  content, and a language-neutral runner contract.
 - `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
   drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"
