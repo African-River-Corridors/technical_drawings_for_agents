@@ -44,6 +44,7 @@ SCHEMA_ERROR_CASES = {
     "err-no-viewports": "7.1.1",
     "err-version-not-formed": "18.1",
     "err-sheet-size": "6.1.3",
+    "err-text-character": "11.3.3",
 }
 
 
@@ -490,3 +491,40 @@ def test_the_sheet_cases_agree_with_clause_6_by_independent_counts():
         assert count("sheet.centring_mark") == 4
         assert count("sheet.zone_mark") == 2 * (nh - 1) + 2 * (nv - 1)
         assert count("sheet.zone_label") == 2 * nh + 2 * nv
+
+
+def font_advances():
+    ttlib = pytest.importorskip("fontTools.ttLib")
+    font = ttlib.TTFont(
+        STD.parents[1] / "src/technical_drawings_for_agents/data/fonts/BarlowSemiCondensed-Regular.ttf"
+    )
+    cmap, hmtx = font.getBestCmap(), font["hmtx"]
+    return lambda ch: hmtx[cmap[ord(ch)]][0]
+
+
+@pytest.mark.parametrize("check", unit_checks("text_width"), ids=lambda c: c["id"])
+def test_unit_text_width_agrees_with_the_font_file(check):
+    advance = font_advances()
+    i = check["input"]
+    total = sum(advance(ch) for ch in i["text"])
+    assert rhe(total * i["height_mm"] / 700, 3) == check["expected"]
+
+
+@pytest.mark.parametrize("check", unit_checks("text_box"), ids=lambda c: c["id"])
+def test_unit_text_box_agrees_with_a_second_calculation(check):
+    import math
+
+    advance = font_advances()
+    i = check["input"]
+    ax, ay = i["anchor_mm"]
+    h = i["height_mm"]
+    width = sum(advance(ch) for ch in i["text"]) * h / 700
+    left = {"left": ax, "centre": ax - width / 2, "right": ax - width}[i["align_h"]]
+    base = {"baseline": ay, "middle": ay + h / 2, "top": ay + h}[i["align_v"]]
+    rho = math.radians(i["rotation_deg"])
+    cos, sin = round(math.cos(rho), 12), round(math.sin(rho), 12)
+    corners = []
+    for x, y in [(left, base), (left + width, base), (left + width, base - h), (left, base - h)]:
+        dx, dy = x - ax, y - ay
+        corners.append([rhe(ax + dx * cos + dy * sin, 3), rhe(ay - dx * sin + dy * cos, 3)])
+    assert corners == [[float(a), float(b)] for a, b in check["expected"]]

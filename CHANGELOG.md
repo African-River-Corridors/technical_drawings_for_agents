@@ -14,6 +14,9 @@ All notable changes to this project are recorded here. The format follows
 - Clauses 16 (normalised content) and 17 (conformance), and the first conformance suite in
   `docs/standard/conformance/`: 75 cases (documents and unit checks) with hand-checked expected
   content, and a language-neutral runner contract.
+- The font of the standard: Barlow Semi Condensed Regular (SIL OFL 1.1) with its licence in
+  `src/technical_drawings_for_agents/data/fonts/`, the width table `docs/standard/data/font-widths.json`,
+  clauses 11.6 and 11.7 (font, width table, text box) and their conformance cases.
 - `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
   drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"
