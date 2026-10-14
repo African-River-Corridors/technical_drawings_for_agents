@@ -518,16 +518,26 @@ def normalise_document(doc) -> dict:
     }
 
 
+def entity_style(e, declared, group) -> tuple[str, float]:
+    """8.7 and 9.7: the line type and width of an entity of a viewport."""
+    layer_role, layer_lt, _ = declared[e["layer"]]
+    role = e.get("role") or ("thin" if e["type"] == "centre_line" else layer_role)
+    line_type = e.get("line_type") or ("chain" if e["type"] == "centre_line" else layer_lt)
+    return line_type, group[role]
+
+
+def declared_layers(doc) -> dict:
+    """The declared layers as ``name -> (role, line_type, aci)`` (8.5)."""
+    return _layer_table(doc, set())[0]
+
+
 def _viewport_entities(vp, declared, group, mapper, rotation):
     """16.6.2."""
     out = []
     origin = f"viewport.{vp['id']}"
     for e in vp["entities"]:
         t = e["type"]
-        layer_role, layer_lt, _ = declared[e["layer"]]
-        role = e.get("role") or ("thin" if t == "centre_line" else layer_role)
-        line_type = e.get("line_type") or ("chain" if t == "centre_line" else layer_lt)
-        width = group[role]
+        line_type, width = entity_style(e, declared, group)
         id_ = e.get("id")
         if t in ("line", "centre_line"):
             out.append(_line(origin, e["layer"], mapper.point(e["from_m"]), mapper.point(e["to_m"]), line_type, width, id_))
