@@ -60,9 +60,9 @@ def test_every_x_clause_names_a_real_clause():
 
 def test_every_object_in_the_schema_rejects_unknown_keys():
     for node in walk(SCHEMA):
-        if node.get("type") == "object" and "properties" in node and "unevaluatedProperties" not in node:
+        if node.get("type") == "object" and "properties" in node and "allOf" not in node:
             assert node.get("additionalProperties") is False, node.get("x-clause")
-    assert SCHEMA["$defs"]["entity"]["unevaluatedProperties"] is False
+    assert "unevaluatedProperties" not in json.dumps(SCHEMA)
 
 
 # --------------------------------------------------------------------------- #
@@ -121,8 +121,6 @@ def test_every_error_of_an_invalid_example_can_be_traced_to_a_clause(name):
     """The reader can say which clause failed: every failing schema node has an x-clause."""
     document = json.loads((INVALID_DIR / f"{name}.json").read_text(encoding="utf-8"))
     for error in VALIDATOR.iter_errors(document):
-        if error.validator == "unevaluatedProperties" and pointer(error).endswith("/entities/0"):
-            continue  # the entity node is annotated; checked in the expected-error test
         assert error.schema.get("x-clause"), (pointer(error), error.validator)
 
 

@@ -468,16 +468,20 @@
             "$ref": "#/$defs/entity_text"
           }
         }
-      ],
-      "unevaluatedProperties": false
+      ]
     },
     "entity_line": {
       "required": [
+        "type",
         "layer",
         "from_m",
         "to_m"
       ],
       "properties": {
+        "type": {
+          "const": "line",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -497,15 +501,22 @@
           "$ref": "#/$defs/point_m"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     },
     "entity_centre_line": {
       "required": [
+        "type",
         "layer",
         "from_m",
         "to_m"
       ],
       "properties": {
+        "type": {
+          "const": "centre_line",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -525,14 +536,21 @@
           "$ref": "#/$defs/point_m"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     },
     "entity_polyline": {
       "required": [
+        "type",
         "layer",
         "points_m"
       ],
       "properties": {
+        "type": {
+          "const": "polyline",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -559,10 +577,13 @@
           "x-clause": "9.4"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     },
     "entity_arc": {
       "required": [
+        "type",
         "layer",
         "centre_m",
         "radius_m",
@@ -570,6 +591,10 @@
         "end_deg"
       ],
       "properties": {
+        "type": {
+          "const": "arc",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -599,15 +624,22 @@
           "x-clause": "9.5"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     },
     "entity_circle": {
       "required": [
+        "type",
         "layer",
         "centre_m",
         "radius_m"
       ],
       "properties": {
+        "type": {
+          "const": "circle",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -629,15 +661,22 @@
           "x-clause": "9.6"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     },
     "entity_hatch": {
       "required": [
+        "type",
         "layer",
         "boundary_m",
         "pattern"
       ],
       "properties": {
+        "type": {
+          "const": "hatch",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -684,16 +723,23 @@
           "x-clause": "10.1"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     },
     "entity_text": {
       "required": [
+        "type",
         "layer",
         "anchor_m",
         "text",
         "height_mm"
       ],
       "properties": {
+        "type": {
+          "const": "text",
+          "x-clause": "9.1"
+        },
         "layer": {
           "$ref": "#/$defs/layer_name"
         },
@@ -747,7 +793,9 @@
           "x-clause": "11.3.1"
         }
       },
-      "x-clause": "9.1.1"
+      "x-clause": "9.1.1",
+      "type": "object",
+      "additionalProperties": false
     }
   }
 }

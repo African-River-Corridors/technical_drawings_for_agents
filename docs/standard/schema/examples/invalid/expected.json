@@ -169,9 +169,9 @@
   },
   "text-with-role": {
     "path": "/viewports/0/entities/0",
-    "keyword": "unevaluatedProperties",
+    "keyword": "additionalProperties",
     "message_contains": "role",
-    "clause": "9.1"
+    "clause": "9.1.1"
   },
   "unknown-root-key": {
     "path": "",
