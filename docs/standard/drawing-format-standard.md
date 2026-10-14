@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 11 and 16 to 18 are complete in this draft. Clauses 12 to 15 are headings only. Each heading
+**0.4** Clauses 1 to 11 and 15 to 18 are complete in this draft. Clauses 12 to 14 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -1014,7 +1014,75 @@ complete.
 
 ## 15 Output mapping
 
-Written in a later ticket.
+**15.1 General.** One drawing document gives one normalised content (clause 16). The SVG, the PDF and
+the DXF are all made from it. The DXF is made from the document and its normalised content together,
+because model space holds the model coordinates of the document. An output that is made from a
+document with an error is not written (clause 16.1.1).
+
+**15.2 SVG.** One SVG user unit is one millimetre of paper. The root has the width and height of the
+trimmed sheet in `mm` and a `viewBox` of the same size. Every entity of the normalised content is
+drawn, in the order of the list, in black (clause 8.6.1), with its width and its dash pattern
+(clause 8.4.1) in paper millimetres. A `text` is placed at the first corner of its text box
+(clause 11.7), with the font size `h / 0.7` and the width of clause 11.7.1. A hatch with the pattern
+`solid` is filled by the even-odd rule. A hatch with another pattern draws nothing, because its marks
+are entities of their own (clause 10.5.8). The font MAY be embedded in the SVG.
+
+**15.3 PDF.** The PDF has one page, of the size of the trimmed sheet. It is drawn in black. The font
+of clause 11.6 is embedded (clause 11.6.4). A text is placed and rotated as in clause 15.2. Two builds
+of one document give the same bytes.
+
+**15.4 DXF.**
+
+**15.4.1 Units.** Model space is in metres, with +y up. The header variable `$INSUNITS` is 6.
+`$PSLTSCALE` is 1, so that a line pattern in a viewport keeps its paper size. Paper space is in
+millimetres. The DXF paper space has +y up, so a paper point `(x, y)` of the normalised content is
+written `(x, H - y)`, where `H` is the height of the sheet.
+
+**15.4.2 Layers.** The DXF has a layer for every layer of the document and for `TITLEBLOCK`. It has one
+more layer, `VIEWPORT`, which does not plot. Each layer has the colour number of clause 8.5.2, the line
+weight of its role in the line group of the sheet (clause 8.3.4), and the line type of clause 15.4.3.
+*Basis: house choice H-43. A viewport frame must not print.*
+
+**15.4.3 Line types.** Every entity names its line type and its line weight, so that a role override
+or a layer change does not move it. The line type `continuous` is `CONTINUOUS`. Any other line type
+with the line width `w` mm is `TDFA_<TYPE>_<w in hundredths>`, for example `TDFA_DASHED_018`. Its
+pattern is the pattern of clause 8.4.1, in millimetres.
+
+**15.4.4 Model space.** The entities of every viewport are written in model space, in metres:
+`line` and `centre_line` as LINE; `polyline` as LWPOLYLINE; `circle` as CIRCLE; `arc` as ARC, with the
+start and end angles of the document; `hatch` as HATCH with its boundary and holes, filled solid. A
+hatch whose pattern is not `solid` is written invisible (its marks are in paper space, clause 15.4.5). A
+`text` is written as TEXT in the style `TDFA`, with the height `h * N / 1000` metres, so that it plots
+at `h` mm in a viewport of the scale 1:N, and with the rotation `rho - rotation` degrees (clause 11.3.2).
+The horizontal and vertical alignments are the DXF alignments of the same names.
+
+**15.4.5 Paper space.** The layout is named `SHEET`. Its paper size is the trimmed sheet. It holds the
+entities of the normalised content that are not entities of a viewport: the sheet furniture, the
+furniture of each viewport, and the marks of the hatches. A `line` is a LINE, a `polyline` a
+LWPOLYLINE, a `circle` a CIRCLE, a `hatch` a HATCH (solid), a `text` a TEXT.
+
+**15.4.6 Viewports.** Each viewport of the document is a DXF VIEWPORT in paper space, on the layer
+`VIEWPORT`. Its centre and size are those of its frame. Its view centre is the centre of the model
+window. Its view height is `frame height * N / 1000` metres, so that it plots at 1:N. Its twist angle
+is the rotation of the viewport in degrees.
+
+**15.4.7 Style and font.** The text style `TDFA` names the font file
+`BarlowSemiCondensed-Regular.ttf` (clause 11.6.1).
+
+**15.4.8 Extended data.** Every entity and every viewport carries extended data of the application
+`TDFA`, as strings `key=value`. Paper-space entities have `origin` (clause 16.5) and `type`.
+Model-space entities have `vp` (the viewport) and `type`. Both may have `id`. A hatch has `pattern`
+and `angle`. A viewport has `id` and `scale`.
+
+**15.4.9 Overlapping windows.** The viewports of one DXF share one model space. If the model windows of
+two viewports overlap, each viewport shows the content of the other in a CAD program. The writer MUST
+report a warning that names clause 15.4.9. The drawing is still written.
+
+**15.4.10 Read back.** The normalised content can be made again from the DXF. A paper-space entity is
+read as it is, with the paper point `(x, H - y)`. A model-space entity is mapped with clause 7.4 and
+the view centre, scale and twist of the viewport named by its `vp`. A text height is `height * 1000 / N`.
+The conformance of the DXF output is tested in this way, with a reader that does not use the library
+that wrote the file.
 
 ## 16 Normalised content
 

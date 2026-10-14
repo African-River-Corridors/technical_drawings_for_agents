@@ -107,3 +107,15 @@ doubt about its licence in an Apache-2.0 tool (see ticket #8). It can be revisit
 | H-40 | The hatch unit is 10 times the thin width of the line group | The pattern follows the line group, so it looks alike on every sheet size | 10.5.1 |
 | H-41 | The hatch frame is fixed to the paper origin | Two hatches of one pattern and one angle line up. The result is the same in every implementation | 10.5.2 |
 | H-42 | The marks of concrete, rockfill, soil and water as in the table of clause 10.5.7 | ISO sets no pattern for these materials in a form that can be computed. The shapes are plain, and the clearances keep marks off the boundary | 10.5.7 |
+| H-43 | The DXF has a non-plotting layer `VIEWPORT` for the viewport frames | A viewport frame must not print | 15.4.2 |
+
+## D Open checks that are not ISO
+
+These are facts about CAD programs that the author could not check, because no CAD program was at
+hand. They do not change the normalised content. The DXF can be read back without them.
+
+| ID | Check | Where used |
+|---|---|---|
+| D-01 | Whether a CAD program turns the view the way that the twist angle of the viewport is written (clause 15.4.6): the twist is the viewport rotation, positive counter-clockwise. | 15.4.6 |
+| D-02 | Whether `$PSLTSCALE` 1 with patterns in millimetres shows the patterns at paper size in every CAD program. | 15.4.1, 15.4.3 |
+| D-03 | Whether the vertical alignment `middle` of a DXF text is at half the capital height, as clause 11.7.2 says. | 15.4.4 |

@@ -193,9 +193,10 @@ def test_cli_run_is_the_runner_of_clause_17_3(capsys):
     assert compare(result, json.loads((case / "expected.json").read_text())) == []
 
 
-def test_cli_build_writes_three_files(tmp_path, capsys):
+def test_cli_build_writes_four_files(tmp_path, capsys):
     assert main(["doc", "build", str(EXAMPLES / "valid" / "custom-layer.json"), "--out", str(tmp_path)]) == 0
     assert sorted(p.name for p in tmp_path.iterdir()) == [
+        "custom-layer.dxf",
         "custom-layer.normalised.json",
         "custom-layer.pdf",
         "custom-layer.svg",

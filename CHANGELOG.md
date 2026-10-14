@@ -24,6 +24,10 @@ All notable changes to this project are recorded here. The format follows
 - Hatch marks (clause 10.5, `docs/standard/data/hatch-patterns.json`): the spacing, angles and shapes of
   `lines`, `soil`, `water`, `concrete` and `rockfill`, tied to the line group, clipped to the boundary
   and holes. The marks are entities of the normalised content. Ten new conformance cases.
+- DXF output from a drawing document (clause 15.4): model space in metres, a paper-space layout `SHEET`
+  with the border, furniture, hatch marks and one viewport for each viewport at its stated scale, layers
+  with colours and snapped widths, line types in paper millimetres, and the font named. `doc build`
+  writes it. A test reads it back with a reader that does not use ezdxf.
 - `docs/standard/schema/drawing-document-1.0.schema.json`: the JSON Schema (draft 2020-12) for the
   drawing document, with valid and invalid example documents and their expected errors.
 - `docs/standard/iso-checklist.md`: every value taken from an ISO part is marked "pending ISO check"

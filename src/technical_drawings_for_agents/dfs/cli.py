@@ -9,6 +9,7 @@ from pathlib import Path
 from . import resources
 from .conformance import run_suite
 from .pipeline import run_file
+from .render_dxf import dxf_from_document
 from .render_pdf import pdf_from_normalised
 from .render_svg import svg_from_normalised
 
@@ -51,10 +52,14 @@ def cmd_build(args) -> int:
     norm = result["normalised"]
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
+    dxf_text, warnings = dxf_from_document(json.loads(path.read_text(encoding="utf-8")), norm)
+    for warning in warnings:
+        print(f"warning: {warning}", file=sys.stderr)
     written = {
         out / f"{path.stem}.normalised.json": (json.dumps(norm, indent=2, ensure_ascii=False) + "\n").encode("utf-8"),
         out / f"{path.stem}.svg": svg_from_normalised(norm).encode("utf-8"),
         out / f"{path.stem}.pdf": pdf_from_normalised(norm),
+        out / f"{path.stem}.dxf": dxf_text.encode("utf-8"),
     }
     for target, data in written.items():
         target.write_bytes(data)
@@ -84,7 +89,7 @@ def add_subcommands(sub) -> None:
         p = commands.add_parser(name, help=help_)
         p.add_argument("document")
         p.set_defaults(func=func)
-    p = commands.add_parser("build", help="write normalised content, SVG and PDF")
+    p = commands.add_parser("build", help="write normalised content, SVG, PDF and DXF")
     p.add_argument("document")
     p.add_argument("--out", required=True, help="output directory")
     p.set_defaults(func=cmd_build)
