@@ -1,0 +1,3027 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape",
+    "line_group": "0.35",
+    "width_mm": 420.0,
+    "height_mm": 297.0,
+    "drawing_space": {
+      "x_mm": 20.0,
+      "y_mm": 10.0,
+      "width_mm": 390.0,
+      "height_mm": 277.0
+    }
+  },
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 50,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 320,
+        "height_mm": 176
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "sheet.border",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          20.0,
+          10.0
+        ],
+        [
+          410.0,
+          10.0
+        ],
+        [
+          410.0,
+          287.0
+        ],
+        [
+          20.0,
+          287.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        148.5
+      ],
+      "to_mm": [
+        25.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210.0,
+        0.0
+      ],
+      "to_mm": [
+        210.0,
+        15.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210.0,
+        297.0
+      ],
+      "to_mm": [
+        210.0,
+        282.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        148.5
+      ],
+      "to_mm": [
+        405.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "polyline",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          340.0,
+          10.0
+        ],
+        [
+          410.0,
+          10.0
+        ],
+        [
+          410.0,
+          221.0
+        ],
+        [
+          340.0,
+          221.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        15.5
+      ],
+      "text": "NOTES",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        20.0
+      ],
+      "text": "1. SYNTHETIC EXAMPLE. NOT A REAL PROJECT.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        24.5
+      ],
+      "text": "2. TAGS AND SIZES ARE ILLUSTRATIVE.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        29.0
+      ],
+      "text": "3. CONCEPT ONLY. NOT FOR CONSTRUCTION.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        33.5
+      ],
+      "text": "4. THE SHEET IS A DIAGRAM: THE SCALE IS 1:50",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        38.0
+      ],
+      "text": "5. FOR THE SYMBOL SIZES ONLY.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        226.0
+      ],
+      "to_mm": [
+        410.0,
+        226.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        242.0,
+        221.0
+      ],
+      "to_mm": [
+        242.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        266.0,
+        221.0
+      ],
+      "to_mm": [
+        266.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        366.0,
+        221.0
+      ],
+      "to_mm": [
+        366.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        380.0,
+        221.0
+      ],
+      "to_mm": [
+        380.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        394.0,
+        221.0
+      ],
+      "to_mm": [
+        394.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          230.0,
+          221.0
+        ],
+        [
+          410.0,
+          221.0
+        ],
+        [
+          410.0,
+          231.0
+        ],
+        [
+          230.0,
+          231.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        225.0
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        230.0
+      ],
+      "text": "A",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243.0,
+        225.0
+      ],
+      "text": "DATE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243.0,
+        230.0
+      ],
+      "text": "2026-07-16",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267.0,
+        225.0
+      ],
+      "text": "DESCRIPTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267.0,
+        230.0
+      ],
+      "text": "FIRST ISSUE - SYNTHETIC P&ID",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367.0,
+        225.0
+      ],
+      "text": "BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367.0,
+        230.0
+      ],
+      "text": "AB",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        381.0,
+        225.0
+      ],
+      "text": "CHK",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        395.0,
+        225.0
+      ],
+      "text": "APP",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.status_watermark",
+      "layer": "WATERMARK",
+      "anchor_mm": [
+        215.0,
+        148.5
+      ],
+      "text": "CONCEPT - NOT FOR CONSTRUCTION",
+      "height_mm": 20,
+      "rotation_deg": 35.385,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        251.0
+      ],
+      "to_mm": [
+        340.0,
+        251.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        263.0
+      ],
+      "to_mm": [
+        340.0,
+        263.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        275.0
+      ],
+      "to_mm": [
+        340.0,
+        275.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        266.0,
+        275.0
+      ],
+      "to_mm": [
+        266.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        303.0,
+        275.0
+      ],
+      "to_mm": [
+        303.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        245.0
+      ],
+      "to_mm": [
+        410.0,
+        245.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        259.0
+      ],
+      "to_mm": [
+        410.0,
+        259.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        273.0
+      ],
+      "to_mm": [
+        410.0,
+        273.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        360.0,
+        245.0
+      ],
+      "to_mm": [
+        360.0,
+        259.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        365.0,
+        273.0
+      ],
+      "to_mm": [
+        365.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        375.0,
+        259.0
+      ],
+      "to_mm": [
+        375.0,
+        273.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        385.0,
+        273.0
+      ],
+      "to_mm": [
+        385.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        231.0
+      ],
+      "to_mm": [
+        410.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        287.0
+      ],
+      "to_mm": [
+        230.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        231.0
+      ],
+      "to_mm": [
+        340.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        410.0,
+        231.0
+      ],
+      "to_mm": [
+        410.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        410.0,
+        287.0
+      ],
+      "to_mm": [
+        230.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        234.5
+      ],
+      "text": "TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        250.0
+      ],
+      "text": "SYNTHETIC PUMP SKIDS AND SPINE",
+      "height_mm": 5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        254.5
+      ],
+      "text": "SUPPLEMENTARY TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        262.0
+      ],
+      "text": "ISA-5.1 STYLE P&ID - SYNTHETIC DATA",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        266.5
+      ],
+      "text": "OWNER",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        274.0
+      ],
+      "text": "EXAMPLE CLIENT",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        278.5
+      ],
+      "text": "CREATED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        286.0
+      ],
+      "text": "AB",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267.0,
+        278.5
+      ],
+      "text": "CHECKED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        304.0,
+        278.5
+      ],
+      "text": "APPROVED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        234.5
+      ],
+      "text": "DOCUMENT NUMBER",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        244.0
+      ],
+      "text": "SYN-PSK-PID-001",
+      "height_mm": 5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        248.5
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        258.0
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        262.5
+      ],
+      "text": "STATUS",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        272.0
+      ],
+      "text": "CONCEPT",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        276.5
+      ],
+      "text": "SHEET",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        286.0
+      ],
+      "text": "1/1",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        361.0,
+        248.5
+      ],
+      "text": "DATE OF ISSUE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        361.0,
+        258.0
+      ],
+      "text": "2026-07-16",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        366.0,
+        276.5
+      ],
+      "text": "SIZE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        366.0,
+        286.0
+      ],
+      "text": "A3",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        376.0,
+        262.5
+      ],
+      "text": "SCALE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        376.0,
+        272.0
+      ],
+      "text": "1:50",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        386.0,
+        276.5
+      ],
+      "text": "TYPE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        386.0,
+        286.0
+      ],
+      "text": "P&ID",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        33.083
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        79.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        125.417
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        171.583
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        217.75
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        263.917
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        44.375,
+        5.0
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        44.375,
+        292.0
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        93.125,
+        5.0
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        93.125,
+        292.0
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        141.875,
+        5.0
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        141.875,
+        292.0
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        190.625,
+        5.0
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        190.625,
+        292.0
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        239.375,
+        5.0
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        239.375,
+        292.0
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        288.125,
+        5.0
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        288.125,
+        292.0
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        336.875,
+        5.0
+      ],
+      "text": "7",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        336.875,
+        292.0
+      ],
+      "text": "7",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        385.625,
+        5.0
+      ],
+      "text": "8",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        385.625,
+        292.0
+      ],
+      "text": "8",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        33.083
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        79.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        125.417
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        171.583
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        217.75
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        263.917
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        56.167
+      ],
+      "to_mm": [
+        20.0,
+        56.167
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        102.333
+      ],
+      "to_mm": [
+        20.0,
+        102.333
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        148.5
+      ],
+      "to_mm": [
+        20.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        194.667
+      ],
+      "to_mm": [
+        20.0,
+        194.667
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        240.833
+      ],
+      "to_mm": [
+        20.0,
+        240.833
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        68.75,
+        0.0
+      ],
+      "to_mm": [
+        68.75,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        68.75,
+        297.0
+      ],
+      "to_mm": [
+        68.75,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        117.5,
+        0.0
+      ],
+      "to_mm": [
+        117.5,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        117.5,
+        297.0
+      ],
+      "to_mm": [
+        117.5,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        166.25,
+        0.0
+      ],
+      "to_mm": [
+        166.25,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        166.25,
+        297.0
+      ],
+      "to_mm": [
+        166.25,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        215.0,
+        0.0
+      ],
+      "to_mm": [
+        215.0,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        215.0,
+        297.0
+      ],
+      "to_mm": [
+        215.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        263.75,
+        0.0
+      ],
+      "to_mm": [
+        263.75,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        263.75,
+        297.0
+      ],
+      "to_mm": [
+        263.75,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        312.5,
+        0.0
+      ],
+      "to_mm": [
+        312.5,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        312.5,
+        297.0
+      ],
+      "to_mm": [
+        312.5,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        361.25,
+        0.0
+      ],
+      "to_mm": [
+        361.25,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        361.25,
+        297.0
+      ],
+      "to_mm": [
+        361.25,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        56.167
+      ],
+      "to_mm": [
+        410.0,
+        56.167
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        102.333
+      ],
+      "to_mm": [
+        410.0,
+        102.333
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        148.5
+      ],
+      "to_mm": [
+        410.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        194.667
+      ],
+      "to_mm": [
+        410.0,
+        194.667
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        240.833
+      ],
+      "to_mm": [
+        410.0,
+        240.833
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "ANNO",
+      "points_mm": [
+        [
+          234.0,
+          65.5
+        ],
+        [
+          234.0,
+          94.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "chain",
+      "width_mm": 0.18,
+      "id": "L-FC"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "ANNO",
+      "points_mm": [
+        [
+          230.5,
+          62.0
+        ],
+        [
+          192.5,
+          62.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "dashed",
+      "width_mm": 0.18,
+      "id": "L-FE"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "ANNO",
+      "points_mm": [
+        [
+          100.0,
+          65.5
+        ],
+        [
+          100.0,
+          83.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.18,
+      "id": "L-LT"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "ANNO",
+      "points_mm": [
+        [
+          196.0,
+          65.5
+        ],
+        [
+          196.0,
+          78.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.18,
+      "id": "L-PT"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          142.0,
+          82.0
+        ],
+        [
+          153.0,
+          82.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-A1"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          163.0,
+          82.0
+        ],
+        [
+          175.0,
+          82.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-A2"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          181.0,
+          82.0
+        ],
+        [
+          192.0,
+          82.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-A3"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          142.0,
+          118.0
+        ],
+        [
+          153.0,
+          118.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-B1"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          163.0,
+          118.0
+        ],
+        [
+          175.0,
+          118.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-B2"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          181.0,
+          118.0
+        ],
+        [
+          192.0,
+          118.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-B3"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          200.0,
+          82.0
+        ],
+        [
+          218.0,
+          82.0
+        ],
+        [
+          218.0,
+          100.0
+        ],
+        [
+          230.0,
+          100.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-D-A"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          200.0,
+          118.0
+        ],
+        [
+          218.0,
+          118.0
+        ],
+        [
+          218.0,
+          100.0
+        ],
+        [
+          230.0,
+          100.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-D-B"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          125.0,
+          69.0
+        ],
+        [
+          125.0,
+          72.0
+        ],
+        [
+          138.0,
+          72.0
+        ],
+        [
+          138.0,
+          78.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-DOSE"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          106.0,
+          100.0
+        ],
+        [
+          124.0,
+          100.0
+        ],
+        [
+          124.0,
+          82.0
+        ],
+        [
+          134.0,
+          82.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-S-A"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          106.0,
+          100.0
+        ],
+        [
+          124.0,
+          100.0
+        ],
+        [
+          124.0,
+          118.0
+        ],
+        [
+          134.0,
+          118.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-S-B"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "PIPE",
+      "points_mm": [
+        [
+          238.0,
+          100.0
+        ],
+        [
+          260.0,
+          100.0
+        ]
+      ],
+      "closed": false,
+      "line_type": "continuous",
+      "width_mm": 0.7,
+      "id": "L-SPINE"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "ZONE",
+      "points_mm": [
+        [
+          110.0,
+          70.0
+        ],
+        [
+          140.0,
+          70.0
+        ],
+        [
+          140.0,
+          52.8
+        ],
+        [
+          110.0,
+          52.8
+        ]
+      ],
+      "closed": true,
+      "line_type": "dashed",
+      "width_mm": 0.18,
+      "id": "dosing-skid"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "TEXT",
+      "anchor_mm": [
+        125.0,
+        55.8
+      ],
+      "text": "DOSING SKID",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "TEXT",
+      "anchor_mm": [
+        260.0,
+        90.0
+      ],
+      "text": "DN250",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "arc",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        234.0,
+        94.0
+      ],
+      "radius_mm": 2.5,
+      "start_deg": 0.0,
+      "sweep_deg": 180.0,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        125.0,
+        64.0
+      ],
+      "radius_mm": 5.0,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        158.0,
+        82.0
+      ],
+      "radius_mm": 5.0,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        158.0,
+        118.0
+      ],
+      "radius_mm": 5.0,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "centre_mm": [
+        234.0,
+        100.0
+      ],
+      "radius_mm": 1.2,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "centre_mm": [
+        100.0,
+        62.0
+      ],
+      "radius_mm": 3.5,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "centre_mm": [
+        196.0,
+        62.0
+      ],
+      "radius_mm": 3.5,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "centre_mm": [
+        234.0,
+        62.0
+      ],
+      "radius_mm": 3.5,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        94.0,
+        90.0
+      ],
+      "to_mm": [
+        106.0,
+        90.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        138.0,
+        82.0
+      ],
+      "to_mm": [
+        138.0,
+        78.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        138.0,
+        118.0
+      ],
+      "to_mm": [
+        138.0,
+        114.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        196.0,
+        82.0
+      ],
+      "to_mm": [
+        196.0,
+        78.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        196.0,
+        118.0
+      ],
+      "to_mm": [
+        196.0,
+        114.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        234.0,
+        100.0
+      ],
+      "to_mm": [
+        234.0,
+        96.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        181.0,
+        85.0
+      ],
+      "to_mm": [
+        181.0,
+        79.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "from_mm": [
+        181.0,
+        121.0
+      ],
+      "to_mm": [
+        181.0,
+        115.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "from_mm": [
+        96.5,
+        62.0
+      ],
+      "to_mm": [
+        103.5,
+        62.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "from_mm": [
+        192.5,
+        62.0
+      ],
+      "to_mm": [
+        199.5,
+        62.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "from_mm": [
+        230.5,
+        62.0
+      ],
+      "to_mm": [
+        237.5,
+        62.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          94.0,
+          117.0
+        ],
+        [
+          106.0,
+          117.0
+        ],
+        [
+          106.0,
+          83.0
+        ],
+        [
+          94.0,
+          83.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          123.0,
+          67.0
+        ],
+        [
+          129.0,
+          64.0
+        ],
+        [
+          123.0,
+          61.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          134.0,
+          84.5
+        ],
+        [
+          142.0,
+          79.5
+        ],
+        [
+          142.0,
+          84.5
+        ],
+        [
+          134.0,
+          79.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          134.0,
+          120.5
+        ],
+        [
+          142.0,
+          115.5
+        ],
+        [
+          142.0,
+          120.5
+        ],
+        [
+          134.0,
+          115.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          156.0,
+          85.0
+        ],
+        [
+          162.0,
+          82.0
+        ],
+        [
+          156.0,
+          79.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          156.0,
+          121.0
+        ],
+        [
+          162.0,
+          118.0
+        ],
+        [
+          156.0,
+          115.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          175.0,
+          85.0
+        ],
+        [
+          181.0,
+          82.0
+        ],
+        [
+          175.0,
+          79.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          175.0,
+          121.0
+        ],
+        [
+          181.0,
+          118.0
+        ],
+        [
+          175.0,
+          115.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          192.0,
+          84.5
+        ],
+        [
+          200.0,
+          79.5
+        ],
+        [
+          200.0,
+          84.5
+        ],
+        [
+          192.0,
+          79.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          192.0,
+          120.5
+        ],
+        [
+          200.0,
+          115.5
+        ],
+        [
+          200.0,
+          120.5
+        ],
+        [
+          192.0,
+          115.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          230.0,
+          102.5
+        ],
+        [
+          238.0,
+          97.5
+        ],
+        [
+          238.0,
+          102.5
+        ],
+        [
+          230.0,
+          97.5
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "points_mm": [
+        [
+          260.0,
+          103.0
+        ],
+        [
+          268.0,
+          100.0
+        ],
+        [
+          260.0,
+          97.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        100.0,
+        119.0
+      ],
+      "text": "T-01",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        125.0,
+        71.0
+      ],
+      "text": "DP-01",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        138.0,
+        87.0
+      ],
+      "text": "VG-01A",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        138.0,
+        123.0
+      ],
+      "text": "VG-01B",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        158.0,
+        89.0
+      ],
+      "text": "P-01A",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        158.0,
+        125.0
+      ],
+      "text": "P-01B",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        178.0,
+        87.0
+      ],
+      "text": "VC-01A",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        178.0,
+        123.0
+      ],
+      "text": "VC-01B",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        196.0,
+        87.0
+      ],
+      "text": "VG-02A",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        196.0,
+        123.0
+      ],
+      "text": "VG-02B",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        234.0,
+        105.0
+      ],
+      "text": "FCV-01",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "EQUIP",
+      "anchor_mm": [
+        264.0,
+        105.0
+      ],
+      "text": "PLANT",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "top"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "anchor_mm": [
+        100.0,
+        56.5
+      ],
+      "text": "LT-101",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "anchor_mm": [
+        196.0,
+        56.5
+      ],
+      "text": "PT-101",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.symbol",
+      "layer": "NOZZLE",
+      "anchor_mm": [
+        234.0,
+        56.5
+      ],
+      "text": "FIC-101",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    }
+  ]
+}

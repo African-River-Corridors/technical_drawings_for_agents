@@ -1,80 +1,350 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" width="920" height="580" preserveAspectRatio="xMidYMid meet" style="background:#1a1a2e; border-radius:6px;"><rect width="920" height="580" fill="#1a1a2e"/><defs>
-<pattern id="hatch-concrete" patternUnits="userSpaceOnUse" width="57.4" height="57.4">
-<rect width="57.4" height="57.4" fill="rgba(154,160,180,0.10)"/>
-<path d="M 0 57.4 L 57.4 0 M 0 0 L 57.4 57.4" stroke="#9aa0b4" stroke-width="0.7" opacity="0.85"/>
-</pattern>
-</defs>
-<rect x="24.0" y="24.0" width="872.0" height="532.0" fill="none" stroke="#888888" stroke-width="0.7"/>
-<polygon points="166.6,273.1 357.9,426.2 562.1,426.2 753.4,273.1 727.9,273.1 536.6,400.7 383.4,400.7 192.1,273.1" fill="url(#hatch-concrete)" stroke="#d9e2ec" stroke-width="1.2"/>
-<line x1="192.1" y1="273.1" x2="383.4" y2="400.7" stroke="#d9e2ec" stroke-width="1.8"/>
-<line x1="383.4" y1="400.7" x2="536.6" y2="400.7" stroke="#d9e2ec" stroke-width="1.8"/>
-<line x1="536.6" y1="400.7" x2="727.9" y2="273.1" stroke="#d9e2ec" stroke-width="1.8"/>
-<line x1="153.8" y1="305.0" x2="766.2" y2="305.0" stroke="#4488ff" stroke-width="0.8" stroke-dasharray="6,4"/>
-<circle cx="680.1" cy="305.0" r="3.0" fill="#4488ff" stroke="#4488ff" stroke-width="0"/>
-<line x1="680.1" y1="305.0" x2="779.0" y2="305.0" stroke="#4488ff" stroke-width="0.7"/>
-<line x1="779.0" y1="305.0" x2="798.1" y2="285.9" stroke="#4488ff" stroke-width="0.7"/>
-<text x="793.1" y="281.9" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">Design WL (nominal)</text>
-<text x="793.1" y="293.9" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">freeboard 0.25 m</text>
-<line x1="460.0" y1="464.5" x2="460.0" y2="222.1" stroke="#ff66cc" stroke-width="0.8" stroke-dasharray="10,4,2,4"/>
-<line x1="383.4" y1="400.7" x2="383.4" y2="445.7" stroke="#888888" stroke-width="0.5"/>
-<line x1="536.6" y1="400.7" x2="536.6" y2="445.7" stroke="#888888" stroke-width="0.5"/>
-<line x1="383.4" y1="442.7" x2="536.6" y2="442.7" stroke="#888888" stroke-width="0.7"/>
-<polygon points="383.4,442.7 388.4,440.2 388.4,445.2" fill="#888888"/>
-<polygon points="536.6,442.7 531.6,440.2 531.6,445.2" fill="#888888"/>
-<text x="460.0" y="438.7" font-size="10" fill="#bbbbbb" text-anchor="middle" font-family="monospace">BED 1.2 m</text>
-<line x1="753.4" y1="400.7" x2="786.4" y2="400.7" stroke="#888888" stroke-width="0.5"/>
-<line x1="753.4" y1="273.1" x2="786.4" y2="273.1" stroke="#888888" stroke-width="0.5"/>
-<line x1="783.4" y1="400.7" x2="783.4" y2="273.1" stroke="#888888" stroke-width="0.7"/>
-<polygon points="783.4,400.7 780.9,395.7 785.9,395.7" fill="#888888"/>
-<polygon points="783.4,273.1 780.9,278.1 785.9,278.1" fill="#888888"/>
-<text x="795.4" y="339.9" font-size="10" fill="#bbbbbb" text-anchor="middle" font-family="monospace" transform="rotate(-90,795.4,339.9)">DEPTH 1 m</text>
-<circle cx="370.7" cy="413.4" r="3.0" fill="#888888" stroke="#888888" stroke-width="0"/>
-<line x1="370.7" y1="413.4" x2="141.0" y2="451.7" stroke="#888888" stroke-width="0.7"/>
-<line x1="141.0" y1="451.7" x2="121.9" y2="451.7" stroke="#888888" stroke-width="0.7"/>
-<text x="116.9" y="447.7" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">Concrete lining</text>
-<text x="116.9" y="459.7" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">0.2 m (nom.)</text>
-<circle cx="287.8" cy="336.9" r="3.0" fill="#888888" stroke="#888888" stroke-width="0"/>
-<line x1="287.8" y1="336.9" x2="141.0" y2="336.9" stroke="#888888" stroke-width="0.7"/>
-<line x1="141.0" y1="336.9" x2="121.9" y2="336.9" stroke="#888888" stroke-width="0.7"/>
-<text x="116.9" y="332.9" font-size="10" fill="#bbbbbb" text-anchor="end" font-family="monospace">1.5H:1V</text>
-<g class="scale-bar">
-<rect x="141.0" y="470.9" width="31.9" height="8.0" fill="rgba(217,226,236,0.18)" stroke="#888888" stroke-width="0.7"/>
-<rect x="172.9" y="470.9" width="31.9" height="8.0" fill="rgba(26,26,46,0.20)" stroke="#888888" stroke-width="0.7"/>
-<rect x="204.8" y="470.9" width="31.9" height="8.0" fill="rgba(217,226,236,0.18)" stroke="#888888" stroke-width="0.7"/>
-<rect x="236.7" y="470.9" width="31.9" height="8.0" fill="rgba(26,26,46,0.20)" stroke="#888888" stroke-width="0.7"/>
-<line x1="141.0" y1="478.9" x2="268.6" y2="478.9" stroke="#888888" stroke-width="0.7"/>
-<line x1="141.0" y1="478.9" x2="141.0" y2="483.9" stroke="#888888" stroke-width="0.7"/>
-<text x="141.0" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0</text>
-<line x1="172.9" y1="478.9" x2="172.9" y2="483.9" stroke="#888888" stroke-width="0.7"/>
-<text x="172.9" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0.25</text>
-<line x1="204.8" y1="478.9" x2="204.8" y2="483.9" stroke="#888888" stroke-width="0.7"/>
-<text x="204.8" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0.5</text>
-<line x1="236.7" y1="478.9" x2="236.7" y2="483.9" stroke="#888888" stroke-width="0.7"/>
-<text x="236.7" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">0.75</text>
-<line x1="268.6" y1="478.9" x2="268.6" y2="483.9" stroke="#888888" stroke-width="0.7"/>
-<text x="268.6" y="496.9" font-size="9" fill="#bbbbbb" text-anchor="middle" font-family="monospace">1 m</text>
-<text x="204.8" y="465.9" font-size="10" fill="#bbbbbb" text-anchor="middle" font-family="monospace">Scale (concept)</text>
-</g>
-<g class="status-watermark" opacity="0.14" pointer-events="none"><text x="460.0" y="290.0" font-size="30.9" fill="#ff4444" text-anchor="middle" dominant-baseline="middle" font-family="monospace" font-weight="bold" transform="rotate(-32.2,460.0,290.0)">CONCEPT — NOT FOR CONSTRUCTION</text></g>
-<g class="title-block">
-<rect x="616.0" y="430.0" width="280.0" height="126.0" fill="#1a1a2e" stroke="#888888" stroke-width="0.7"/>
-<line x1="694.0" y1="430.0" x2="694.0" y2="556.0" stroke="#888888" stroke-width="0.7"/>
-<text x="622.0" y="442.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">PROJECT</text>
-<text x="700.0" y="442.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">drawings-kit example</text>
-<line x1="616.0" y1="448.0" x2="896.0" y2="448.0" stroke="#888888" stroke-width="0.7"/>
-<text x="622.0" y="460.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">TITLE</text>
-<text x="700.0" y="459.0" font-size="9" fill="#d9e2ec" text-anchor="start" font-family="monospace">Concrete-Lined Drainage Channel —</text>
-<text x="700.0" y="470.0" font-size="9" fill="#d9e2ec" text-anchor="start" font-family="monospace">Typical Section</text>
-<line x1="616.0" y1="484.0" x2="896.0" y2="484.0" stroke="#888888" stroke-width="0.7"/>
-<text x="622.0" y="496.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">DRAWING NO.</text>
-<text x="700.0" y="496.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">EXA-CIV-SEC-001_RevA</text>
-<line x1="616.0" y1="502.0" x2="896.0" y2="502.0" stroke="#888888" stroke-width="0.7"/>
-<text x="622.0" y="514.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">SCALE</text>
-<text x="700.0" y="514.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">1:50</text>
-<line x1="616.0" y1="520.0" x2="896.0" y2="520.0" stroke="#888888" stroke-width="0.7"/>
-<text x="622.0" y="532.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">DATE</text>
-<text x="700.0" y="532.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">2026-07-15</text>
-<line x1="616.0" y1="538.0" x2="896.0" y2="538.0" stroke="#888888" stroke-width="0.7"/>
-<text x="622.0" y="550.0" font-size="7" fill="#888888" text-anchor="start" font-family="monospace">REV.</text>
-<text x="700.0" y="550.0" font-size="8" fill="#bbbbbb" text-anchor="start" font-family="monospace">A</text>
-</g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+<style>text{font-family:'Barlow Semi Condensed',sans-serif}</style>
+<path data-origin="sheet.border" data-layer="TITLEBLOCK" d="M20 10 L410 10 L410 287 L20 287 Z" fill="none" stroke="#000" stroke-width="0.7"/>
+<line data-origin="sheet.centring_mark" data-layer="TITLEBLOCK" x1="0" y1="148.5" x2="25" y2="148.5" fill="none" stroke="#000" stroke-width="0.5"/>
+<line data-origin="sheet.centring_mark" data-layer="TITLEBLOCK" x1="210" y1="0" x2="210" y2="15" fill="none" stroke="#000" stroke-width="0.5"/>
+<line data-origin="sheet.centring_mark" data-layer="TITLEBLOCK" x1="210" y1="297" x2="210" y2="282" fill="none" stroke="#000" stroke-width="0.5"/>
+<line data-origin="sheet.centring_mark" data-layer="TITLEBLOCK" x1="420" y1="148.5" x2="405" y2="148.5" fill="none" stroke="#000" stroke-width="0.5"/>
+<path data-origin="sheet.notes" data-layer="TITLEBLOCK" d="M340 10 L410 10 L410 221 L340 221 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<text data-origin="sheet.notes" data-layer="TITLEBLOCK" x="342" y="15.5" font-size="5" textLength="13.185" lengthAdjust="spacing" fill="#000">NOTES</text>
+<text data-origin="sheet.notes" data-layer="TITLEBLOCK" x="342" y="20" font-size="3.571" textLength="61.268" lengthAdjust="spacing" fill="#000">1. VALUES ARE NOMINAL AND ILLUSTRATIVE.</text>
+<text data-origin="sheet.notes" data-layer="TITLEBLOCK" x="342" y="24.5" font-size="3.571" textLength="51.657" lengthAdjust="spacing" fill="#000">2. NOT SURVEYED. NOT ENGINEERED.</text>
+<text data-origin="sheet.notes" data-layer="TITLEBLOCK" x="342" y="29" font-size="3.571" textLength="38.65" lengthAdjust="spacing" fill="#000">3. NOT FOR CONSTRUCTION.</text>
+<text data-origin="sheet.notes" data-layer="TITLEBLOCK" x="342" y="33.5" font-size="3.571" textLength="37.175" lengthAdjust="spacing" fill="#000">4. DIMENSIONS IN METRES.</text>
+<line data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x1="230" y1="226" x2="410" y2="226" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x1="242" y1="221" x2="242" y2="231" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x1="266" y1="221" x2="266" y2="231" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x1="366" y1="221" x2="366" y2="231" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x1="380" y1="221" x2="380" y2="231" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x1="394" y1="221" x2="394" y2="231" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="sheet.revision_register" data-layer="TITLEBLOCK" d="M230 221 L410 221 L410 231 L230 231 Z" fill="none" stroke="#000" stroke-width="0.35"/>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="231" y="225" font-size="3.571" textLength="5.568" lengthAdjust="spacing" fill="#000">REV</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="231" y="230" font-size="3.571" textLength="1.814" lengthAdjust="spacing" fill="#000">A</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="243" y="225" font-size="3.571" textLength="7.368" lengthAdjust="spacing" fill="#000">DATE</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="243" y="230" font-size="3.571" textLength="15.354" lengthAdjust="spacing" fill="#000">2026-07-15</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="267" y="225" font-size="3.571" textLength="18.657" lengthAdjust="spacing" fill="#000">DESCRIPTION</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="267" y="230" font-size="3.571" textLength="45.696" lengthAdjust="spacing" fill="#000">FIRST ISSUE - WORKED EXAMPLE</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="367" y="225" font-size="3.571" textLength="3.693" lengthAdjust="spacing" fill="#000">BY</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="367" y="230" font-size="3.571" textLength="3.736" lengthAdjust="spacing" fill="#000">AB</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="381" y="225" font-size="3.571" textLength="5.786" lengthAdjust="spacing" fill="#000">CHK</text>
+<text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="395" y="225" font-size="3.571" textLength="5.507" lengthAdjust="spacing" fill="#000">APP</text>
+<text data-origin="sheet.status_watermark" data-layer="WATERMARK" x="55.964" y="273.724" font-size="28.571" textLength="404.343" lengthAdjust="spacing" fill="#000" transform="rotate(-35.385 55.964 273.724)">CONCEPT - NOT FOR CONSTRUCTION</text>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="251" x2="340" y2="251" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="263" x2="340" y2="263" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="275" x2="340" y2="275" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="266" y1="275" x2="266" y2="287" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="303" y1="275" x2="303" y2="287" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="340" y1="245" x2="410" y2="245" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="340" y1="259" x2="410" y2="259" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="340" y1="273" x2="410" y2="273" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="360" y1="245" x2="360" y2="259" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="365" y1="273" x2="365" y2="287" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="375" y1="259" x2="375" y2="273" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="385" y1="273" x2="385" y2="287" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="231" x2="410" y2="231" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="287" x2="230" y2="231" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="340" y1="231" x2="340" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="410" y1="231" x2="410" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="410" y1="287" x2="230" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="234.5" font-size="3.571" textLength="7.957" lengthAdjust="spacing" fill="#000">TITLE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="250" font-size="7.143" textLength="77.343" lengthAdjust="spacing" fill="#000">CHANNEL TYPICAL SECTION</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="254.5" font-size="3.571" textLength="33.111" lengthAdjust="spacing" fill="#000">SUPPLEMENTARY TITLE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="262" font-size="5" textLength="74.345" lengthAdjust="spacing" fill="#000">WORKED EXAMPLE - NOMINAL VALUES</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="266.5" font-size="3.571" textLength="10.429" lengthAdjust="spacing" fill="#000">OWNER</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="274" font-size="5" textLength="48.355" lengthAdjust="spacing" fill="#000">DRAWINGS-KIT EXAMPLE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="278.5" font-size="3.571" textLength="17.386" lengthAdjust="spacing" fill="#000">CREATED BY</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="231" y="286" font-size="5" textLength="5.23" lengthAdjust="spacing" fill="#000">AB</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="267" y="278.5" font-size="3.571" textLength="17.7" lengthAdjust="spacing" fill="#000">CHECKED BY</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="304" y="278.5" font-size="3.571" textLength="19.343" lengthAdjust="spacing" fill="#000">APPROVED BY</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="234.5" font-size="3.571" textLength="28.332" lengthAdjust="spacing" fill="#000">DOCUMENT NUMBER</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="244" font-size="7.143" textLength="48.064" lengthAdjust="spacing" fill="#000">EXA-CIV-SEC-001</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="248.5" font-size="3.571" textLength="5.568" lengthAdjust="spacing" fill="#000">REV</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="258" font-size="5" textLength="2.54" lengthAdjust="spacing" fill="#000">A</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="262.5" font-size="3.571" textLength="10.936" lengthAdjust="spacing" fill="#000">STATUS</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="272" font-size="5" textLength="18.53" lengthAdjust="spacing" fill="#000">CONCEPT</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="276.5" font-size="3.571" textLength="9.261" lengthAdjust="spacing" fill="#000">SHEET</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="341" y="286" font-size="5" textLength="4.865" lengthAdjust="spacing" fill="#000">1/1</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="361" y="248.5" font-size="3.571" textLength="20.729" lengthAdjust="spacing" fill="#000">DATE OF ISSUE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="361" y="258" font-size="5" textLength="21.495" lengthAdjust="spacing" fill="#000">2026-07-15</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="366" y="276.5" font-size="3.571" textLength="6.164" lengthAdjust="spacing" fill="#000">SIZE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="366" y="286" font-size="5" textLength="4.85" lengthAdjust="spacing" fill="#000">A3</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="376" y="262.5" font-size="3.571" textLength="9.046" lengthAdjust="spacing" fill="#000">SCALE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="376" y="272" font-size="5" textLength="7.755" lengthAdjust="spacing" fill="#000">1:20</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="386" y="276.5" font-size="3.571" textLength="7.236" lengthAdjust="spacing" fill="#000">TYPE</text>
+<text data-origin="sheet.title_block" data-layer="TITLEBLOCK" x="386" y="286" font-size="5" textLength="17" lengthAdjust="spacing" fill="#000">SECTION</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="8.73" y="34.833" font-size="5" textLength="2.54" lengthAdjust="spacing" fill="#000">A</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="8.655" y="81" font-size="5" textLength="2.69" lengthAdjust="spacing" fill="#000">B</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="8.685" y="127.167" font-size="5" textLength="2.63" lengthAdjust="spacing" fill="#000">C</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="8.645" y="173.333" font-size="5" textLength="2.71" lengthAdjust="spacing" fill="#000">D</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="8.707" y="219.5" font-size="5" textLength="2.585" lengthAdjust="spacing" fill="#000">E</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="8.785" y="265.667" font-size="5" textLength="2.43" lengthAdjust="spacing" fill="#000">F</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="43.617" y="6.75" font-size="5" textLength="1.515" lengthAdjust="spacing" fill="#000">1</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="43.617" y="293.75" font-size="5" textLength="1.515" lengthAdjust="spacing" fill="#000">1</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="91.953" y="6.75" font-size="5" textLength="2.345" lengthAdjust="spacing" fill="#000">2</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="91.953" y="293.75" font-size="5" textLength="2.345" lengthAdjust="spacing" fill="#000">2</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="140.72" y="6.75" font-size="5" textLength="2.31" lengthAdjust="spacing" fill="#000">3</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="140.72" y="293.75" font-size="5" textLength="2.31" lengthAdjust="spacing" fill="#000">3</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="189.417" y="6.75" font-size="5" textLength="2.415" lengthAdjust="spacing" fill="#000">4</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="189.417" y="293.75" font-size="5" textLength="2.415" lengthAdjust="spacing" fill="#000">4</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="238.222" y="6.75" font-size="5" textLength="2.305" lengthAdjust="spacing" fill="#000">5</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="238.222" y="293.75" font-size="5" textLength="2.305" lengthAdjust="spacing" fill="#000">5</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="286.97" y="6.75" font-size="5" textLength="2.31" lengthAdjust="spacing" fill="#000">6</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="286.97" y="293.75" font-size="5" textLength="2.31" lengthAdjust="spacing" fill="#000">6</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="335.827" y="6.75" font-size="5" textLength="2.095" lengthAdjust="spacing" fill="#000">7</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="335.827" y="293.75" font-size="5" textLength="2.095" lengthAdjust="spacing" fill="#000">7</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="384.445" y="6.75" font-size="5" textLength="2.36" lengthAdjust="spacing" fill="#000">8</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="384.445" y="293.75" font-size="5" textLength="2.36" lengthAdjust="spacing" fill="#000">8</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="413.73" y="34.833" font-size="5" textLength="2.54" lengthAdjust="spacing" fill="#000">A</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="413.655" y="81" font-size="5" textLength="2.69" lengthAdjust="spacing" fill="#000">B</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="413.685" y="127.167" font-size="5" textLength="2.63" lengthAdjust="spacing" fill="#000">C</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="413.645" y="173.333" font-size="5" textLength="2.71" lengthAdjust="spacing" fill="#000">D</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="413.707" y="219.5" font-size="5" textLength="2.585" lengthAdjust="spacing" fill="#000">E</text>
+<text data-origin="sheet.zone_label" data-layer="TITLEBLOCK" x="413.785" y="265.667" font-size="5" textLength="2.43" lengthAdjust="spacing" fill="#000">F</text>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="0" y1="56.167" x2="20" y2="56.167" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="0" y1="102.333" x2="20" y2="102.333" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="0" y1="148.5" x2="20" y2="148.5" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="0" y1="194.667" x2="20" y2="194.667" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="0" y1="240.833" x2="20" y2="240.833" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="68.75" y1="0" x2="68.75" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="68.75" y1="297" x2="68.75" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="117.5" y1="0" x2="117.5" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="117.5" y1="297" x2="117.5" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="166.25" y1="0" x2="166.25" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="166.25" y1="297" x2="166.25" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="215" y1="0" x2="215" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="215" y1="297" x2="215" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="263.75" y1="0" x2="263.75" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="263.75" y1="297" x2="263.75" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="312.5" y1="0" x2="312.5" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="312.5" y1="297" x2="312.5" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="361.25" y1="0" x2="361.25" y2="10" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="361.25" y1="297" x2="361.25" y2="287" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="420" y1="56.167" x2="410" y2="56.167" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="420" y1="102.333" x2="410" y2="102.333" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="420" y1="148.5" x2="410" y2="148.5" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="420" y1="194.667" x2="410" y2="194.667" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="sheet.zone_mark" data-layer="TITLEBLOCK" x1="420" y1="240.833" x2="410" y2="240.833" fill="none" stroke="#000" stroke-width="0.35"/>
+<line data-origin="viewport.main" data-layer="CENTRE" x1="180" y1="153" x2="180" y2="58" fill="none" stroke="#000" stroke-width="0.18" stroke-dasharray="4.32 0.54 0.09 0.54"/>
+<line data-origin="viewport.main" data-layer="WATER" x1="93.75" y1="90.5" x2="266.25" y2="90.5" fill="none" stroke="#000" stroke-width="0.18" stroke-dasharray="2.16 0.54"/>
+<path data-origin="viewport.main" data-layer="OUTLINE" d="M65 78 L140 138 L220 138 L295 78 L285 78 L210 128 L150 128 L75 78 Z" fill="none" stroke="#000" stroke-width="0.35"/>
+<text data-origin="viewport.main" data-layer="TEXT" x="155.493" y="33" font-size="7.143" textLength="49.014" lengthAdjust="spacing" fill="#000">TYPICAL SECTION</text>
+<path data-origin="viewport.main.dimension" data-layer="DIMENSIONS" d="M150 146 L153.6 146.45 L153.6 145.55 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<path data-origin="viewport.main.dimension" data-layer="DIMENSIONS" d="M210 146 L206.4 145.55 L206.4 146.45 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<path data-origin="viewport.main.dimension" data-layer="DIMENSIONS" d="M312 78 L311.55 81.6 L312.45 81.6 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<path data-origin="viewport.main.dimension" data-layer="DIMENSIONS" d="M312 128 L312.45 124.4 L311.55 124.4 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<line data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x1="150" y1="128.9" x2="150" y2="147.8" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x1="150" y1="146" x2="210" y2="146" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x1="210" y1="128.9" x2="210" y2="147.8" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x1="300.9" y1="78" x2="313.8" y2="78" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x1="300.9" y1="128" x2="313.8" y2="128" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x1="312" y1="128" x2="312" y2="78" fill="none" stroke="#000" stroke-width="0.18"/>
+<text data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x="176.225" y="145.1" font-size="5" textLength="7.55" lengthAdjust="spacing" fill="#000">1.20</text>
+<text data-origin="viewport.main.dimension" data-layer="DIMENSIONS" x="311.1" y="106.863" font-size="5" textLength="7.725" lengthAdjust="spacing" fill="#000" transform="rotate(-90 311.1 106.863)">1.00</text>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="68.4" cy="79.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="72" cy="79.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="75.6" cy="79.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="79.2" cy="86.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="82.8" cy="86.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="86.4" cy="86.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="86.4" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="90" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="93.6" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="97.2" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="97.2" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="100.8" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="104.4" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="104.4" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="108" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="108" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="111.6" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="115.2" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="115.2" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="118.8" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="118.8" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="122.4" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="122.4" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="126" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="126" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="129.6" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="129.6" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="133.2" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="133.2" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="136.8" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="136.8" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="140.4" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="140.4" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="140.4" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="144" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="144" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="147.6" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="147.6" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="151.2" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="151.2" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="154.8" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="154.8" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="158.4" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="158.4" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="162" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="162" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="165.6" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="165.6" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="169.2" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="169.2" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="172.8" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="172.8" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="176.4" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="176.4" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="180" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="180" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="183.6" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="183.6" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="187.2" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="187.2" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="190.8" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="190.8" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="194.4" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="194.4" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="198" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="198" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="201.6" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="201.6" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="205.2" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="205.2" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="208.8" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="208.8" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="212.4" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="212.4" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="216" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="216" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="219.6" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="219.6" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="219.6" cy="136.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="223.2" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="223.2" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="226.8" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="226.8" cy="129.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="230.4" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="230.4" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="234" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="234" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="237.6" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="237.6" cy="122.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="241.2" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="241.2" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="244.8" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="244.8" cy="115.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="248.4" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="252" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="252" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="255.6" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="255.6" cy="108" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="259.2" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="262.8" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="262.8" cy="100.8" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="266.4" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="270" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="273.6" cy="86.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="273.6" cy="93.6" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="277.2" cy="86.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="280.8" cy="86.4" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="284.4" cy="79.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="288" cy="79.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<circle data-origin="viewport.main.hatch" data-layer="HATCH" cx="291.6" cy="79.2" r="0.18" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M73.08 82.26 L74.52 82.26 L73.8 83.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M76.68 82.26 L78.12 82.26 L77.4 83.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M83.88 89.46 L85.32 89.46 L84.6 90.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M87.48 89.46 L88.92 89.46 L88.2 90.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M91.08 96.66 L92.52 96.66 L91.8 97.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M94.68 96.66 L96.12 96.66 L95.4 97.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M98.28 96.66 L99.72 96.66 L99 97.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M101.88 103.86 L103.32 103.86 L102.6 105.12 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M105.48 103.86 L106.92 103.86 L106.2 105.12 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M109.08 103.86 L110.52 103.86 L109.8 105.12 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M109.08 111.06 L110.52 111.06 L109.8 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M112.68 111.06 L114.12 111.06 L113.4 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M116.28 111.06 L117.72 111.06 L117 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M119.88 111.06 L121.32 111.06 L120.6 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M119.88 118.26 L121.32 118.26 L120.6 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M123.48 118.26 L124.92 118.26 L124.2 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M127.08 118.26 L128.52 118.26 L127.8 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M127.08 125.46 L128.52 125.46 L127.8 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M130.68 118.26 L132.12 118.26 L131.4 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M130.68 125.46 L132.12 125.46 L131.4 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M134.28 125.46 L135.72 125.46 L135 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M137.88 125.46 L139.32 125.46 L138.6 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M137.88 132.66 L139.32 132.66 L138.6 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M141.48 125.46 L142.92 125.46 L142.2 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M141.48 132.66 L142.92 132.66 L142.2 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M145.08 132.66 L146.52 132.66 L145.8 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M148.68 132.66 L150.12 132.66 L149.4 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M152.28 132.66 L153.72 132.66 L153 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M155.88 132.66 L157.32 132.66 L156.6 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M159.48 132.66 L160.92 132.66 L160.2 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M163.08 132.66 L164.52 132.66 L163.8 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M166.68 132.66 L168.12 132.66 L167.4 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M170.28 132.66 L171.72 132.66 L171 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M173.88 132.66 L175.32 132.66 L174.6 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M177.48 132.66 L178.92 132.66 L178.2 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M181.08 132.66 L182.52 132.66 L181.8 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M184.68 132.66 L186.12 132.66 L185.4 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M188.28 132.66 L189.72 132.66 L189 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M191.88 132.66 L193.32 132.66 L192.6 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M195.48 132.66 L196.92 132.66 L196.2 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M199.08 132.66 L200.52 132.66 L199.8 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M202.68 132.66 L204.12 132.66 L203.4 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M206.28 132.66 L207.72 132.66 L207 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M209.88 132.66 L211.32 132.66 L210.6 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M213.48 132.66 L214.92 132.66 L214.2 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M217.08 125.46 L218.52 125.46 L217.8 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M217.08 132.66 L218.52 132.66 L217.8 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M220.68 125.46 L222.12 125.46 L221.4 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M220.68 132.66 L222.12 132.66 L221.4 133.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M224.28 125.46 L225.72 125.46 L225 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M227.88 118.26 L229.32 118.26 L228.6 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M227.88 125.46 L229.32 125.46 L228.6 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M231.48 118.26 L232.92 118.26 L232.2 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M231.48 125.46 L232.92 125.46 L232.2 126.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M235.08 118.26 L236.52 118.26 L235.8 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M238.68 111.06 L240.12 111.06 L239.4 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M238.68 118.26 L240.12 118.26 L239.4 119.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M242.28 111.06 L243.72 111.06 L243 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M245.88 111.06 L247.32 111.06 L246.6 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M249.48 103.86 L250.92 103.86 L250.2 105.12 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M249.48 111.06 L250.92 111.06 L250.2 112.32 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M253.08 103.86 L254.52 103.86 L253.8 105.12 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M256.68 103.86 L258.12 103.86 L257.4 105.12 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M260.28 96.66 L261.72 96.66 L261 97.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M263.88 96.66 L265.32 96.66 L264.6 97.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M267.48 96.66 L268.92 96.66 L268.2 97.92 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M271.08 89.46 L272.52 89.46 L271.8 90.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M274.68 89.46 L276.12 89.46 L275.4 90.72 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M281.88 82.26 L283.32 82.26 L282.6 83.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.hatch" data-layer="HATCH" d="M285.48 82.26 L286.92 82.26 L286.2 83.52 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.leader" data-layer="DIMENSIONS" d="M93.75 90.5 L93.22 86.911 L92.353 87.152 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<path data-origin="viewport.main.leader" data-layer="DIMENSIONS" d="M112.5 103 L108.894 103.403 L109.104 104.278 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<path data-origin="viewport.main.leader" data-layer="DIMENSIONS" d="M145 133 L141.62 134.319 L142.049 135.11 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<line data-origin="viewport.main.leader" data-layer="DIMENSIONS" x1="50" y1="118" x2="112.5" y2="103" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.leader" data-layer="DIMENSIONS" x1="85" y1="165.5" x2="145" y2="133" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.leader" data-layer="DIMENSIONS" x1="87.5" y1="68" x2="93.75" y2="90.5" fill="none" stroke="#000" stroke-width="0.18"/>
+<text data-origin="viewport.main.leader" data-layer="DIMENSIONS" x="35.835" y="119.75" font-size="5" textLength="13.265" lengthAdjust="spacing" fill="#000">1.5H:1V</text>
+<text data-origin="viewport.main.leader" data-layer="DIMENSIONS" x="34.995" y="167.25" font-size="5" textLength="49.105" lengthAdjust="spacing" fill="#000">CONCRETE LINING 0.20 M</text>
+<text data-origin="viewport.main.leader" data-layer="DIMENSIONS" x="43.69" y="69.75" font-size="5" textLength="42.91" lengthAdjust="spacing" fill="#000">DESIGN WL (NOMINAL)</text>
+<path data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" d="M26 168 L38.5 168 L38.5 171 L26 171 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<path data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" d="M51 168 L63.5 168 L63.5 171 L51 171 Z" fill="#000" fill-rule="evenodd" stroke="none"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="26" y1="171" x2="26" y2="172.5" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="38.5" y1="168" x2="38.5" y2="171" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="38.5" y1="171" x2="38.5" y2="172.5" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="51" y1="168" x2="51" y2="171" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="51" y1="171" x2="51" y2="172.5" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="63.5" y1="168" x2="63.5" y2="171" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="63.5" y1="171" x2="63.5" y2="172.5" fill="none" stroke="#000" stroke-width="0.18"/>
+<line data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x1="76" y1="171" x2="76" y2="172.5" fill="none" stroke="#000" stroke-width="0.18"/>
+<path data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" d="M26 168 L76 168 L76 171 L26 171 Z" fill="none" stroke="#000" stroke-width="0.18"/>
+<text data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x="25.1" y="176" font-size="3.571" textLength="1.8" lengthAdjust="spacing" fill="#000">0</text>
+<text data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x="35.521" y="176" font-size="3.571" textLength="5.957" lengthAdjust="spacing" fill="#000">0.25</text>
+<text data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x="48.859" y="176" font-size="3.571" textLength="4.282" lengthAdjust="spacing" fill="#000">0.5</text>
+<text data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x="48.23" y="180" font-size="3.571" textLength="5.539" lengthAdjust="spacing" fill="#000">1:20</text>
+<text data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x="60.611" y="176" font-size="3.571" textLength="5.779" lengthAdjust="spacing" fill="#000">0.75</text>
+<text data-origin="viewport.main.scale_bar" data-layer="TITLEBLOCK" x="73.786" y="176" font-size="3.571" textLength="4.429" lengthAdjust="spacing" fill="#000">1 m</text>
+</svg>

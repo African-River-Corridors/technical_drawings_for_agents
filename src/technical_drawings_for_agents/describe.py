@@ -213,20 +213,29 @@ def _viewport_facts(
     )
 
 
+def _read_dxf(path: Path):
+    import ezdxf
+
+    try:
+        return ezdxf.readfile(path)
+    except Exception:  # noqa: BLE001
+        from ezdxf import recover
+
+        doc, _auditor = recover.readfile(path)
+        return doc
+
+
 def describe_dxf(path: str | Path) -> DxfDescription:
     """Read a DXF and return its comparable facts.
 
-    Reading goes through :meth:`DxfBuilder.read_dxf`, which already handles the
-    recover-on-malformed fallback that vendor and third-party files need. This
-    module does not open files itself.
+    A file that cannot be read normally is read again with ``ezdxf.recover``, which
+    handles the malformed files that vendor and third-party tools write.
     """
-    from .dxf import DxfBuilder
-
     path = Path(path)
     if not path.is_file():
         raise DescribeError(f"not a file: {path}")
     try:
-        doc = DxfBuilder.read_dxf(path)
+        doc = _read_dxf(path)
     except Exception as exc:
         raise DescribeError(f"cannot read '{path}': {exc}") from exc
 

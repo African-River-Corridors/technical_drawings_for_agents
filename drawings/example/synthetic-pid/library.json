@@ -1,0 +1,467 @@
+{
+  "standard_version": "1.0",
+  "symbols": {
+    "gate_valve": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "polyline",
+          "points": [
+            [
+              -4,
+              -2.5
+            ],
+            [
+              4,
+              2.5
+            ],
+            [
+              4,
+              -2.5
+            ],
+            [
+              -4,
+              2.5
+            ]
+          ],
+          "closed": true
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            0,
+            4
+          ],
+          "role": "thin"
+        }
+      ],
+      "ports": [
+        {
+          "id": "w",
+          "at": [
+            -4,
+            0
+          ],
+          "direction_deg": 180
+        },
+        {
+          "id": "e",
+          "at": [
+            4,
+            0
+          ],
+          "direction_deg": 0
+        },
+        {
+          "id": "n",
+          "at": [
+            0,
+            4
+          ],
+          "direction_deg": 90
+        }
+      ],
+      "label_slot": {
+        "at": [
+          0,
+          -5
+        ],
+        "align_v": "top",
+        "height_mm": 2.5
+      }
+    },
+    "check_valve": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "polyline",
+          "points": [
+            [
+              -3,
+              -3
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              -3,
+              3
+            ]
+          ],
+          "closed": true
+        },
+        {
+          "type": "line",
+          "from": [
+            3,
+            -3
+          ],
+          "to": [
+            3,
+            3
+          ]
+        }
+      ],
+      "ports": [
+        {
+          "id": "w",
+          "at": [
+            -3,
+            0
+          ],
+          "direction_deg": 180
+        },
+        {
+          "id": "e",
+          "at": [
+            3,
+            0
+          ],
+          "direction_deg": 0
+        }
+      ],
+      "label_slot": {
+        "at": [
+          0,
+          -5
+        ],
+        "align_v": "top",
+        "height_mm": 2.5
+      }
+    },
+    "globe_valve": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "polyline",
+          "points": [
+            [
+              -4,
+              -2.5
+            ],
+            [
+              4,
+              2.5
+            ],
+            [
+              4,
+              -2.5
+            ],
+            [
+              -4,
+              2.5
+            ]
+          ],
+          "closed": true
+        },
+        {
+          "type": "circle",
+          "centre": [
+            0,
+            0
+          ],
+          "radius": 1.2
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            0,
+            4
+          ],
+          "role": "thin"
+        },
+        {
+          "type": "arc",
+          "centre": [
+            0,
+            6
+          ],
+          "radius": 2.5,
+          "start_deg": 0,
+          "end_deg": 180
+        }
+      ],
+      "ports": [
+        {
+          "id": "w",
+          "at": [
+            -4,
+            0
+          ],
+          "direction_deg": 180
+        },
+        {
+          "id": "e",
+          "at": [
+            4,
+            0
+          ],
+          "direction_deg": 0
+        },
+        {
+          "id": "n",
+          "at": [
+            0,
+            6
+          ],
+          "direction_deg": 90
+        }
+      ],
+      "label_slot": {
+        "at": [
+          0,
+          -5
+        ],
+        "align_v": "top",
+        "height_mm": 2.5
+      }
+    },
+    "pump": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "circle",
+          "centre": [
+            0,
+            0
+          ],
+          "radius": 5
+        },
+        {
+          "type": "polyline",
+          "points": [
+            [
+              -2,
+              -3
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              -2,
+              3
+            ]
+          ],
+          "closed": true
+        }
+      ],
+      "ports": [
+        {
+          "id": "suction",
+          "at": [
+            -5,
+            0
+          ],
+          "direction_deg": 180
+        },
+        {
+          "id": "discharge",
+          "at": [
+            5,
+            0
+          ],
+          "direction_deg": 0
+        },
+        {
+          "id": "s",
+          "at": [
+            0,
+            -5
+          ],
+          "direction_deg": 270
+        },
+        {
+          "id": "n",
+          "at": [
+            0,
+            5
+          ],
+          "direction_deg": 90
+        }
+      ],
+      "label_slot": {
+        "at": [
+          0,
+          -7
+        ],
+        "align_v": "top",
+        "height_mm": 2.5
+      }
+    },
+    "tank": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "polyline",
+          "points": [
+            [
+              -6,
+              -17
+            ],
+            [
+              6,
+              -17
+            ],
+            [
+              6,
+              17
+            ],
+            [
+              -6,
+              17
+            ]
+          ],
+          "closed": true
+        },
+        {
+          "type": "line",
+          "from": [
+            -6,
+            10
+          ],
+          "to": [
+            6,
+            10
+          ],
+          "role": "thin"
+        }
+      ],
+      "ports": [
+        {
+          "id": "e",
+          "at": [
+            6,
+            0
+          ],
+          "direction_deg": 0
+        },
+        {
+          "id": "n",
+          "at": [
+            0,
+            17
+          ],
+          "direction_deg": 90
+        }
+      ],
+      "label_slot": {
+        "at": [
+          0,
+          -19
+        ],
+        "align_v": "top",
+        "height_mm": 2.5
+      }
+    },
+    "tie_in": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "polyline",
+          "points": [
+            [
+              0,
+              -3
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "closed": true
+        }
+      ],
+      "ports": [
+        {
+          "id": "conn",
+          "at": [
+            0,
+            0
+          ],
+          "direction_deg": 180
+        }
+      ],
+      "label_slot": {
+        "at": [
+          4,
+          -5
+        ],
+        "align_v": "top",
+        "height_mm": 2.5
+      }
+    },
+    "instrument": {
+      "units": "paper_mm",
+      "geometry": [
+        {
+          "type": "circle",
+          "centre": [
+            0,
+            0
+          ],
+          "radius": 3.5
+        },
+        {
+          "type": "line",
+          "from": [
+            -3.5,
+            0
+          ],
+          "to": [
+            3.5,
+            0
+          ],
+          "role": "thin"
+        }
+      ],
+      "ports": [
+        {
+          "id": "s",
+          "at": [
+            0,
+            -3.5
+          ],
+          "direction_deg": 270
+        },
+        {
+          "id": "n",
+          "at": [
+            0,
+            3.5
+          ],
+          "direction_deg": 90
+        },
+        {
+          "id": "w",
+          "at": [
+            -3.5,
+            0
+          ],
+          "direction_deg": 180
+        }
+      ],
+      "label_slot": {
+        "at": [
+          0,
+          5.5
+        ],
+        "align_v": "baseline",
+        "height_mm": 2.5
+      }
+    }
+  }
+}

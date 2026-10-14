@@ -7,11 +7,10 @@ Thank you for helping. Issues, examples and pull requests are all welcome.
 ```bash
 git clone https://github.com/African-River-Corridors/technical_drawings_for_agents
 cd technical_drawings_for_agents
-uv venv && uv pip install -e '.[dev,plot,verify]'     # or: python -m venv .venv && pip install -e '.[dev,plot,verify]'
+uv venv && uv pip install -e '.[dev]'     # or: python -m venv .venv && pip install -e '.[dev]'
 ```
 
-System tool for the plot path: `rsvg-convert` (macOS `brew install librsvg`; Debian/Ubuntu
-`apt-get install librsvg2-bin`).
+No system tool is needed. The PDF is written directly, with the font embedded.
 
 ## Run the tests
 
@@ -21,8 +20,9 @@ python3 tools/release_guard.py      # must print 0 hits
 python3 tools/release_guard.py --history
 ```
 
-Many tests compare output **byte for byte** against files in `tests/goldens/`. If your change moves a
-golden, say why in the PR; do not regenerate goldens to make a test pass.
+The conformance suite (`docs/standard/conformance/`) and the golden files (`tests/goldens/`) are
+**checked by hand**. If your change moves one, say why in the PR. Do not regenerate a golden or an expected
+file to make a test pass: if an implementation and a case disagree, check the case first.
 
 ## Pull requests
 

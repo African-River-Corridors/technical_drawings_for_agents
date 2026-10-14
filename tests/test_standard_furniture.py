@@ -201,7 +201,7 @@ def test_non_ascii_text_is_not_escaped_in_the_canonical_text():
 def test_the_seal_command_prints_the_seals_and_writes_nothing(tmp_path, capsys):
     path = SUITE / "documents" / "tb-register-two" / "input.json"
     before = path.read_bytes()
-    assert main(["doc", "seal", str(path)]) == 0
+    assert main(["seal", str(path)]) == 0
     out = capsys.readouterr().out.split()
     assert out[0] == "A" and out[1].startswith("sha256:")
     assert path.read_bytes() == before
