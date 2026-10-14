@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from . import rules
+from . import dimensions, rules
 from .numbers import mm, round_half_even
 from .pipeline import run_file
 
@@ -58,6 +58,12 @@ def _first_entity_difference(got, want) -> str:
 # unit functions (17.5) -----------------------------------------------------------------------
 
 
+def _vector(theta_deg):
+    """A paper vector at the visual angle theta (counter-clockwise from the horizontal)."""
+    c, s = rules.cos_sin(theta_deg)
+    return (c, -s)
+
+
 def _frame(f):
     return (f["x_mm"], f["y_mm"], f["width_mm"], f["height_mm"])
 
@@ -95,6 +101,15 @@ def run_unit(function: str, i: dict):
         return rules.text_width(i["text"], i["height_mm"])
     if function == "text_box":
         return rules.rounded_box(i["anchor_mm"], i["text"], i["height_mm"], i["rotation_deg"], i["align_h"], i["align_v"])
+    if function == "dimension_text":
+        factor = 1000 if i["unit"] == "mm" else 1
+        return dimensions.format_value(i["value_m"] * factor, i["decimals"])
+    if function == "reading_rotation":
+        return round_half_even(dimensions.reading_rotation(_vector(i["theta_deg"])), 3)
+    if function == "chain_ok":
+        info = [{"id": "c", "role": "part", "text": t, "unit": "m", "decimals": 2} for t in i["parts"]]
+        info.append({"id": "c", "role": "overall", "text": i["overall"], "unit": "m", "decimals": 2})
+        return dimensions.check_chains(info)
     raise ValueError(f"unknown unit function {function!r}")
 
 

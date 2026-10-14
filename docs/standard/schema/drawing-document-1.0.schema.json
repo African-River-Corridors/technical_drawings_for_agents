@@ -357,7 +357,9 @@
             "circle",
             "centre_line",
             "hatch",
-            "text"
+            "text",
+            "dimension",
+            "leader"
           ],
           "x-clause": "9.1"
         }
@@ -466,6 +468,36 @@
           },
           "then": {
             "$ref": "#/$defs/entity_text"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "dimension"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_dimension"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "leader"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/entity_leader"
           }
         }
       ]
@@ -796,6 +828,642 @@
       "x-clause": "9.1.1",
       "type": "object",
       "additionalProperties": false
+    },
+    "point_spec": {
+      "description": "A model point: either a reference to a place of an entity of the same viewport, or a point in metres.",
+      "type": "object",
+      "x-clause": "12.2",
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "at": {
+          "type": "string",
+          "pattern": "^(start|end|centre|vertex:(0|[1-9][0-9]*))$",
+          "x-clause": "12.2"
+        },
+        "point_m": {
+          "$ref": "#/$defs/point_m"
+        }
+      },
+      "if": {
+        "required": [
+          "ref"
+        ]
+      },
+      "then": {
+        "required": [
+          "at"
+        ],
+        "not": {
+          "required": [
+            "point_m"
+          ]
+        },
+        "x-clause": "12.2"
+      },
+      "else": {
+        "required": [
+          "point_m"
+        ],
+        "not": {
+          "required": [
+            "at"
+          ]
+        },
+        "x-clause": "12.2"
+      }
+    },
+    "dimension_linear": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "orientation",
+        "from",
+        "to",
+        "offset_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "linear",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "orientation": {
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "x-clause": "12.4"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "to": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "offset_mm": {
+          "type": "number",
+          "x-clause": "12.4.2"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_aligned": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "from",
+        "to",
+        "offset_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "aligned",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "to": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "offset_mm": {
+          "type": "number",
+          "x-clause": "12.4.2"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_radius": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "of"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "radius",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "of": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "direction_deg": {
+          "type": "number",
+          "default": 45,
+          "x-clause": "12.5.1"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_diameter": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "of"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "diameter",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "of": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "direction_deg": {
+          "type": "number",
+          "default": 45,
+          "x-clause": "12.5.1"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "dimension_angle": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "type",
+        "layer",
+        "kind",
+        "vertex",
+        "from",
+        "to",
+        "arc_radius_mm"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "dimension",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "kind": {
+          "const": "angle",
+          "x-clause": "12.1"
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm"
+          ],
+          "default": "m",
+          "x-clause": "12.1.1"
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "x-clause": "12.1.1"
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.1.2"
+        },
+        "chain": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "chain_role": {
+          "enum": [
+            "part",
+            "overall"
+          ],
+          "x-clause": "12.8"
+        },
+        "vertex": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "to": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "arc_radius_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "x-clause": "12.5.4"
+        }
+      },
+      "dependentRequired": {
+        "chain": [
+          "chain_role"
+        ],
+        "chain_role": [
+          "chain"
+        ]
+      }
+    },
+    "entity_dimension": {
+      "type": "object",
+      "x-clause": "12.1",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "linear",
+            "aligned",
+            "radius",
+            "diameter",
+            "angle"
+          ],
+          "x-clause": "12.1"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "linear"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_linear"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "aligned"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_aligned"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "radius"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_radius"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "diameter"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_diameter"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "angle"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/dimension_angle"
+          }
+        }
+      ]
+    },
+    "entity_leader": {
+      "type": "object",
+      "x-clause": "12.6",
+      "required": [
+        "type",
+        "layer",
+        "from",
+        "label_at_m",
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "leader",
+          "x-clause": "9.1"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer_name"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "from": {
+          "$ref": "#/$defs/point_spec"
+        },
+        "label_at_m": {
+          "$ref": "#/$defs/point_m"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[ -~°±×µ²³·–Ø]+$",
+          "x-clause": "11.3.3",
+          "description": "One line, in the character set of clause 11.6.2."
+        },
+        "text_height_mm": {
+          "enum": [
+            2.5,
+            3.5,
+            5,
+            7,
+            10,
+            14,
+            20
+          ],
+          "default": 3.5,
+          "x-clause": "12.6"
+        }
+      }
     }
   }
 }

@@ -139,6 +139,8 @@ def dxf_from_document(document: dict, norm: dict) -> tuple[str, list[str]]:
             n = scale[vp["id"]]
             rotation = vp.get("rotation_deg", 0.0) % 360.0
             for e in vp["entities"]:
+                if e["type"] in ("dimension", "leader"):
+                    continue  # their parts are paper-space entities (12.7, 15.4.5)
                 _model_entity(doc, msp, e, vp["id"], n, rotation, declared, group)
 
         layout = doc.layouts.new(LAYOUT)
@@ -147,7 +149,7 @@ def dxf_from_document(document: dict, norm: dict) -> tuple[str, list[str]]:
         flip = lambda p: (p[0], height_sheet - p[1])  # noqa: E731  paper is y down in the standard, y up in DXF
         for e in norm["entities"]:
             origin = e["origin"]
-            if origin.startswith("viewport.") and not origin.endswith((".scale_bar", ".north_arrow", ".hatch")):
+            if origin.startswith("viewport.") and not origin.endswith((".scale_bar", ".north_arrow", ".hatch", ".dimension", ".leader")):
                 continue
             _paper_entity(doc, layout, e, flip)
         for vp in norm["viewports"]:
@@ -210,6 +212,8 @@ def _paper_entity(doc, layout, e, flip):
         entity = layout.add_lwpolyline([flip(p) for p in e["points_mm"]], close=e["closed"], dxfattribs=attribs)
     elif t == "circle":
         entity = layout.add_circle(flip(e["centre_mm"]), e["radius_mm"], dxfattribs=attribs)
+    elif t == "arc":  # the angle is a visual counter-clockwise angle, which the flip of y keeps
+        entity = layout.add_arc(flip(e["centre_mm"]), e["radius_mm"], e["start_deg"], (e["start_deg"] + e["sweep_deg"]) % 360.0, dxfattribs=attribs)
     else:
         raise ValueError(f"no paper-space form for {t}")
     _xdata(entity, **tags)

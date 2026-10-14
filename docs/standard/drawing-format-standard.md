@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 11 and 15 to 18 are complete in this draft. Clauses 12 to 14 are headings only. Each heading
+**0.4** Clauses 1 to 12 and 15 to 18 are complete in this draft. Clauses 13 and 14 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -770,15 +770,16 @@ and 1.4 on A0.
 ## 9 Geometry
 
 This clause defines the entities of the core schema: line, polyline, arc, circle, centre line, and
-text (clause 11). Hatches are in clause 10. Dimensions, leaders and symbols are written later.
+text (clause 11). Hatches are in clause 10. Dimensions and leaders are in clause 12. Symbols are
+written later.
 
 **9.1 Entities.** Each viewport holds a list `entities`. Every entity is an object with a member
-`type`. The types in this draft are `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch` and
-`text`. Any other type is error `9.1`.
+`type`. The types are `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch`, `text`,
+`dimension` and `leader`. Any other type is error `9.1`.
 
 **9.1.1 Common members.** Every entity has `type` and `layer`. The layer name MUST be declared
-(clause 8.5.1). An entity MAY have `id` (clause 9.8). Every entity except `text` MAY have `role` and
-`line_type` (clause 8.5.6).
+(clause 8.5.1). An entity MAY have `id` (clause 9.8). Every entity except `text` MAY have `role`
+(clause 8.5.6). Every entity except `text`, `hatch`, `dimension` and `leader` MAY have `line_type`.
 
 **9.2 Points.** A point is a list of two numbers: x then y. A point in model space is in metres. The
 member name ends in `_m`.
@@ -1001,7 +1002,161 @@ With `centre` the left edge is at 94.77. With `right` it is at 89.54. With `top`
 
 ## 12 Dimensions and leaders
 
-Written in a later ticket.
+A **dimension** is an entity that measures geometry. Its text is **computed** from the geometry that it
+points at. It is never typed. A **leader** names a part with a label.
+
+**12.1 The dimension entity.** A `dimension` has `type`, `layer`, a `kind`, and the members of its kind
+(clauses 12.3 to 12.5). It MAY have `id`, `role`, `unit`, `decimals`, `text_height_mm`, `chain` and
+`chain_role`.
+
+| Kind | Members | What it measures |
+|---|---|---|
+| `linear` | `orientation`, `from`, `to`, `offset_mm` | The distance between two points along a model axis |
+| `aligned` | `from`, `to`, `offset_mm` | The distance between two points |
+| `radius` | `of`, `direction_deg` (optional) | The radius of a circle or an arc |
+| `diameter` | `of`, `direction_deg` (optional) | The diameter of a circle or an arc |
+| `angle` | `vertex`, `from`, `to`, `arc_radius_mm` | The angle at a vertex between two rays |
+
+**12.1.1 Unit and precision.** `unit` is `m` (the default) or `mm`. `decimals` is a whole number from 0
+to 3. Its default is 2 for `m` and 0 for `mm`, and 1 for an angle. The text of a dimension is its value,
+in the unit, rounded half-even (clause 5.5) to `decimals` places, written with exactly that number of
+places. An angle is in degrees and its text ends with `°`. A radius has `R` before it. A diameter has
+`Ø` before it. The text has no unit sign.
+*Basis: house choice H-44. The unit is stated in the notes of a drawing, as ISO 129 allows (pending
+ISO check, checklist P-15).*
+
+**12.1.2 Text height.** `text_height_mm` is a height of clause 11.2. The default is 3.5.
+
+**12.2 Points and references.** A **point spec** is an object. It is either `{"ref": id, "at": place}`
+or `{"point_m": [x, y]}`. A `ref` names an entity of the same viewport. The places are:
+
+| Entity | `at` |
+|---|---|
+| `line`, `centre_line` | `start`, `end` |
+| `polyline` | `vertex:i`, where `i` is a whole number from 0 up to one less than the number of points |
+| `circle` | `centre` |
+| `arc` | `centre`, `start`, `end` (the points at the start and end angles) |
+
+An unknown `id`, an entity of another type, or a place that the entity does not have, is error `12.2`.
+The reference is to the model geometry, so the dimension follows the geometry when it is edited.
+
+**12.2.1** Below, `P` means a point spec made into a model point, and `p` means that point on the paper
+after the map of clause 7.4. The parts of a dimension are drawn on the paper. A dimension that measures
+is not scaled: its text is the model value.
+
+**12.3 Constants.** Let `u` be the hatch unit of the line group (clause 10.5.1). All lengths are paper
+millimetres. The **arrow length** is `a = 2 * u`. The **arrow width** is `u / 2`. The **gap** between a
+point and the start of its extension line is `u / 2`. An extension line goes `u` past the dimension
+line. The text stands `u / 2` from the dimension line. The lines of a dimension are `continuous` and
+have the width of the role of the entity, or of its layer (default `thin`).
+*Basis: pending ISO check, ISO 129 (clause to be confirmed), checklist P-15 for the form of the
+arrowhead, P-16 for the gap and the extension. House choice H-45 for the use of `u`: the dimension
+follows the line group, as hatches do.*
+
+**12.3.1 Side.** For a paper vector `D = (dx, dy)` let its **left normal** be `L = (dy, -dx)`. On the
+sheet (+y down) this turns `D` counter-clockwise by 90 degrees. `D = (1, 0)` has `L = (0, -1)`, which
+is up.
+
+**12.3.2 Arrowhead.** An arrowhead with the tip `T` pointing along the unit vector `e` (from the base
+towards the tip), and the left normal `n` of `e`, is the solid triangle `T`, `T - a*e + (u/4)*n`,
+`T - a*e - (u/4)*n`. It is a `hatch` with the pattern `solid`.
+
+**12.3.3 Reading direction.** For a paper vector at the visual angle `theta` (counter-clockwise from
+the paper horizontal, in the range 0 up to 360), the **reading rotation** is `theta` when
+`theta <= 90` or `theta > 270`, and `theta - 180` (taken modulo 360) otherwise. The text then never reads upside down. The
+text of a dimension has this rotation, `centre` and `baseline` alignment, and its anchor is the middle of
+the dimension line moved by `u / 2` along the up direction of the text, `(-sin(rho), -cos(rho))`, where
+`rho` is the reading rotation.
+
+**12.4 Linear and aligned.** For `linear`, the axis is the model x axis for `horizontal` and the model
+y axis for `vertical`. The value is the distance of the two model points along that axis. For
+`aligned`, the value is the model distance of the two points.
+
+**12.4.1** A value of 0 is error `12.4.1`.
+
+**12.4.2** Let `p1` and `p2` be the paper points, and `r` the rotation of the viewport. The paper
+direction of the model x axis is `(cos(r), -sin(r))`. The paper direction of the model y axis is
+`(-sin(r), -cos(r))`. The **direction** `D` of a `linear` dimension is the direction of its axis. The
+direction `D` of an `aligned` dimension is the unit vector of `p2 - p1`. In both cases `D` is turned by
+180 degrees if needed, so that `(p2 - p1) . D >= 0`. Let `L` be the left normal of `D`. The **reference
+point** is `R = (p1 + p2) / 2 + offset_mm * L`. A positive `offset_mm` puts the dimension line on the left
+of `D`. For each `i`, `q_i = p_i + ((R - p_i) . L) * L` is the foot of the point on the dimension line.
+The entities are:
+
+1. Two **extension lines**, one for each `i`. Let `s_i = (R - p_i) . L` and `v = sign(s_i) * L`. The line
+   runs from `p_i + (u/2) * v` to `q_i + u * v`.
+2. The **dimension line**, a `line` from `q1` to `q2`.
+3. Two arrowheads (clause 12.3.2): tip `q1` with `e = -D`, and tip `q2` with `e = D`.
+4. The text (clause 12.3.3), with the vector `D`.
+
+**12.4.3** If `|s_i| <= u / 2` for an `i`, or `|q2 - q1| < 2 * a`, that is error `12.4.3`. (The extension
+line would have no length, or the arrowheads would not fit.)
+
+**12.5 Radius, diameter and angle.**
+
+**12.5.1** `of` names a `circle` or an `arc`. Any other entity is error `12.2`. The optional
+`direction_deg` is a model angle, counter-clockwise from the x axis. Its default is 45. For an `arc`, the
+direction MUST lie within the sweep of the arc, ends included. Otherwise that is error `12.5.1`.
+Let `c` be the paper centre, `R` the paper radius, `phi = direction_deg + r` and
+`e = (cos(phi), -sin(phi))`. The value is the model radius (`radius`) or twice the model radius
+(`diameter`).
+
+**12.5.2 Radius.** The dimension line is a `line` from `c` to `c + R*e`. One arrowhead has its tip at
+`c + R*e` and `e` as direction. The text has the text `R` and the value, and the vector `e`. If `R < 2*a`,
+that is error `12.4.3`.
+
+**12.5.3 Diameter.** The dimension line is a `line` from `c - R*e` to `c + R*e`. Two arrowheads have
+their tips at the ends, with `-e` at `c - R*e` and `e` at `c + R*e`. The text has the text `Ø` and the
+value, and the vector `e`. If `R < a`, that is error `12.4.3`.
+
+**12.5.4 Angle.** `vertex`, `from` and `to` are point specs. Let `V`, `A` and `B` be the model points.
+The rays are `V -> A` and `V -> B`. The model angles of the rays are `ta` and `tb`. The value is
+`(tb - ta) mod 360` degrees, counter-clockwise from the first ray to the second. A zero ray (`A = V` or
+`B = V`) or a value of 0 is error `12.5.4`. `arc_radius_mm` is the paper radius of the dimension arc. Let
+`v` be the paper point of `V`, `alpha_a = ta + r` and `alpha_b = tb + r`. The entities are:
+
+1. Two extension lines, one for each ray. For angle `alpha`, the line runs from
+   `v + (u/2) * w` to `v + (arc_radius_mm + u) * w`, where `w = (cos(alpha), -sin(alpha))`.
+2. The **dimension arc**, an `arc` with the centre `v`, the radius `arc_radius_mm`, the start angle
+   `alpha_a` and the sweep equal to the value.
+3. Two arrowheads at the ends of the arc. At the start, the tip is `v + arc_radius_mm * wa` and the
+   direction `e` is `-tangent(alpha_a)`, where `tangent(alpha) = (-sin(alpha), -cos(alpha))`. At the end,
+   the tip is `v + arc_radius_mm * wb` and `e` is `tangent(alpha_b)`.
+4. The text `value°`, with rotation 0, `centre` and `middle` alignment, at the anchor
+   `v + (arc_radius_mm + text_height_mm) * wm`, where `wm` is `w` at the angle `alpha_a + value / 2`.
+
+If `arc_radius_mm < 2 * a`, that is error `12.4.3`.
+
+**12.6 Leaders.** A `leader` has `from` (a point spec: the part that it names), `label_at_m` (a model
+point), and `text` (one line of text, clause 11.3.3). It MAY have `text_height_mm`. Let `t` be the paper
+point of `from` and `l` the paper point of `label_at_m`. The entities are:
+
+1. A `line` from `l` to `t`.
+2. An arrowhead with the tip `t` and the direction `e = unit(t - l)`.
+3. A `text` with the text, rotation 0, `middle` vertical alignment, at the anchor `l` moved by
+   `(u/2, 0)` with `left` alignment when `l.x >= t.x`, and by `(-u/2, 0)` with `right` alignment
+   otherwise.
+
+**12.6.1** A leader whose two points are equal is error `12.6.1`.
+
+**12.7 Entities.** The parts of a dimension or a leader are entities of the normalised content: `line`,
+`arc`, `hatch` and `text`. Their layer is the layer of the dimension. Their origin is
+`viewport.<id>.dimension` or `viewport.<id>.leader`. Lines and arcs have the type `continuous`. A
+line, an arc and an arrowhead have the width of the role of the entity, or of its layer (clause 8.7).
+Every part of a dimension MUST lie inside the frame of its viewport (clause 7.7.1).
+
+**12.8 Chains.** Dimensions with the same `chain` form a chain. Each has `chain_role`, `part` or
+`overall`. A chain MUST have exactly one `overall`, and at least two `part`. Let `unit` and `decimals`
+be those of each dimension: they MUST be the same in a chain. Compare the texts of the dimensions as
+exact decimal numbers: the sum of the texts of the parts MUST equal the text of the overall. Any other
+chain is error `12.8`.
+
+**12.8.1** Worked numbers. Parts 1.25, 1.25 and 1.25, overall 3.75: equal, so valid. Parts of the
+model lengths 1.254, 1.254 and 1.254 with `decimals` 2 have texts 1.25, 1.25 and 1.25. The overall length
+3.762 has the text 3.76. The sum 3.75 is not 3.76, so that is error 12.8, even though the true sum is
+3.762. The author then states the overall as the sum of the parts, or changes `decimals`.
+*Basis: house choice H-46. A reader of the drawing adds the printed numbers. The numbers MUST agree.*
+
 
 ## 13 Symbols
 
@@ -1104,7 +1259,8 @@ list of errors.
 | `entities` | The sorted list of entities (clause 16.8). |
 
 **16.3 Entities: common members.** Every entity has `type`, `origin` and `layer`. It has `id` only if
-the document gave one. The types are `line`, `polyline`, `arc`, `circle`, `hatch` and `text`.
+the document gave one. The types are `line`, `polyline`, `arc`, `circle`, `hatch` and `text`. A
+`dimension` and a `leader` do not appear: they are written as these types (clause 12.7).
 `origin` says where the entity came from (clause 16.5).
 
 **16.4 Entities: members by type.** All lengths are paper millimetres, rounded to 3 places. All
@@ -1128,6 +1284,7 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 - `sheet.border`, `sheet.centring_mark`, `sheet.zone_mark`, `sheet.zone_label`;
 - `viewport.<id>`, for an entity written in the viewport `<id>`;
 - `viewport.<id>.hatch`, for the marks of the hatches of that viewport (clause 10.5.8);
+- `viewport.<id>.dimension` and `viewport.<id>.leader`, for the parts of the dimensions and leaders of that viewport (clause 12.7);
 - `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport.
 
 **16.6 How each source becomes entities.** Rounding (clause 5.5) is applied at the end, to each
@@ -1297,6 +1454,9 @@ function to each `input`, and the result MUST equal `expected`. A result that is
 | `line_pattern` | `line_type`, `width_mm` | a list of numbers (clause 8.4.1) |
 | `arc_sweep` | `start_deg`, `end_deg` | a number, or an error `9.5.1` (clause 9.5) |
 | `text_width` | `text`, `height_mm` | the width in mm, rounded (clause 11.7.1) |
+| `dimension_text` | `value_m`, `unit`, `decimals` | the text of a length dimension (clause 12.1.1) |
+| `reading_rotation` | `theta_deg` | the rotation of dimension text, in 0 up to 360 (clause 12.3.3) |
+| `chain_ok` | `parts`, `overall` (texts) | true or false (clause 12.8) |
 | `text_box` | `anchor_mm`, `text`, `height_mm`, `rotation_deg`, `align_h`, `align_v` | the four corners, each `[x_mm, y_mm]`, rounded (clauses 11.7.2 and 11.7.3) |
 
 `frame`, `window` and the other objects have the members of the drawing document (clause 7.1).
@@ -1337,7 +1497,8 @@ types, their units (by name), the allowed values, and the unknown keys (clause 4
 **18.5 What the schema cannot check.** A reader MUST also check these rules, and report them with
 the clause number: 4.4 (repeated keys); 6.1 to 6.6 (sheet and drawing space); 7.2 to 7.10 (viewports,
 fit, furniture); 8.2.2, 8.3.2, 8.5.1, 8.5.3 to 8.5.5 and 8.6.3 (line group, widths, layers); 9.3 to
-9.5 and 9.8 (geometry and identifiers); 10.3 (hatch validity); 18.2 (version reading).
+9.5 and 9.8 (geometry and identifiers); 10.3 (hatch validity); 12.2 to 12.8 (dimensions and
+leaders); 18.2 (version reading).
 
 **18.6 Annotation.** Each place in the schema that gives a rule has an `x-clause` annotation. It
 names the clause of this standard that the place enforces. A reader that reports a schema error
