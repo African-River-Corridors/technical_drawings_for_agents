@@ -94,6 +94,8 @@ def _content(norm: dict) -> bytes:
     out = [f"{_n(PT_PER_MM)} 0 0 {_n(-PT_PER_MM)} 0 {_n(sheet['height_mm'] * PT_PER_MM)} cm", "0 G 0 g", "0 J 0 j 10 M"]
     for e in norm["entities"]:
         t = e["type"]
+        if t == "hatch" and e["pattern"] != "solid":
+            continue  # the marks are entities of their own (10.5.8)
         if t == "text":
             h = e["height_mm"]
             corners = rules.text_box(e["anchor_mm"], e["text"], h, e["rotation_deg"], e["align_h"], e["align_v"])
@@ -109,7 +111,7 @@ def _content(norm: dict) -> bytes:
             continue
         out.append(f"{_n(e['width_mm'])} w")
         line_type = e.get("line_type", "continuous")
-        if t == "hatch" or line_type == "continuous":  # marks of the other patterns are not defined yet (ticket 27): the outline
+        if line_type == "continuous":
             out.append("[] 0 d")
         else:
             pattern = [abs(v) for v in rules.line_pattern(line_type, e["width_mm"])]
@@ -126,8 +128,6 @@ def _content(norm: dict) -> bytes:
             out += _circle_ops(e) + ["S"]
         elif t == "arc":
             out += _arc_ops(e) + ["S"]
-        elif t == "hatch":
-            out += [op for loop in [e["boundary_mm"], *e["holes_mm"]] for op in _loop_ops(loop)] + ["S"]
     return "\n".join(out).encode("ascii")
 
 

@@ -67,13 +67,13 @@
               ]
             ]
           ],
-          "pattern": "concrete",
+          "pattern": "solid",
           "angle_deg": 30
         },
         {
           "type": "hatch",
           "layer": "HATCH",
-          "id": "water",
+          "id": "lines",
           "boundary_m": [
             [
               0,
@@ -88,7 +88,8 @@
               5
             ]
           ],
-          "pattern": "water"
+          "pattern": "lines",
+          "angle_deg": 0
         }
       ]
     }

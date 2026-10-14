@@ -301,6 +301,8 @@ def test_mapped_points_agree_with_the_reference_viewport(case):
 
     got = {"line": [], "polyline": [], "circle": [], "arc": [], "hatch": [], "text": []}
     for e in case_expected(case)["entities"]:
+        if e["origin"].endswith(".hatch"):
+            continue  # the marks of a hatch are checked in test_standard_hatch.py
         t = e["type"]
         if t == "line":
             got[t].append([e["from_mm"], e["to_mm"]])

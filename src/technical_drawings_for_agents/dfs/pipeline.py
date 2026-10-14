@@ -10,6 +10,7 @@ from typing import Any
 import jsonschema
 
 from . import resources
+from .hatch import marks as hatch_marks
 from .numbers import FIT_TOL_MM, angle, cos_sin, mm
 from .rules import (
     ALL_RATIOS,
@@ -543,7 +544,9 @@ def _viewport_entities(vp, declared, group, mapper, rotation):
                 item["id"] = id_
             out.append(item)
         elif t == "hatch":
-            out.append(_hatch(origin, e["layer"], [mapper.point(p) for p in e["boundary_m"]], [[mapper.point(p) for p in hole] for hole in e.get("holes_m", [])], e["pattern"], e.get("angle_deg", 0) + rotation, width, id_))
+            item = _hatch(origin, e["layer"], [mapper.point(p) for p in e["boundary_m"]], [[mapper.point(p) for p in hole] for hole in e.get("holes_m", [])], e["pattern"], e.get("angle_deg", 0) + rotation, width, id_)
+            out.append(item)
+            out += hatch_marks(item, origin + ".hatch", group["thin"])
         elif t == "text":
             out.append(_text(origin, e["layer"], mapper.point(e["anchor_m"]), e["text"], e["height_mm"], e.get("rotation_deg", 0.0), e.get("align_h", "left"), e.get("align_v", "baseline"), id_))
     return out

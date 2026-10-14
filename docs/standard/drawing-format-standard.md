@@ -21,7 +21,7 @@ A number never changes meaning inside one version of the standard.
 
 **0.3** This standard does not quote ISO text. It states its own rules in its own words.
 
-**0.4** Clauses 1 to 9, 11, 16, 17 and 18 are complete in this draft. Clause 10 is partly written. Clauses 12 to 15 are headings only. Each heading
+**0.4** Clauses 1 to 11 and 16 to 18 are complete in this draft. Clauses 12 to 15 are headings only. Each heading
 names the ticket of spec 0001 that writes it.
 
 ## 1 Scope
@@ -817,24 +817,100 @@ Two entities, or an entity and a viewport, MUST NOT share an `id` in one documen
 
 ## 10 Hatches
 
-This clause is **partly written**. The pattern drawings are written in a later ticket.
+This clause defines the hatch entity, the patterns, and the marks that each pattern draws. The
+marks are part of the normalised content (clause 16).
 
 **10.1 The hatch entity.** A `hatch` has `boundary_m`, a list of three or more points, and a
 `pattern`. It MAY have `holes_m`, a list of lists of three or more points, and `angle_deg`
 (default 0, a model angle). The boundary is closed: the last point joins the first.
 
 **10.2 Patterns.** The pattern is one of: `solid`, `lines`, `concrete`, `rockfill`, `soil`, `water`.
-Any other pattern is error `10.2`. The drawings of the patterns (their paper spacing and marks) are
-defined in a later ticket. Until then the normalised content holds the boundary, the pattern name
-and the angle, and not the marks.
+Any other pattern is error `10.2`. The marks of each pattern are defined in clause 10.5.
 *Basis: house choice H-32. The names are the materials the first examples need.*
 
 **10.3 Validity.** A boundary and every hole MUST have a non-zero area, MUST NOT cross itself, and
 MUST NOT repeat a point that follows another. Each hole MUST lie inside the boundary, and holes MUST
-NOT overlap. Error `10.3`.
+NOT overlap. A touch counts as a crossing or an overlap. Error `10.3`.
 
 **10.4 Lines of a hatch.** The lines of a hatch are continuous. Their width is the width of the role
 of the entity, or of its layer (clause 8.7). A hatch entity has no `line_type`.
+
+**10.5 Marks.** The marks of a hatch are generated on the paper, after the map of clause 7.4. The
+data of the patterns is `docs/standard/data/hatch-patterns.json`. The text and the file MUST agree.
+
+**10.5.1 Unit.** Let `d` be the thin width of the line group of the sheet (clause 8.2). The **hatch
+unit** is `u = 10 * d` mm. It is 1.8 mm for group 0.35, 2.5 mm for group 0.5 and 3.5 mm for group 0.7.
+All spacings and sizes below are multiples of `u`.
+*Basis: house choice H-40. The pattern follows the line group, so it looks alike on every sheet size.*
+
+**10.5.2 Frame.** The marks are made from the normalised hatch entity: its boundary, its holes and
+its `angle_deg`, all already rounded (clause 16.4). A reader can therefore make the marks from the
+normalised content alone. Let `alpha` be the `angle_deg` of the normalised hatch (the model angle plus
+the viewport rotation, clause 16.6.2). On the paper let `dir = (cos(alpha), -sin(alpha))` and
+`nor = (sin(alpha), cos(alpha))`. For a point `p`, let `t = dir . p` (along) and `s = nor . p`
+(across). The two axes are at right angles. The frame is fixed to the paper origin `(0, 0)`, not to
+the boundary, so that two hatches of one pattern and one angle line up. Clause 5.6.1 applies to
+sine and cosine. A point with the values `t` and `s` is `t * dir + s * nor`.
+*Basis: house choice H-41. Fixing the pattern to the sheet makes the result the same in every
+implementation.*
+
+**10.5.3 The region.** The **region** of a hatch is its boundary with its holes cut out, by the
+even-odd rule. A line `s = c` crosses an edge from `a` to `b` when `s(a) <= c < s(b)` or
+`s(b) <= c < s(a)`. An edge with `s(a) = s(b)` is never crossed. A point is inside the region when a
+ray from it in the direction of +`t` crosses an odd number of edges, by this same rule, counting
+the edges of the boundary and of every hole.
+
+**10.5.4 Line patterns.** The patterns `lines`, `soil` and `water` are **line patterns**. Each has a
+step, a multiple of `u` (table in clause 10.5.7), and a line type. For every whole number `k` such
+that `c = k * step` lies between the smallest and the largest `s` of the boundary points (both
+included), do this:
+
+1. Find the `t` value where the line `s = c` crosses each edge of the boundary and of the holes
+   (clause 10.5.3). For an edge from `a` to `b`, it is
+   `t(a) + (c - s(a)) / (s(b) - s(a)) * (t(b) - t(a))`.
+2. Sort the `t` values, smallest first. Pair them: first with second, third with fourth, and so on.
+3. Each pair `(t1, t2)` with `t2 > t1` gives a `line` entity from `t1 * dir + c * nor` to
+   `t2 * dir + c * nor`.
+
+**10.5.5 Lattice patterns.** The patterns `concrete` and `rockfill` are **lattice patterns**. The
+lattice has a column step `A` and a row step `B`, multiples of `u`. The lattice point of row `r`
+and column `q` (whole numbers, possibly negative) has `s = r * B` and `t = (q + o) * A`, where `o` is
+0.5 when `r` is odd and 0 when `r` is even. Each lattice point has a **mark** chosen by the parity of
+`r` (table in clause 10.5.7). A mark has a **clearance** `m * u`. The mark is drawn only when its
+lattice point is inside the region (clause 10.5.3) and is at least `m * u` away from every edge of
+the boundary and of every hole (the distance to the edge as a segment). Only lattice points whose
+`s` and `t` lie within the range of the boundary points are tried.
+
+**10.5.6 Mark shapes.** A `dot` is a `circle` entity with its centre at the lattice point and a
+radius of `radius_u * u`. A `polygon` is a closed `polyline` entity. Each vertex `(x, y)` in units of
+`u` is placed at `lattice point + x * u * dir + y * u * nor`.
+
+**10.5.7 Table.** In this table the unit is `u`.
+
+| Pattern | Kind | Step or lattice | Line type | Marks |
+|---|---|---|---|---|
+| `solid` | solid | none | none | The region is filled. No marks. |
+| `lines` | lines | step 1 | `continuous` | none |
+| `soil` | lines | step 1 | `dashed` | none |
+| `water` | lines | step 2 | `continuous` | none |
+| `concrete` | lattice | `A` 2, `B` 2 | `continuous` | even rows: a dot of radius 0.1, clearance 0.1. Odd rows: a triangle with vertices (-0.4, -0.3), (0.4, -0.3), (0, 0.4), clearance 0.5 |
+| `rockfill` | lattice | `A` 3, `B` 2 | `continuous` | every row: a pentagon with vertices (-1, -0.5), (0, -0.8), (1, -0.4), (0.8, 0.6), (-0.6, 0.7), clearance 1.2 |
+
+*Basis: house choice H-42. ISO sets no pattern for these materials in a form that can be computed. The
+shapes are plain, and the clearances keep marks off the boundary.*
+
+**10.5.8 Entities.** The marks of a hatch are entities of the normalised content: `line`, `circle`
+and `polyline`. Each has the layer of the hatch, the origin `viewport.<id>.hatch`, the line type
+of the pattern (`continuous` for lattice marks), and the width of clause 10.4. A hatch with the
+pattern `solid` has no marks. A hatch with another pattern draws nothing but its marks: the boundary
+is not drawn by the hatch.
+
+**10.5.9 Worked numbers.** On A3 (group 0.35) `u = 1.8` mm. The pattern `lines` at angle 0 has `dir`
+= (1, 0) and `nor` = (0, 1). It draws a horizontal line at every `y = k * 1.8`. For the boundary
+(165, 168.5), (265, 168.5), (265, 188.5), (165, 188.5): the values of `k` are 94 to 104, because
+94 * 1.8 = 169.2 is the first multiple of 1.8 that is not below 168.5, and 104 * 1.8 = 187.2 is the
+last that is not above 188.5. The first line runs from (165, 169.2) to (265, 169.2). The pattern
+`water` at angle 0 has step 3.6 and `k` from 47 to 52.
 
 ## 11 Lettering and font
 
@@ -983,6 +1059,7 @@ width of clause 8.7, in paper millimetres. The line type is an identifier of cla
 
 - `sheet.border`, `sheet.centring_mark`, `sheet.zone_mark`, `sheet.zone_label`;
 - `viewport.<id>`, for an entity written in the viewport `<id>`;
+- `viewport.<id>.hatch`, for the marks of the hatches of that viewport (clause 10.5.8);
 - `viewport.<id>.scale_bar` and `viewport.<id>.north_arrow`, for the furniture of that viewport.
 
 **16.6 How each source becomes entities.** Rounding (clause 5.5) is applied at the end, to each
@@ -1026,7 +1103,7 @@ The layer is the layer of the entity. The role, line type and width follow claus
 - `arc`: the centre is mapped. `radius_mm` is `radius_m * k`. `start_deg` is
   `(start_deg + rotation) mod 360`. `sweep_deg` is the sweep of clause 9.5.
 - `hatch`: the boundary and each hole are mapped. `angle_deg` is `(angle_deg + rotation) mod 360`.
-  The width is the width of the role (clause 10.4).
+  The width is the width of the role (clause 10.4). Its marks are generated as clause 10.5 says.
 - `text`: the anchor is mapped. The height, the rotation (a paper angle, clause 11.3.2) and the
   alignments are copied. The rotation is taken modulo 360.
 

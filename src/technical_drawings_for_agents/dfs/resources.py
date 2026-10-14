@@ -53,3 +53,7 @@ def font_widths() -> dict:
 
 def suite_dir() -> Path:
     return find("conformance", "suite.json").parent
+
+
+def hatch_patterns() -> dict:
+    return _json("data", "hatch-patterns.json")

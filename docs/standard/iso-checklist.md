@@ -104,3 +104,6 @@ embedding (`fsType` 0). The comparison depends on P-14, which was recalled and n
 
 **osifont** (GPL or LGPL with font exception) is drawn for ISO 3098. It was not adopted because of
 doubt about its licence in an Apache-2.0 tool (see ticket #8). It can be revisited after a legal view.
+| H-40 | The hatch unit is 10 times the thin width of the line group | The pattern follows the line group, so it looks alike on every sheet size | 10.5.1 |
+| H-41 | The hatch frame is fixed to the paper origin | Two hatches of one pattern and one angle line up. The result is the same in every implementation | 10.5.2 |
+| H-42 | The marks of concrete, rockfill, soil and water as in the table of clause 10.5.7 | ISO sets no pattern for these materials in a form that can be computed. The shapes are plain, and the clearances keep marks off the boundary | 10.5.7 |
