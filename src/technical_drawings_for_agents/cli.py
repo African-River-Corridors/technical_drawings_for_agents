@@ -1410,6 +1410,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--version", action="version", version=f"technical_drawings_for_agents {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
+    from .dfs.cli import add_subcommands
+
+    add_subcommands(sub)
+
     p_render = sub.add_parser(
         "render", help="render a source to PDF/PNG for review (legacy path, frozen)"
     )
