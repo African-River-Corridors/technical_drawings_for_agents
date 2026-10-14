@@ -243,10 +243,10 @@ def test_the_pattern_table_in_the_text_matches_these_numbers():
 # --------------------------------------------------------------------------- #
 
 
-def test_there_are_19_standard_layers_with_distinct_names():
+def test_there_are_18_standard_layers_with_distinct_names():
     names = [row["name"] for row in DATA["layers"]]
-    assert len(names) == 19
-    assert len(set(names)) == 19
+    assert len(names) == 18
+    assert len(set(names)) == 18
     assert all(re.fullmatch(r"[A-Z][A-Z0-9_]{0,30}", n) for n in names)
 
 

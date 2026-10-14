@@ -16,6 +16,8 @@ All notable changes to this project are recorded here. The format follows
   longer needed.
 
 ### Changed
+- The status is a small line of text, not a diagonal watermark (clause 14.9, house choice H-53). The layer `WATERMARK`
+  and the origin `sheet.status_watermark` are removed; the origin is `sheet.status_line`. `issued` shows no line.
 - The examples in `drawings/example/` are drawing documents, with their SVG, PDF, DXF and normalised content.
 - The commands are `validate`, `normalise`, `run`, `build`, `seal` and `conformance`, then `describe` and
   `ingest`. The README describes only this way.

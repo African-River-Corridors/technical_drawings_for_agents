@@ -131,3 +131,12 @@ hand. They do not change the normalised content. The DXF can be read back withou
 | H-50 | An overflow row stands first in a full register and says how many earlier revisions are not shown | A register that is cut is visible: nothing is dropped without a note | 14.7.2 |
 | H-51 | The status `issued` needs a title block and a register whose latest entry has an approver and a valid seal | A drawing is issued by a person who signs. A flag that an agent can set is not a signature | 14.9.1 |
 | H-52 | Strip sizes: heading 3.5 mm, items 2.5 mm, pitch 4.5 mm, edge space 2 mm; strips are cut from the strip area above the register | Simple, and the same in every implementation | 14.10.1 |
+| H-53 | The status `draft` or `concept` is shown by one line of text of height 2.5 mm (`DRAFT – NOT FOR CONSTRUCTION`, `CONCEPT – NOT FOR CONSTRUCTION`), in the notes strip or in a small reserved region at the bottom-left of the drawing space. `issued` shows no line. There is no mark across the drawing | A mark across the drawing covers notes and dimensions. One small line states the status and covers nothing | 14.9 |
+
+## E Visible changes for 1.0
+
+Changes a reader of an earlier draft of the standard will see. One row for each change.
+
+| Change | Before | Now | Clause |
+|---|---|---|---|
+| The status of a draft or concept drawing | A 20 mm diagonal watermark across the drawing space (`DRAFT`, `CONCEPT - NOT FOR CONSTRUCTION`, `ISSUED FOR CONSTRUCTION`), on the layer `WATERMARK` | One line of 2.5 mm text (`DRAFT – NOT FOR CONSTRUCTION`, `CONCEPT – NOT FOR CONSTRUCTION`) in the notes strip, or in a small reserved region at the bottom-left. `issued` shows no line. The layer `WATERMARK` and the origin `sheet.status_watermark` are gone; the origin is `sheet.status_line`. House choice H-53 | 14.9 |

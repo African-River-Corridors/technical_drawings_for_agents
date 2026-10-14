@@ -29,7 +29,7 @@
 <text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="367" y="230" font-size="3.571" textLength="3.736" lengthAdjust="spacing" fill="#000">AB</text>
 <text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="381" y="225" font-size="3.571" textLength="5.786" lengthAdjust="spacing" fill="#000">CHK</text>
 <text data-origin="sheet.revision_register" data-layer="TITLEBLOCK" x="395" y="225" font-size="3.571" textLength="5.507" lengthAdjust="spacing" fill="#000">APP</text>
-<text data-origin="sheet.status_watermark" data-layer="WATERMARK" x="55.964" y="273.724" font-size="28.571" textLength="404.343" lengthAdjust="spacing" fill="#000" transform="rotate(-35.385 55.964 273.724)">CONCEPT - NOT FOR CONSTRUCTION</text>
+<text data-origin="sheet.status_line" data-layer="TITLEBLOCK" x="342" y="219" font-size="3.571" textLength="50.746" lengthAdjust="spacing" fill="#000">CONCEPT – NOT FOR CONSTRUCTION</text>
 <line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="251" x2="340" y2="251" fill="none" stroke="#000" stroke-width="0.18"/>
 <line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="263" x2="340" y2="263" fill="none" stroke="#000" stroke-width="0.18"/>
 <line data-origin="sheet.title_block" data-layer="TITLEBLOCK" x1="230" y1="275" x2="340" y2="275" fill="none" stroke="#000" stroke-width="0.18"/>

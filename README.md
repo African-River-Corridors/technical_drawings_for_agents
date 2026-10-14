@@ -92,7 +92,7 @@ error: clause 14.6         # a text is wider than its title block cell
 | `viewports` | Each has a frame on the paper, a model window, a scale (a preferred ISO ratio or `fit`), an optional rotation, scale bar and north arrow, and its entities. | 7 |
 | entities | `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch`, `text`, `dimension`, `leader`, `symbol`. | 9 to 13 |
 | `symbol_libraries` | Symbols drawn once and placed many times, in a file or in the document. | 13 |
-| `title_block`, `revisions`, `status`, `strips`, `notes`, `references` | The title block (ISO 7200 by default, or a template file of your own), the revision register, the status and its watermark, and the notes strips. | 14 |
+| `title_block`, `revisions`, `status`, `strips`, `notes`, `references` | The title block (ISO 7200 by default, or a template file of your own), the revision register, the status and its status line, and the notes strips. | 14 |
 
 The standard is plain English with numbered clauses: [`docs/standard/drawing-format-standard.md`](docs/standard/drawing-format-standard.md).
 The JSON Schema is [`docs/standard/schema/drawing-document-1.0.schema.json`](docs/standard/schema/drawing-document-1.0.schema.json).

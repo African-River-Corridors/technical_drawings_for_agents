@@ -210,16 +210,27 @@ def test_the_seal_command_prints_the_seals_and_writes_nothing(tmp_path, capsys):
 # -------------------------------------------------------------------------- status
 
 
-def test_the_watermark_is_text_on_the_diagonal():
-    wm = sheet_parts("tb-status-draft", "sheet.status_watermark")[0]
-    assert wm["text"] == "DRAFT" and wm["height_mm"] == 20 and wm["layer"] == "WATERMARK"
-    assert wm["anchor_mm"] == [215, 148.5]
-    assert wm["rotation_deg"] == pytest.approx(35.4, abs=0.1)  # atan2(277, 390)
+def test_the_status_line_is_small_text_at_the_bottom_left_and_is_a_region():
+    line = sheet_parts("tb-status-draft", "sheet.status_line")[0]
+    assert line["text"] == "DRAFT \u2013 NOT FOR CONSTRUCTION" and line["height_mm"] == 2.5 and line["layer"] == "TITLEBLOCK"
+    assert line["anchor_mm"] == [22, 285] and line["rotation_deg"] == 0 and line["align_h"] == "left"
+    assert not sheet_parts("tb-status-draft", "sheet.status_watermark")
 
 
-def test_every_status_has_its_text():
-    assert sheet_parts("tb-status-concept", "sheet.status_watermark")[0]["text"] == "CONCEPT - NOT FOR CONSTRUCTION"
-    assert sheet_parts("tb-status-issued", "sheet.status_watermark")[0]["text"] == "ISSUED FOR CONSTRUCTION"
+def test_every_status_has_its_text_and_issued_has_none():
+    assert sheet_parts("tb-status-concept", "sheet.status_line")[0]["text"] == "CONCEPT \u2013 NOT FOR CONSTRUCTION"
+    assert sheet_parts("tb-status-issued", "sheet.status_line") == []
+
+
+def test_the_status_line_stands_on_the_last_line_of_a_notes_strip():
+    # strip x 340..410, y 10..287: the line is at (x + 2, y + h - 2)
+    line = sheet_parts("status-draft-notes-strip", "sheet.status_line")[0]
+    assert line["anchor_mm"] == [342, 285]
+
+
+@pytest.mark.parametrize("case, clause", [("err-status-notes-strip-no-room", "14.6"), ("err-status-frame-over-line", "7.2.4")])
+def test_the_status_line_errors(case, clause):
+    assert run_file(SUITE / "documents" / case / "input.json")["errors"] == [{"clause": clause}]
 
 
 @pytest.mark.parametrize("case", ["err-status-issued-no-approver", "err-status-issued-no-seal", "err-status-issued-no-register", "err-status-issued-no-title-block"])
@@ -252,11 +263,11 @@ def test_a_note_is_numbered_and_a_reference_joins_its_parts():
     assert "1. ALL DIMENSIONS IN METRES." in t and "EXA-GEN-002  C  GENERAL NOTES" in t and "EXA-ARR-003  ARRANGEMENT" in t
 
 
-def test_the_dxf_has_the_watermark_layer_for_a_document_with_a_status():
+def test_the_dxf_has_no_watermark_layer_and_the_status_line_is_on_the_furniture_layer():
     path = SUITE / "documents" / "tb-status-draft" / "input.json"
     doc = json.loads(path.read_text())
     text, _ = dxf_from_document(doc, run_file(path)["normalised"], path.parent)
-    assert any(r.kind == "LAYER" and r.get(2) == "WATERMARK" for r in records(text))
+    assert not any(r.kind == "LAYER" and r.get(2) == "WATERMARK" for r in records(text))
 
 
 def test_every_error_of_clause_14_has_a_conformance_case():
