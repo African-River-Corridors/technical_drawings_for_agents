@@ -1,0 +1,5495 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape",
+    "line_group": "0.35",
+    "width_mm": 420.0,
+    "height_mm": 297.0,
+    "drawing_space": {
+      "x_mm": 20.0,
+      "y_mm": 10.0,
+      "width_mm": 390.0,
+      "height_mm": 277.0
+    }
+  },
+  "viewports": [
+    {
+      "id": "main",
+      "scale": 20,
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 320,
+        "height_mm": 176
+      }
+    }
+  ],
+  "entities": [
+    {
+      "type": "polyline",
+      "origin": "sheet.border",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          20.0,
+          10.0
+        ],
+        [
+          410.0,
+          10.0
+        ],
+        [
+          410.0,
+          287.0
+        ],
+        [
+          20.0,
+          287.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.7
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        148.5
+      ],
+      "to_mm": [
+        25.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210.0,
+        0.0
+      ],
+      "to_mm": [
+        210.0,
+        15.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        210.0,
+        297.0
+      ],
+      "to_mm": [
+        210.0,
+        282.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "line",
+      "origin": "sheet.centring_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        148.5
+      ],
+      "to_mm": [
+        405.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.5
+    },
+    {
+      "type": "polyline",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          340.0,
+          10.0
+        ],
+        [
+          410.0,
+          10.0
+        ],
+        [
+          410.0,
+          221.0
+        ],
+        [
+          340.0,
+          221.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        15.5
+      ],
+      "text": "NOTES",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        20.0
+      ],
+      "text": "1. VALUES ARE NOMINAL AND ILLUSTRATIVE.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        24.5
+      ],
+      "text": "2. NOT SURVEYED. NOT ENGINEERED.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        29.0
+      ],
+      "text": "3. NOT FOR CONSTRUCTION.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.notes",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        342.0,
+        33.5
+      ],
+      "text": "4. DIMENSIONS IN METRES.",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        226.0
+      ],
+      "to_mm": [
+        410.0,
+        226.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        242.0,
+        221.0
+      ],
+      "to_mm": [
+        242.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        266.0,
+        221.0
+      ],
+      "to_mm": [
+        266.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        366.0,
+        221.0
+      ],
+      "to_mm": [
+        366.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        380.0,
+        221.0
+      ],
+      "to_mm": [
+        380.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        394.0,
+        221.0
+      ],
+      "to_mm": [
+        394.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          230.0,
+          221.0
+        ],
+        [
+          410.0,
+          221.0
+        ],
+        [
+          410.0,
+          231.0
+        ],
+        [
+          230.0,
+          231.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        225.0
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        230.0
+      ],
+      "text": "A",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243.0,
+        225.0
+      ],
+      "text": "DATE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        243.0,
+        230.0
+      ],
+      "text": "2026-07-15",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267.0,
+        225.0
+      ],
+      "text": "DESCRIPTION",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267.0,
+        230.0
+      ],
+      "text": "FIRST ISSUE - WORKED EXAMPLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367.0,
+        225.0
+      ],
+      "text": "BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        367.0,
+        230.0
+      ],
+      "text": "AB",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        381.0,
+        225.0
+      ],
+      "text": "CHK",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.revision_register",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        395.0,
+        225.0
+      ],
+      "text": "APP",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.status_watermark",
+      "layer": "WATERMARK",
+      "anchor_mm": [
+        215.0,
+        148.5
+      ],
+      "text": "CONCEPT - NOT FOR CONSTRUCTION",
+      "height_mm": 20,
+      "rotation_deg": 35.385,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        251.0
+      ],
+      "to_mm": [
+        340.0,
+        251.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        263.0
+      ],
+      "to_mm": [
+        340.0,
+        263.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        275.0
+      ],
+      "to_mm": [
+        340.0,
+        275.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        266.0,
+        275.0
+      ],
+      "to_mm": [
+        266.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        303.0,
+        275.0
+      ],
+      "to_mm": [
+        303.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        245.0
+      ],
+      "to_mm": [
+        410.0,
+        245.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        259.0
+      ],
+      "to_mm": [
+        410.0,
+        259.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        273.0
+      ],
+      "to_mm": [
+        410.0,
+        273.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        360.0,
+        245.0
+      ],
+      "to_mm": [
+        360.0,
+        259.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        365.0,
+        273.0
+      ],
+      "to_mm": [
+        365.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        375.0,
+        259.0
+      ],
+      "to_mm": [
+        375.0,
+        273.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        385.0,
+        273.0
+      ],
+      "to_mm": [
+        385.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        231.0
+      ],
+      "to_mm": [
+        410.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        230.0,
+        287.0
+      ],
+      "to_mm": [
+        230.0,
+        231.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        340.0,
+        231.0
+      ],
+      "to_mm": [
+        340.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        410.0,
+        231.0
+      ],
+      "to_mm": [
+        410.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        410.0,
+        287.0
+      ],
+      "to_mm": [
+        230.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        234.5
+      ],
+      "text": "TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        250.0
+      ],
+      "text": "CHANNEL TYPICAL SECTION",
+      "height_mm": 5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        254.5
+      ],
+      "text": "SUPPLEMENTARY TITLE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        262.0
+      ],
+      "text": "WORKED EXAMPLE - NOMINAL VALUES",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        266.5
+      ],
+      "text": "OWNER",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        274.0
+      ],
+      "text": "DRAWINGS-KIT EXAMPLE",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        278.5
+      ],
+      "text": "CREATED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        231.0,
+        286.0
+      ],
+      "text": "AB",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        267.0,
+        278.5
+      ],
+      "text": "CHECKED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        304.0,
+        278.5
+      ],
+      "text": "APPROVED BY",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        234.5
+      ],
+      "text": "DOCUMENT NUMBER",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        244.0
+      ],
+      "text": "EXA-CIV-SEC-001",
+      "height_mm": 5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        248.5
+      ],
+      "text": "REV",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        258.0
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        262.5
+      ],
+      "text": "STATUS",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        272.0
+      ],
+      "text": "CONCEPT",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        276.5
+      ],
+      "text": "SHEET",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        341.0,
+        286.0
+      ],
+      "text": "1/1",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        361.0,
+        248.5
+      ],
+      "text": "DATE OF ISSUE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        361.0,
+        258.0
+      ],
+      "text": "2026-07-15",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        366.0,
+        276.5
+      ],
+      "text": "SIZE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        366.0,
+        286.0
+      ],
+      "text": "A3",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        376.0,
+        262.5
+      ],
+      "text": "SCALE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        376.0,
+        272.0
+      ],
+      "text": "1:20",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        386.0,
+        276.5
+      ],
+      "text": "TYPE",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.title_block",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        386.0,
+        286.0
+      ],
+      "text": "SECTION",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "left",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        33.083
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        79.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        125.417
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        171.583
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        217.75
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        10.0,
+        263.917
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        44.375,
+        5.0
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        44.375,
+        292.0
+      ],
+      "text": "1",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        93.125,
+        5.0
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        93.125,
+        292.0
+      ],
+      "text": "2",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        141.875,
+        5.0
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        141.875,
+        292.0
+      ],
+      "text": "3",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        190.625,
+        5.0
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        190.625,
+        292.0
+      ],
+      "text": "4",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        239.375,
+        5.0
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        239.375,
+        292.0
+      ],
+      "text": "5",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        288.125,
+        5.0
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        288.125,
+        292.0
+      ],
+      "text": "6",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        336.875,
+        5.0
+      ],
+      "text": "7",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        336.875,
+        292.0
+      ],
+      "text": "7",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        385.625,
+        5.0
+      ],
+      "text": "8",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        385.625,
+        292.0
+      ],
+      "text": "8",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        33.083
+      ],
+      "text": "A",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        79.25
+      ],
+      "text": "B",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        125.417
+      ],
+      "text": "C",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        171.583
+      ],
+      "text": "D",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        217.75
+      ],
+      "text": "E",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "sheet.zone_label",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        415.0,
+        263.917
+      ],
+      "text": "F",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "middle"
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        56.167
+      ],
+      "to_mm": [
+        20.0,
+        56.167
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        102.333
+      ],
+      "to_mm": [
+        20.0,
+        102.333
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        148.5
+      ],
+      "to_mm": [
+        20.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        194.667
+      ],
+      "to_mm": [
+        20.0,
+        194.667
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        0.0,
+        240.833
+      ],
+      "to_mm": [
+        20.0,
+        240.833
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        68.75,
+        0.0
+      ],
+      "to_mm": [
+        68.75,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        68.75,
+        297.0
+      ],
+      "to_mm": [
+        68.75,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        117.5,
+        0.0
+      ],
+      "to_mm": [
+        117.5,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        117.5,
+        297.0
+      ],
+      "to_mm": [
+        117.5,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        166.25,
+        0.0
+      ],
+      "to_mm": [
+        166.25,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        166.25,
+        297.0
+      ],
+      "to_mm": [
+        166.25,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        215.0,
+        0.0
+      ],
+      "to_mm": [
+        215.0,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        215.0,
+        297.0
+      ],
+      "to_mm": [
+        215.0,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        263.75,
+        0.0
+      ],
+      "to_mm": [
+        263.75,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        263.75,
+        297.0
+      ],
+      "to_mm": [
+        263.75,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        312.5,
+        0.0
+      ],
+      "to_mm": [
+        312.5,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        312.5,
+        297.0
+      ],
+      "to_mm": [
+        312.5,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        361.25,
+        0.0
+      ],
+      "to_mm": [
+        361.25,
+        10.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        361.25,
+        297.0
+      ],
+      "to_mm": [
+        361.25,
+        287.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        56.167
+      ],
+      "to_mm": [
+        410.0,
+        56.167
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        102.333
+      ],
+      "to_mm": [
+        410.0,
+        102.333
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        148.5
+      ],
+      "to_mm": [
+        410.0,
+        148.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        194.667
+      ],
+      "to_mm": [
+        410.0,
+        194.667
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "line",
+      "origin": "sheet.zone_mark",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        420.0,
+        240.833
+      ],
+      "to_mm": [
+        410.0,
+        240.833
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.35
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main",
+      "layer": "HATCH",
+      "boundary_mm": [
+        [
+          65.0,
+          78.0
+        ],
+        [
+          140.0,
+          138.0
+        ],
+        [
+          220.0,
+          138.0
+        ],
+        [
+          295.0,
+          78.0
+        ],
+        [
+          285.0,
+          78.0
+        ],
+        [
+          210.0,
+          128.0
+        ],
+        [
+          150.0,
+          128.0
+        ],
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "concrete",
+      "angle_deg": 0.0,
+      "width_mm": 0.18,
+      "id": "lining-hatch"
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "CENTRE",
+      "from_mm": [
+        180.0,
+        153.0
+      ],
+      "to_mm": [
+        180.0,
+        58.0
+      ],
+      "line_type": "chain",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main",
+      "layer": "WATER",
+      "from_mm": [
+        93.75,
+        90.5
+      ],
+      "to_mm": [
+        266.25,
+        90.5
+      ],
+      "line_type": "dashed",
+      "width_mm": 0.18,
+      "id": "wl"
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main",
+      "layer": "OUTLINE",
+      "points_mm": [
+        [
+          65.0,
+          78.0
+        ],
+        [
+          140.0,
+          138.0
+        ],
+        [
+          220.0,
+          138.0
+        ],
+        [
+          295.0,
+          78.0
+        ],
+        [
+          285.0,
+          78.0
+        ],
+        [
+          210.0,
+          128.0
+        ],
+        [
+          150.0,
+          128.0
+        ],
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.35,
+      "id": "lining"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main",
+      "layer": "TEXT",
+      "anchor_mm": [
+        180.0,
+        33.0
+      ],
+      "text": "TYPICAL SECTION",
+      "height_mm": 5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          150.0,
+          146.0
+        ],
+        [
+          153.6,
+          146.45
+        ],
+        [
+          153.6,
+          145.55
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          210.0,
+          146.0
+        ],
+        [
+          206.4,
+          145.55
+        ],
+        [
+          206.4,
+          146.45
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          312.0,
+          78.0
+        ],
+        [
+          311.55,
+          81.6
+        ],
+        [
+          312.45,
+          81.6
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          312.0,
+          128.0
+        ],
+        [
+          312.45,
+          124.4
+        ],
+        [
+          311.55,
+          124.4
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        150.0,
+        128.9
+      ],
+      "to_mm": [
+        150.0,
+        147.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        150.0,
+        146.0
+      ],
+      "to_mm": [
+        210.0,
+        146.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        210.0,
+        128.9
+      ],
+      "to_mm": [
+        210.0,
+        147.8
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        300.9,
+        78.0
+      ],
+      "to_mm": [
+        313.8,
+        78.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        300.9,
+        128.0
+      ],
+      "to_mm": [
+        313.8,
+        128.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        312.0,
+        128.0
+      ],
+      "to_mm": [
+        312.0,
+        78.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        180.0,
+        145.1
+      ],
+      "text": "1.20",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.dimension",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        311.1,
+        103.0
+      ],
+      "text": "1.00",
+      "height_mm": 3.5,
+      "rotation_deg": 90.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        68.4,
+        79.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        72.0,
+        79.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        75.6,
+        79.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        79.2,
+        86.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        82.8,
+        86.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        86.4,
+        86.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        86.4,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        90.0,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        93.6,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        97.2,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        97.2,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        100.8,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        104.4,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        104.4,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        108.0,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        108.0,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        111.6,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        115.2,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        115.2,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        118.8,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        118.8,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        122.4,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        122.4,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        126.0,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        126.0,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        129.6,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        129.6,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        133.2,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        133.2,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        136.8,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        136.8,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        140.4,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        140.4,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        140.4,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        144.0,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        144.0,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        147.6,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        147.6,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        151.2,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        151.2,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        154.8,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        154.8,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        158.4,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        158.4,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        162.0,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        162.0,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        165.6,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        165.6,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        169.2,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        169.2,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        172.8,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        172.8,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        176.4,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        176.4,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        180.0,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        180.0,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        183.6,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        183.6,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        187.2,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        187.2,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        190.8,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        190.8,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        194.4,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        194.4,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        198.0,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        198.0,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        201.6,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        201.6,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        205.2,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        205.2,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        208.8,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        208.8,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        212.4,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        212.4,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        216.0,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        216.0,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        219.6,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        219.6,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        219.6,
+        136.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        223.2,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        223.2,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        226.8,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        226.8,
+        129.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        230.4,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        230.4,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        234.0,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        234.0,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        237.6,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        237.6,
+        122.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        241.2,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        241.2,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        244.8,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        244.8,
+        115.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        248.4,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        252.0,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        252.0,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        255.6,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        255.6,
+        108.0
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        259.2,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        262.8,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        262.8,
+        100.8
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        266.4,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        270.0,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        273.6,
+        86.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        273.6,
+        93.6
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        277.2,
+        86.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        280.8,
+        86.4
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        284.4,
+        79.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        288.0,
+        79.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "circle",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "centre_mm": [
+        291.6,
+        79.2
+      ],
+      "radius_mm": 0.18,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          73.08,
+          82.26
+        ],
+        [
+          74.52,
+          82.26
+        ],
+        [
+          73.8,
+          83.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          76.68,
+          82.26
+        ],
+        [
+          78.12,
+          82.26
+        ],
+        [
+          77.4,
+          83.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          83.88,
+          89.46
+        ],
+        [
+          85.32,
+          89.46
+        ],
+        [
+          84.6,
+          90.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          87.48,
+          89.46
+        ],
+        [
+          88.92,
+          89.46
+        ],
+        [
+          88.2,
+          90.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          91.08,
+          96.66
+        ],
+        [
+          92.52,
+          96.66
+        ],
+        [
+          91.8,
+          97.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          94.68,
+          96.66
+        ],
+        [
+          96.12,
+          96.66
+        ],
+        [
+          95.4,
+          97.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          98.28,
+          96.66
+        ],
+        [
+          99.72,
+          96.66
+        ],
+        [
+          99.0,
+          97.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          101.88,
+          103.86
+        ],
+        [
+          103.32,
+          103.86
+        ],
+        [
+          102.6,
+          105.12
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          105.48,
+          103.86
+        ],
+        [
+          106.92,
+          103.86
+        ],
+        [
+          106.2,
+          105.12
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          109.08,
+          103.86
+        ],
+        [
+          110.52,
+          103.86
+        ],
+        [
+          109.8,
+          105.12
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          109.08,
+          111.06
+        ],
+        [
+          110.52,
+          111.06
+        ],
+        [
+          109.8,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          112.68,
+          111.06
+        ],
+        [
+          114.12,
+          111.06
+        ],
+        [
+          113.4,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          116.28,
+          111.06
+        ],
+        [
+          117.72,
+          111.06
+        ],
+        [
+          117.0,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          119.88,
+          111.06
+        ],
+        [
+          121.32,
+          111.06
+        ],
+        [
+          120.6,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          119.88,
+          118.26
+        ],
+        [
+          121.32,
+          118.26
+        ],
+        [
+          120.6,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          123.48,
+          118.26
+        ],
+        [
+          124.92,
+          118.26
+        ],
+        [
+          124.2,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          127.08,
+          118.26
+        ],
+        [
+          128.52,
+          118.26
+        ],
+        [
+          127.8,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          127.08,
+          125.46
+        ],
+        [
+          128.52,
+          125.46
+        ],
+        [
+          127.8,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          130.68,
+          118.26
+        ],
+        [
+          132.12,
+          118.26
+        ],
+        [
+          131.4,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          130.68,
+          125.46
+        ],
+        [
+          132.12,
+          125.46
+        ],
+        [
+          131.4,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          134.28,
+          125.46
+        ],
+        [
+          135.72,
+          125.46
+        ],
+        [
+          135.0,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          137.88,
+          125.46
+        ],
+        [
+          139.32,
+          125.46
+        ],
+        [
+          138.6,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          137.88,
+          132.66
+        ],
+        [
+          139.32,
+          132.66
+        ],
+        [
+          138.6,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          141.48,
+          125.46
+        ],
+        [
+          142.92,
+          125.46
+        ],
+        [
+          142.2,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          141.48,
+          132.66
+        ],
+        [
+          142.92,
+          132.66
+        ],
+        [
+          142.2,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          145.08,
+          132.66
+        ],
+        [
+          146.52,
+          132.66
+        ],
+        [
+          145.8,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          148.68,
+          132.66
+        ],
+        [
+          150.12,
+          132.66
+        ],
+        [
+          149.4,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          152.28,
+          132.66
+        ],
+        [
+          153.72,
+          132.66
+        ],
+        [
+          153.0,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          155.88,
+          132.66
+        ],
+        [
+          157.32,
+          132.66
+        ],
+        [
+          156.6,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          159.48,
+          132.66
+        ],
+        [
+          160.92,
+          132.66
+        ],
+        [
+          160.2,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          163.08,
+          132.66
+        ],
+        [
+          164.52,
+          132.66
+        ],
+        [
+          163.8,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          166.68,
+          132.66
+        ],
+        [
+          168.12,
+          132.66
+        ],
+        [
+          167.4,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          170.28,
+          132.66
+        ],
+        [
+          171.72,
+          132.66
+        ],
+        [
+          171.0,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          173.88,
+          132.66
+        ],
+        [
+          175.32,
+          132.66
+        ],
+        [
+          174.6,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          177.48,
+          132.66
+        ],
+        [
+          178.92,
+          132.66
+        ],
+        [
+          178.2,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          181.08,
+          132.66
+        ],
+        [
+          182.52,
+          132.66
+        ],
+        [
+          181.8,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          184.68,
+          132.66
+        ],
+        [
+          186.12,
+          132.66
+        ],
+        [
+          185.4,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          188.28,
+          132.66
+        ],
+        [
+          189.72,
+          132.66
+        ],
+        [
+          189.0,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          191.88,
+          132.66
+        ],
+        [
+          193.32,
+          132.66
+        ],
+        [
+          192.6,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          195.48,
+          132.66
+        ],
+        [
+          196.92,
+          132.66
+        ],
+        [
+          196.2,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          199.08,
+          132.66
+        ],
+        [
+          200.52,
+          132.66
+        ],
+        [
+          199.8,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          202.68,
+          132.66
+        ],
+        [
+          204.12,
+          132.66
+        ],
+        [
+          203.4,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          206.28,
+          132.66
+        ],
+        [
+          207.72,
+          132.66
+        ],
+        [
+          207.0,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          209.88,
+          132.66
+        ],
+        [
+          211.32,
+          132.66
+        ],
+        [
+          210.6,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          213.48,
+          132.66
+        ],
+        [
+          214.92,
+          132.66
+        ],
+        [
+          214.2,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          217.08,
+          125.46
+        ],
+        [
+          218.52,
+          125.46
+        ],
+        [
+          217.8,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          217.08,
+          132.66
+        ],
+        [
+          218.52,
+          132.66
+        ],
+        [
+          217.8,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          220.68,
+          125.46
+        ],
+        [
+          222.12,
+          125.46
+        ],
+        [
+          221.4,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          220.68,
+          132.66
+        ],
+        [
+          222.12,
+          132.66
+        ],
+        [
+          221.4,
+          133.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          224.28,
+          125.46
+        ],
+        [
+          225.72,
+          125.46
+        ],
+        [
+          225.0,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          227.88,
+          118.26
+        ],
+        [
+          229.32,
+          118.26
+        ],
+        [
+          228.6,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          227.88,
+          125.46
+        ],
+        [
+          229.32,
+          125.46
+        ],
+        [
+          228.6,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          231.48,
+          118.26
+        ],
+        [
+          232.92,
+          118.26
+        ],
+        [
+          232.2,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          231.48,
+          125.46
+        ],
+        [
+          232.92,
+          125.46
+        ],
+        [
+          232.2,
+          126.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          235.08,
+          118.26
+        ],
+        [
+          236.52,
+          118.26
+        ],
+        [
+          235.8,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          238.68,
+          111.06
+        ],
+        [
+          240.12,
+          111.06
+        ],
+        [
+          239.4,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          238.68,
+          118.26
+        ],
+        [
+          240.12,
+          118.26
+        ],
+        [
+          239.4,
+          119.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          242.28,
+          111.06
+        ],
+        [
+          243.72,
+          111.06
+        ],
+        [
+          243.0,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          245.88,
+          111.06
+        ],
+        [
+          247.32,
+          111.06
+        ],
+        [
+          246.6,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          249.48,
+          103.86
+        ],
+        [
+          250.92,
+          103.86
+        ],
+        [
+          250.2,
+          105.12
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          249.48,
+          111.06
+        ],
+        [
+          250.92,
+          111.06
+        ],
+        [
+          250.2,
+          112.32
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          253.08,
+          103.86
+        ],
+        [
+          254.52,
+          103.86
+        ],
+        [
+          253.8,
+          105.12
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          256.68,
+          103.86
+        ],
+        [
+          258.12,
+          103.86
+        ],
+        [
+          257.4,
+          105.12
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          260.28,
+          96.66
+        ],
+        [
+          261.72,
+          96.66
+        ],
+        [
+          261.0,
+          97.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          263.88,
+          96.66
+        ],
+        [
+          265.32,
+          96.66
+        ],
+        [
+          264.6,
+          97.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          267.48,
+          96.66
+        ],
+        [
+          268.92,
+          96.66
+        ],
+        [
+          268.2,
+          97.92
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          271.08,
+          89.46
+        ],
+        [
+          272.52,
+          89.46
+        ],
+        [
+          271.8,
+          90.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          274.68,
+          89.46
+        ],
+        [
+          276.12,
+          89.46
+        ],
+        [
+          275.4,
+          90.72
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          281.88,
+          82.26
+        ],
+        [
+          283.32,
+          82.26
+        ],
+        [
+          282.6,
+          83.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.hatch",
+      "layer": "HATCH",
+      "points_mm": [
+        [
+          285.48,
+          82.26
+        ],
+        [
+          286.92,
+          82.26
+        ],
+        [
+          286.2,
+          83.52
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          93.75,
+          90.5
+        ],
+        [
+          93.22,
+          86.911
+        ],
+        [
+          92.353,
+          87.152
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          112.5,
+          103.0
+        ],
+        [
+          108.894,
+          103.403
+        ],
+        [
+          109.104,
+          104.278
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "boundary_mm": [
+        [
+          145.0,
+          133.0
+        ],
+        [
+          141.62,
+          134.319
+        ],
+        [
+          142.049,
+          135.11
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        50.0,
+        118.0
+      ],
+      "to_mm": [
+        112.5,
+        103.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        85.0,
+        165.5
+      ],
+      "to_mm": [
+        145.0,
+        133.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "from_mm": [
+        87.5,
+        68.0
+      ],
+      "to_mm": [
+        93.75,
+        90.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        49.1,
+        118.0
+      ],
+      "text": "1.5H:1V",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "right",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        84.1,
+        165.5
+      ],
+      "text": "CONCRETE LINING 0.20 M",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "right",
+      "align_v": "middle"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.leader",
+      "layer": "DIMENSIONS",
+      "anchor_mm": [
+        86.6,
+        68.0
+      ],
+      "text": "DESIGN WL (NOMINAL)",
+      "height_mm": 3.5,
+      "rotation_deg": 0.0,
+      "align_h": "right",
+      "align_v": "middle"
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "boundary_mm": [
+        [
+          26.0,
+          168.0
+        ],
+        [
+          38.5,
+          168.0
+        ],
+        [
+          38.5,
+          171.0
+        ],
+        [
+          26.0,
+          171.0
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "hatch",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "boundary_mm": [
+        [
+          51.0,
+          168.0
+        ],
+        [
+          63.5,
+          168.0
+        ],
+        [
+          63.5,
+          171.0
+        ],
+        [
+          51.0,
+          171.0
+        ]
+      ],
+      "holes_mm": [],
+      "pattern": "solid",
+      "angle_deg": 0.0,
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        26.0,
+        171.0
+      ],
+      "to_mm": [
+        26.0,
+        172.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        38.5,
+        168.0
+      ],
+      "to_mm": [
+        38.5,
+        171.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        38.5,
+        171.0
+      ],
+      "to_mm": [
+        38.5,
+        172.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        51.0,
+        168.0
+      ],
+      "to_mm": [
+        51.0,
+        171.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        51.0,
+        171.0
+      ],
+      "to_mm": [
+        51.0,
+        172.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        63.5,
+        168.0
+      ],
+      "to_mm": [
+        63.5,
+        171.0
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        63.5,
+        171.0
+      ],
+      "to_mm": [
+        63.5,
+        172.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "line",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "from_mm": [
+        76.0,
+        171.0
+      ],
+      "to_mm": [
+        76.0,
+        172.5
+      ],
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "polyline",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "points_mm": [
+        [
+          26.0,
+          168.0
+        ],
+        [
+          76.0,
+          168.0
+        ],
+        [
+          76.0,
+          171.0
+        ],
+        [
+          26.0,
+          171.0
+        ]
+      ],
+      "closed": true,
+      "line_type": "continuous",
+      "width_mm": 0.18
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        26.0,
+        176.0
+      ],
+      "text": "0",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        38.5,
+        176.0
+      ],
+      "text": "0.25",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        51.0,
+        176.0
+      ],
+      "text": "0.5",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        51.0,
+        180.0
+      ],
+      "text": "1:20",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        63.5,
+        176.0
+      ],
+      "text": "0.75",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    },
+    {
+      "type": "text",
+      "origin": "viewport.main.scale_bar",
+      "layer": "TITLEBLOCK",
+      "anchor_mm": [
+        76.0,
+        176.0
+      ],
+      "text": "1 m",
+      "height_mm": 2.5,
+      "rotation_deg": 0.0,
+      "align_h": "centre",
+      "align_v": "baseline"
+    }
+  ]
+}

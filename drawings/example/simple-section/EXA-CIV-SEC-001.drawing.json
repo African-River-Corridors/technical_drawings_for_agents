@@ -1,0 +1,286 @@
+{
+  "standard_version": "1.0",
+  "sheet": {
+    "size": "A3",
+    "orientation": "landscape"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE"
+    },
+    {
+      "name": "HATCH"
+    },
+    {
+      "name": "CENTRE"
+    },
+    {
+      "name": "WATER"
+    },
+    {
+      "name": "DIMENSIONS"
+    },
+    {
+      "name": "TEXT"
+    }
+  ],
+  "title_block": {
+    "template": "iso7200",
+    "fields": {
+      "owner": "DRAWINGS-KIT EXAMPLE",
+      "title": "CHANNEL TYPICAL SECTION",
+      "supplementary_title": "WORKED EXAMPLE - NOMINAL VALUES",
+      "document_number": "EXA-CIV-SEC-001",
+      "document_type": "SECTION",
+      "sheet_number": 1,
+      "sheet_count": 1
+    }
+  },
+  "revisions": {
+    "entries": [
+      {
+        "rev": "A",
+        "date": "2026-07-15",
+        "description": "FIRST ISSUE - WORKED EXAMPLE",
+        "by": "AB",
+        "seal": "sha256:5cb6f310a6ddd4e5b87a4828bb1e8a73407648fd8f63161f4c39b53e36dcb474"
+      }
+    ]
+  },
+  "status": "concept",
+  "strips": [
+    {
+      "id": "notes",
+      "edge": "right",
+      "size_mm": 70,
+      "content": "notes"
+    }
+  ],
+  "notes": [
+    "VALUES ARE NOMINAL AND ILLUSTRATIVE.",
+    "NOT SURVEYED. NOT ENGINEERED.",
+    "NOT FOR CONSTRUCTION.",
+    "DIMENSIONS IN METRES."
+  ],
+  "viewports": [
+    {
+      "id": "main",
+      "frame": {
+        "x_mm": 20,
+        "y_mm": 10,
+        "width_mm": 320,
+        "height_mm": 176
+      },
+      "window": {
+        "xmin_m": -3.1,
+        "ymin_m": -1.0,
+        "xmax_m": 3.1,
+        "ymax_m": 2.2
+      },
+      "scale": 20,
+      "scale_bar": {
+        "divisions": 4
+      },
+      "entities": [
+        {
+          "type": "hatch",
+          "layer": "HATCH",
+          "id": "lining-hatch",
+          "boundary_m": [
+            [
+              -2.3000000000000003,
+              1.0
+            ],
+            [
+              -0.8,
+              -0.2
+            ],
+            [
+              0.8,
+              -0.2
+            ],
+            [
+              2.3000000000000003,
+              1.0
+            ],
+            [
+              2.1,
+              1.0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              -0.6,
+              0
+            ],
+            [
+              -2.1,
+              1.0
+            ]
+          ],
+          "pattern": "concrete"
+        },
+        {
+          "type": "polyline",
+          "layer": "OUTLINE",
+          "id": "lining",
+          "points_m": [
+            [
+              -2.3000000000000003,
+              1.0
+            ],
+            [
+              -0.8,
+              -0.2
+            ],
+            [
+              0.8,
+              -0.2
+            ],
+            [
+              2.3000000000000003,
+              1.0
+            ],
+            [
+              2.1,
+              1.0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              -0.6,
+              0
+            ],
+            [
+              -2.1,
+              1.0
+            ]
+          ],
+          "closed": true
+        },
+        {
+          "type": "centre_line",
+          "layer": "CENTRE",
+          "from_m": [
+            0,
+            -0.5
+          ],
+          "to_m": [
+            0,
+            1.4
+          ]
+        },
+        {
+          "type": "line",
+          "layer": "WATER",
+          "id": "wl",
+          "line_type": "dashed",
+          "from_m": [
+            -1.725,
+            0.75
+          ],
+          "to_m": [
+            1.725,
+            0.75
+          ]
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "horizontal",
+          "from": {
+            "point_m": [
+              -0.6,
+              0
+            ]
+          },
+          "to": {
+            "point_m": [
+              0.6,
+              0
+            ]
+          },
+          "offset_mm": -18
+        },
+        {
+          "type": "dimension",
+          "layer": "DIMENSIONS",
+          "kind": "linear",
+          "orientation": "vertical",
+          "from": {
+            "point_m": [
+              2.4000000000000004,
+              0
+            ]
+          },
+          "to": {
+            "point_m": [
+              2.4000000000000004,
+              1.0
+            ]
+          },
+          "offset_mm": -12
+        },
+        {
+          "type": "leader",
+          "layer": "DIMENSIONS",
+          "from": {
+            "ref": "wl",
+            "at": "start"
+          },
+          "label_at_m": [
+            -1.85,
+            1.2
+          ],
+          "text": "DESIGN WL (NOMINAL)"
+        },
+        {
+          "type": "leader",
+          "layer": "DIMENSIONS",
+          "from": {
+            "point_m": [
+              -0.7,
+              -0.1
+            ]
+          },
+          "label_at_m": [
+            -1.9,
+            -0.75
+          ],
+          "text": "CONCRETE LINING 0.20 M"
+        },
+        {
+          "type": "leader",
+          "layer": "DIMENSIONS",
+          "from": {
+            "point_m": [
+              -1.35,
+              0.5
+            ]
+          },
+          "label_at_m": [
+            -2.6,
+            0.2
+          ],
+          "text": "1.5H:1V"
+        },
+        {
+          "type": "text",
+          "layer": "TEXT",
+          "anchor_m": [
+            0,
+            1.9
+          ],
+          "text": "TYPICAL SECTION",
+          "height_mm": 5,
+          "align_h": "centre"
+        }
+      ]
+    }
+  ]
+}

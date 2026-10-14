@@ -174,27 +174,27 @@ def test_a_font_is_embedded_in_the_svg_by_default():
 
 def test_cli_validate_and_errors(capsys):
     good = str(EXAMPLES / "valid" / "minimal.json")
-    assert main(["doc", "validate", good]) == 0
+    assert main(["validate", good]) == 0
     bad = str(SUITE / "documents" / "err-bar-379" / "input.json")
-    assert main(["doc", "validate", bad]) == 1
+    assert main(["validate", bad]) == 1
     assert "clause 7.9.3" in capsys.readouterr().err
 
 
 def test_cli_normalise_prints_the_normalised_content(capsys):
-    assert main(["doc", "normalise", str(EXAMPLES / "valid" / "minimal.json")]) == 0
+    assert main(["normalise", str(EXAMPLES / "valid" / "minimal.json")]) == 0
     out = json.loads(capsys.readouterr().out)
     assert out["sheet"]["size"] == "A4" and out["sheet"]["orientation"] == "portrait"
 
 
 def test_cli_run_is_the_runner_of_clause_17_3(capsys):
     case = SUITE / "documents" / "fit-barge-250"
-    assert main(["doc", "run", str(case / "input.json")]) == 0
+    assert main(["run", str(case / "input.json")]) == 0
     result = json.loads(capsys.readouterr().out)
     assert compare(result, json.loads((case / "expected.json").read_text())) == []
 
 
 def test_cli_build_writes_four_files(tmp_path, capsys):
-    assert main(["doc", "build", str(EXAMPLES / "valid" / "custom-layer.json"), "--out", str(tmp_path)]) == 0
+    assert main(["build", str(EXAMPLES / "valid" / "custom-layer.json"), "--out", str(tmp_path)]) == 0
     assert sorted(p.name for p in tmp_path.iterdir()) == [
         "custom-layer.dxf",
         "custom-layer.normalised.json",
@@ -205,10 +205,10 @@ def test_cli_build_writes_four_files(tmp_path, capsys):
 
 
 def test_cli_build_writes_nothing_when_the_document_has_an_error(tmp_path):
-    assert main(["doc", "build", str(SUITE / "documents" / "err-duplicate-id" / "input.json"), "--out", str(tmp_path)]) == 1
+    assert main(["build", str(SUITE / "documents" / "err-duplicate-id" / "input.json"), "--out", str(tmp_path)]) == 1
     assert list(tmp_path.iterdir()) == []
 
 
 def test_cli_conformance_passes(capsys):
-    assert main(["doc", "conformance"]) == 0
+    assert main(["conformance"]) == 0
     assert "cases pass" in capsys.readouterr().out

@@ -8,7 +8,7 @@ labels: bug
 
 **What you expected**
 
-**How to reproduce** (smallest input that shows it — a `source.py`, YAML or DXF snippet, and the command)
+**How to reproduce** (smallest input that shows it — a drawing document or DXF snippet, and the command)
 
 ```
 technical_drawings_for_agents ...
@@ -18,6 +18,5 @@ technical_drawings_for_agents ...
 - `technical_drawings_for_agents --version`:
 - Python:
 - OS:
-- `rsvg-convert --version` (if plotting):
 
 Please attach synthetic data only. Do not attach client drawings or confidential site data.

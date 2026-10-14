@@ -1,12 +1,11 @@
-"""Ingest pipeline: load/audit, improve (incl. inside blocks), isolate, and the
-DxfBuilder block-insert round-trip. Vendor-content-free — synthetic DXFs only.
+"""Ingest pipeline: load/audit, improve (incl. inside blocks) and isolate.
+Vendor-content-free: synthetic DXFs only.
 """
 
 from __future__ import annotations
 
 import pytest
 
-from technical_drawings_for_agents import DxfBuilder
 from technical_drawings_for_agents.ingest import (
     apply_corrections,
     convert_dwg,
@@ -205,32 +204,6 @@ def test_apply_corrections_from_yaml_file(tmp_path):
     assert audit["count"] == 1
     texts = [e.dxf.text for e in doc.modelspace().query("TEXT")]
     assert "SECTION A-A" in texts
-
-
-def test_dxfbuilder_block_insert_round_trip(tmp_path):
-    # Author a "vendor" DXF, then insert it as a block via DxfBuilder and prove
-    # the geometry survives a save/reload cycle.
-    vendor = make_dxf_no_insert(tmp_path / "vendor.dxf")
-
-    b = DxfBuilder(units="m")
-    name = b.add_block_from_dxf(vendor, name="VENDOR")
-    assert name == "VENDOR"
-    assert "VENDOR" in b.doc.blocks
-    # Block definition carries the vendor geometry (a LINE + an LWPOLYLINE).
-    block_types = {e.dxftype() for e in b.doc.blocks.get("VENDOR")}
-    assert "LINE" in block_types
-
-    b.insert("VENDOR", (100, 50), scale=2.0, rotation=90.0)
-    out = b.save(tmp_path / "layout.dxf")
-
-    doc = DxfBuilder.read_dxf(out)
-    inserts = doc.modelspace().query("INSERT")
-    assert len(inserts) == 1
-    ins = inserts[0]
-    assert ins.dxf.name == "VENDOR"
-    assert ins.dxf.insert.x == pytest.approx(100)
-    assert ins.dxf.xscale == pytest.approx(2.0)
-    assert ins.dxf.rotation == pytest.approx(90.0)
 
 
 def test_load_clean_recover_fallback(tmp_path):

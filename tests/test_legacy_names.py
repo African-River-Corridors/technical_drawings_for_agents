@@ -1,8 +1,7 @@
 """Pre-release rename: new names are written, legacy names are still read.
 
-`tdfa.geo/1` replaced `sankofa.geo/1` as the geo manifest schema id, and `data-tdfa-*`
-replaced `data-sankofa-*` on sheet SVG furniture. Files written by older tooling must
-keep loading, with a DeprecationWarning, until the legacy names are removed.
+`tdfa.geo/1` replaced `sankofa.geo/1` as the geo manifest schema id. Files written by older tooling
+must keep loading, with a DeprecationWarning, until the legacy name is removed.
 """
 
 from __future__ import annotations
@@ -19,12 +18,6 @@ from technical_drawings_for_agents.backdrop import (
     LEGACY_GEO_SCHEMA,
     BackdropError,
     load_backdrop,
-)
-from technical_drawings_for_agents.sheet import (
-    DATA_ATTR_PREFIX,
-    LEGACY_DATA_ATTR_PREFIX,
-    parse_sheet_data_value,
-    read_sheet_data_attr,
 )
 
 
@@ -78,27 +71,3 @@ def test_a_legacy_sankofa_geo_manifest_loads_with_a_deprecation_warning(tmp_path
 def test_an_unknown_geo_schema_is_still_refused(tmp_path):
     with pytest.raises(BackdropError, match="unsupported schema"):
         load_backdrop(_manifest(tmp_path, "other.geo/1"))
-
-
-def test_the_attribute_prefixes():
-    assert DATA_ATTR_PREFIX == "data-tdfa-"
-    assert LEGACY_DATA_ATTR_PREFIX == "data-sankofa-"
-
-
-def test_the_reader_prefers_the_new_attribute_and_does_not_warn():
-    attrib = {"data-tdfa-bar": "length_m=50", "data-sankofa-bar": "length_m=1"}
-    with warnings.catch_warnings():
-        warnings.simplefilter("error")
-        assert read_sheet_data_attr(attrib, "bar") == "length_m=50"
-
-
-def test_the_reader_accepts_the_legacy_attribute_with_a_deprecation_warning():
-    with pytest.warns(DeprecationWarning, match="data-sankofa-frame"):
-        value = read_sheet_data_attr({"data-sankofa-frame": "x=1;y=2"}, "frame")
-    assert parse_sheet_data_value(value) == {"x": "1", "y": "2"}
-
-
-def test_the_reader_returns_none_when_neither_is_present():
-    with warnings.catch_warnings():
-        warnings.simplefilter("error")
-        assert read_sheet_data_attr({}, "bar") is None

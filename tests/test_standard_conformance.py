@@ -19,7 +19,7 @@ import pytest
 
 jsonschema = pytest.importorskip("jsonschema")
 
-from technical_drawings_for_agents.sheet import (
+from .reference_sheet import (
     ISO_PREFERRED_DENOMINATORS,
     PlotScale,
     SheetFrame,

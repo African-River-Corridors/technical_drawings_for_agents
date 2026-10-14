@@ -14,7 +14,8 @@ from pathlib import Path
 
 import pytest
 
-from technical_drawings_for_agents.layers import VALID_DXF_LINEWEIGHTS
+# The line widths of the DXF format, in hundredths of a millimetre (0 is the default width and is not a member).
+VALID_DXF_LINEWEIGHTS = (0, 5, 9, 13, 15, 18, 20, 25, 30, 35, 40, 50, 53, 60, 70, 80, 90, 100, 106, 120, 140, 158, 200, 211)
 
 DOCS = Path(__file__).resolve().parents[1] / "docs" / "standard"
 STANDARD = (DOCS / "drawing-format-standard.md").read_text(encoding="utf-8")
@@ -259,27 +260,6 @@ def test_every_layer_uses_a_known_role_and_line_type():
     for row in DATA["layers"]:
         assert row["role"] in DATA["roles"], row
         assert row["line_type"] in DATA["line_types"], row
-
-
-def test_the_layers_of_the_reference_tool_are_all_present():
-    import yaml
-
-    old = yaml.safe_load(
-        (Path(__file__).resolve().parents[1] / "src/technical_drawings_for_agents/data/layers.default.yaml").read_text()
-    )
-    assert {row["name"] for row in old["layers"]} == {row["name"] for row in DATA["layers"]}
-
-
-def test_the_old_table_shared_colours_and_the_new_one_does_not():
-    import yaml
-
-    old = yaml.safe_load(
-        (Path(__file__).resolve().parents[1] / "src/technical_drawings_for_agents/data/layers.default.yaml").read_text()
-    )
-    old_colours = [row["aci"] for row in old["layers"]]
-    assert len(set(old_colours)) < len(old_colours)
-    new_colours = [row["aci"] for row in DATA["layers"]]
-    assert len(set(new_colours)) == len(new_colours)
 
 
 # --------------------------------------------------------------------------- #

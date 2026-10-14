@@ -5,6 +5,22 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Removed (the clean break, ticket 16)
+- The `source.py` way of drawing and its API (`Drawing`, `ViewBox`, the `svg_*` primitives, `DxfBuilder`), the
+  pixel-based SVG path, the separate SVG sheet path (title block, sheet furniture, sheet validation and the
+  legibility checks that read an SVG), the SVG-to-PDF plot path, layer tables in YAML, the component and layout
+  engine, the P&ID and block-flow generators, map sheets, the old build driver and the provenance stamps.
+  Version 1.0 reads only drawing documents. Two things that went with them are open tickets: a build driver over
+  drawing documents (#34) and legibility checks on the normalised content (#35).
+- The `matplotlib` dependency, and the `cad3d`, `plot`, `plot-cairo` and `verify` extras. `rsvg-convert` is no
+  longer needed.
+
+### Changed
+- The examples in `drawings/example/` are drawing documents, with their SVG, PDF, DXF and normalised content.
+- The commands are `validate`, `normalise`, `run`, `build`, `seal` and `conformance`, then `describe` and
+  `ingest`. The README describes only this way.
+- Goldens (`tests/goldens/`) are the two examples' normalised content and SVG, checked by hand.
+
 ### Added
 - `docs/standard/drawing-format-standard.md`: the Drawing Format Standard (spec 0001). Clauses 1 to 8
   are written: the drawing document, units and precision, sheets, viewports, scales, the scale bar
