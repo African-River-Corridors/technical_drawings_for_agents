@@ -1,6 +1,7 @@
 """SVG from normalised content (clause 15; one SVG unit is one millimetre of paper).
 
-Everything is drawn in black (8.6.1). The text is placed by the width table, so its place does not
+Everything is drawn in black (8.6.1), or under the colour profile with the colour members of an
+entity (8.6.6). Images are drawn first, embedded as JPEG data (9.10.7). The text is placed by the width table, so its place does not
 depend on the machine; the font is embedded as a data URI when ``embed_font`` is true.
 """
 
@@ -26,8 +27,12 @@ def _dash(entity) -> str:
     return f' stroke-dasharray="{" ".join(_n(v) for v in pattern)}"'
 
 
+def _colour(entity) -> str:
+    return entity.get("print_colour", "#000")
+
+
 def _stroke(entity) -> str:
-    return f'fill="none" stroke="#000" stroke-width="{_n(entity["width_mm"])}"{_dash(entity)}'
+    return f'fill="none" stroke="{_colour(entity)}" stroke-width="{_n(entity["width_mm"])}"{_dash(entity)}'
 
 
 def _loop(points) -> str:
@@ -54,13 +59,27 @@ def _text(entity) -> str:
     width = rules.text_width_exact(entity["text"], h)
     rot = entity["rotation_deg"]
     transform = f' transform="rotate({_n(-rot)} {_n(x0)} {_n(y0)})"' if rot else ""
+    halo = ""
+    if "halo_colour" in entity:  # 8.6.6: a stroke of 0.2 h, under the fill
+        halo = f' stroke="{entity["halo_colour"]}" stroke-width="{_n(0.2 * h)}" stroke-linejoin="round" paint-order="stroke"'
     return (
         f'<text x="{_n(x0)}" y="{_n(y0)}" font-size="{_n(h * 1000 / rules.CAP_HEIGHT_UNITS)}" '
-        f'textLength="{_n(width)}" lengthAdjust="spacing" fill="#000"{transform}>{escape(entity["text"])}</text>'
+        f'textLength="{_n(width)}" lengthAdjust="spacing" fill="{_colour(entity)}"{halo}{transform}>{escape(entity["text"])}</text>'
     )
 
 
-def svg_from_normalised(norm: dict, *, embed_font: bool = True) -> str:
+def _image(entity, attrs, images) -> str:
+    x0, y0, x1, y1 = entity["box_mm"]
+    data = images.get(entity["sha256"]) if images else None
+    if data is None:
+        raise ValueError(f"9.10: no bytes for the image {entity['sha256']}")
+    href = "data:image/jpeg;base64," + base64.b64encode(data).decode("ascii")
+    opacity = f' opacity="{_n(entity["opacity"])}"' if entity["opacity"] != 1 else ""
+    return (f'<image {attrs} x="{_n(x0)}" y="{_n(y0)}" width="{_n(x1 - x0)}" height="{_n(y1 - y0)}" '
+            f'preserveAspectRatio="none"{opacity} href="{href}"/>')
+
+
+def svg_from_normalised(norm: dict, *, embed_font: bool = True, images: dict | None = None) -> str:
     sheet = norm["sheet"]
     w, h = sheet["width_mm"], sheet["height_mm"]
     parts = [
@@ -72,10 +91,13 @@ def svg_from_normalised(norm: dict, *, embed_font: bool = True) -> str:
         data = base64.b64encode(resources.FONT_FILE.read_bytes()).decode("ascii")
         style = f"@font-face{{font-family:'{FONT_FAMILY}';src:url(data:font/ttf;base64,{data}) format('truetype')}}" + style
     parts.append(f"<style>{style}</style>")
-    for e in norm["entities"]:
+    ordered = [e for e in norm["entities"] if e["type"] == "image"] + [e for e in norm["entities"] if e["type"] != "image"]
+    for e in ordered:
         t = e["type"]
         attrs = f'data-origin="{e["origin"]}" data-layer="{e["layer"]}"'
-        if t == "line":
+        if t == "image":
+            parts.append(_image(e, attrs, images))
+        elif t == "line":
             (x1, y1), (x2, y2) = e["from_mm"], e["to_mm"]
             parts.append(f'<line {attrs} x1="{_n(x1)}" y1="{_n(y1)}" x2="{_n(x2)}" y2="{_n(y2)}" {_stroke(e)}/>')
         elif t == "polyline":
@@ -89,7 +111,8 @@ def svg_from_normalised(norm: dict, *, embed_font: bool = True) -> str:
         elif t == "hatch":
             d = " ".join(_loop(loop) for loop in [e["boundary_mm"], *e["holes_mm"]])
             if e["pattern"] == "solid":
-                parts.append(f'<path {attrs} d="{d}" fill="#000" fill-rule="evenodd" stroke="none"/>')
+                op = f' fill-opacity="{_n(e["fill_opacity"])}"' if "fill_opacity" in e else ""
+                parts.append(f'<path {attrs} d="{d}" fill="{_colour(e)}"{op} fill-rule="evenodd" stroke="none"/>')
             # the other patterns draw only their marks, which are entities of their own (10.5.8)
 
         elif t == "text":

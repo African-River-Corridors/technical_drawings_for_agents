@@ -27,6 +27,13 @@ ZONE_LETTERS = "ABCDEFGHJKLMNPQR"
 ISO_RATIOS = (1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000)
 HOUSE_RATIOS = (25, 250, 1250, 2500)
 ALL_RATIOS = tuple(sorted((*ISO_RATIOS, *HOUSE_RATIOS)))
+MAP_RATIOS = (200000, 500000, 1000000, 2000000, 5000000, 10000000)  # 7.3.5, from version 1.1
+ALL_RATIOS_1_1 = tuple(sorted((*ALL_RATIOS, *MAP_RATIOS)))
+
+
+def ratios(minor: int) -> tuple[int, ...]:
+    """7.3.5 and 18.2.1: the ratios a document of version 1.<minor> may use."""
+    return ALL_RATIOS_1_1 if minor >= 1 else ALL_RATIOS
 
 # 7.9, 7.10 ------------------------------------------------------------------------------------
 BAR_INSET, BAR_HEIGHT, TICK_LENGTH = 6.0, 3.0, 1.5
@@ -85,9 +92,9 @@ def window_fits(frame, window, denominator, rotation_deg) -> bool:
     return rw <= frame[2] + FIT_TOL_MM and rh <= frame[3] + FIT_TOL_MM
 
 
-def fit_scale(frame, window, rotation_deg):
+def fit_scale(frame, window, rotation_deg, ratio_list=ALL_RATIOS):
     """7.5.2: the first ratio that fits, or None."""
-    for n in ALL_RATIOS:
+    for n in ratio_list:
         if window_fits(frame, window, n, rotation_deg):
             return n
     return None

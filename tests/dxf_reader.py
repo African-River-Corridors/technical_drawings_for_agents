@@ -165,13 +165,46 @@ def read_normalised(text: str) -> dict:
         x = r.xdata()
         if "vp" in x and r.kind == "INSERT":
             entities.extend(_expand_insert(r, x, viewports[x["vp"]], recs))
+        elif "vp" in x and r.kind == "IMAGE":
+            entities.append(_image_entity(r, x, viewports[x["vp"]]))
         elif "vp" in x:
             entities.append(_model_entity(r, x, viewports[x["vp"]]))
+    _apply_layer_colours(entities, recs)
     return {
         "sheet": {"width_mm": width, "height_mm": height},
         "viewports": viewports,
         "entities": entities,
     }
+
+
+def _apply_layer_colours(entities, recs):
+    """8.6.6 from the DXF: the colour members are XDATA of the LAYER records (15.4.12)."""
+    table = {r.get(2): r.xdata() for r in recs if r.kind == "LAYER" and r.xdata()}
+    for e in entities:
+        c = table.get(e["layer"])
+        o = e["origin"]
+        if not c or e["type"] == "image" or not o.startswith("viewport.") or o.endswith((".scale_bar", ".north_arrow", ".backing")):
+            continue
+        if "print_colour" in c:
+            e["print_colour"] = c["print_colour"]
+        if "fill_opacity" in c and e["type"] == "hatch" and e["pattern"] == "solid":
+            e["fill_opacity"] = float(c["fill_opacity"])
+        if "halo_colour" in c and e["type"] == "text":
+            e["halo_colour"] = c["halo_colour"]
+
+
+def _image_entity(r: Record, x, vp):
+    """An IMAGE: insert point (10, 20), the u and v vectors of one pixel (11, 21; 12, 22), the size in pixels (13, 23)."""
+    n = vp["n"]
+    mapper = Mapper(vp["frame"], {"xmin_m": vp["centre"][0], "xmax_m": vp["centre"][0], "ymin_m": vp["centre"][1], "ymax_m": vp["centre"][1]}, n, vp["twist"])
+    w_px, h_px = int(round(r.f(13))), int(round(r.f(23)))
+    x0, y0 = r.f(10), r.f(20)
+    x1, y1 = x0 + r.f(11) * w_px, y0 + r.f(22) * h_px
+    (px0, py0), (px1, py1) = mapper.point((x0, y1)), mapper.point((x1, y0))
+    e = _common("image", f"viewport.{x['vp']}", r.get(8), x)
+    e.update({"box_mm": [mm(px0), mm(py0), mm(px1), mm(py1)], "sha256": x["sha256"], "size_px": [w_px, h_px],
+              "components": int(x["components"]), "opacity": float(x["opacity"])})
+    return e
 
 
 def _common(kind, origin, layer, x):
@@ -184,6 +217,8 @@ def _common(kind, origin, layer, x):
 def _paper_entity(r: Record, x, height):
     kind = x["type"]
     e = _common(kind, x["origin"], r.get(8), x)
+    if "print_colour" in x:
+        e["print_colour"] = x["print_colour"]
     flip = lambda px, py: [mm(px), mm(height - py)]  # noqa: E731
     if kind == "line":
         e["from_mm"], e["to_mm"] = flip(r.f(10), r.f(20)), flip(r.f(11), r.f(21))

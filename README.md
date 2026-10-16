@@ -90,7 +90,8 @@ error: clause 14.6         # a text is wider than its title block cell
 | `standard_version`, `sheet` | The version, the ISO 5457 size A0 to A4, the orientation. | 6, 18 |
 | `layers` | The layers in use. A standard layer is declared by name. A layer names a line **role**, not a width. | 8 |
 | `viewports` | Each has a frame on the paper, a model window, a scale (a preferred ISO ratio or `fit`), an optional rotation, scale bar and north arrow, and its entities. | 7 |
-| entities | `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch`, `text`, `dimension`, `leader`, `symbol`. | 9 to 13 |
+| entities | `line`, `polyline`, `arc`, `circle`, `centre_line`, `hatch`, `text`, `dimension`, `leader`, `symbol`, and from version 1.1 `image` (a georeferenced JPEG). | 9 to 13 |
+| `sheet.print_profile` | `monochrome` (the default: black on white) or, from version 1.1, `colour`. Under `colour`, a layer may set `print_colour`, `fill_opacity` and `halo_colour`. | 8.6 |
 | `symbol_libraries` | Symbols drawn once and placed many times, in a file or in the document. | 13 |
 | `title_block`, `revisions`, `status`, `strips`, `notes`, `references` | The title block (ISO 7200 by default, or a template file of your own), the revision register, the status and its status line, and the notes strips. | 14 |
 

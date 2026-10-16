@@ -9,6 +9,7 @@ from pathlib import Path
 from . import furniture, resources
 from .conformance import run_suite
 from .pipeline import run_file
+from .image import load_images
 from .render_dxf import dxf_from_document
 from .render_pdf import pdf_from_normalised
 from .render_svg import svg_from_normalised
@@ -62,13 +63,15 @@ def cmd_build(args) -> int:
     stem = path.name[: -len(".drawing.json")] if path.name.endswith(".drawing.json") else path.stem
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    dxf_text, warnings = dxf_from_document(json.loads(path.read_text(encoding="utf-8")), norm, path.resolve().parent)
+    document = json.loads(path.read_text(encoding="utf-8"))
+    images = load_images(document, path.resolve().parent)  # 9.10: checked by run_file, keyed by SHA-256
+    dxf_text, warnings = dxf_from_document(document, norm, path.resolve().parent)
     for warning in warnings:
         print(f"warning: {warning}", file=sys.stderr)
     written = {
         out / f"{stem}.normalised.json": (json.dumps(norm, indent=2, ensure_ascii=False) + "\n").encode("utf-8"),
-        out / f"{stem}.svg": svg_from_normalised(norm).encode("utf-8"),
-        out / f"{stem}.pdf": pdf_from_normalised(norm),
+        out / f"{stem}.svg": svg_from_normalised(norm, images=images).encode("utf-8"),
+        out / f"{stem}.pdf": pdf_from_normalised(norm, images),
         out / f"{stem}.dxf": dxf_text.encode("utf-8"),
     }
     for target, data in written.items():

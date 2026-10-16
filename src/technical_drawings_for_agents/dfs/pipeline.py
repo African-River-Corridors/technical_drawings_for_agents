@@ -9,6 +9,7 @@ from typing import Any
 
 import jsonschema
 
+from . import image as images
 from . import resources
 from . import dimensions as dims
 from . import furniture, symbols
@@ -18,6 +19,7 @@ from .hatch import unit_mm
 from .numbers import FIT_TOL_MM, angle, cos_sin, mm
 from .rules import (
     ALL_RATIOS,
+    MAP_RATIOS,
     BAR_HEIGHT,
     BAR_INSET,
     BAR_LABEL_BASELINE,
@@ -41,12 +43,30 @@ from .rules import (
     fit_scale,
     line_group,
     north_deg,
+    ratios,
     text_box,
     window_fits,
 )
 
 FURNITURE_LAYER = "TITLEBLOCK"  # 16.6.1
-SUPPORTED_VERSION = (1, 0)  # 18.2
+SUPPORTED_VERSION = (1, 1)  # 18.2
+COLOUR_MEMBERS = ("print_colour", "fill_opacity", "halo_colour")  # 8.6.5
+
+
+def _minor(doc) -> int:
+    return int(doc["standard_version"].split(".")[1])
+
+
+def print_profile(doc) -> str:
+    """8.6.4."""
+    return doc["sheet"].get("print_profile", "monochrome")
+
+
+def colour_table(doc) -> dict:
+    """8.6.5: the colour members of each declared layer (empty under the monochrome profile)."""
+    if print_profile(doc) != "colour":
+        return {}
+    return {item["name"]: {k: item[k] for k in COLOUR_MEMBERS if k in item} for item in doc["layers"] if any(k in item for k in COLOUR_MEMBERS)}
 
 
 class _DuplicateKey(ValueError):
@@ -234,6 +254,9 @@ def _points_for_containment(entity, mapper, rotation, resolved_text_box):
         return pts
     if t == "text":
         return resolved_text_box
+    if t == "image":
+        x0, y0, x1, y1 = entity["bbox_m"]
+        return [mapper.point((x0, y0)), mapper.point((x1, y1))]
     return []
 
 
@@ -255,6 +278,14 @@ def check_document(doc, base_dir=None) -> set[str]:
         errors.add("8.2.2")
     _, _, ds = drawing_space(size, orientation)
     declared, _ = _layer_table(doc, errors)
+    minor = _minor(doc)
+    profile = print_profile(doc)
+    coloured = [item for item in doc["layers"] if any(k in item for k in COLOUR_MEMBERS)]
+    if minor < 1 and ("print_profile" in sheet or coloured):
+        errors.add("18.2.1")
+    elif coloured and profile != "colour":
+        errors.add("8.6.5")
+    ratio_list = ratios(minor)
     libs, lib_errors = symbols.load_libraries(doc, base_dir)
     errors |= lib_errors
 
@@ -276,9 +307,11 @@ def check_document(doc, base_dir=None) -> set[str]:
         denominator = None
         if window_ok:
             if vp["scale"] == "fit":
-                denominator = fit_scale(frame, window, rotation)
+                denominator = fit_scale(frame, window, rotation, ratio_list)
                 if denominator is None:
                     errors.add("7.5.2")
+            elif vp["scale"] not in ratio_list:
+                errors.add("18.2.1")  # a map ratio (7.3.5) in a document of version 1.0
             else:
                 denominator = vp["scale"]
                 if not window_fits(frame, window, denominator, rotation):
@@ -294,6 +327,8 @@ def check_document(doc, base_dir=None) -> set[str]:
             if "id" in e:
                 ids.append(e["id"])
             _check_entity(e, declared, mapper, rotation, frame, errors)
+            if e["type"] == "image":
+                _check_image(e, base_dir, minor, profile, rotation, errors)
             if e["type"] == "symbol":
                 symbol = libs.get(e["library"], {}).get(e["symbol"])
                 if symbol is None:
@@ -317,7 +352,7 @@ def check_document(doc, base_dir=None) -> set[str]:
             errors.add("12.8")
     if len(ids) != len(set(ids)):
         errors.add("9.8")
-    scales = [_resolved_scale(vp, ds) for vp in doc["viewports"]]
+    scales = [_resolved_scale(vp, ds, ratio_list) for vp in doc["viewports"]]
     plan = furniture.plan(doc, size, ds, group, scales, base_dir)
     errors |= plan.errors
     for frame in frames:
@@ -349,14 +384,33 @@ def _dimension_result(e, declared, group, mapper, rotation, vid, index, libs, de
     return dims.dimension(e, ctx) if e["type"] == "dimension" else dims.leader(e, ctx)
 
 
-def _resolved_scale(vp, ds):
+def _resolved_scale(vp, ds, ratio_list=ALL_RATIOS):
     """The scale of a viewport, or None when it cannot be resolved (the error is reported elsewhere)."""
     window = vp["window"]
     if not (window["xmax_m"] > window["xmin_m"] and window["ymax_m"] > window["ymin_m"]):
         return None
     if vp["scale"] != "fit":
         return vp["scale"]
-    return fit_scale(_frame(vp), window, vp.get("rotation_deg", 0.0) % 360.0)
+    return fit_scale(_frame(vp), window, vp.get("rotation_deg", 0.0) % 360.0, ratio_list)
+
+
+def _check_image(e, base_dir, minor, profile, rotation, errors):
+    """9.10."""
+    if minor < 1:
+        errors.add("18.2.1")
+        return
+    if profile != "colour":
+        errors.add("9.10.5")
+    if rotation != 0:
+        errors.add("9.10.4")
+    x0, y0, x1, y1 = e["bbox_m"]
+    if not (x1 > x0 and y1 > y0):
+        errors.add("9.10.3")
+    data, digest, info = images.read(e["path"], base_dir)
+    if data is None or info is None:
+        errors.add("9.10.1")
+    elif digest != e["sha256"]:
+        errors.add("9.10.2")
 
 
 def _check_scale_bar(vp, frame, denominator, errors):
@@ -480,6 +534,19 @@ def _north_arrow(vid, frame, rotation, nb, thin):
     ]
 
 
+def _plate(vid, frame, which, denominator, spec, thin):
+    """8.6.7: a white plate under the scale bar or the north arrow of a viewport that holds an image."""
+    x, y, w, h = frame
+    if which == "scale_bar":
+        total = (spec.get("length_m") or derived_bar_length(w, denominator)) * 1000 / denominator
+        x0, y0, x1, y1 = x + 2, y + h - 22, x + BAR_INSET + total + 10, y + h - 2
+    else:
+        x0, y0, x1, y1 = x + 8, y + 2, x + 30, y + 30
+    item = _hatch(f"viewport.{vid}.backing", FURNITURE_LAYER, [(x0, y0), (x1, y0), (x1, y1), (x0, y1)], [], "solid", 0, thin)
+    item["print_colour"] = "#FFFFFF"
+    return item
+
+
 def sort_key(e):
     """16.8."""
     t = e["type"]
@@ -499,6 +566,9 @@ def sort_key(e):
     elif t == "text":
         geo = [*e["anchor_mm"], e["height_mm"], e["rotation_deg"]]
         last = e["text"]
+    elif t == "image":
+        geo = list(e["box_mm"])
+        last = e["sha256"]
     return (
         e["origin"].encode(), t.encode(), e["layer"].encode(), e.get("id", "").encode(),
         e.get("line_type", "").encode(), e.get("width_mm", 0), geo, last.encode(),
@@ -515,16 +585,17 @@ def normalise_document(doc, base_dir=None) -> dict:
     errors: set[str] = set()
     declared, _ = _layer_table(doc, errors)
     libs, _ = symbols.load_libraries(doc, base_dir)
+    ratio_list = ratios(_minor(doc))
     entities = _sheet_furniture(size, orientation, group)
-    entities += furniture.plan(doc, size, ds, group, [_resolved_scale(vp, ds) for vp in doc["viewports"]], base_dir).entities
+    entities += furniture.plan(doc, size, ds, group, [_resolved_scale(vp, ds, ratio_list) for vp in doc["viewports"]], base_dir).entities
     viewports = []
     for vp in doc["viewports"]:
         frame = _frame(vp)
         rotation = vp.get("rotation_deg", 0.0) % 360.0
-        denominator = fit_scale(frame, vp["window"], rotation) if vp["scale"] == "fit" else vp["scale"]
+        denominator = fit_scale(frame, vp["window"], rotation, ratio_list) if vp["scale"] == "fit" else vp["scale"]
         mapper = Mapper(frame, vp["window"], denominator, rotation)
         viewports.append({"id": vp["id"], "scale": denominator, "frame": dict(vp["frame"])})
-        entities += _viewport_entities(vp, declared, group, mapper, rotation)
+        entities += _viewport_entities(vp, declared, group, mapper, rotation, base_dir)
         index = {e["id"]: e for e in vp["entities"] if "id" in e}
         for e in vp["entities"]:
             if e["type"] in ("dimension", "leader"):
@@ -532,18 +603,29 @@ def normalise_document(doc, base_dir=None) -> dict:
             elif e["type"] == "symbol":
                 sctx = _symbol_context(e, declared, group, mapper, rotation, vp["id"], denominator)
                 entities += symbols.parts(e, libs[e["library"]][e["symbol"]], sctx)[0]
+        plate = print_profile(doc) == "colour" and any(e["type"] == "image" for e in vp["entities"])
         if "scale_bar" in vp:
             entities += _scale_bar(vp["id"], frame, denominator, vp["scale_bar"], group["thin"])
+            if plate:
+                entities.append(_plate(vp["id"], frame, "scale_bar", denominator, vp["scale_bar"], group["thin"]))
         if "north" in vp:
             entities += _north_arrow(vp["id"], frame, rotation, vp["north"], group["thin"])
+            if plate:
+                entities.append(_plate(vp["id"], frame, "north", denominator, vp["north"], group["thin"]))
+    colours = colour_table(doc)
+    if colours:
+        _apply_colours(entities, colours)
     entities.sort(key=sort_key)
     viewports.sort(key=lambda v: v["id"].encode())
+    sheet_out = {
+        "size": size, "orientation": orientation, "line_group": group_name, "width_mm": W, "height_mm": H,
+        "drawing_space": dict(zip(["x_mm", "y_mm", "width_mm", "height_mm"], ds)),
+    }
+    if print_profile(doc) == "colour":
+        sheet_out["print_profile"] = "colour"  # 16.2: only the colour profile is named
     return {
         "standard_version": doc["standard_version"],
-        "sheet": {
-            "size": size, "orientation": orientation, "line_group": group_name, "width_mm": W, "height_mm": H,
-            "drawing_space": dict(zip(["x_mm", "y_mm", "width_mm", "height_mm"], ds)),
-        },
+        "sheet": sheet_out,
         "viewports": viewports,
         "entities": entities,
     }
@@ -562,7 +644,43 @@ def declared_layers(doc) -> dict:
     return _layer_table(doc, set())[0]
 
 
-def _viewport_entities(vp, declared, group, mapper, rotation):
+def _apply_colours(entities, colours):
+    """8.6.6 and 16.4.1: the colour members of a layer, on each entity of a viewport that is on it.
+
+    The sheet furniture (origins ``sheet.*``, ``title_block.*`` and the like) and the scale bar and
+    north arrow of a viewport stay black.
+    """
+    for e in entities:
+        o = e["origin"]
+        if not o.startswith("viewport.") or o.endswith((".scale_bar", ".north_arrow", ".backing")) or e["layer"] not in colours:
+            continue
+        c = colours[e["layer"]]
+        if e["type"] == "image":
+            continue  # an image has its own pixels (9.10.6)
+        if "print_colour" in c:
+            e["print_colour"] = c["print_colour"]
+        if e["type"] == "hatch" and e["pattern"] == "solid" and "fill_opacity" in c:
+            e["fill_opacity"] = c["fill_opacity"]
+        if e["type"] == "text" and "halo_colour" in c:
+            e["halo_colour"] = c["halo_colour"]
+
+
+def _image(origin, e, mapper, base_dir):
+    """16.4 and 16.6.2."""
+    x0, y0, x1, y1 = e["bbox_m"]
+    (px0, py1), (px1, py0) = mapper.point((x0, y0)), mapper.point((x1, y1))
+    _, _, info = images.read(e["path"], base_dir)
+    item = {
+        "type": "image", "origin": origin, "layer": e["layer"], "box_mm": [mm(px0), mm(py0), mm(px1), mm(py1)],
+        "sha256": e["sha256"], "size_px": [info.width_px, info.height_px], "components": info.components,
+        "opacity": mm(e.get("opacity", 1)),
+    }
+    if "id" in e:
+        item["id"] = e["id"]
+    return item
+
+
+def _viewport_entities(vp, declared, group, mapper, rotation, base_dir=None):
     """16.6.2."""
     out = []
     origin = f"viewport.{vp['id']}"
@@ -570,6 +688,9 @@ def _viewport_entities(vp, declared, group, mapper, rotation):
         t = e["type"]
         if t in ("dimension", "leader", "symbol"):
             continue  # their parts are made by dimensions.py and symbols.py (12.7, 13.7)
+        if t == "image":
+            out.append(_image(origin, e, mapper, base_dir))
+            continue
         line_type, width = entity_style(e, declared, group)
         id_ = e.get("id")
         if t in ("line", "centre_line"):
@@ -623,5 +744,5 @@ def run_file(path) -> dict:
     return run_document(Path(path).read_text(encoding="utf-8"), Path(path).resolve().parent)
 
 
-__all__ = ["ALL_RATIOS", "check_document", "normalise_document", "parse_text", "run_document", "run_file", "schema_errors", "sort_key"]
+__all__ = ["ALL_RATIOS", "MAP_RATIOS", "check_document", "normalise_document", "parse_text", "run_document", "run_file", "schema_errors", "sort_key"]
 _ = math

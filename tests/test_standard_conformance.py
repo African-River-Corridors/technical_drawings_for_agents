@@ -108,7 +108,7 @@ def rhe(value: float, places: int) -> float:
 
 
 def test_the_suite_holds_data_only():
-    allowed = {".json", ".md"}
+    allowed = {".json", ".md", ".jpg"}  # .jpg: the image files of the cases of clause 9.10
     files = [p for p in SUITE_DIR.rglob("*") if p.is_file()]
     assert files
     assert {p.suffix for p in files} <= allowed, sorted({p.suffix for p in files} - allowed)
