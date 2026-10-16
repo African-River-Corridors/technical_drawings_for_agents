@@ -133,11 +133,14 @@ def test_scale_values_equal_the_preferred_ratios_of_clause_7_3_1():
     enum = SCHEMA["$defs"]["viewport"]["properties"]["scale"]["enum"]
     preferred = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000]
     house = [25, 250, 1250, 2500]
-    assert enum == [*sorted(preferred + house), "fit"]
+    maps = [200000, 500000, 1000000, 2000000, 5000000, 10000000]  # 7.3.5, from version 1.1
+    assert enum == [*sorted(preferred + house), *maps, "fit"]
     listed = re.search(r"^> (1, 2, 5, .*100000)$", STANDARD, re.MULTILINE).group(1)
     assert [int(x) for x in listed.split(",")] == preferred
     listed_house = re.search(r"^> (25, 250, 1250, 2500)$", STANDARD, re.MULTILINE).group(1)
     assert [int(x) for x in listed_house.split(",")] == house
+    listed_maps = re.search(r"^> (200000, .*10000000)$", STANDARD, re.MULTILINE).group(1)
+    assert [int(x) for x in listed_maps.split(",")] == maps
 
 
 def test_text_heights_equal_clause_11_2():
@@ -161,7 +164,7 @@ def test_layer_names_roles_and_line_types_equal_the_line_style_data():
 
 def test_every_number_member_names_its_unit_clause_4_5():
     suffixes = ("_m", "_mm", "_deg")
-    allowed_bare = {"divisions", "aci", "decimals", "scale", "radius", "sheet_number", "sheet_count"}  # counts, colours, ratios; radius inside symbols (13.2.1)
+    allowed_bare = {"divisions", "aci", "decimals", "scale", "radius", "sheet_number", "sheet_count", "opacity", "fill_opacity"}  # counts, colours, ratios, opacities (4.5); radius inside symbols (13.2.1)
     for node in walk(SCHEMA):
         for name, prop in node.get("properties", {}).items() if isinstance(node.get("properties"), dict) else []:
             if isinstance(prop, dict) and prop.get("type") in ("number", "integer"):

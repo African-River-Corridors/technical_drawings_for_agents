@@ -16,7 +16,7 @@ from ezdxf.enums import TextEntityAlignment as Align
 
 from . import resources, rules, symbols
 from .numbers import round_half_even
-from .pipeline import FURNITURE_LAYER, declared_layers, entity_style
+from .pipeline import FURNITURE_LAYER, colour_table, declared_layers, entity_style
 
 APPID = "TDFA"
 LAYOUT = "SHEET"
@@ -128,9 +128,15 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
         styles = {row["name"]: row for row in resources.line_styles()["layers"]}
         layers = dict(declared)
         layers.setdefault(FURNITURE_LAYER, (styles[FURNITURE_LAYER]["role"], styles[FURNITURE_LAYER]["line_type"], styles[FURNITURE_LAYER]["aci"]))
+        colours = colour_table(document)  # 8.6.5: empty under the monochrome profile
         for name, (role, line_type, aci) in layers.items():
             width = group[role]
-            doc.layers.add(name, color=aci, lineweight=lineweight(width), linetype=_ensure_linetype(doc, line_type, width))
+            layer = doc.layers.add(name, color=aci, lineweight=lineweight(width), linetype=_ensure_linetype(doc, line_type, width))
+            if name in colours:  # 15.4.12: the print colour is the true colour of the layer; all members in XDATA
+                c = colours[name]
+                if "print_colour" in c:
+                    layer.rgb = tuple(int(c["print_colour"][i : i + 2], 16) for i in (1, 3, 5))
+                _xdata(layer, **c)
         doc.layers.add(VIEWPORT_LAYER, color=7, plot=False)
 
         msp = doc.modelspace()
@@ -142,6 +148,9 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
             for e in vp["entities"]:
                 if e["type"] in ("dimension", "leader"):
                     continue  # their parts are paper-space entities (12.7, 15.4.5)
+                if e["type"] == "image":
+                    _image(doc, msp, e, vp["id"], norm)
+                    continue
                 if e["type"] == "symbol":
                     _symbol_insert(doc, msp, e, vp["id"], n, rotation, declared, group, libs)
                     continue
@@ -153,7 +162,7 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
         flip = lambda p: (p[0], height_sheet - p[1])  # noqa: E731  paper is y down in the standard, y up in DXF
         for e in norm["entities"]:
             origin = e["origin"]
-            if origin.startswith("viewport.") and not origin.endswith((".scale_bar", ".north_arrow", ".hatch", ".dimension", ".leader")):
+            if origin.startswith("viewport.") and not origin.endswith((".scale_bar", ".north_arrow", ".hatch", ".dimension", ".leader", ".backing")):
                 continue
             _paper_entity(doc, layout, e, flip)
         for vp in norm["viewports"]:
@@ -197,6 +206,17 @@ def _model_entity(doc, msp, e, vp_id, n, rotation, declared, group):
         _text(msp, e["text"], e["anchor_m"], height, model_rotation, e.get("align_h", "left"), e.get("align_v", "baseline"), e["layer"], {**tags, "paper_height": e["height_mm"]})
         return
     _xdata(entity, **tags)
+
+
+def _image(doc, msp, e, vp_id, norm):
+    """15.4.12: an IMAGE in model space over its model box, linked to the file by the path of the document."""
+    item = next(x for x in norm["entities"] if x["type"] == "image" and x["origin"] == f"viewport.{vp_id}" and x["sha256"] == e["sha256"]
+                and x.get("id") == e.get("id"))
+    w_px, h_px = item["size_px"]
+    x0, y0, x1, y1 = e["bbox_m"]
+    image_def = doc.add_image_def(filename=e["path"], size_in_pixel=(w_px, h_px), name=f"TDFA_{e['sha256'][:16]}")
+    entity = msp.add_image(image_def, insert=(x0, y0), size_in_units=(x1 - x0, y1 - y0), rotation=0, dxfattribs={"layer": e["layer"]})
+    _xdata(entity, vp=vp_id, id=e.get("id"), type="image", sha256=e["sha256"], components=item["components"], opacity=item["opacity"])
 
 
 def block_name(library, symbol, layer, role_override):
@@ -244,6 +264,8 @@ def _symbol_insert(doc, msp, e, vp_id, n, rotation, declared, group, libs):
 def _paper_entity(doc, layout, e, flip):
     t = e["type"]
     tags = {"origin": e["origin"], "id": e.get("id"), "type": t}
+    if e["origin"].endswith(".backing"):
+        tags["print_colour"] = e["print_colour"]  # 8.6.7: a plate is not coloured by its layer
     if t == "text":
         _text(layout, e["text"], flip(e["anchor_mm"]), e["height_mm"], e["rotation_deg"], e["align_h"], e["align_v"], e["layer"], tags)
         return

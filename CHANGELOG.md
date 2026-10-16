@@ -5,6 +5,18 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added (standard 1.1, ticket 43)
+- The `image` entity (clause 9.10): a JPEG named by its SHA-256 and placed over a model box. It is for satellite
+  imagery, orthophotos and shaded relief that a GIS tool has already clipped and projected. The SVG and the PDF embed
+  the JPEG bytes as they are (`DCTDecode`). The DXF links the image with IMAGE and IMAGEDEF. Images are drawn first.
+- The colour print profile (clauses 8.6.4 to 8.6.7). `sheet.print_profile: colour` lets a layer declare
+  `print_colour`, `fill_opacity` and `halo_colour`. The furniture stays black. Under the colour profile, the scale bar
+  and the north arrow of a viewport that holds an image stand on white plates.
+- Map ratios 1:200000 to 1:10000000 (clause 7.3.5).
+- Clause 18.2.1: a document is held to the version it names. A 1.0 document has the same result as before, and
+  its SVG, PDF and DXF are unchanged.
+- 17 conformance cases (217 in all), and output tests for images and colour.
+
 ### Removed (the clean break, ticket 16)
 - The `source.py` way of drawing and its API (`Drawing`, `ViewBox`, the `svg_*` primitives, `DxfBuilder`), the
   pixel-based SVG path, the separate SVG sheet path (title block, sheet furniture, sheet validation and the

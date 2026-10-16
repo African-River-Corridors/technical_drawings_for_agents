@@ -2,6 +2,9 @@
 
 One page, the trimmed sheet. The page space is millimetres, y down, through one ``cm`` matrix.
 Text uses the embedded font (clause 11.6.4) as a simple TrueType font in WinAnsi encoding.
+Under the colour profile, an entity's colour members set the colours, a fill opacity and a halo
+(clause 8.6.6); images are image XObjects that hold the JPEG bytes as they are, drawn first
+(clauses 9.10.7, 15.3). A monochrome sheet gives the same bytes as before version 1.1.
 """
 
 from __future__ import annotations
@@ -89,13 +92,55 @@ def _loop_ops(points) -> list[str]:
     return ops
 
 
-def _content(norm: dict) -> bytes:
+def _rgb(hex_colour: str) -> str:
+    r, g, b = (int(hex_colour[i : i + 2], 16) for i in (1, 3, 5))
+    return " ".join(_n(round(v / 255, 4)) for v in (r, g, b))
+
+
+class _Resources:
+    """The images and the fill opacities that a page uses, in the order of first use."""
+
+    def __init__(self, images):
+        self.images = images or {}
+        self.xobjects: list[str] = []  # sha256 in order
+        self.alphas: list[float] = []
+
+    def image(self, sha):
+        if sha not in self.images:
+            raise ValueError(f"9.10: no bytes for the image {sha}")
+        if sha not in self.xobjects:
+            self.xobjects.append(sha)
+        return f"/Im{self.xobjects.index(sha)}"
+
+    def alpha(self, value):
+        if value not in self.alphas:
+            self.alphas.append(value)
+        return f"/GS{self.alphas.index(value)}"
+
+
+def _content(norm: dict, res: _Resources | None = None) -> bytes:
     sheet = norm["sheet"]
+    res = res or _Resources({})
     out = [f"{_n(PT_PER_MM)} 0 0 {_n(-PT_PER_MM)} 0 {_n(sheet['height_mm'] * PT_PER_MM)} cm", "0 G 0 g", "0 J 0 j 10 M"]
-    for e in norm["entities"]:
+    state = {"colour": None}  # None is the black of 8.6.1, set above
+
+    def colour(e):
+        c = e.get("print_colour")
+        if c != state["colour"]:
+            out.append("0 G 0 g" if c is None else f"{_rgb(c)} RG {_rgb(c)} rg")
+            state["colour"] = c
+
+    entities = [e for e in norm["entities"] if e["type"] == "image"] + [e for e in norm["entities"] if e["type"] != "image"]
+    for e in entities:
         t = e["type"]
+        if t == "image":  # 9.10.7: first, stretched to its box
+            x0, y0, x1, y1 = e["box_mm"]
+            gs = f"{res.alpha(e['opacity'])} gs " if e["opacity"] != 1 else ""
+            out.append(f"q {gs}{_n(x1 - x0)} 0 0 {_n(y0 - y1)} {_n(x0)} {_n(y1)} cm {res.image(e['sha256'])} Do Q")
+            continue
         if t == "hatch" and e["pattern"] != "solid":
             continue  # the marks are entities of their own (10.5.8)
+        colour(e)
         if t == "text":
             h = e["height_mm"]
             corners = rules.text_box(e["anchor_mm"], e["text"], h, e["rotation_deg"], e["align_h"], e["align_v"])
@@ -103,11 +148,17 @@ def _content(norm: dict) -> bytes:
             c, s = (round(c, 12), round(s, 12))
             x0, y0 = corners[0]
             size = h * 1000 / rules.CAP_HEIGHT_UNITS
-            out.append(f"BT /F1 {_n(size)} Tf {_n(c)} {_n(-s)} {_n(-s)} {_n(-c)} {_n(x0)} {_n(y0)} Tm {_hex(e['text'])} Tj ET")
+            place = f"BT /F1 {_n(size)} Tf {_n(c)} {_n(-s)} {_n(-s)} {_n(-c)} {_n(x0)} {_n(y0)} Tm"
+            if "halo_colour" in e:  # 8.6.6: a stroke of 0.2 h under the fill
+                out.append(f"q {_rgb(e['halo_colour'])} RG {_n(0.2 * h)} w 1 j {place.replace('BT ', 'BT 1 Tr ', 1)} {_hex(e['text'])} Tj ET Q")
+            out.append(f"{place} {_hex(e['text'])} Tj ET")
             continue
         if t == "hatch" and e["pattern"] == "solid":
             ops = [op for loop in [e["boundary_mm"], *e["holes_mm"]] for op in _loop_ops(loop)]
-            out += ops + ["f*"]
+            if "fill_opacity" in e:
+                out += [f"q {res.alpha(e['fill_opacity'])} gs", *ops, "f*", "Q"]
+            else:
+                out += ops + ["f*"]
             continue
         out.append(f"{_n(e['width_mm'])} w")
         line_type = e.get("line_type", "continuous")
@@ -131,16 +182,37 @@ def _content(norm: dict) -> bytes:
     return "\n".join(out).encode("ascii")
 
 
-def pdf_from_normalised(norm: dict) -> bytes:
+def _image_object(data: bytes) -> bytes:
+    from .image import jpeg_info
+
+    info = jpeg_info(data)
+    if info is None:
+        raise ValueError("9.10.1: not a JPEG of 8-bit samples and 1 or 3 components")
+    space = "/DeviceGray" if info.components == 1 else "/DeviceRGB"
+    head = (f"<< /Type /XObject /Subtype /Image /Width {info.width_px} /Height {info.height_px} /ColorSpace {space} "
+            f"/BitsPerComponent 8 /Filter /DCTDecode /Length {len(data)} >>").encode()
+    return head + b"\nstream\n" + data + b"\nendstream"
+
+
+def pdf_from_normalised(norm: dict, images: dict | None = None) -> bytes:
     sheet = norm["sheet"]
     wpt, hpt = sheet["width_mm"] * PT_PER_MM, sheet["height_mm"] * PT_PER_MM
     font_bytes = resources.FONT_FILE.read_bytes()
     widths = " ".join(str(w) for w in _widths())
+    res = _Resources(images)
+    content = _content(norm, res)
+    extra = []  # objects 8 and on: the images, then the graphics states
+    names = ""
+    if res.xobjects:
+        names += " /XObject << " + " ".join(f"/Im{i} {8 + i} 0 R" for i in range(len(res.xobjects))) + " >>"
+        extra += [_image_object(res.images[sha]) for sha in res.xobjects]
+    if res.alphas:
+        names += " /ExtGState << " + " ".join(f"/GS{i} << /ca {_n(a)} /CA {_n(a)} >>" for i, a in enumerate(res.alphas)) + " >>"
     objects = [
         b"<< /Type /Catalog /Pages 2 0 R >>",
         b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
-        f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {_n(wpt)} {_n(hpt)}] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>".encode(),
-        _stream(_content(norm)),
+        f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {_n(wpt)} {_n(hpt)}] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >>{names} >> >>".encode(),
+        _stream(content),
         (
             f"<< /Type /Font /Subtype /TrueType /BaseFont /{FONT_NAME} /FirstChar 32 /LastChar 255 "
             f"/Widths [{widths}] /Encoding /WinAnsiEncoding /FontDescriptor 6 0 R >>"
@@ -150,6 +222,7 @@ def pdf_from_normalised(norm: dict) -> bytes:
             f"/ItalicAngle 0 /Ascent {FONT_ASCENT} /Descent {FONT_DESCENT} /CapHeight {FONT_CAP_HEIGHT} /StemV {FONT_STEM_V} /FontFile2 7 0 R >>"
         ).encode(),
         _stream(font_bytes, f"/Length1 {len(font_bytes)} "),
+        *extra,
     ]
     out = bytearray(b"%PDF-1.7\n%\xe2\xe3\xcf\xd3\n")
     offsets = []
