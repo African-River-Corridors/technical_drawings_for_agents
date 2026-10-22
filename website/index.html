@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawing Format Standard (DFS): an ARC open library</title>
+<meta name="description" content="The Drawing Format Standard: engineering drawings as data, for AI agents. One JSON file describes a whole sheet.">
+<link rel="canonical" href="https://www.africanrivercorridors.com/dfs">
+<link rel="icon" href="/dfs/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/dfs/tokens.css">
+<link rel="stylesheet" href="/dfs/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container bar">
+    <a class="home" href="/">African River Corridors</a>
+    <nav aria-label="Site">
+      <a href="/opensource">Open source</a>
+      <a href="https://github.com/African-River-Corridors/technical_drawings_for_agents">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="page-head">
+    <div class="container">
+      <div class="title">
+        <img class="mark mark-light" src="/dfs/assets/dfs-mark.svg" alt="" width="72" height="72">
+        <img class="mark mark-dark" src="/dfs/assets/dfs-mark-dark.svg" alt="" width="72" height="72">
+        <div>
+          <span class="eyebrow">ARC open library</span>
+          <h1>Drawing Format Standard <span class="initials">(DFS)</span></h1>
+        </div>
+      </div>
+      <p class="lead">Engineering drawings as data, for AI agents. One JSON file describes a whole drawing sheet. The reference implementation checks it and gives you an SVG, a PDF and a DXF.</p>
+      <ul class="facts"><li>Standard: <strong>1.2</strong></li><li>Reference implementation: <strong>Python</strong></li><li>Licence: <strong>Apache 2.0</strong></li></ul>
+    </div>
+  </section>
+  <div class="container">
+<h2>What it is</h2>
+<div class="prose">
+<ul>
+  <li><strong>For agents and scripts.</strong> A drawing is data. You write JSON, check it against a JSON Schema,
+  and build it. You never write drawing code.</li>
+  <li><strong>Same drawing, any implementation.</strong> Two implementations are the same when they give the same
+  normalised content: a sorted list of entities in paper millimetres. A conformance suite holds the cases.</li>
+  <li><strong>Loud failure.</strong> A value that disagrees with the drawing, a text that does not fit its cell,
+  an undeclared layer, a window that does not fit its scale: each is an error that names the clause.</li>
+</ul>
+</div>
+
+<h2>Implementations</h2>
+<table>
+  <tr><th>Implementation</th><th>Language</th><th>Where</th></tr>
+  <tr><td>Reference implementation</td><td>Python</td><td><a href="https://github.com/African-River-Corridors/technical_drawings_for_agents">technical_drawings_for_agents</a></td></tr>
+  <tr><td>Open Technical Drawer (OTD)</td><td>Rust</td><td><a href="/otd">/otd</a></td></tr>
+</table>
+
+<h2>Try it</h2>
+<div class="prose">
+<p>The Python package is not on PyPI yet. Install it from a checkout:</p>
+<pre><code>git clone https://github.com/African-River-Corridors/technical_drawings_for_agents
+cd technical_drawings_for_agents
+python -m venv .venv &amp;&amp; .venv/bin/pip install -e '.[dev]'
+.venv/bin/technical_drawings_for_agents build hello.drawing.json --out out/</code></pre>
+<p>The repository's README has <code>hello.drawing.json</code> and a guide to every member of a drawing document.</p>
+</div>
+
+<h2>What it does not claim</h2>
+<div class="prose">
+<p>The standard bases sheets, scales, lines, title blocks, lettering and dimensions on the ISO drawing standards.
+The ISO texts were not at hand when it was written, so every value taken from an ISO part is marked
+<em>pending ISO check</em>. The standard is not certified.</p>
+</div>
+    <h2>Links</h2>
+    <ul class="links"><li><a href="https://github.com/African-River-Corridors/technical_drawings_for_agents/blob/main/docs/standard/drawing-format-standard.md">The standard (text)</a></li><li><a href="https://github.com/African-River-Corridors/technical_drawings_for_agents">Code on GitHub</a></li><li><a href="/otd">Rust implementation</a></li></ul>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>Hosted by African River Corridors. Code under the Apache License 2.0.
+    The names and marks follow the <a href="https://github.com/African-River-Corridors/technical_drawings_for_agents/blob/main/TRADEMARKS.md">trademark policy</a>.</p>
+    <p>Set in Manrope and IBM Plex Mono (SIL Open Font License 1.1), served from this site.</p>
+  </div>
+</footer>
+</body>
+</html>
