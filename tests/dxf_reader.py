@@ -183,7 +183,7 @@ def _apply_layer_colours(entities, recs):
     for e in entities:
         c = table.get(e["layer"])
         o = e["origin"]
-        if not c or e["type"] == "image" or not o.startswith("viewport.") or o.endswith((".scale_bar", ".north_arrow", ".backing")):
+        if not c or e["type"] == "image" or not o.startswith("viewport.") or o.endswith((".scale_bar", ".vertical_scale_bar", ".north_arrow", ".backing")):
             continue
         if "print_colour" in c:
             e["print_colour"] = c["print_colour"]

@@ -50,6 +50,8 @@ SCHEMA_ERROR_CASES = {
     "err-tb-both-sources": "14.2",
     "err-status-unknown": "14.9",
     "err-reg-seal-form": "14.7.6",
+    "err-exaggeration-not-whole": "7.3.6.1",
+    "err-exaggeration-one": "7.3.6.1",
 }
 
 

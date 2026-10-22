@@ -27,11 +27,17 @@ from .rules import (
     BAR_TEXT_HEIGHT,
     INSETS_MM,
     MIN_BAR_FRAME_HEIGHT,
+    MIN_EXAGGERATED_FRAME_HEIGHT,
     MIN_NORTH_FRAME,
     NORTH_INSET,
     NORTH_LABEL_HEIGHT,
     NORTH_SIZE,
     TICK_LENGTH,
+    VBAR_BOTTOM,
+    VBAR_DIVISIONS,
+    VBAR_LABEL_GAP,
+    VBAR_RATIO_GAP,
+    WORDS_BASELINE,
     ZONE_LETTERS,
     ZONES,
     Mapper,
@@ -40,21 +46,30 @@ from .rules import (
     bar_labels,
     derived_bar_length,
     drawing_space,
+    exaggeration_words,
     fit_scale,
     line_group,
     north_deg,
     ratios,
     text_box,
+    text_width,
+    vertical_bar_length,
+    vertical_denominator,
     window_fits,
 )
 
 FURNITURE_LAYER = "TITLEBLOCK"  # 16.6.1
-SUPPORTED_VERSION = (1, 1)  # 18.2
+SUPPORTED_VERSION = (1, 2)  # 18.2
 COLOUR_MEMBERS = ("print_colour", "fill_opacity", "halo_colour")  # 8.6.5
 
 
 def _minor(doc) -> int:
     return int(doc["standard_version"].split(".")[1])
+
+
+def exaggeration(vp) -> int:
+    """7.3.6: the vertical exaggeration of a viewport, 1 when it has none."""
+    return int(vp.get("vertical_exaggeration", 1))
 
 
 def print_profile(doc) -> str:
@@ -304,23 +319,31 @@ def check_document(doc, base_dir=None) -> set[str]:
         window_ok = window["xmax_m"] > window["xmin_m"] and window["ymax_m"] > window["ymin_m"]
         if not window_ok:
             errors.add("7.6.1")
+        ex = exaggeration(vp)
+        exaggerated = "vertical_exaggeration" in vp
+        if exaggerated and minor < 2:
+            errors.add("18.2.1")  # 7.3.6 is from version 1.2
         denominator = None
         if window_ok:
             if vp["scale"] == "fit":
-                denominator = fit_scale(frame, window, rotation, ratio_list)
+                denominator = fit_scale(frame, window, rotation, ratio_list, ex)
                 if denominator is None:
                     errors.add("7.5.2")
             elif vp["scale"] not in ratio_list:
                 errors.add("18.2.1")  # a map ratio (7.3.5) in a document of version 1.0
+            elif exaggerated and vertical_denominator(vp["scale"], ex, ratio_list) is None:
+                errors.add("7.3.6.2")
             else:
                 denominator = vp["scale"]
-                if not window_fits(frame, window, denominator, rotation):
+                if not window_fits(frame, window, denominator, rotation, ex):
                     errors.add("7.5.1")
+        if exaggerated and minor >= 2:
+            _check_exaggerated(vp, frame, rotation, ex, errors)
         if "scale_bar" in vp:
             _check_scale_bar(vp, frame, denominator, errors)
         if "north" in vp and (w < MIN_NORTH_FRAME or h < MIN_NORTH_FRAME):
             errors.add("7.10.7")
-        mapper = Mapper(frame, window, denominator, rotation) if denominator else None
+        mapper = Mapper(frame, window, denominator, rotation, ex) if denominator else None
         index = {e["id"]: e for e in vp["entities"] if "id" in e}
         chains = []
         for e in vp["entities"]:
@@ -391,7 +414,7 @@ def _resolved_scale(vp, ds, ratio_list=ALL_RATIOS):
         return None
     if vp["scale"] != "fit":
         return vp["scale"]
-    return fit_scale(_frame(vp), window, vp.get("rotation_deg", 0.0) % 360.0, ratio_list)
+    return fit_scale(_frame(vp), window, vp.get("rotation_deg", 0.0) % 360.0, ratio_list, exaggeration(vp))
 
 
 def _check_image(e, base_dir, minor, profile, rotation, errors):
@@ -411,6 +434,29 @@ def _check_image(e, base_dir, minor, profile, rotation, errors):
         errors.add("9.10.1")
     elif digest != e["sha256"]:
         errors.add("9.10.2")
+
+
+def _check_exaggerated(vp, frame, rotation, ex, errors):
+    """7.3.6.3 to 7.3.6.9 and 7.9.12: what a viewport with a vertical exaggeration must have, and may not hold."""
+    if rotation != 0:
+        errors.add("7.3.6.3")
+    if "scale_bar" not in vp:
+        errors.add("7.3.6.4")
+    if "north" in vp:
+        errors.add("7.3.6.9")  # a section has no north; an exaggerated plan distorts every bearing
+    for e in vp["entities"]:
+        t = e["type"]
+        if t == "image":
+            errors.add("7.3.6.5")
+        elif t in ("circle", "arc"):
+            errors.add("7.3.6.6")
+        elif t == "symbol":
+            errors.add("7.3.6.7")
+        elif t == "dimension" and not (e["kind"] == "linear" and e["orientation"] == "horizontal"):
+            errors.add("7.3.6.8")
+    w, h = frame[2], frame[3]
+    if h < MIN_EXAGGERATED_FRAME_HEIGHT - FIT_TOL_MM or text_width(exaggeration_words(ex), BAR_TEXT_HEIGHT) > bar_available(w) + FIT_TOL_MM:
+        errors.add("7.9.12")
 
 
 def _check_scale_bar(vp, frame, denominator, errors):
@@ -534,6 +580,34 @@ def _north_arrow(vid, frame, rotation, nb, thin):
     ]
 
 
+def _vertical_scale_bar(vid, frame, denominator, ex, thin):
+    """16.6.5: the vertical scale bar and the words of a viewport with a vertical exaggeration (7.9.11)."""
+    x, y, _, h = frame
+    nv = denominator // ex
+    kv = 1000 / nv
+    length = vertical_bar_length(h, nv)
+    total = length * kv
+    seg = total / VBAR_DIVISIONS
+    xl, xr = x + BAR_INSET, x + BAR_INSET + BAR_HEIGHT
+    y1 = y + h - VBAR_BOTTOM
+    y0 = y1 - total
+    origin, lay, solid = f"viewport.{vid}.vertical_scale_bar", FURNITURE_LAYER, "continuous"
+    out = [_polyline(origin, lay, [(xl, y0), (xr, y0), (xr, y1), (xl, y1)], True, solid, thin)]
+    for i in range(1, VBAR_DIVISIONS):
+        out.append(_line(origin, lay, (xl, y1 - i * seg), (xr, y1 - i * seg), solid, thin))
+    for i in range(0, VBAR_DIVISIONS, 2):
+        out.append(_hatch(origin, lay, [(xl, y1 - i * seg), (xr, y1 - i * seg), (xr, y1 - (i + 1) * seg), (xl, y1 - (i + 1) * seg)], [], "solid", 0, thin))
+    for i in range(VBAR_DIVISIONS + 1):
+        out.append(_line(origin, lay, (xr, y1 - i * seg), (xr + TICK_LENGTH, y1 - i * seg), solid, thin))
+    labels = bar_labels(length, 1, "m")  # 7.9.11: the two ends only, "0" and the length with its unit
+    out.append(_text(origin, lay, (xr + VBAR_LABEL_GAP, y1), labels[0], BAR_TEXT_HEIGHT, 0, "left", "middle"))
+    out.append(_text(origin, lay, (xr + VBAR_LABEL_GAP, y0), labels[1], BAR_TEXT_HEIGHT, 0, "left", "middle"))
+    out.append(_text(origin, lay, (xl, y0 - VBAR_RATIO_GAP), f"Vertical 1:{nv}", BAR_TEXT_HEIGHT, 0, "left", "baseline"))
+    yb = y + h - 18 + BAR_HEIGHT  # the bottom of the horizontal bar (16.6.3)
+    out.append(_text(origin, lay, (xl, yb + WORDS_BASELINE), exaggeration_words(ex), BAR_TEXT_HEIGHT, 0, "left", "baseline"))
+    return out
+
+
 def _plate(vid, frame, which, denominator, spec, thin):
     """8.6.7: a white plate under the scale bar or the north arrow of a viewport that holds an image."""
     x, y, w, h = frame
@@ -592,9 +666,13 @@ def normalise_document(doc, base_dir=None) -> dict:
     for vp in doc["viewports"]:
         frame = _frame(vp)
         rotation = vp.get("rotation_deg", 0.0) % 360.0
-        denominator = fit_scale(frame, vp["window"], rotation, ratio_list) if vp["scale"] == "fit" else vp["scale"]
-        mapper = Mapper(frame, vp["window"], denominator, rotation)
-        viewports.append({"id": vp["id"], "scale": denominator, "frame": dict(vp["frame"])})
+        ex = exaggeration(vp)
+        denominator = fit_scale(frame, vp["window"], rotation, ratio_list, ex) if vp["scale"] == "fit" else vp["scale"]
+        mapper = Mapper(frame, vp["window"], denominator, rotation, ex)
+        resolved = {"id": vp["id"], "scale": denominator, "frame": dict(vp["frame"])}
+        if ex > 1:
+            resolved["vertical_exaggeration"] = ex  # 16.2: only when there is one
+        viewports.append(resolved)
         entities += _viewport_entities(vp, declared, group, mapper, rotation, base_dir)
         index = {e["id"]: e for e in vp["entities"] if "id" in e}
         for e in vp["entities"]:
@@ -608,6 +686,8 @@ def normalise_document(doc, base_dir=None) -> dict:
             entities += _scale_bar(vp["id"], frame, denominator, vp["scale_bar"], group["thin"])
             if plate:
                 entities.append(_plate(vp["id"], frame, "scale_bar", denominator, vp["scale_bar"], group["thin"]))
+            if ex > 1:
+                entities += _vertical_scale_bar(vp["id"], frame, denominator, ex, group["thin"])
         if "north" in vp:
             entities += _north_arrow(vp["id"], frame, rotation, vp["north"], group["thin"])
             if plate:
@@ -647,12 +727,12 @@ def declared_layers(doc) -> dict:
 def _apply_colours(entities, colours):
     """8.6.6 and 16.4.1: the colour members of a layer, on each entity of a viewport that is on it.
 
-    The sheet furniture (origins ``sheet.*``, ``title_block.*`` and the like) and the scale bar and
+    The sheet furniture (origins ``sheet.*``, ``title_block.*`` and the like) and the scale bars and
     north arrow of a viewport stay black.
     """
     for e in entities:
         o = e["origin"]
-        if not o.startswith("viewport.") or o.endswith((".scale_bar", ".north_arrow", ".backing")) or e["layer"] not in colours:
+        if not o.startswith("viewport.") or o.endswith((".scale_bar", ".vertical_scale_bar", ".north_arrow", ".backing")) or e["layer"] not in colours:
             continue
         c = colours[e["layer"]]
         if e["type"] == "image":

@@ -2,7 +2,8 @@
 
 Model space holds the entities of the viewports in model metres. Paper space (the layout ``SHEET``)
 holds the sheet furniture and the marks of the hatches in paper millimetres, and one viewport for
-each viewport of the document, at the stated scale. Every entity carries XDATA of the application
+each viewport of the document, at the stated scale. A viewport with a vertical exaggeration cannot
+be one DXF viewport, which has one scale, so its entities are written in paper space (15.4.13). Every entity carries XDATA of the application
 ``TDFA`` so that a reader can make the normalised content again (see ``tests/dxf_reader.py``).
 """
 
@@ -142,7 +143,10 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
         msp = doc.modelspace()
         by_vp = {vp["id"]: vp for vp in document["viewports"]}
         scale = {vp["id"]: vp["scale"] for vp in norm["viewports"]}
+        exaggerated = {vp["id"] for vp in norm["viewports"] if "vertical_exaggeration" in vp}
         for vp in document["viewports"]:
+            if vp["id"] in exaggerated:
+                continue  # 15.4.13: in paper space, as drawn
             n = scale[vp["id"]]
             rotation = vp.get("rotation_deg", 0.0) % 360.0
             for e in vp["entities"]:
@@ -162,7 +166,10 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
         flip = lambda p: (p[0], height_sheet - p[1])  # noqa: E731  paper is y down in the standard, y up in DXF
         for e in norm["entities"]:
             origin = e["origin"]
-            if origin.startswith("viewport.") and not origin.endswith((".scale_bar", ".north_arrow", ".hatch", ".dimension", ".leader", ".backing")):
+            paper_vp = any(origin == f"viewport.{v}" for v in exaggerated)
+            if origin.startswith("viewport.") and not paper_vp and not origin.endswith(
+                (".scale_bar", ".vertical_scale_bar", ".north_arrow", ".hatch", ".dimension", ".leader", ".backing")
+            ):
                 continue
             _paper_entity(doc, layout, e, flip)
         for vp in norm["viewports"]:
@@ -176,7 +183,7 @@ def dxf_from_document(document: dict, norm: dict, base_dir=None) -> tuple[str, l
                 view_height=f["height_mm"] * vp["scale"] / 1000,
                 dxfattribs={"layer": VIEWPORT_LAYER, "view_twist_angle": src.get("rotation_deg", 0.0) % 360.0},
             )
-            _xdata(viewport, id=vp["id"], scale=vp["scale"])
+            _xdata(viewport, id=vp["id"], scale=vp["scale"], vertical_exaggeration=vp.get("vertical_exaggeration"))
         stream = io.StringIO()
         doc.write(stream)
     return stream.getvalue(), window_overlap_warnings(document)

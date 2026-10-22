@@ -35,11 +35,23 @@ def ratios(minor: int) -> tuple[int, ...]:
     """7.3.5 and 18.2.1: the ratios a document of version 1.<minor> may use."""
     return ALL_RATIOS_1_1 if minor >= 1 else ALL_RATIOS
 
+
+def vertical_denominator(denominator: int, exaggeration: int, ratio_list) -> int | None:
+    """7.3.6.2: the vertical denominator N / E, or None when it is not a whole ratio of the lists."""
+    if denominator % exaggeration:
+        return None
+    nv = denominator // exaggeration
+    return nv if nv in ratio_list else None
+
 # 7.9, 7.10 ------------------------------------------------------------------------------------
 BAR_INSET, BAR_HEIGHT, TICK_LENGTH = 6.0, 3.0, 1.5
 BAR_LABEL_BASELINE, BAR_RATIO_BASELINE, BAR_TEXT_HEIGHT = 5.0, 9.0, 2.5
 NORTH_SIZE, NORTH_INSET, NORTH_LABEL_HEIGHT = 18.0, 10.0, 3.5
 MIN_BAR_FRAME_HEIGHT, MIN_NORTH_FRAME = 46.0, 38.0
+# 7.9.11, 7.9.12: the vertical scale bar of a viewport with a vertical exaggeration (from version 1.2)
+VBAR_BOTTOM, VBAR_TOP_CLEAR, VBAR_DIVISIONS = 26.0, 37.0, 5
+VBAR_LABEL_GAP, VBAR_RATIO_GAP, WORDS_BASELINE = 2.5, 3.0, 13.0
+MIN_EXAGGERATED_FRAME_HEIGHT = 100.0
 
 CAP_HEIGHT_UNITS = 700  # 11.7.1
 
@@ -64,38 +76,48 @@ def line_group(size: str) -> tuple[str, dict]:
 class Mapper:
     """The map from model metres to paper millimetres (7.4)."""
 
-    def __init__(self, frame, window, denominator, rotation_deg):
+    def __init__(self, frame, window, denominator, rotation_deg, exaggeration=1):
         x, y, w, h = frame
         self.cx = (window["xmin_m"] + window["xmax_m"]) / 2
         self.cy = (window["ymin_m"] + window["ymax_m"]) / 2
         self.fx, self.fy = x + w / 2, y + h / 2
         self.k = 1000 / denominator
+        # 7.3.6, 7.4: k_v = 1000 / (N / E). With no exaggeration (E = 1) it is k itself, bit for bit.
+        self.kv = self.k if exaggeration == 1 else 1000 / (denominator / exaggeration)
         self.cos, self.sin = cos_sin(rotation_deg)
 
     def point(self, p) -> tuple[float, float]:
         dx, dy = p[0] - self.cx, p[1] - self.cy
         rx, ry = dx * self.cos - dy * self.sin, dx * self.sin + dy * self.cos
-        return (self.fx + rx * self.k, self.fy - ry * self.k)
+        return (self.fx + rx * self.k, self.fy - ry * self.kv)
 
 
-def required_size(window, denominator, rotation_deg) -> tuple[float, float]:
+def required_size(window, denominator, rotation_deg, exaggeration=1) -> tuple[float, float]:
     """7.5: paper size of the bounding box of the turned window."""
     c, s = cos_sin(rotation_deg)
     wm = window["xmax_m"] - window["xmin_m"]
     hm = window["ymax_m"] - window["ymin_m"]
     k = 1000 / denominator
-    return (abs(wm * c) + abs(hm * s)) * k, (abs(wm * s) + abs(hm * c)) * k
+    if exaggeration == 1:
+        return (abs(wm * c) + abs(hm * s)) * k, (abs(wm * s) + abs(hm * c)) * k
+    # 7.5.1 with a vertical exaggeration: the rotation is 0 (7.3.6.3), so the height is h_m * k_v.
+    # A turned exaggerated window is an error of its own; it is sized here as the map of 7.4 draws it.
+    kv = 1000 / (denominator / exaggeration)
+    return abs(wm * c) * k + abs(hm * s) * kv, abs(wm * s) * k + abs(hm * c) * kv
 
 
-def window_fits(frame, window, denominator, rotation_deg) -> bool:
-    rw, rh = required_size(window, denominator, rotation_deg)
+def window_fits(frame, window, denominator, rotation_deg, exaggeration=1) -> bool:
+    rw, rh = required_size(window, denominator, rotation_deg, exaggeration)
     return rw <= frame[2] + FIT_TOL_MM and rh <= frame[3] + FIT_TOL_MM
 
 
-def fit_scale(frame, window, rotation_deg, ratio_list=ALL_RATIOS):
-    """7.5.2: the first ratio that fits, or None."""
+def fit_scale(frame, window, rotation_deg, ratio_list=ALL_RATIOS, exaggeration=1):
+    """7.5.2: the first ratio that fits, or None. With a vertical exaggeration, only the ratios whose
+    vertical ratio N / E is in the lists are tried (7.3.6.2)."""
     for n in ratio_list:
-        if window_fits(frame, window, n, rotation_deg):
+        if exaggeration != 1 and vertical_denominator(n, exaggeration, ratio_list) is None:
+            continue
+        if window_fits(frame, window, n, rotation_deg, exaggeration):
             return n
     return None
 
@@ -129,6 +151,25 @@ def bar_labels(length_m: float, divisions: int, unit: str) -> list[str]:
         text = str(int(rounded)) if rounded == int(rounded) else f"{rounded:.6f}".rstrip("0").rstrip(".")
         labels.append(text + (f" {unit}" if i == divisions else ""))
     return labels
+
+
+def vertical_bar_length(frame_height: float, vertical_denominator: int) -> float:
+    """7.9.11: the largest {1,2,5} x 10^n metres that is at most a quarter of the frame height on paper
+    at the vertical scale. It always exists for a frame of 7.9.12 and the ratios of 7.3."""
+    kv = 1000 / vertical_denominator
+    target = (frame_height / 4) / kv
+    best = None
+    for exponent in range(-3, 7):
+        for multiple in (1, 2, 5):
+            value = multiple * 10.0**exponent
+            if value <= target + 1e-12:
+                best = value if best is None else max(best, value)
+    return best
+
+
+def exaggeration_words(exaggeration: int) -> str:
+    """7.9.11: the words under the scale bar. Never initials."""
+    return f"Vertical exaggeration \u00d7{exaggeration}"
 
 
 def north_deg(rotation_deg: float, bearing_deg: float) -> float:

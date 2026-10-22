@@ -244,11 +244,20 @@ def _derived(doc, entries, size, scales):
     values.update(
         revision=latest.get("rev", ""), date_of_issue=latest.get("date", ""), created_by=latest.get("by", ""),
         checked_by=latest.get("chk", ""), approved_by=latest.get("app", ""), status=doc.get("status", "").upper(),
-        scale=(f"1:{scales[0]}" if scales and None not in scales and len(set(scales)) == 1 else ("AS SHOWN" if scales and None not in scales else "")),
+        scale=_scale_field(doc, scales),
         sheet=(f"{block_fields['sheet_number']}/{block_fields['sheet_count']}" if "sheet_number" in block_fields and "sheet_count" in block_fields else ""),
         sheet_size=size,
     )
     return values
+
+
+def _scale_field(doc, scales) -> str:
+    """14.4.2: `1:N` when every viewport has the scale 1:N and none has a vertical exaggeration (7.3.6)."""
+    if not scales or None in scales:
+        return ""
+    if len(set(scales)) == 1 and not any("vertical_exaggeration" in vp for vp in doc["viewports"]):
+        return f"1:{scales[0]}"
+    return "AS SHOWN"
 
 
 def _title_block(doc, block, t, entries, size, ds, group, scales, out: Plan):
