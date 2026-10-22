@@ -5,6 +5,20 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added (standard 1.2, ticket 46)
+- Vertical exaggeration (clause 7.3.6). A viewport may name `vertical_exaggeration`, a whole number from 2. Its
+  `scale` is the horizontal scale; the vertical scale is N / E and must be a ratio of clause 7.3. For long sections.
+- The viewport shows a vertical scale bar at the vertical scale, `Vertical 1:N` above it, and the words
+  `Vertical exaggeration ×E` under the scale bar (clause 7.9.11). Words, never initials. The scale bar is required.
+- An exaggerated viewport may not turn, may not hold an image, a circle, an arc or a symbol, and may not have a north
+  arrow. Its dimensions are horizontal linear ones only (clauses 7.3.6.3 to 7.3.6.9).
+- The title block scale of a sheet with an exaggerated viewport is `AS SHOWN` (clause 14.4.4).
+- The DXF writes the entities of an exaggerated viewport in paper space, as drawn; model space stays true to scale
+  (clause 15.4.13).
+- House choice H-11 records the change (iso-checklist part G). H-60 to H-64 are new.
+- 17 conformance cases (234 in all), and output tests. A 1.0 or 1.1 document has the same normalised content, SVG,
+  PDF and DXF as before. The case `err-version-minor` now names version 1.3, since 1.2 is readable.
+
 ### Added (standard 1.1, ticket 43)
 - The `image` entity (clause 9.10): a JPEG named by its SHA-256 and placed over a model box. It is for satellite
   imagery, orthophotos and shaded relief that a GIS tool has already clipped and projected. The SVG and the PDF embed
