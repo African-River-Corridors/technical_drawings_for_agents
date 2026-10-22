@@ -5,6 +5,12 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added (ARC open library look)
+- The DFS mark and lockup at the top of the README, and a docs page in `website/`, served at
+  https://www.africanrivercorridors.com/dfs once GitHub Pages is on. The `website` workflow checks its links and
+  deploys it.
+- `TRADEMARKS.md`, the ARC open-source trademark policy.
+
 ### Added (standard 1.2, ticket 46)
 - Vertical exaggeration (clause 7.3.6). A viewport may name `vertical_exaggeration`, a whole number from 2. Its
   `scale` is the horizontal scale; the vertical scale is N / E and must be a ratio of clause 7.3. For long sections.

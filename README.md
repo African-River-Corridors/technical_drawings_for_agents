@@ -1,4 +1,11 @@
-# technical_drawings_for_agents — engineering drawings as data, for AI agents
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="website/assets/dfs-lockup-dark.svg">
+  <img alt="DFS, Drawing Format Standard: an ARC open library" src="website/assets/dfs-lockup.svg" width="440">
+</picture>
+
+**Engineering drawings as data, for AI agents.** This repository holds the Drawing Format Standard (DFS)
+and its Python reference implementation, `technical_drawings_for_agents`.
+[Docs page](https://www.africanrivercorridors.com/dfs) · [The standard](docs/standard/drawing-format-standard.md) · [Rust implementation (OTD)](https://www.africanrivercorridors.com/otd)
 
 One JSON file describes a whole drawing sheet. The tool checks it and gives you an **SVG**, a **PDF** and a
 **DXF** with the full sheet: model space in metres, and a paper-space layout with the border, the title block,
@@ -162,4 +169,7 @@ and [legibility checks on the normalised content](https://github.com/African-Riv
 ## Contributing and licence
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Use synthetic data only: no client drawings or site data. Apache-2.0. The
-font file is under the SIL Open Font License 1.1 (see `NOTICE`).
+font file is under the SIL Open Font License 1.1 (see `NOTICE`), and so are the fonts under `website/fonts/`
+(licences beside them). The project names and logos are covered by [TRADEMARKS.md](TRADEMARKS.md).
+
+Hosted by African River Corridors.
