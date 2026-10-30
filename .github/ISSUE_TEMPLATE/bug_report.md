@@ -11,11 +11,11 @@ labels: bug
 **How to reproduce** (smallest input that shows it — a drawing document or DXF snippet, and the command)
 
 ```
-technical_drawings_for_agents ...
+dfs ...
 ```
 
 **Environment**
-- `technical_drawings_for_agents --version`:
+- `dfs --version`:
 - Python:
 - OS:
 

@@ -1,4 +1,4 @@
-"""The reference pipeline (technical_drawings_for_agents.dfs): suite, outputs, repeat builds, CLI."""
+"""The reference pipeline (dfs): suite, outputs, repeat builds, CLI."""
 
 from __future__ import annotations
 
@@ -9,17 +9,17 @@ from pathlib import Path
 
 import pytest
 
-from technical_drawings_for_agents.cli import main
-from technical_drawings_for_agents.dfs import resources, run_document, run_file
-from technical_drawings_for_agents.dfs.conformance import compare, run_suite
-from technical_drawings_for_agents.dfs.render_pdf import (
+from dfs import resources, run_document, run_file
+from dfs.cli import main
+from dfs.conformance import compare, run_suite
+from dfs.render_pdf import (
     FONT_ASCENT,
     FONT_BBOX,
     FONT_CAP_HEIGHT,
     FONT_DESCENT,
     pdf_from_normalised,
 )
-from technical_drawings_for_agents.dfs.render_svg import svg_from_normalised
+from dfs.render_svg import svg_from_normalised
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES = ROOT / "docs" / "standard" / "schema" / "examples"

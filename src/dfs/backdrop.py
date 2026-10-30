@@ -1,21 +1,21 @@
 """Manifest-backed raster backdrops for SVG sheets.
 
 The drawing package deliberately does not know how to run GDAL. It only trusts
-the small geo manifest (schema ``tdfa.geo/1``) written by an external GIS tool's ``geo``
+the small geo manifest (schema ``dfs.geo/1``) written by an external GIS tool's ``geo``
 step and checks the linked sidecar before emitting an SVG ``<image>``. That check closes the silent-blank
 PDF failure mode introduced by linking instead of base64 inlining.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import hashlib
 import html
 import json
 import os
+import warnings
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-import warnings
 
 
 class BackdropError(ValueError):
@@ -23,10 +23,10 @@ class BackdropError(ValueError):
 
 
 #: The geo manifest schema id this package reads.
-GEO_SCHEMA = "tdfa.geo/1"
-#: The pre-release id for the same schema. Still read, with a DeprecationWarning, so
+GEO_SCHEMA = "dfs.geo/1"
+#: Earlier ids for the same schema. Still read, with a DeprecationWarning, so
 #: manifests written by older GIS tooling keep loading. Never written.
-LEGACY_GEO_SCHEMA = "sankofa.geo/1"
+LEGACY_GEO_SCHEMAS = ("tdfa.geo/1", "sankofa.geo/1")
 
 
 #: ``rsvg-convert`` (librsvg 2.62.3, measured) will only load a linked raster from
@@ -71,9 +71,9 @@ def load_backdrop(manifest_path: str | Path) -> Backdrop:
     if not isinstance(raw, dict):
         raise BackdropError(f"{path.name}: manifest must be a JSON object")
     schema = raw.get("schema")
-    if schema == LEGACY_GEO_SCHEMA:
+    if schema in LEGACY_GEO_SCHEMAS:
         warnings.warn(
-            f"{path.name}: geo manifest schema {LEGACY_GEO_SCHEMA!r} is deprecated; "
+            f"{path.name}: geo manifest schema {schema!r} is deprecated; "
             f"write {GEO_SCHEMA!r}. The legacy id is still read and will be removed "
             "in a future release.",
             DeprecationWarning,
@@ -122,7 +122,7 @@ def backdrop_image_element(
 
     ``allow_outside_svg_dir`` downgrades the parent-escaping-href refusal
     (``LIBRSVG_HREF_NOTE``) to a warning, for a renderer without librsvg's
-    resource policy -- ``cairosvg``, which ``technical_drawings_for_agents`` itself uses, resolves
+    resource policy -- ``cairosvg``, which ``dfs`` itself uses, resolves
     ``../`` normally. It is off by default because the PDF path is the one that
     fails silently.
     """
@@ -210,7 +210,7 @@ def _assert_image_current(bd: Backdrop) -> None:
 
 
 def _is_paper_viewport(vb: Any) -> bool:
-    """A paper-space ``technical_drawings_for_agents.sheet.Viewport`` (mm) rather than a pixel ``ViewBox``.
+    """A paper-space ``sheet.Viewport`` (removed in 1.0) (mm) rather than a pixel ``ViewBox``.
 
     Duck-typed on the two members the emit needs, so this module still imports
     nothing from ``sheet`` and the px/mm modules stay decoupled.

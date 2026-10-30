@@ -8,8 +8,8 @@ from pathlib import Path
 
 from . import furniture, resources
 from .conformance import run_suite
-from .pipeline import run_file
 from .image import load_images
+from .pipeline import run_file
 from .render_dxf import dxf_from_document
 from .render_pdf import pdf_from_normalised
 from .render_svg import svg_from_normalised

@@ -16,7 +16,7 @@
     <a class="home" href="/">African River Corridors</a>
     <nav aria-label="Site">
       <a href="/opensource">Open source</a>
-      <a href="https://github.com/African-River-Corridors/technical_drawings_for_agents">GitHub</a>
+      <a href="https://github.com/African-River-Corridors/drawing-format-standard">GitHub</a>
     </nav>
   </div>
 </header>
@@ -51,17 +51,17 @@
 <h2>Implementations</h2>
 <table>
   <tr><th>Implementation</th><th>Language</th><th>Where</th></tr>
-  <tr><td>Reference implementation</td><td>Python</td><td><a href="https://github.com/African-River-Corridors/technical_drawings_for_agents">technical_drawings_for_agents</a></td></tr>
+  <tr><td>Reference implementation</td><td>Python</td><td><a href="https://github.com/African-River-Corridors/drawing-format-standard">drawing-format-standard</a></td></tr>
   <tr><td>Open Technical Drawer (OTD)</td><td>Rust</td><td><a href="/otd">/otd</a></td></tr>
 </table>
 
 <h2>Try it</h2>
 <div class="prose">
 <p>The Python package is not on PyPI yet. Install it from a checkout:</p>
-<pre><code>git clone https://github.com/African-River-Corridors/technical_drawings_for_agents
-cd technical_drawings_for_agents
+<pre><code>git clone https://github.com/African-River-Corridors/drawing-format-standard
+cd drawing-format-standard
 python -m venv .venv &amp;&amp; .venv/bin/pip install -e '.[dev]'
-.venv/bin/technical_drawings_for_agents build hello.drawing.json --out out/</code></pre>
+.venv/bin/dfs build hello.drawing.json --out out/</code></pre>
 <p>The repository's README has <code>hello.drawing.json</code> and a guide to every member of a drawing document.</p>
 </div>
 
@@ -72,13 +72,13 @@ The ISO texts were not at hand when it was written, so every value taken from an
 <em>pending ISO check</em>. The standard is not certified.</p>
 </div>
     <h2>Links</h2>
-    <ul class="links"><li><a href="https://github.com/African-River-Corridors/technical_drawings_for_agents/blob/main/docs/standard/drawing-format-standard.md">The standard (text)</a></li><li><a href="https://github.com/African-River-Corridors/technical_drawings_for_agents">Code on GitHub</a></li><li><a href="/otd">Rust implementation</a></li></ul>
+    <ul class="links"><li><a href="https://github.com/African-River-Corridors/drawing-format-standard/blob/main/docs/standard/drawing-format-standard.md">The standard (text)</a></li><li><a href="https://github.com/African-River-Corridors/drawing-format-standard">Code on GitHub</a></li><li><a href="/otd">Rust implementation</a></li></ul>
   </div>
 </main>
 <footer class="site-footer">
   <div class="container">
     <p>Hosted by African River Corridors. Code under the Apache License 2.0.
-    The names and marks follow the <a href="https://github.com/African-River-Corridors/technical_drawings_for_agents/blob/main/TRADEMARKS.md">trademark policy</a>.</p>
+    The names and marks follow the <a href="https://github.com/African-River-Corridors/drawing-format-standard/blob/main/TRADEMARKS.md">trademark policy</a>.</p>
     <p>Set in Manrope and IBM Plex Mono (SIL Open Font License 1.1), served from this site.</p>
   </div>
 </footer>

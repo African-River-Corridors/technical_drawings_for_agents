@@ -10,8 +10,8 @@ from __future__ import annotations
 
 import re
 
-from technical_drawings_for_agents.dfs.numbers import angle, cos_sin, mm, round_half_even
-from technical_drawings_for_agents.dfs.rules import Mapper
+from dfs.numbers import angle, cos_sin, mm, round_half_even
+from dfs.rules import Mapper
 
 
 def tags(text: str):

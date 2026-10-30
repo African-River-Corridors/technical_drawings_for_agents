@@ -9,23 +9,22 @@ from typing import Any
 
 import jsonschema
 
-from . import image as images
-from . import resources
 from . import dimensions as dims
-from . import furniture, symbols
+from . import furniture, resources, symbols
+from . import image as images
 from .entities import _hatch, _line, _polyline, _pt, _text
 from .hatch import marks as hatch_marks
 from .hatch import unit_mm
 from .numbers import FIT_TOL_MM, angle, cos_sin, mm
 from .rules import (
     ALL_RATIOS,
-    MAP_RATIOS,
     BAR_HEIGHT,
     BAR_INSET,
     BAR_LABEL_BASELINE,
     BAR_RATIO_BASELINE,
     BAR_TEXT_HEIGHT,
     INSETS_MM,
+    MAP_RATIOS,
     MIN_BAR_FRAME_HEIGHT,
     MIN_EXAGGERATED_FRAME_HEIGHT,
     MIN_NORTH_FRAME,

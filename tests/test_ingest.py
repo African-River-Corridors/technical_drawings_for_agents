@@ -6,7 +6,8 @@ from __future__ import annotations
 
 import pytest
 
-from technical_drawings_for_agents.ingest import (
+from dfs.ingest import (
+    TEXT_TYPES,
     apply_corrections,
     convert_dwg,
     find_oda,
@@ -16,7 +17,6 @@ from technical_drawings_for_agents.ingest import (
     normalise_text,
     strip_tags,
 )
-from technical_drawings_for_agents.ingest import TEXT_TYPES
 
 from .synthetic import (
     make_dxf_no_insert,

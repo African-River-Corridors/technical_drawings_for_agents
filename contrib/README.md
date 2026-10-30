@@ -9,7 +9,7 @@ The point of the lane is that **we read your code before we merge it**. Nothing 
 reviewed inbox, so you can hand over an unfinished thing without breaking anything.
 
 You do not need to make it match our toolkit first. Working code and a filled-in manifest are
-enough; the shaping-into-`technical_drawings_for_agents` conversation happens on the PR.
+enough; the shaping-into-DFS conversation happens on the PR.
 
 ## Where to put it
 
@@ -80,7 +80,7 @@ it. Open an issue, or say it on the PR.
 
 ## What happens next
 
-We read it, and reply with which parts should become real `technical_drawings_for_agents` modules, which stay as
+We read it, and reply with which parts should become real DFS modules, which stay as
 examples, and which we should leave alone. Merging the PR only means *received and read* — it does
 not put anything into production.
 

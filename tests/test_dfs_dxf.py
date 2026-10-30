@@ -9,10 +9,10 @@ from pathlib import Path
 import ezdxf
 import pytest
 
-from technical_drawings_for_agents.dfs import resources, rules
-from technical_drawings_for_agents.dfs.conformance import _same
-from technical_drawings_for_agents.dfs.pipeline import run_file, sort_key
-from technical_drawings_for_agents.dfs.render_dxf import FONT_FILE_NAME, dxf_from_document
+from dfs import resources, rules
+from dfs.conformance import _same
+from dfs.pipeline import run_file, sort_key
+from dfs.render_dxf import FONT_FILE_NAME, dxf_from_document
 
 from .dxf_reader import read_normalised, records, style_tables
 

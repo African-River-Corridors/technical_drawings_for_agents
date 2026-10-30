@@ -1,6 +1,6 @@
 """Supplier-DWG ingest — the ``.dwg``-in boundary.
 
-`technical_drawings_for_agents` core is an *authoring* toolkit (parametric ``source.py`` →
+The `dfs` core is an *authoring* toolkit (parametric ``source.py`` →
 SVG/DXF/PDF for drawings we draw ourselves). This module is the opposite
 direction: take an existing supplier **DWG** and produce a clean, editable,
 layout-insertable DXF. It generalises verified reference scripts (PU-100) into
@@ -38,7 +38,7 @@ import ezdxf
 from ezdxf import bbox, recover
 from ezdxf.tools.text import plain_mtext
 
-log = logging.getLogger("technical_drawings_for_agents.ingest")
+log = logging.getLogger("dfs.ingest")
 
 # Text-bearing entity types (recoloured / consolidated during clean-up).
 TEXT_TYPES = ("TEXT", "MTEXT", "ATTRIB", "ATTDEF")
@@ -535,7 +535,7 @@ def crop_pdf(pdf: str | Path, out: str | Path, margin: float = 10.0, zoom: int =
         import numpy as np
     except Exception as exc:  # noqa: BLE001
         raise RuntimeError(
-            "crop_pdf needs PyMuPDF and numpy: pip install 'technical_drawings_for_agents[ingest]'"
+            "crop_pdf needs PyMuPDF and numpy: pip install 'drawing-format-standard[ingest]'"
         ) from exc
 
     pdf = Path(pdf)

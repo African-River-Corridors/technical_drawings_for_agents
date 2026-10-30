@@ -6,11 +6,13 @@ synthetic-box  500000 100000 501000 101000  # the synthetic example-site frame u
 
 # The pre-release toolkit name survives only as deprecated, still-read legacy spellings
 # (geo schema id and data-* attribute prefix). Remove with the deprecation.
-src/technical_drawings_for_agents/backdrop.py     term:6a93f7a8baa0  # legacy geo schema id constant
+src/dfs/backdrop.py                               term:6a93f7a8baa0  # legacy geo schema id constant
 tests/test_legacy_names.py                        term:6a93f7a8baa0  # tests that legacy spellings still load
+# The package's path before the rename to dfs; its lines stay in the history.
+src/technical_drawings_for_agents/backdrop.py     term:6a93f7a8baa0  # history: legacy geo schema id constant, old path
 # Files removed in 1.0 (ticket 16). Their first-release lines stay in the history, so the history scan still sees them.
 README.md                                         term:6a93f7a8baa0  # history: the old "Deprecated names" table
 src/technical_drawings_for_agents/mapplot.py      term:6a93f7a8baa0  # history: removed in 1.0
-src/technical_drawings_for_agents/sheet.py        term:6a93f7a8baa0  # history: removed in 1.0
-src/technical_drawings_for_agents/validate.py     term:6a93f7a8baa0  # history: removed in 1.0
+src/technical_drawings_for_agents/sheet.py      term:6a93f7a8baa0  # history: removed in 1.0
+src/technical_drawings_for_agents/validate.py   term:6a93f7a8baa0  # history: removed in 1.0
 tests/test_sheet.py                               term:6a93f7a8baa0  # history: removed in 1.0
