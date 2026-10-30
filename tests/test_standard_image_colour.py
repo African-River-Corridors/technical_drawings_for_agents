@@ -10,10 +10,10 @@ from pathlib import Path
 import pytest
 from pypdf import PdfReader
 
-from technical_drawings_for_agents.cli import main
-from technical_drawings_for_agents.dfs import resources
-from technical_drawings_for_agents.dfs.image import jpeg_info
-from technical_drawings_for_agents.dfs.pipeline import run_file
+from dfs import resources
+from dfs.cli import main
+from dfs.image import jpeg_info
+from dfs.pipeline import run_file
 
 CASE = resources.suite_dir() / "documents" / "img-colour-basic"
 

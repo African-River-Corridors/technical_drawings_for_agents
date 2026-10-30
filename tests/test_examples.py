@@ -11,12 +11,12 @@ from pathlib import Path
 
 import pytest
 
-from technical_drawings_for_agents.cli import main
-from technical_drawings_for_agents.dfs import run_file
-from technical_drawings_for_agents.dfs.pipeline import sort_key
-from technical_drawings_for_agents.dfs.render_dxf import dxf_from_document
-from technical_drawings_for_agents.dfs.render_pdf import pdf_from_normalised
-from technical_drawings_for_agents.dfs.render_svg import svg_from_normalised
+from dfs import run_file
+from dfs.cli import main
+from dfs.pipeline import sort_key
+from dfs.render_dxf import dxf_from_document
+from dfs.render_pdf import pdf_from_normalised
+from dfs.render_svg import svg_from_normalised
 
 from .dxf_reader import read_normalised
 
@@ -79,7 +79,7 @@ def test_the_dxf_of_the_example_reads_back_to_the_same_content(number):
     assert warnings == []
     back = sorted(read_normalised(text)["entities"], key=sort_key)
     assert len(back) == len(n["entities"])
-    from technical_drawings_for_agents.dfs.conformance import _same
+    from dfs.conformance import _same
 
     assert all(_same(a, b) for a, b in zip(back, sorted(n["entities"], key=sort_key)))
 
@@ -202,15 +202,19 @@ def test_pid_the_symbol_library_is_a_file_next_to_the_document():
 
 def test_no_source_py_route_remains():
     assert not list(ROOT.rglob("source.py")) or all(".venv" in str(p) or ".claude" in str(p) for p in ROOT.rglob("source.py"))
-    package = ROOT / "src" / "technical_drawings_for_agents"
+    package = ROOT / "src" / "dfs"
     names = {p.stem for p in package.glob("*.py")}
-    assert names == {"__init__", "backdrop", "cli", "describe", "ingest"}  # the removed modules are gone
+    assert names == {
+        "__init__", "backdrop", "cli", "commands", "conformance", "describe", "dimensions", "entities",
+        "furniture", "hatch", "image", "ingest", "numbers", "pipeline", "render_dxf", "render_pdf",
+        "render_svg", "resources", "rules", "symbols",
+    }  # the removed modules are gone
 
 
 @pytest.mark.parametrize("name", ["render", "plot", "svg", "sheet", "validate", "titleblock", "dxf", "layers", "components", "legibility"])
 def test_the_old_modules_cannot_be_imported(name):
     with pytest.raises(ModuleNotFoundError):
-        importlib.import_module(f"technical_drawings_for_agents.{name}")
+        importlib.import_module(f"dfs.{name}")
 
 
 def test_the_cli_has_only_the_new_commands(capsys):
@@ -233,5 +237,5 @@ def test_the_readme_example_builds(tmp_path):
 
 def test_the_readme_mentions_no_removed_route():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
-    for word in ("render source", "ViewBox", "svg_hatch", "technical_drawings_for_agents plot"):
+    for word in ("render source", "ViewBox", "svg_hatch", "dfs plot"):
         assert word not in text

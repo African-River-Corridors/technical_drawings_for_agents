@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from technical_drawings_for_agents.dfs import resources, run_document, run_file
+from dfs import resources, run_document, run_file
 
 STD = Path(__file__).resolve().parents[1] / "docs" / "standard"
 SUITE = resources.suite_dir()

@@ -12,7 +12,7 @@ from functools import cache
 from pathlib import Path
 
 PACKAGE = Path(__file__).resolve().parent
-FONT_DIR = PACKAGE.parent / "data" / "fonts"
+FONT_DIR = PACKAGE / "data" / "fonts"
 FONT_FILE = FONT_DIR / "BarlowSemiCondensed-Regular.ttf"
 
 

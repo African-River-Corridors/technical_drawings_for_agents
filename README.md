@@ -4,7 +4,7 @@
 </picture>
 
 **Engineering drawings as data, for AI agents.** This repository holds the Drawing Format Standard (DFS)
-and its Python reference implementation, `technical_drawings_for_agents`.
+and its Python reference implementation, `drawing-format-standard` (`import dfs`, command `dfs`).
 [Docs page](https://www.africanrivercorridors.com/dfs) · [The standard](docs/standard/drawing-format-standard.md) · [Rust implementation (OTD)](https://www.africanrivercorridors.com/otd)
 
 One JSON file describes a whole drawing sheet. The tool checks it and gives you an **SVG**, a **PDF** and a
@@ -25,7 +25,7 @@ the same [conformance suite](docs/standard/conformance/).
 ## Install
 
 ```bash
-pip install technical_drawings_for_agents          # from PyPI, once published
+pip install drawing-format-standard                # from PyPI, once published
 # or, from a checkout:
 python -m venv .venv && .venv/bin/pip install -e '.[dev]'
 ```
@@ -61,7 +61,7 @@ Save this as `hello.drawing.json`:
 Build it:
 
 ```bash
-technical_drawings_for_agents build hello.drawing.json --out out/
+dfs build hello.drawing.json --out out/
 # wrote out/hello.normalised.json, out/hello.svg, out/hello.pdf, out/hello.dxf
 ```
 
@@ -85,7 +85,7 @@ every number ends in its unit: `_m`, `_mm`, `_deg`.
 Errors look like this, and each number is a clause of the standard:
 
 ```text
-$ technical_drawings_for_agents validate bad.drawing.json
+$ dfs validate bad.drawing.json
 error: clause 7.5.1        # the window does not fit the frame at the stated scale
 error: clause 14.6         # a text is wider than its title block cell
 ```
@@ -148,12 +148,12 @@ normalised content (or the expected clause numbers of an error), and unit checks
 values are checked by hand, and are never regenerated from an implementation.
 
 ```bash
-technical_drawings_for_agents conformance        # 194 cases or more, all pass
+dfs conformance        # 194 cases or more, all pass
 ```
 
 ## Other tools in this package
 
-- `technical_drawings_for_agents.backdrop` reads a georeferenced backdrop manifest. The GDAL pipeline that makes
+- `dfs.backdrop` reads a georeferenced backdrop manifest. The GDAL pipeline that makes
   backdrops is outside the standard.
 - `ingest` and `describe`, in the table above, work on supplier DXF files.
 
@@ -163,8 +163,8 @@ The `source.py` way of drawing, the pixel-based SVG path, the separate SVG sheet
 furniture and legibility checks that read an SVG), the SVG-to-PDF plot path, the component and layout engine, the
 P&ID and block-flow generators, the old build driver and the provenance stamps are removed. Version 1.0 reads only
 drawing documents. Two things that went with them are open tickets: a
-[build driver over drawing documents](https://github.com/African-River-Corridors/technical_drawings_for_agents/issues/34)
-and [legibility checks on the normalised content](https://github.com/African-River-Corridors/technical_drawings_for_agents/issues/35).
+[build driver over drawing documents](https://github.com/African-River-Corridors/drawing-format-standard/issues/34)
+and [legibility checks on the normalised content](https://github.com/African-River-Corridors/drawing-format-standard/issues/35).
 
 ## Contributing and licence
 

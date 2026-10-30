@@ -46,7 +46,7 @@ import json
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-FONT_DIR = ROOT / "src" / "technical_drawings_for_agents" / "data" / "fonts"
+FONT_DIR = ROOT / "src" / "dfs" / "data" / "fonts"
 FONT = FONT_DIR / "BarlowSemiCondensed-Regular.ttf"
 WIDTHS = json.loads((ROOT / "docs" / "standard" / "data" / "font-widths.json").read_text(encoding="utf-8"))
 

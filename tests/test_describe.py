@@ -3,7 +3,7 @@ from __future__ import annotations
 import ezdxf
 import pytest
 
-from technical_drawings_for_agents.describe import (
+from dfs.describe import (
     DescribeError,
     compare_description,
     describe_dxf,

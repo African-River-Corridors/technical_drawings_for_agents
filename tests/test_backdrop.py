@@ -1,18 +1,17 @@
 from __future__ import annotations
 
 import ast
-from dataclasses import dataclass
 import hashlib
 import importlib.util
 import json
-from pathlib import Path
 import sys
+from dataclasses import dataclass
+from pathlib import Path
 
 import pytest
 
-
-MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "technical_drawings_for_agents" / "backdrop.py"
-SPEC = importlib.util.spec_from_file_location("_test_technical_drawings_for_agents_backdrop", MODULE_PATH)
+MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "dfs" / "backdrop.py"
+SPEC = importlib.util.spec_from_file_location("_test_dfs_backdrop", MODULE_PATH)
 assert SPEC and SPEC.loader
 backdrop = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = backdrop
@@ -146,7 +145,7 @@ def test_coverage_between_thresholds_warns_and_still_emits(tmp_path: Path) -> No
 
 
 def test_backdrop_reader_imports_only_the_standard_library(tmp_path: Path) -> None:
-    """technical_drawings_for_agents must never gain a GDAL dependency; the manifest is plain JSON."""
+    """dfs must never gain a GDAL dependency; the manifest is plain JSON."""
 
     tree = ast.parse(MODULE_PATH.read_text(encoding="utf-8"))
     imported: set[str] = set()
@@ -178,7 +177,7 @@ def _write_manifest(
     manifest.write_text(
         json.dumps(
             {
-                "schema": "tdfa.geo/1",
+                "schema": "dfs.geo/1",
                 "target": "ga_backdrop",
                 "outputs": [
                     {

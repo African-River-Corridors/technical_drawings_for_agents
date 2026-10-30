@@ -5,8 +5,8 @@ Thank you for helping. Issues, examples and pull requests are all welcome.
 ## Set up
 
 ```bash
-git clone https://github.com/African-River-Corridors/technical_drawings_for_agents
-cd technical_drawings_for_agents
+git clone https://github.com/African-River-Corridors/drawing-format-standard
+cd drawing-format-standard
 uv venv && uv pip install -e '.[dev]'     # or: python -m venv .venv && pip install -e '.[dev]'
 ```
 

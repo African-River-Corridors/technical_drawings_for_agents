@@ -7,10 +7,10 @@ import json
 
 import pytest
 
-from technical_drawings_for_agents.cli import main
-from technical_drawings_for_agents.dfs import resources
-from technical_drawings_for_agents.dfs.pipeline import run_document, run_file
-from technical_drawings_for_agents.dfs.rules import (
+from dfs import resources
+from dfs.cli import main
+from dfs.pipeline import run_document, run_file
+from dfs.rules import (
     ALL_RATIOS_1_1,
     Mapper,
     exaggeration_words,

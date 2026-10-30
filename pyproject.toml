@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "technical_drawings_for_agents"
+name = "drawing-format-standard"
 version = "0.1.0"
 description = "Engineering drawings as data for AI agents: one JSON drawing document gives a dimensioned SVG, PDF and DXF sheet, to a published standard."
 readme = "README.md"
@@ -25,22 +25,22 @@ ingest = ["PyMuPDF>=1.23", "numpy>=1.24"]
 dev = ["pytest>=7.0", "ruff>=0.5", "pypdf>=4.0", "Pillow>=10.0", "jsonschema>=4.18", "fonttools>=4.40"]
 
 [project.urls]
-Homepage = "https://github.com/African-River-Corridors/technical_drawings_for_agents"
-Issues = "https://github.com/African-River-Corridors/technical_drawings_for_agents/issues"
+Homepage = "https://github.com/African-River-Corridors/drawing-format-standard"
+Issues = "https://github.com/African-River-Corridors/drawing-format-standard/issues"
 
 [project.scripts]
-technical_drawings_for_agents = "technical_drawings_for_agents.cli:main"
+dfs = "dfs.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/technical_drawings_for_agents"]
+packages = ["src/dfs"]
 
 # The data files of the Drawing Format Standard, so that an installed wheel finds them (dfs/resources.py).
 [tool.hatch.build.targets.wheel.force-include]
-"docs/standard/schema/drawing-document-1.0.schema.json" = "technical_drawings_for_agents/dfs/data/schema/drawing-document-1.0.schema.json"
-"docs/standard/schema/symbol-library-1.0.schema.json" = "technical_drawings_for_agents/dfs/data/schema/symbol-library-1.0.schema.json"
-"docs/standard/schema/title-block-template-1.0.schema.json" = "technical_drawings_for_agents/dfs/data/schema/title-block-template-1.0.schema.json"
-"docs/standard/data" = "technical_drawings_for_agents/dfs/data/data"
-"docs/standard/conformance" = "technical_drawings_for_agents/dfs/data/conformance"
+"docs/standard/schema/drawing-document-1.0.schema.json" = "dfs/data/schema/drawing-document-1.0.schema.json"
+"docs/standard/schema/symbol-library-1.0.schema.json" = "dfs/data/schema/symbol-library-1.0.schema.json"
+"docs/standard/schema/title-block-template-1.0.schema.json" = "dfs/data/schema/title-block-template-1.0.schema.json"
+"docs/standard/data" = "dfs/data/data"
+"docs/standard/conformance" = "dfs/data/conformance"
 
 [tool.ruff]
 line-length = 100

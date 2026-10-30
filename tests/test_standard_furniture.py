@@ -11,9 +11,9 @@ import pytest
 
 jsonschema = pytest.importorskip("jsonschema")
 
-from technical_drawings_for_agents.cli import main
-from technical_drawings_for_agents.dfs import furniture, resources, rules, run_file
-from technical_drawings_for_agents.dfs.render_dxf import dxf_from_document
+from dfs import furniture, resources, rules, run_file
+from dfs.cli import main
+from dfs.render_dxf import dxf_from_document
 
 from .dxf_reader import records
 
@@ -240,7 +240,7 @@ def test_the_issued_gate_refuses(case):
 
 def test_no_tool_can_satisfy_the_gate_by_itself():
     """The gate needs a name in `app`. Nothing in the package writes one."""
-    from technical_drawings_for_agents import dfs
+    import dfs
 
     source = "".join(p.read_text(encoding="utf-8") for p in Path(dfs.__file__).parent.glob("*.py"))
     assert '["app"] =' not in source and "'app'] =" not in source

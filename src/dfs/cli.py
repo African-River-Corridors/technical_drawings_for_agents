@@ -1,4 +1,4 @@
-"""``technical_drawings_for_agents`` command-line interface.
+"""``dfs`` command-line interface.
 
 Commands:
   validate|normalise|run|build|seal|conformance <document>   drawing documents (the Drawing Format Standard)
@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 from . import __version__
-from .dfs.cli import add_subcommands
+from .commands import add_subcommands
 
 
 def _cmd_describe(args: argparse.Namespace) -> int:
@@ -195,7 +195,7 @@ def _cmd_ingest(args: argparse.Namespace) -> int:
         cleaned = out_dir / f"{Path(dxf).stem}_clean.dxf"
         doc.saveas(cleaned)
         print(f"Clean DXF -> {cleaned}")
-        print("Review it with: technical_drawings_for_agents render " + str(cleaned))
+        print("Review it with: dfs render " + str(cleaned))
     except Exception as exc:  # noqa: BLE001
         print(f"error: ingest failed: {exc}", file=sys.stderr)
         return 1
@@ -203,7 +203,7 @@ def _cmd_ingest(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="technical_drawings_for_agents",
+        prog="dfs",
         description="Engineering drawings as data, for AI agents: one JSON drawing document gives SVG, PDF and DXF.",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")

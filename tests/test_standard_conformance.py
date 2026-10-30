@@ -505,7 +505,7 @@ def test_the_sheet_cases_agree_with_clause_6_by_independent_counts():
 def font_advances():
     ttlib = pytest.importorskip("fontTools.ttLib")
     font = ttlib.TTFont(
-        STD.parents[1] / "src/technical_drawings_for_agents/data/fonts/BarlowSemiCondensed-Regular.ttf"
+        STD.parents[1] / "src/dfs/data/fonts/BarlowSemiCondensed-Regular.ttf"
     )
     cmap, hmtx = font.getBestCmap(), font["hmtx"]
     return lambda ch: hmtx[cmap[ord(ch)]][0]

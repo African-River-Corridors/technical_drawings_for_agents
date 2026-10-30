@@ -9,8 +9,8 @@ import pytest
 
 jsonschema = pytest.importorskip("jsonschema")
 
-from technical_drawings_for_agents.dfs import resources, run_file
-from technical_drawings_for_agents.dfs.render_dxf import dxf_from_document
+from dfs import resources, run_file
+from dfs.render_dxf import dxf_from_document
 
 from .dxf_reader import records
 
@@ -133,7 +133,7 @@ def test_a_file_library_gives_the_same_content_as_the_same_library_in_the_docume
     inline = json.loads((SUITE / "documents" / "sym-file-library" / "input.json").read_text())
     lib = json.loads((SUITE / "documents" / "sym-file-library" / "library.json").read_text())
     inline["symbol_libraries"] = [{"id": "std", "symbols": lib["symbols"]}]
-    from technical_drawings_for_agents.dfs import run_document
+    from dfs import run_document
 
     b = run_document(inline)["normalised"]["entities"]
     assert a == b
@@ -163,7 +163,7 @@ def test_one_block_serves_many_inserts_on_one_layer():
                        "window": {"xmin_m": 0, "ymin_m": 0, "xmax_m": 10, "ymax_m": 8}, "scale": 100,
                        "entities": [{"type": "symbol", "layer": "EQUIP", "library": "std", "symbol": "valve", "position_m": [x, 4]} for x in (2, 4, 6)]}],
     }
-    norm_ = __import__("technical_drawings_for_agents.dfs", fromlist=["run_document"]).run_document(doc)["normalised"]
+    norm_ = __import__("dfs", fromlist=["run_document"]).run_document(doc)["normalised"]
     text, _ = dxf_from_document(doc, norm_)
     recs = records(text)
     assert len([r for r in recs if r.kind == "BLOCK" and (r.get(2) or "").startswith("TDFA_")]) == 1

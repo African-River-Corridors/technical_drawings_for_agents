@@ -1,7 +1,7 @@
 """Pre-release rename: new names are written, legacy names are still read.
 
-`tdfa.geo/1` replaced `sankofa.geo/1` as the geo manifest schema id. Files written by older tooling
-must keep loading, with a DeprecationWarning, until the legacy name is removed.
+`dfs.geo/1` is the geo manifest schema id. It replaced `tdfa.geo/1`, which replaced `sankofa.geo/1`.
+Files written by older tooling must keep loading, with a DeprecationWarning, until the legacy ids are removed.
 """
 
 from __future__ import annotations
@@ -13,9 +13,9 @@ from pathlib import Path
 
 import pytest
 
-from technical_drawings_for_agents.backdrop import (
+from dfs.backdrop import (
     GEO_SCHEMA,
-    LEGACY_GEO_SCHEMA,
+    LEGACY_GEO_SCHEMAS,
     BackdropError,
     load_backdrop,
 )
@@ -51,20 +51,21 @@ def _manifest(tmp_path: Path, schema: str) -> Path:
 
 
 def test_the_geo_schema_ids():
-    assert GEO_SCHEMA == "tdfa.geo/1"
-    assert LEGACY_GEO_SCHEMA == "sankofa.geo/1"
+    assert GEO_SCHEMA == "dfs.geo/1"
+    assert LEGACY_GEO_SCHEMAS == ("tdfa.geo/1", "sankofa.geo/1")
 
 
-def test_a_tdfa_geo_manifest_loads_without_a_warning(tmp_path):
+def test_a_dfs_geo_manifest_loads_without_a_warning(tmp_path):
     with warnings.catch_warnings():
         warnings.simplefilter("error")
-        bd = load_backdrop(_manifest(tmp_path, "tdfa.geo/1"))
+        bd = load_backdrop(_manifest(tmp_path, "dfs.geo/1"))
     assert bd.bbox == (0.0, 0.0, 10.0, 10.0)
 
 
-def test_a_legacy_sankofa_geo_manifest_loads_with_a_deprecation_warning(tmp_path):
-    with pytest.warns(DeprecationWarning, match="sankofa.geo/1"):
-        bd = load_backdrop(_manifest(tmp_path, "sankofa.geo/1"))
+@pytest.mark.parametrize("legacy", ["tdfa.geo/1", "sankofa.geo/1"])
+def test_a_legacy_geo_manifest_loads_with_a_deprecation_warning(tmp_path, legacy):
+    with pytest.warns(DeprecationWarning, match=legacy):
+        bd = load_backdrop(_manifest(tmp_path, legacy))
     assert bd.bbox == (0.0, 0.0, 10.0, 10.0)
 
 

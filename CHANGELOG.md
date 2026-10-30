@@ -5,6 +5,16 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+### Changed (names follow the brand, DFS)
+- The repository is now `drawing-format-standard`, the Python package `drawing-format-standard`, the import `dfs`
+  and the command `dfs`. The old names (`technical_drawings_for_agents` as package, import and command) no longer
+  work: there is no alias. The modules of the old `technical_drawings_for_agents.dfs` subpackage are now at the top
+  of `dfs` (for example `dfs.pipeline`, `dfs.render_dxf`); its command module is `dfs.commands`.
+- The JSON Schema `$id`s name the new repository.
+- The geo manifest schema id is now `dfs.geo/1`. The earlier ids (`tdfa.geo/1` and the pre-release one) are still read,
+  with a DeprecationWarning.
+- The release workflow pins the PyPI publish action to a commit.
+
 ### Added (ARC open library look)
 - The DFS mark and lockup at the top of the README, and a docs page in `website/`, served at
   https://www.africanrivercorridors.com/dfs once GitHub Pages is on. The `website` workflow checks its links and
